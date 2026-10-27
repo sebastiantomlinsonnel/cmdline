@@ -1,11 +1,14 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
 /// Called when a command runs. Receives everything that was parsed.
 typedef CliRun = FutureOr<void> Function(CLIResult result);
 
+/// Describes the shape of a command line tool.
+///
+/// This is only a model: it holds the commands, flags, options and arguments
+/// the tool accepts. Call [build] to get a [CLIRunner] that can parse input.
 class CLI {
   final String name;
   final String description;
@@ -25,9 +28,12 @@ class CLI {
     this.run = doNothing,
   });
 
-  /// Parses [args], runs the matching command and returns an exit code.
-  Future<int> execute(List<String> args) async {
-    final root = CLICommand(
+  /// Creates a [CLIRunner] for this CLI.
+  ///
+  /// The top level of the CLI is turned into a root [CLICommand] that the
+  /// runner parses arguments against.
+  CLIRunner build() => CLIRunner(
+    CLICommand(
       name: name,
       description: description,
       subCommands: subCommands,
@@ -35,22 +41,6 @@ class CLI {
       options: options,
       arguments: arguments,
       run: run,
-    );
-    final parser = Parser(root);
-    try {
-      final result = parser.parse(args);
-      if (result == null) {
-        stdout.writeln(parser.usage());
-        return 0;
-      }
-      await parser.command.run(result);
-      return 0;
-    } on CLIException catch (e) {
-      stderr
-        ..writeln('Error: ${e.message}')
-        ..writeln()
-        ..writeln(parser.usage());
-      return 64;
-    }
-  }
+    ),
+  );
 }

@@ -16,6 +16,7 @@ export 'src/cli/cli_exception.dart';
 export 'src/cli/cli_flag.dart';
 export 'src/cli/cli_option.dart';
 export 'src/cli/cli_parser.dart';
+export 'src/cli/cli_runner.dart';
 export 'src/cmdline/cmdline.dart';
 export 'src/msend/dev_type.dart';
 export 'src/msend/msend.dart';

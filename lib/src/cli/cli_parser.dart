@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cmdline/cmdline.dart';
 
 class Parser {
@@ -79,6 +81,7 @@ class Parser {
     }
 
     return CLIResult._(
+      command,
       List.unmodifiable(_path),
       Map.of(_flagValues),
       _optionValues.map((k, v) => MapEntry(k, List.unmodifiable(v))),
@@ -230,13 +233,25 @@ class Parser {
 }
 
 class CLIResult {
+  /// The command the arguments selected.
+  final CLICommand command;
+
   /// e.g. ['mytool', 'db', 'migrate']
   final List<String> commandPath;
   final Map<String, bool> _flags;
   final Map<String, List<String>> _options;
   final Map<String, List<String>> _arguments;
 
-  CLIResult._(this.commandPath, this._flags, this._options, this._arguments);
+  CLIResult._(
+    this.command,
+    this.commandPath,
+    this._flags,
+    this._options,
+    this._arguments,
+  );
+
+  /// Runs [command] with this result.
+  FutureOr<void> run() => command.run(this);
 
   bool flag(String name) =>
       _flags[name] ?? (throw ArgumentError('No flag named "$name".'));

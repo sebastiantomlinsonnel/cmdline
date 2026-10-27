@@ -1,15 +1,6 @@
+import 'dart:io';
+
 import 'package:cmdline/cmdline.dart';
-
-List<String> _args = ['get', '-l'];
-final CLI cli = CLI(
-  [getCommands],
-  flags: [const CLIFlag('verbose', 'Print more.', abbr: 'v')],
-);
-
-Future<void> main(List<String> args) async {
-  _args = args;
-  await cli.execute(_args);
-}
 
 CLICommand getCommands = CLICommand(
   name: 'get',
@@ -26,3 +17,22 @@ CLICommand getCommands = CLICommand(
     ),
   ],
 );
+
+final CLI cli = CLI(
+  [getCommands],
+  flags: [const CLIFlag('verbose', 'Print more.', abbr: 'v')],
+);
+
+Future<void> main(List<String> args) async {
+  final runner = cli.build();
+  try {
+    final result = runner.parse(args);
+    if (result == null) {
+      stdout.writeln(runner.usage());
+      return;
+    }
+    await result.run();
+  } on CLIException catch (e) {
+    stderr.writeln('Error: ${e.message}\n\n${runner.usage()}');
+  }
+}
