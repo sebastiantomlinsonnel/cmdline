@@ -2,9 +2,7 @@ import 'package:cmdline/ascii.dart';
 import 'package:cmdline/src/cmdline/cmdline.dart';
 
 part 'constants/colours.dart';
-
 part 'constants/controls.dart';
-
 part 'constants/styling.dart';
 
 String sty(List<String> data, {bool printCharCodes = false}) {

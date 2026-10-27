@@ -1,42 +1,20 @@
 import 'package:cmdline/ascii.dart';
 
-/// One entry of the 256-colour table, which the terminal can paint into any
-/// of three places.
-///
-/// A colour is not a printable code by itself — pick [fg], [bg] or [underline]
-/// and you get the string to print. [AsciiColourRgb] is the same idea for the
-/// 24-bit colours.
 class AsciiColour extends AsciiInk {
-  /// Position in the 256-colour table, `0`-`255`.
   final int index;
 
-  // final String fg;
-
-  /// Wraps a table position. The 256 already named are on [colours]; reach for
-  /// this only to compute an index.
   const AsciiColour(this.index);
 
-  /// A colour of the 6x6x6 cube, each channel `0`-`5`.
-  ///
-  /// `AsciiColour.rgb(5, 0, 0)` is full red and `AsciiColour.rgb(5, 5, 5)` is
-  /// white — the `rgb_500` and `rgb_555` fields of [colours] under another
-  /// name, for when the channels are worked out rather than written down.
   const AsciiColour.rgb(int red, int green, int blue)
     : assert(red >= 0 && red <= 5, 'red must be 0-5'),
       assert(green >= 0 && green <= 5, 'green must be 0-5'),
       assert(blue >= 0 && blue <= 5, 'blue must be 0-5'),
-      // fg =
       index = 16 + (36 * red) + (6 * green) + blue;
 
-  /// One of the 24 greys, `0` near-black through `23` near-white.
-  ///
-  /// The `gray0`-`gray23` fields of [colours] under another name. Neither end
-  /// is quite black or quite white; those are `rgb_000` and `rgb_555`.
   const AsciiColour.gray(int step)
     : assert(step >= 0 && step <= 23, 'step must be 0-23'),
       index = 232 + step;
 
-  /// [AsciiColour.gray] under the other spelling.
   const AsciiColour.grey(int step) : this.gray(step);
 
   @override
@@ -52,13 +30,6 @@ class AsciiColour extends AsciiInk {
   @override
   String toString() => 'AsciiColour($index)';
 
-  /// The channels this index paints, as far as they can be known.
-  ///
-  /// Exact for the 6x6x6 cube and the 24 greys: the table fixes their levels
-  /// at `0`, `95`, `135`, `175`, `215`, `255` for the cube and `8` upwards in
-  /// tens for the greys. The first sixteen are whatever the terminal theme
-  /// says they are, so those come back as xterm's defaults and may be some way
-  /// from what is on the screen.
   @override
   AsciiColourRgb toRgb() {
     if (index < 16) return _themeDefaults[index];
@@ -79,11 +50,8 @@ class AsciiColour extends AsciiInk {
   }
 }
 
-/// What the 6x6x6 cube's six steps come out as, in 24-bit terms.
 const List<int> _cubeLevels = <int>[0, 95, 135, 175, 215, 255];
 
-/// xterm's defaults for the first sixteen, which every theme is free to
-/// overrule. Only used to have something to mix with in [AsciiInk.opacity].
 const List<AsciiColourRgb> _themeDefaults = <AsciiColourRgb>[
   AsciiColourRgb.hex(0x000000),
   AsciiColourRgb.hex(0xCD0000),
