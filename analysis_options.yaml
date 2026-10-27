@@ -3,26 +3,27 @@ include: package:dart_code_linter/presets/recommended.yaml
 plugins:
   dart_code_linter:
     diagnostics:
-      avoid-unused-parameters: warning
-      avoid-nested-conditional-expressions: true
+      avoid-unused-parameters: true
+      avoid-nested-conditional-expressions: false
       avoid-unnecessary-type-casts: true
       avoid-unnecessary-conditionals: true
       newline-before-return: true
       no-boolean-literal-compare: true
-      no-empty-block: true
+      no-empty-block: false
       no-equal-then-else: warning
       no-magic-number: warning
-      prefer-trailing-comma: true
       prefer-conditional-expressions: true
       prefer-immediate-return: true
       prefer-moving-to-variable: true
       member-ordering: true
       format-comment: true
+      prefer-trailing-comma: true
+      avoid-dynamic: false
 
 linter:
   rules:
+
     prefer_final_in_for_each: true
-    avoid_dynamic_calls: true
     constant_identifier_names: false
     prefer_final_fields: true
     prefer_const_constructors: true
@@ -38,16 +39,3 @@ dart_code_linter:
     maximum-nesting-level: 5
   metrics-exclude:
     - test/**
-  dart_code_linter:
-    metrics:
-      cyclomatic-complexity: 20
-      number-of-parameters: 4
-      maximum-nesting-level: 5
-    metrics-exclude:
-      - test/**
-
-#  linter:
-#    rules:
-#      constant_identifier_names: false
-#      prefer_final_fields: true
-#      prefer_const_constructors: true

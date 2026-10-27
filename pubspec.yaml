@@ -7,9 +7,7 @@ homepage: https://recollect.cc/
 environment:
   sdk: ^3.13.5
 
-# Add regular dependencies here.
 dependencies:
-# path: ^1.9.0
 
 dev_dependencies:
   lints: ^6.1.0
