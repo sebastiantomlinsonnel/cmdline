@@ -1,9 +1,4 @@
-import 'dart:async';
-
 import 'package:cmdline/cmdline.dart';
-
-/// Called when a command runs. Receives everything that was parsed.
-typedef CliRun = FutureOr<void> Function(CLIResult result);
 
 /// Describes the shape of a command line tool.
 ///
@@ -16,12 +11,12 @@ class CLI {
   final List<CLIFlag> flags;
   final List<CLIOption> options;
   final List<CLIArgument> arguments;
-  final CliRun run;
+  final CommandRun run;
 
   const CLI(
-    this.subCommands, {
-    this.name = 'cli',
-    this.description = '',
+    this.name, {
+    required this.description,
+    this.subCommands = const [],
     this.flags = const [],
     this.options = const [],
     this.arguments = const [],

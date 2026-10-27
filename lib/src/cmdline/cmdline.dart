@@ -1,4 +1,4 @@
-void doNothing([dynamic _]) {}
+void doNothing([dynamic _, dynamic __]) {}
 
 Future<void> delay(int milliseconds, {int? seconds}) async {
   await Future.delayed(
