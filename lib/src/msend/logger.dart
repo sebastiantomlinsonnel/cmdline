@@ -4,12 +4,12 @@ import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
-class MSend {
-  MSend._();
+class Logger {
+  Logger._();
 
   /// The single logger. Always available; it only writes to a file after
   /// [open] has been called.
-  static final MSend instance = MSend._();
+  static final Logger instance = Logger._();
 
   void Function(String message, String asciiMessage)? onLog;
   bool debugMode = true;
@@ -27,7 +27,7 @@ class MSend {
     String bgC = const AsciiColorRgb.hex(0x2A2A70).bg;
     return [
       isDev ? BOLD : '',
-      MSend.getLevel(level, MSend.getTimestamp(time ?? DateTime.now())),
+      Logger.getLevel(level, Logger.getTimestamp(time ?? DateTime.now())),
       isDev ? RESET_BOLD_AND_DIM : '',
       isDev ? BOLD : '',
       isDev ? bgC : '',
@@ -37,7 +37,7 @@ class MSend {
     ].join();
   }
 
-  static Future<MSend> open(
+  static Future<Logger> open(
     String path, {
     bool append = true,
     Duration flushInterval = const Duration(seconds: 2),
@@ -49,7 +49,7 @@ class MSend {
   }) async {
     await close();
 
-    final MSend m = instance
+    final Logger m = instance
       ..levels = levels
       ..onLog = onLog
       ..debugMode = debugMode;
@@ -150,9 +150,9 @@ class MSend {
     final String name = level.name.toUpperCase().padRight(_tagWidth);
     // Pad before colouring: the colour codes would otherwise count as characters.
     final String tag = level == Level.dev
-        ? '${MSend.getVerbosityColour(level, '⬤ $name ]').background(const AsciiColorRgb.hex(0x2A2A70))} '
-        : MSend.getVerbosityColour(level, '[ $name ] ');
-    return '$tag$timestamp${MSend.getVerbosityColour(level, ' > ')}';
+        ? '${Logger.getVerbosityColour(level, '⬤ $name ]').background(const AsciiColorRgb.hex(0x2A2A70))} '
+        : Logger.getVerbosityColour(level, '[ $name ] ');
+    return '$tag$timestamp${Logger.getVerbosityColour(level, ' > ')}';
   }
 
   static String getVerbosityColour(Level level, String data) {
@@ -199,12 +199,6 @@ class MSend {
     Level.log: '[LOG  ] ',
   };
 
-  static MSendProgress progress(
-    String label, {
-    Level level = Level.log,
-    int width = 30,
-  }) => MSendProgress._(label, level, width);
-
   static const List<String> _spinnerFrames = <String>[
     '⠋',
     '⠙',
@@ -237,7 +231,7 @@ class MSend {
     int frame = 0;
     void draw() {
       final String text = '${_spinnerFrames[frame]} $label';
-      stdout.write('${MSendProgress._clear}${instance.getString(text, level)}');
+      stdout.write('${CLEAR_LINE}${instance.getString(text, level)}');
       frame = (frame + 1) % _spinnerFrames.length;
     }
 
@@ -252,7 +246,7 @@ class MSend {
     _spinnerTimer?.cancel();
     _spinnerTimer = null;
     _spinnerLabel = null;
-    stdout.write(MSendProgress._clear);
+    stdout.write(CLEAR_LINE);
     _printAt(message ?? label, level);
   }
 
@@ -276,33 +270,27 @@ class MSend {
 
   static void print(String message, Level verbosity) {
     final DateTime now = DateTime.now();
-    final String ascii = MSend.instance.getString(
+    final String ascii = Logger.instance.getString(
       message,
       verbosity,
       time: now,
     );
     stdout.writeln(ascii);
-    final MSend log = MSend.instance;
+    final Logger log = Logger.instance;
     log.add(now, verbosity.name.toUpperCase(), message);
     final onLog = log.onLog;
     if (onLog == null) return;
     try {
-      onLog(MSend.strip(ascii), ascii);
+      onLog(Logger.strip(ascii), ascii);
     } catch (e) {
       fail(e);
     }
   }
 
   Future<String> demo() async {
-    final p = MSend.progress('Loading messages');
-    for (var i = 0; i <= 100; i += 5) {
-      p.update(i / 100);
-      await Future<void>.delayed(const Duration(milliseconds: 60));
-    }
-    p.done('Message loading complete!');
-    MSend.startSpinner('Starting logger');
+    Logger.startSpinner('Starting logger');
     await delay(0, seconds: 3);
-    MSend.stopSpinner('Loading Complete!', Level.pass);
+    Logger.stopSpinner('Loading Complete!', Level.pass);
     return instance.getString('Built, not logged', Level.debug);
   }
 
@@ -371,8 +359,8 @@ class _LogFile {
   void write(DateTime now, String level, String message, {bool force = false}) {
     final StringBuffer buffer = _buffer;
     _stamp(buffer, now);
-    buffer.write(MSend._tags[level] ?? '[$level] ');
-    MSend._plain(buffer, message);
+    buffer.write(Logger._tags[level] ?? '[$level] ');
+    Logger._plain(buffer, message);
     buffer.write('\n');
 
     if (force || buffer.length >= flushThreshold) _drain();
@@ -395,7 +383,7 @@ class _LogFile {
   }
 
   void _stamp(StringBuffer b, DateTime t) {
-    final List<String> d2 = MSend._d2;
+    final List<String> d2 = Logger._d2;
     final int key = t.day | (t.month << 5) | (t.year << 9);
     if (key != _dayKey) {
       _dayKey = key;
@@ -461,478 +449,23 @@ class _LogFile {
   }
 }
 
-class MSendProgress {
-  MSendProgress._(this.label, this.level, this.width);
-
-  final String label;
-  final Level level;
-  final int width;
-  bool _finished = false;
-
-  // \r goes back to the line start; \x1B[2K clears the line, so shorter text leaves no leftovers.
-  static const String _clear = '\r\x1B[2K';
-
-  void update(double fraction, {String? label}) {
-    if (_finished) return;
-    final double f = fraction.clamp(0.0, 1.0);
-    final int done = (f * width).round();
-    final String bar = '#' * done + '.' * (width - done);
-    final String text = '${label ?? this.label} [$bar] ${(f * 100).round()}%';
-    stdout.write('$_clear${MSend.instance.getString(text, level)}');
-  }
-
-  void done([String? message, Level level = Level.pass]) {
-    _finished = true;
-    stdout.write(_clear);
-    MSend.print(message ?? label, level);
-  }
-}
-
-void dev(dynamic message) => MSend.print('$message', Level.dev);
-
-void trace(dynamic message) => MSend.print('$message', Level.trace);
-
-void debug(dynamic message) => MSend.print('$message', Level.debug);
-
-void fail(dynamic message) => MSend.print('$message', Level.fail);
-
-void pass(dynamic message) => MSend.print('$message', Level.pass);
-
-void warn(dynamic message) => MSend.print('$message', Level.warn);
-
-void log(dynamic message) => MSend.print('$message', Level.log);
-
 String getDev(dynamic message) =>
-    MSend.instance.getString('$message', Level.dev);
+    Logger.instance.getString('$message', Level.dev);
 
 String getTrace(dynamic message) =>
-    MSend.instance.getString('$message', Level.trace);
+    Logger.instance.getString('$message', Level.trace);
 
 String getDebug(dynamic message) =>
-    MSend.instance.getString('$message', Level.debug);
+    Logger.instance.getString('$message', Level.debug);
 
 String getFail(dynamic message) =>
-    MSend.instance.getString('$message', Level.fail);
+    Logger.instance.getString('$message', Level.fail);
 
 String getPass(dynamic message) =>
-    MSend.instance.getString('$message', Level.pass);
+    Logger.instance.getString('$message', Level.pass);
 
 String getWarn(dynamic message) =>
-    MSend.instance.getString('$message', Level.warn);
+    Logger.instance.getString('$message', Level.warn);
 
 String getLog(dynamic message) =>
-    MSend.instance.getString('$message', Level.log);
-
-void traceln([
-  String d1 = '',
-  String d2 = '',
-  String d3 = '',
-  String d4 = '',
-  String d5 = '',
-  String d6 = '',
-  String d7 = '',
-  String d8 = '',
-  String d9 = '',
-  String d10 = '',
-  String d11 = '',
-  String d12 = '',
-  String d13 = '',
-  String d14 = '',
-  String d15 = '',
-  String d16 = '',
-  String d17 = '',
-  String d18 = '',
-  String d19 = '',
-  String d20 = '',
-]) {
-  MSend.print(
-    [
-      d1,
-      RESET,
-      d2,
-      RESET,
-      d3,
-      RESET,
-      d4,
-      RESET,
-      d5,
-      RESET,
-      d6,
-      RESET,
-      d7,
-      RESET,
-      d8,
-      RESET,
-      d9,
-      RESET,
-      d10,
-      RESET,
-      d11,
-      RESET,
-      d12,
-      RESET,
-      d13,
-      RESET,
-      d14,
-      RESET,
-      d15,
-      RESET,
-      d16,
-      RESET,
-      d17,
-      RESET,
-      d18,
-      RESET,
-      d19,
-      RESET,
-      d20,
-      RESET,
-    ].join(),
-    Level.trace,
-  );
-}
-
-void logln([
-  String d1 = '',
-  String d2 = '',
-  String d3 = '',
-  String d4 = '',
-  String d5 = '',
-  String d6 = '',
-  String d7 = '',
-  String d8 = '',
-  String d9 = '',
-  String d10 = '',
-  String d11 = '',
-  String d12 = '',
-  String d13 = '',
-  String d14 = '',
-  String d15 = '',
-  String d16 = '',
-  String d17 = '',
-  String d18 = '',
-  String d19 = '',
-  String d20 = '',
-]) {
-  MSend.print(
-    [
-      d1,
-      RESET,
-      d2,
-      RESET,
-      d3,
-      RESET,
-      d4,
-      RESET,
-      d5,
-      RESET,
-      d6,
-      RESET,
-      d7,
-      RESET,
-      d8,
-      RESET,
-      d9,
-      RESET,
-      d10,
-      RESET,
-      d11,
-      RESET,
-      d12,
-      RESET,
-      d13,
-      RESET,
-      d14,
-      RESET,
-      d15,
-      RESET,
-      d16,
-      RESET,
-      d17,
-      RESET,
-      d18,
-      RESET,
-      d19,
-      RESET,
-      d20,
-      RESET,
-    ].join(),
-    Level.log,
-  );
-}
-
-void debugln([
-  String d1 = '',
-  String d2 = '',
-  String d3 = '',
-  String d4 = '',
-  String d5 = '',
-  String d6 = '',
-  String d7 = '',
-  String d8 = '',
-  String d9 = '',
-  String d10 = '',
-  String d11 = '',
-  String d12 = '',
-  String d13 = '',
-  String d14 = '',
-  String d15 = '',
-  String d16 = '',
-  String d17 = '',
-  String d18 = '',
-  String d19 = '',
-  String d20 = '',
-]) {
-  MSend.print(
-    [
-      d1,
-      RESET,
-      d2,
-      RESET,
-      d3,
-      RESET,
-      d4,
-      RESET,
-      d5,
-      RESET,
-      d6,
-      RESET,
-      d7,
-      RESET,
-      d8,
-      RESET,
-      d9,
-      RESET,
-      d10,
-      RESET,
-      d11,
-      RESET,
-      d12,
-      RESET,
-      d13,
-      RESET,
-      d14,
-      RESET,
-      d15,
-      RESET,
-      d16,
-      RESET,
-      d17,
-      RESET,
-      d18,
-      RESET,
-      d19,
-      RESET,
-      d20,
-      RESET,
-    ].join(),
-    Level.debug,
-  );
-}
-
-void failln([
-  String d1 = '',
-  String d2 = '',
-  String d3 = '',
-  String d4 = '',
-  String d5 = '',
-  String d6 = '',
-  String d7 = '',
-  String d8 = '',
-  String d9 = '',
-  String d10 = '',
-  String d11 = '',
-  String d12 = '',
-  String d13 = '',
-  String d14 = '',
-  String d15 = '',
-  String d16 = '',
-  String d17 = '',
-  String d18 = '',
-  String d19 = '',
-  String d20 = '',
-]) {
-  MSend.print(
-    [
-      d1,
-      RESET,
-      d2,
-      RESET,
-      d3,
-      RESET,
-      d4,
-      RESET,
-      d5,
-      RESET,
-      d6,
-      RESET,
-      d7,
-      RESET,
-      d8,
-      RESET,
-      d9,
-      RESET,
-      d10,
-      RESET,
-      d11,
-      RESET,
-      d12,
-      RESET,
-      d13,
-      RESET,
-      d14,
-      RESET,
-      d15,
-      RESET,
-      d16,
-      RESET,
-      d17,
-      RESET,
-      d18,
-      RESET,
-      d19,
-      RESET,
-      d20,
-      RESET,
-    ].join(),
-    Level.fail,
-  );
-}
-
-void passln([
-  String d1 = '',
-  String d2 = '',
-  String d3 = '',
-  String d4 = '',
-  String d5 = '',
-  String d6 = '',
-  String d7 = '',
-  String d8 = '',
-  String d9 = '',
-  String d10 = '',
-  String d11 = '',
-  String d12 = '',
-  String d13 = '',
-  String d14 = '',
-  String d15 = '',
-  String d16 = '',
-  String d17 = '',
-  String d18 = '',
-  String d19 = '',
-  String d20 = '',
-]) {
-  MSend.print(
-    [
-      d1,
-      RESET,
-      d2,
-      RESET,
-      d3,
-      RESET,
-      d4,
-      RESET,
-      d5,
-      RESET,
-      d6,
-      RESET,
-      d7,
-      RESET,
-      d8,
-      RESET,
-      d9,
-      RESET,
-      d10,
-      RESET,
-      d11,
-      RESET,
-      d12,
-      RESET,
-      d13,
-      RESET,
-      d14,
-      RESET,
-      d15,
-      RESET,
-      d16,
-      RESET,
-      d17,
-      RESET,
-      d18,
-      RESET,
-      d19,
-      RESET,
-      d20,
-      RESET,
-    ].join(),
-    Level.pass,
-  );
-}
-
-void warnln([
-  String d1 = '',
-  String d2 = '',
-  String d3 = '',
-  String d4 = '',
-  String d5 = '',
-  String d6 = '',
-  String d7 = '',
-  String d8 = '',
-  String d9 = '',
-  String d10 = '',
-  String d11 = '',
-  String d12 = '',
-  String d13 = '',
-  String d14 = '',
-  String d15 = '',
-  String d16 = '',
-  String d17 = '',
-  String d18 = '',
-  String d19 = '',
-  String d20 = '',
-]) {
-  MSend.print(
-    [
-      d1,
-      RESET,
-      d2,
-      RESET,
-      d3,
-      RESET,
-      d4,
-      RESET,
-      d5,
-      RESET,
-      d6,
-      RESET,
-      d7,
-      RESET,
-      d8,
-      RESET,
-      d9,
-      RESET,
-      d10,
-      RESET,
-      d11,
-      RESET,
-      d12,
-      RESET,
-      d13,
-      RESET,
-      d14,
-      RESET,
-      d15,
-      RESET,
-      d16,
-      RESET,
-      d17,
-      RESET,
-      d18,
-      RESET,
-      d19,
-      RESET,
-      d20,
-      RESET,
-    ].join(),
-    Level.warn,
-  );
-}
+    Logger.instance.getString('$message', Level.log);

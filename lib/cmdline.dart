@@ -1,5 +1,7 @@
 library;
 
+import 'cmdline.dart';
+
 export 'src/ascii/ascii.dart';
 export 'src/ascii/constants/colours.dart';
 export 'src/ascii/constants/controls.dart';
@@ -9,7 +11,20 @@ export 'src/ascii/palettes/ascii_colour.dart';
 export 'src/ascii/palettes/ascii_colour_rgb.dart';
 export 'src/ascii/palettes/ascii_ink.dart';
 export 'src/ascii/utils/ascii_printer.dart';
-export 'src/cli/cli.dart';
 export 'src/cmdline/cmdline.dart';
 export 'src/msend/dev_type.dart';
-export 'src/msend/msend.dart';
+export 'src/msend/logger.dart';
+
+void dev(dynamic message) => Logger.print('$message', Level.dev);
+
+void trace(dynamic message) => Logger.print('$message', Level.trace);
+
+void debug(dynamic message) => Logger.print('$message', Level.debug);
+
+void fail(dynamic message) => Logger.print('$message', Level.fail);
+
+void pass(dynamic message) => Logger.print('$message', Level.pass);
+
+void warn(dynamic message) => Logger.print('$message', Level.warn);
+
+void log(dynamic message) => Logger.print('$message', Level.log);

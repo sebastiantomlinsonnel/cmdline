@@ -50,3 +50,5 @@ const String SGR = 'm';
 /// such as [Ascii.toString], [AsciiPrinter] and [AsciiStyledString] add it at
 /// the end so a style never leaks into the next line.
 const String RESET = '${CSI}0$SGR';
+
+const String CLEAR_LINE = '\r\x1B[2K';
