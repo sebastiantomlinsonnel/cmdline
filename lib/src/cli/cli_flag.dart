@@ -1,13 +1,13 @@
 
 /// On/off switch: `--verbose`, `-v`, `--no-verbose`.
-class CliFlag {
+class CLIFlag {
   final String name;
   final String description;
   final String? abbr;
   final bool defaultValue;
   final bool negatable;
 
-  const CliFlag(
+  const CLIFlag(
     this.name,
     this.description, {
     this.abbr,

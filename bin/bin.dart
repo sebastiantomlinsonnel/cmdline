@@ -3,7 +3,7 @@ import 'package:cmdline/cmdline.dart';
 List<String> _args = ['get', '-l'];
 final CLI cli = CLI(
   [getCommands],
-  flags: [const CliFlag('verbose', 'Print more.', abbr: 'v')],
+  flags: [const CLIFlag('verbose', 'Print more.', abbr: 'v')],
 );
 
 Future<void> main(List<String> args) async {
@@ -11,14 +11,14 @@ Future<void> main(List<String> args) async {
   await cli.execute(_args);
 }
 
-CliCommand getCommands = CliCommand(
+CLICommand getCommands = CLICommand(
   name: 'get',
   description: 'Commands for getting values',
   subCommands: [
-    CliCommand(
+    CLICommand(
       name: 'ip',
       description: 'Gets your IP address',
-      flags: [const CliFlag('local', 'Gets only the local IP')],
+      flags: [const CLIFlag('local', 'Gets only the local IP')],
       run: (result) {
         String a = result.flag('local') ? 'only local IP' : 'both IPs';
         debug('Getting $a');

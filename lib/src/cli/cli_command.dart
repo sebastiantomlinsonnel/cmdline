@@ -1,19 +1,19 @@
 import 'package:cmdline/cmdline.dart';
 
-class CliCommand {
+class CLICommand {
   final String name;
   final String description;
   final List<String> aliases;
   final bool hidden;
-  final List<CliCommand> subCommands;
-  final List<CliFlag> flags;
-  final List<CliOption> options;
-  final List<CliArgument> arguments;
+  final List<CLICommand> subCommands;
+  final List<CLIFlag> flags;
+  final List<CLIOption> options;
+  final List<CLIArgument> arguments;
 
   /// Leave as [doNothing] for a pure group command: running it shows help.
   final CliRun run;
 
-  const CliCommand({
+  const CLICommand({
     required this.name,
     required this.description,
     this.run = doNothing,
@@ -25,7 +25,7 @@ class CliCommand {
     this.arguments = const [],
   });
 
-  CliCommand? findSubCommand(String token) {
+  CLICommand? findSubCommand(String token) {
     for (final c in subCommands) {
       if (c.name == token || c.aliases.contains(token)) return c;
     }

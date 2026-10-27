@@ -1,6 +1,5 @@
-
 /// Takes a value: `--target=web`, `--target web`, `-t web`, `-tweb`.
-class CliOption {
+class CLIOption {
   final String name;
   final String description;
   final String? abbr;
@@ -9,7 +8,7 @@ class CliOption {
   final bool multiple;
   final String valueName;
 
-  const CliOption(
+  const CLIOption(
     this.name,
     this.description, {
     this.abbr,

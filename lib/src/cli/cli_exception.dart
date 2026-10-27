@@ -1,8 +1,8 @@
 
-class CliException implements Exception {
+class CLIException implements Exception {
   final String message;
 
-  const CliException(this.message);
+  const CLIException(this.message);
 
   @override
   String toString() => message;
