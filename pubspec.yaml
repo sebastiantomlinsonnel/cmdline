@@ -1,5 +1,5 @@
 name: cmdline
-description: A starting point for Dart libraries or applications.
+description: A command and CLI SDK
 version: 0.0.1
 # repository: https://github.com/my_org/my_repo
 
@@ -11,6 +11,6 @@ dependencies:
 # path: ^1.9.0
 
 dev_dependencies:
-  lints: ^6.0.0
-  test: ^1.25.6
+  lints: ^6.1.0
+  test: ^1.33.0
   dart_code_linter: ^4.4.3
