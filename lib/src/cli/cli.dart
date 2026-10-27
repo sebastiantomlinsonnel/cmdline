@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:cmdline/cmdline.dart';
 
 /// Called when a command runs. Receives everything that was parsed.
-typedef CliRun = FutureOr<void> Function(CliResult result);
+typedef CliRun = FutureOr<void> Function(CLIResult result);
 
 class CLI {
   final String name;

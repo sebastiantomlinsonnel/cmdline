@@ -38,7 +38,7 @@ class Parser {
   }
 
   /// Returns null when help should be shown instead of running.
-  CliResult? parse(List<String> args) {
+  CLIResult? parse(List<String> args) {
     final positionals = <String>[];
     var onlyPositional = false;
     var i = 0;
@@ -78,7 +78,7 @@ class Parser {
       return null; // group command with nothing chosen -> show help
     }
 
-    return CliResult(
+    return CLIResult._(
       List.unmodifiable(_path),
       Map.of(_flagValues),
       _optionValues.map((k, v) => MapEntry(k, List.unmodifiable(v))),
@@ -227,4 +227,32 @@ class Parser {
         ..write('  ${k.padRight(width)}  $v'),
     );
   }
+}
+
+class CLIResult {
+  /// e.g. ['mytool', 'db', 'migrate']
+  final List<String> commandPath;
+  final Map<String, bool> _flags;
+  final Map<String, List<String>> _options;
+  final Map<String, List<String>> _arguments;
+
+  CLIResult._(this.commandPath, this._flags, this._options, this._arguments);
+
+  bool flag(String name) =>
+      _flags[name] ?? (throw ArgumentError('No flag named "$name".'));
+
+  String? option(String name) => _get(_options, name, 'option').lastOrNull;
+
+  List<String> multiOption(String name) => _get(_options, name, 'option');
+
+  String? argument(String name) =>
+      _get(_arguments, name, 'argument').firstOrNull;
+
+  List<String> arguments(String name) => _get(_arguments, name, 'argument');
+
+  static List<String> _get(
+    Map<String, List<String>> m,
+    String name,
+    String kind,
+  ) => m[name] ?? (throw ArgumentError('No $kind named "$name".'));
 }
