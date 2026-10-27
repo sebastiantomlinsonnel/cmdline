@@ -1,6 +1,6 @@
 import 'package:cmdline/cmdline.dart';
 
 void main() {
-  CommandLineDemo.demo();
+  // CommandLineDemo.demo();
   CommandLineDemo.printMessages();
 }

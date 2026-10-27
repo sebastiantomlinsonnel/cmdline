@@ -7,6 +7,8 @@ import 'package:cmdline/cmdline.dart';
 class Logger {
   Logger._();
 
+  bool showTimestampInOutput = false;
+
   /// The single logger. Always available; it only writes to a file after
   /// [open] has been called.
   static final Logger instance = Logger._();
@@ -23,18 +25,12 @@ class Logger {
   String? get path => _out?.file.path;
 
   String getString(dynamic message, Level level, {DateTime? time}) {
-    bool isDev = level == Level.dev;
-    String bgC = const AsciiColorRgb.hex(0x2A2A70).bg;
-    return [
-      isDev ? BOLD : '',
-      Logger.getLevel(level, Logger.getTimestamp(time ?? DateTime.now())),
-      isDev ? RESET_BOLD_AND_DIM : '',
-      isDev ? BOLD : '',
-      isDev ? bgC : '',
-      '$message',
-      isDev ? RESET_BG : '',
-      isDev ? RESET_BOLD_AND_DIM : '',
-    ].join();
+    String timestamp = '';
+    if (showTimestampInOutput) {
+      if (time == null) time = DateTime.now();
+      timestamp = '${getTimestamp(time)} ';
+    }
+    return [timestamp, Logger.getStamp(level), ' $message'].join();
   }
 
   static Future<Logger> open(
@@ -140,19 +136,17 @@ class Logger {
           .bold,
       '.'.foreground(const AsciiColour.grey(14)),
       ms.foreground(const AsciiColour.grey(10)),
+      ' ',
     ].join();
   }
 
   /// Width of the longest level name (TRACE / DEBUG), so every tag lines up.
   static const int _tagWidth = 5;
 
-  static String getLevel(Level level, String timestamp) {
+  static String getStamp(Level level) {
     final String name = level.name.toUpperCase().padRight(_tagWidth);
-    // Pad before colouring: the colour codes would otherwise count as characters.
-    final String tag = level == Level.dev
-        ? '${Logger.getVerbosityColour(level, '⬤ $name ]').background(const AsciiColorRgb.hex(0x2A2A70))} '
-        : Logger.getVerbosityColour(level, '[ $name ] ');
-    return '$tag$timestamp${Logger.getVerbosityColour(level, ' > ')}';
+    final String tag = Logger.getVerbosityColour(level, '$name |');
+    return '$tag';
   }
 
   static String getVerbosityColour(Level level, String data) {
@@ -180,7 +174,7 @@ class Logger {
             .foreground(const AsciiColour.rgb(5, 5, 5).opacity(0.9))
             .bold;
       case Level.dev:
-        return data.foreground(const AsciiColourRgb.hex(0xFF77FF));
+        return '$GREY_20_BG$GREY_0_FG$data'.bold;
     }
   }
 
@@ -276,12 +270,12 @@ class Logger {
       time: now,
     );
     stdout.writeln(ascii);
-    final Logger log = Logger.instance;
-    log.add(now, verbosity.name.toUpperCase(), message);
-    final onLog = log.onLog;
+    final Logger inst = Logger.instance;
+    inst.add(now, verbosity.name.toUpperCase(), message);
+    final onLog = inst.onLog;
     if (onLog == null) return;
     try {
-      onLog(Logger.strip(ascii), ascii);
+      onLog(message, ascii);
     } catch (e) {
       fail(e);
     }

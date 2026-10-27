@@ -14,6 +14,7 @@ class CommandLineDemo {
     trace('This is a trace message');
     debug('This is a $BOLD debug message');
     fail('This type shows that something has FAILED');
+    Logger.instance.showTimestampInOutput = true;
     pass('This type shows that something has NOT failed');
     warn('This will show when you want to warn');
     dev('Dev messages only show in debug mode and aren\'t logged');
