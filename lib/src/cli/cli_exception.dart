@@ -1,4 +1,3 @@
-
 class CLIException implements Exception {
   final String message;
 

@@ -172,7 +172,9 @@ class CLIRunner {
         values = List.unmodifiable(positionals.sublist(i));
         i = positionals.length;
       } else {
-        values = List.unmodifiable([if (i < positionals.length) positionals[i++]]);
+        values = List.unmodifiable([
+          if (i < positionals.length) positionals[i++],
+        ]);
       }
       if (a.required && values.isEmpty) {
         throw CLIException('Missing argument <${a.name}>.');

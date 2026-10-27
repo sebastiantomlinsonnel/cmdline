@@ -7,11 +7,10 @@ import 'package:cmdline/cmdline.dart';
 /// [flags] maps each flag name to its value. [options] maps each option name
 /// to its values: one value normally, several for a [CLIOption.multiple]
 /// option, or none when it was not given and has no default.
-typedef CommandRun =
-    FutureOr<void> Function(
-      Map<String, bool> flags,
-      Map<String, List<String>> options,
-    );
+typedef CommandRun = FutureOr<void> Function(
+  Map<String, bool> flags,
+  Map<String, List<String>> options,
+);
 
 class CLICommand {
   final String name;

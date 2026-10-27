@@ -1,4 +1,3 @@
-
 /// The escape character that starts every terminal control sequence.
 ///
 /// Byte `0x1B`. On its own it does nothing visible; the characters after it

@@ -1,4 +1,3 @@
-
 /// Positional argument. Only the last one may be [variadic].
 class CLIArgument {
   final String name;

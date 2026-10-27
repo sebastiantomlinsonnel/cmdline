@@ -1,4 +1,3 @@
-
 /// On/off switch: `--verbose`, `-v`, `--no-verbose`.
 class CLIFlag {
   final String name;
