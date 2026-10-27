@@ -1,7 +1,8 @@
 name: cmdline
 description: A command and CLI SDK
 version: 0.0.1
-# repository: https://github.com/my_org/my_repo
+repository: https://git.recollect.cc/sebas/cmdline
+homepage: https://recollect.cc/
 
 environment:
   sdk: ^3.13.5
