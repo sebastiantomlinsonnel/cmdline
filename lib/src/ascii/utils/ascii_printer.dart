@@ -36,7 +36,7 @@ class AsciiPrinter {
   /// Joins [tokens] and closes with [reset], in one call and without an
   /// instance.
   static String value(List<Object?> tokens, {String separator = ''}) =>
-      '${tokens.join(separator)}$reset';
+      '${tokens.join(separator)}$RESET';
 
   /// Prints the joined string and hands back the same string.
   String output() {

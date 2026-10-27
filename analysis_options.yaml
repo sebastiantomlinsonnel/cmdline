@@ -1,12 +1,35 @@
-include: package:lints/recommended.yaml
-code-style:
-  format: true
+include: package:dart_code_linter/presets/recommended.yaml
+
+plugins:
+  dart_code_linter:
+    diagnostics:
+      avoid-unused-parameters: warning
+      avoid-nested-conditional-expressions: true
+      avoid-unnecessary-type-casts: true
+      avoid-unnecessary-conditionals: true
+      newline-before-return: true
+      no-boolean-literal-compare: true
+      no-empty-block: true
+      no-equal-then-else: warning
+      no-magic-number: warning
+      prefer-trailing-comma: true
+      prefer-conditional-expressions: true
+      prefer-immediate-return: true
+      prefer-moving-to-variable: true
+      member-ordering: true
+      format-comment: true
+
 linter:
   rules:
+    prefer_final_in_for_each: true
+    avoid_dynamic_calls: true
     constant_identifier_names: false
-analyzer:
-  plugins:
-    - dart_code_linter
+    prefer_final_fields: true
+    prefer_const_constructors: true
+    use_named_constants: true
+    avoid_empty_else: true
+    close_sinks: true
+    library_names: true
 
 dart_code_linter:
   metrics:
@@ -15,20 +38,16 @@ dart_code_linter:
     maximum-nesting-level: 5
   metrics-exclude:
     - test/**
-  rules:
-    - avoid-dynamic
-    - avoid-passing-async-when-sync-expected
-    - avoid-redundant-async
-    - avoid-unnecessary-type-assertions
-    - avoid-unnecessary-type-casts
-    - avoid-unrelated-type-assertions
-    - avoid-unused-parameters
-    - avoid-nested-conditional-expressions
-    - newline-before-return
-    - no-boolean-literal-compare
-    - no-empty-block
-    - prefer-trailing-comma
-    - prefer-conditional-expressions
-    - no-equal-then-else
-    - prefer-moving-to-variable
-    - prefer-match-file-name
+  dart_code_linter:
+    metrics:
+      cyclomatic-complexity: 20
+      number-of-parameters: 4
+      maximum-nesting-level: 5
+    metrics-exclude:
+      - test/**
+
+#  linter:
+#    rules:
+#      constant_identifier_names: false
+#      prefer_final_fields: true
+#      prefer_const_constructors: true

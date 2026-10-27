@@ -39,5 +39,5 @@ class Ascii {
 
   /// [string] with [reset] appended, so the style stops at the end of it.
   @override
-  String toString() => '$string$reset';
+  String toString() => '$string$RESET';
 }

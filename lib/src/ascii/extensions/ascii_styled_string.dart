@@ -60,13 +60,13 @@ extension AsciiStyledString on String {
   /// Slides [code] in after any codes already at the front, and closes with a
   /// single [reset].
   String _wrap(String code) {
-    final String inner = endsWith(reset)
-        ? substring(0, length - reset.length)
+    final String inner = endsWith(RESET)
+        ? substring(0, length - RESET.length)
         : this;
     final int opening = _openingCodesLength(inner);
 
     return '${inner.substring(0, opening)}$code'
-        '${inner.substring(opening)}$reset';
+        '${inner.substring(opening)}$RESET';
   }
 
   /// Paints the text, from either colour table.

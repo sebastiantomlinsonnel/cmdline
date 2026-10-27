@@ -31,7 +31,7 @@ class MSend {
 
   String getString(dynamic message, Level level, {DateTime? time}) {
     bool isDev = level == Level.dev;
-    String bgC = AsciiColorRgb.hex(0x2A2A70).bg;
+    String bgC = const AsciiColorRgb.hex(0x2A2A70).bg;
     return [
       isDev ? BOLD : '',
       MSend.getLevel(level, MSend.getTimestamp(time ?? DateTime.now())),
@@ -128,21 +128,25 @@ class MSend {
   static String getTimestamp(DateTime now) {
     final String ms = now.millisecond.toString().padLeft(3, '0');
     return [
-      now.hour.toString().padLeft(2, '0').foreground(AsciiColour.grey(14)).bold,
-      ':'.foreground(AsciiColour.grey(14)),
+      now.hour
+          .toString()
+          .padLeft(2, '0')
+          .foreground(const AsciiColour.grey(14))
+          .bold,
+      ':'.foreground(const AsciiColour.grey(14)),
       now.minute
           .toString()
           .padLeft(2, '0')
-          .foreground(AsciiColour.grey(14))
+          .foreground(const AsciiColour.grey(14))
           .bold,
-      ':'.foreground(AsciiColour.grey(14)),
+      ':'.foreground(const AsciiColour.grey(14)),
       now.second
           .toString()
           .padLeft(2, '0')
-          .foreground(AsciiColour.grey(14))
+          .foreground(const AsciiColour.grey(14))
           .bold,
-      '.'.foreground(AsciiColour.grey(14)),
-      ms.foreground(AsciiColour.grey(10)),
+      '.'.foreground(const AsciiColour.grey(14)),
+      ms.foreground(const AsciiColour.grey(10)),
     ].join();
   }
 
@@ -153,7 +157,7 @@ class MSend {
     final String name = level.name.toUpperCase().padRight(_tagWidth);
     // Pad before colouring: the colour codes would otherwise count as characters.
     final String tag = level == Level.dev
-        ? '${MSend.getVerbosityColour(level, '⬤ $name ]').background(AsciiColorRgb.hex(0x2A2A70))} '
+        ? '${MSend.getVerbosityColour(level, '⬤ $name ]').background(const AsciiColorRgb.hex(0x2A2A70))} '
         : MSend.getVerbosityColour(level, '[ $name ] ');
     return '$tag$timestamp${MSend.getVerbosityColour(level, ' > ')}';
   }
@@ -161,19 +165,29 @@ class MSend {
   static String getVerbosityColour(Level level, String data) {
     switch (level) {
       case Level.trace:
-        return data.foreground(AsciiColourRgb.hex(0xFF77FF)).bold;
+        return data.foreground(const AsciiColourRgb.hex(0xFF77FF)).bold;
       case Level.debug:
-        return data.foreground(AsciiColour.rgb(3, 5, 4).opacity(0.8)).bold;
+        return data
+            .foreground(const AsciiColour.rgb(3, 5, 4).opacity(0.8))
+            .bold;
       case Level.fail:
-        return data.foreground(AsciiColour.rgb(5, 0, 0).opacity(0.9)).bold;
+        return data
+            .foreground(const AsciiColour.rgb(5, 0, 0).opacity(0.9))
+            .bold;
       case Level.pass:
-        return data.foreground(AsciiColour.rgb(1, 5, 1).opacity(0.8)).bold;
+        return data
+            .foreground(const AsciiColour.rgb(1, 5, 1).opacity(0.8))
+            .bold;
       case Level.warn:
-        return data.foreground(AsciiColour.rgb(5, 3, 0).opacity(0.9)).bold;
+        return data
+            .foreground(const AsciiColour.rgb(5, 3, 0).opacity(0.9))
+            .bold;
       case Level.log:
-        return data.foreground(AsciiColour.rgb(5, 5, 5).opacity(0.9)).bold;
+        return data
+            .foreground(const AsciiColour.rgb(5, 5, 5).opacity(0.9))
+            .bold;
       case Level.dev:
-        return data.foreground(AsciiColourRgb.hex(0xFF77FF));
+        return data.foreground(const AsciiColourRgb.hex(0xFF77FF));
     }
   }
 
@@ -347,6 +361,7 @@ class _LogFile {
     if (!append && await file.exists()) await file.delete();
     final int written = await file.exists() ? await file.length() : 0;
 
+    // ignore: close_sinks
     final IOSink sink = file.openWrite(mode: FileMode.writeOnlyAppend);
     unawaited(sink.done.catchError((Object _) {}));
 

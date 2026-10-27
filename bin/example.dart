@@ -6,20 +6,20 @@ Future<void> main(List<String> args) async {
   final cli = CLI(
     name: 'mytool',
     description: 'My tool.',
-    flags: [CliFlag('verbose', 'Print more.', abbr: 'v')],
+    flags: [const CliFlag('verbose', 'Print more.', abbr: 'v')],
     [
       CliCommand(
         name: 'db',
         description: 'Database commands.',
-        options: [CliOption('url', 'Database URL.')],
+        options: [const CliOption('url', 'Database URL.')],
         subCommands: [
           CliCommand(
             name: 'migrate',
             description: 'Run migrations.',
             aliases: ['m'],
-            flags: [CliFlag('dry-run', 'Show what would run.')],
+            flags: [const CliFlag('dry-run', 'Show what would run.')],
             arguments: [
-              CliArgument(
+              const CliArgument(
                 'files',
                 'Migration files.',
                 variadic: true,
