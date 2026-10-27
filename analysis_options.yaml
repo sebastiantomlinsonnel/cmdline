@@ -22,7 +22,6 @@ plugins:
 
 linter:
   rules:
-
     prefer_final_in_for_each: true
     constant_identifier_names: false
     prefer_final_fields: true
@@ -31,6 +30,7 @@ linter:
     avoid_empty_else: true
     close_sinks: true
     library_names: true
+    avoid_print: true
 
 dart_code_linter:
   metrics:
