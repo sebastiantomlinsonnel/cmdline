@@ -286,25 +286,7 @@ class Logger {
       fail(e);
     }
   }
-
-  Future<String> demo() async {
-    Logger.startSpinner('Starting logger');
-    await delay(0, seconds: 3);
-    Logger.stopSpinner('Loading Complete!', Level.pass);
-    return instance.getString('Built, not logged', Level.debug);
-  }
-
-  void demoLevels() {
-    trace('This is a trace message');
-    debug('This is a $BOLD debug message');
-    fail('This type shows that something has FAILED');
-    pass('This type shows that something has NOT failed');
-    warn('This will show when you want to warn');
-    dev('Dev messages only show in debug mode and aren\'t logged');
-  }
 }
-
-enum Level { log, warn, pass, fail, debug, trace, dev }
 
 /// Buffered, rotating writer for tFhe log file. Only exists while open.
 class _LogFile {
@@ -448,24 +430,3 @@ class _LogFile {
     _drain();
   }
 }
-
-String getDev(dynamic message) =>
-    Logger.instance.getString('$message', Level.dev);
-
-String getTrace(dynamic message) =>
-    Logger.instance.getString('$message', Level.trace);
-
-String getDebug(dynamic message) =>
-    Logger.instance.getString('$message', Level.debug);
-
-String getFail(dynamic message) =>
-    Logger.instance.getString('$message', Level.fail);
-
-String getPass(dynamic message) =>
-    Logger.instance.getString('$message', Level.pass);
-
-String getWarn(dynamic message) =>
-    Logger.instance.getString('$message', Level.warn);
-
-String getLog(dynamic message) =>
-    Logger.instance.getString('$message', Level.log);

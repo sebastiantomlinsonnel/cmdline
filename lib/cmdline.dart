@@ -12,8 +12,10 @@ export 'src/ascii/palettes/ascii_colour_rgb.dart';
 export 'src/ascii/palettes/ascii_ink.dart';
 export 'src/ascii/utils/ascii_printer.dart';
 export 'src/cmdline/cmdline.dart';
-export 'src/msend/dev_type.dart';
-export 'src/msend/logger.dart';
+export 'src/cmdline/demo.dart';
+export 'src/logger/dev_type.dart';
+export 'src/logger/logger.dart';
+export 'src/logger/logs.dart';
 
 void dev(dynamic message) => Logger.print('$message', Level.dev);
 

@@ -1,5 +1,7 @@
 import 'package:cmdline/cmdline.dart';
 
+enum Level { log, warn, pass, fail, debug, trace, dev }
+
 enum DevType {
   message,
   error,
