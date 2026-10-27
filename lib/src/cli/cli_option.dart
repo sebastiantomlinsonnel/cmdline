@@ -1,3 +1,5 @@
+part of '../../cli.dart';
+
 /// Takes a value: `--target=web`, `--target web`, `-t web`, `-tweb`.
 class CliOption {
   final String name;

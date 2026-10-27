@@ -1,3 +1,4 @@
 library;
 
-void doNothing([dynamic _]) {}
+export 'src/cmdline/cmdline.dart';
+
