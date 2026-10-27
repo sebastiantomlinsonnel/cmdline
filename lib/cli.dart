@@ -6,13 +6,9 @@ import 'dart:io';
 import 'package:cmdline/cmdline.dart';
 
 part 'src/cli/cli_argument.dart';
-
 part 'src/cli/cli_command.dart';
-
 part 'src/cli/cli_exception.dart';
-
 part 'src/cli/cli_flag.dart';
-
 part 'src/cli/cli_option.dart';
 
 /// Called when a command runs. Receives everything that was parsed.

@@ -1,4 +1,5 @@
 part of '../../cli.dart';
+
 /// Positional argument. Only the last one may be [variadic].
 class CliArgument {
   final String name;

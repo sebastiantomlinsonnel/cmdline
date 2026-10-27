@@ -3,12 +3,9 @@ library;
 import 'ascii.dart';
 
 export 'src/ascii/ascii.dart';
-export 'src/ascii/characters/escape_characters.dart';
-export 'src/ascii/constants/colours.dart';
 export 'src/ascii/extensions/ascii_styled_string.dart';
 export 'src/ascii/palettes/ascii_colour.dart';
 export 'src/ascii/palettes/ascii_colour_rgb.dart';
-export 'src/ascii/palettes/ascii_formats.dart';
 export 'src/ascii/palettes/ascii_ink.dart';
 export 'src/ascii/utils/ascii_printer.dart';
 
@@ -27,9 +24,6 @@ class Ascii {
 
   /// Wraps a string that already carries its escape codes.
   const Ascii(this.string);
-
-  /// The text styles. Same object as the top-level [formats].
-  static const AsciiFormats format = AsciiFormats();
 
   /// Prints [string] closed with [reset], and hands back what it printed.
   ///

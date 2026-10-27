@@ -9,6 +9,7 @@ import 'package:cmdline/ascii.dart';
 class AsciiColour extends AsciiInk {
   /// Position in the 256-colour table, `0`-`255`.
   final int index;
+
   // final String fg;
 
   /// Wraps a table position. The 256 already named are on [colours]; reach for
@@ -24,7 +25,7 @@ class AsciiColour extends AsciiInk {
     : assert(red >= 0 && red <= 5, 'red must be 0-5'),
       assert(green >= 0 && green <= 5, 'green must be 0-5'),
       assert(blue >= 0 && blue <= 5, 'blue must be 0-5'),
-  // fg =
+      // fg =
       index = 16 + (36 * red) + (6 * green) + blue;
 
   /// One of the 24 greys, `0` near-black through `23` near-white.
