@@ -1,4 +1,4 @@
-import 'package:cmdline/ascii.dart';
+import 'package:cmdline/cmdline.dart';
 
 /// A colour that can be turned into terminal escape codes.
 ///

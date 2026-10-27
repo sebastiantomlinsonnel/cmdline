@@ -1,4 +1,3 @@
-part of '../ascii.dart';
 
 /// The escape character that starts every terminal control sequence.
 ///

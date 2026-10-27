@@ -1,4 +1,4 @@
-import 'package:cmdline/ascii.dart';
+import 'package:cmdline/cmdline.dart';
 
 enum DevType {
   message,

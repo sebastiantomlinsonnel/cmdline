@@ -1,4 +1,4 @@
-part of '../../cli.dart';
+import 'package:cmdline/cmdline.dart';
 
 class CliCommand {
   final String name;

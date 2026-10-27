@@ -1,4 +1,4 @@
-import 'package:cmdline/ascii.dart';
+import 'package:cmdline/cmdline.dart';
 
 /// A colour from the terminal's 256-colour palette.
 ///

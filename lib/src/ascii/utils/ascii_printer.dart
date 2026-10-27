@@ -1,4 +1,4 @@
-import 'package:cmdline/ascii.dart';
+import 'package:cmdline/cmdline.dart';
 
 /// Builds one line from codes and values, and prints it with a final [RESET].
 ///

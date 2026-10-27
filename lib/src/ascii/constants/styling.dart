@@ -1,4 +1,4 @@
-part of '../ascii.dart';
+import 'package:cmdline/cmdline.dart';
 
 /// Makes text bold (or brighter).
 ///

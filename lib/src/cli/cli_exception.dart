@@ -1,4 +1,3 @@
-part of '../../cli.dart';
 
 class CliException implements Exception {
   final String message;

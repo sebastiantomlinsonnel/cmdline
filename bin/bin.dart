@@ -1,5 +1,4 @@
-import 'package:cmdline/cli.dart';
-import 'package:cmdline/msend.dart';
+import 'package:cmdline/cmdline.dart';
 
 List<String> _args = ['get', '-l'];
 final CLI cli = CLI(

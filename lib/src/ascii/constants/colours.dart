@@ -1,4 +1,4 @@
-part of '../ascii.dart';
+import 'package:cmdline/cmdline.dart';
 
 /// Palette parameters for standard black (colour index 0).
 ///

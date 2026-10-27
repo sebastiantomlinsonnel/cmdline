@@ -1,4 +1,3 @@
-part of '../../cli.dart';
 
 /// On/off switch: `--verbose`, `-v`, `--no-verbose`.
 class CliFlag {
