@@ -60,6 +60,11 @@ class Input {
     return List.unmodifiable(values);
   }
 
+  /// Whether the user typed `--verbose` (or `-v`).
+  ///
+  /// Every [Cli] has this flag, so it is always safe to read.
+  bool get verbose => flag('verbose');
+
   /// Whether the user typed the flag or option called [name] themselves.
   ///
   /// Useful to tell a typed value apart from a default.

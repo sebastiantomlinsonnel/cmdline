@@ -60,6 +60,7 @@ class HelpPrinter {
     // This command's own flags and options, plus the built-in ones.
     _addSection(lines, 'Options', [
       ..._optionRows(command),
+      if (!_declaresVerbose()) _verboseRow(),
       ['-h, --help', 'Show this help'],
       if (root is Cli && root.version != null && commands.length == 1)
         ['    --version', 'Show the version'],
@@ -117,6 +118,36 @@ class HelpPrinter {
     }
 
     return rows;
+  }
+
+  /// Whether any picked command declares its own `verbose` flag.
+  ///
+  /// If so, it is already listed and the built-in row is left out.
+  bool _declaresVerbose() {
+    for (final command in commands) {
+      if (command.findFlag(Cli.verboseFlag.name) != null) return true;
+    }
+
+    return false;
+  }
+
+  /// The help row for the built-in [Cli.verboseFlag].
+  ///
+  /// The `-v` short name is left out if something else already uses it.
+  List<String> _verboseRow() {
+    final dash = _dashes == DashStyle.split ? '--' : '-';
+    String? short = Cli.verboseFlag.short;
+    for (final command in commands) {
+      if (command.findFlagByShort('v') != null ||
+          command.findOptionByShort('v') != null) {
+        short = null;
+      }
+    }
+
+    return [
+      _withShort(dash, short, '--${Cli.verboseFlag.name}'),
+      Cli.verboseFlag.help,
+    ];
   }
 
   /// The dash style of the program, or classic if it isn't a [Cli].

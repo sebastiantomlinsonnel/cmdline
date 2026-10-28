@@ -334,6 +334,9 @@ class Parser {
         _options[option.name] = defaultValue == null ? [] : [defaultValue];
       }
     }
+
+    // The built-in verbose flag, in case no command declared its own.
+    _flags.putIfAbsent(Cli.verboseFlag.name, () => false);
   }
 
   /// Looks for an option called [name], from the picked command upwards.
@@ -358,24 +361,28 @@ class Parser {
   }
 
   /// Looks for a flag called [name], from the picked command upwards.
+  ///
+  /// Falls back to the built-in [Cli.verboseFlag].
   Flag? _findFlag(String name) {
     for (final command in _commands.reversed) {
       final flag = command.findFlag(name);
       if (flag != null) return flag;
     }
 
-    return null;
+    return name == Cli.verboseFlag.name ? Cli.verboseFlag : null;
   }
 
   /// Looks for a flag with the short name [letter], from the picked command
   /// upwards.
+  ///
+  /// Falls back to the built-in [Cli.verboseFlag].
   Flag? _findFlagByShort(String letter) {
     for (final command in _commands.reversed) {
       final flag = command.findFlagByShort(letter);
       if (flag != null) return flag;
     }
 
-    return null;
+    return letter == Cli.verboseFlag.short ? Cli.verboseFlag : null;
   }
 
   /// Stops parsing with a [CliError] for the user.
