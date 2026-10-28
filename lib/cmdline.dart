@@ -25,15 +25,16 @@ export 'src/cli/input.dart';
 export 'src/cli/option.dart';
 export 'src/cli/parser.dart';
 export 'src/cmdline/helpers/demo.dart';
-export 'src/cmdline/helpers/executable.dart';
-export 'src/cmdline/helpers/run_error.dart';
-export 'src/cmdline/helpers/run_result.dart';
-export 'src/cmdline/helpers/running_program.dart';
-export 'src/cmdline/helpers/shell.dart';
+export 'src/cmdline/helpers/process_failed.dart';
+export 'src/cmdline/helpers/process_functions.dart';
+export 'src/cmdline/helpers/process_helpers.dart';
+export 'src/cmdline/helpers/process_result_helpers.dart';
+export 'src/cmdline/helpers/stream_helpers.dart';
 export 'src/logger/constants/frames.dart';
 export 'src/logger/dev_type.dart';
 export 'src/logger/logger.dart';
 export 'src/logger/logs.dart';
+export 'src/logger/progress_bar.dart';
 
 void dev(dynamic message) => Logger.print('$message', Level.dev);
 
@@ -49,10 +50,10 @@ void warn(dynamic message) => Logger.print('$message', Level.warn);
 
 void log(dynamic message) => Logger.print('$message', Level.log);
 
-Future<void> delay(int milliseconds, {int? seconds}) async {
-  await Future.delayed(
-    Duration(milliseconds: milliseconds, seconds: seconds ?? 0),
-  ).whenComplete(() {
-    return;
-  });
+Future<void> delay(double seconds) async {
+  int _seconds = seconds.floor();
+  int _milliseconds = ((seconds - _seconds) * 1000).ceil();
+  return Future.delayed(
+    Duration(milliseconds: _milliseconds, seconds: _seconds),
+  );
 }
