@@ -77,7 +77,6 @@ String sty(List<String> data, {bool printCharCodes = false}) {
 /// ```
 String multisty(List<List<String>> data) {
   List<String> temp = ['$RESET\n'];
-  temp.forEach((element) => doNothing());
   for (final List<String> style in data) {
     temp.add('${style.join()}$RESET');
   }

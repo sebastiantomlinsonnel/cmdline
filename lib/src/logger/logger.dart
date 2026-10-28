@@ -4,18 +4,7 @@ import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
-const List<String> kSPINNER_FRAMES = <String>[
-  '⠋',
-  '⠙',
-  '⠹',
-  '⠸',
-  '⠼',
-  '⠴',
-  '⠦',
-  '⠧',
-  '⠇',
-  '⠏',
-];
+import 'constants/frames.dart';
 
 class Logger {
   static final Logger instance = Logger._();
