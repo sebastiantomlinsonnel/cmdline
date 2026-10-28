@@ -41,7 +41,8 @@ class Logger {
 
   String getString(dynamic message, Level level) {
     String timestamp = '';
-    if (showTimestampInOutput == true) timestamp = '${getTimestamp()} ';
+    if (showTimestampInOutput) timestamp = '${getTimestamp()} ';
+
     return [timestamp, Logger.getStamp(level), ' $message'].join();
   }
 
@@ -69,6 +70,7 @@ class Logger {
       flushThreshold: flushThreshold,
       maxBytes: maxBytes,
     );
+
     return m;
   }
 
@@ -95,12 +97,14 @@ class Logger {
     if (!s.contains('\x1B')) return s;
     final StringBuffer b = StringBuffer();
     _plain(b, s);
+
     return b.toString();
   }
 
   static void _plain(StringBuffer b, String s) {
     if (!s.contains('\x1B')) {
       b.write(s);
+
       return;
     }
 
@@ -129,6 +133,7 @@ class Logger {
   static String getTimestamp() {
     DateTime now = DateTime.now();
     final String ms = now.millisecond.toString().padLeft(3, '0');
+
     return [
       now.hour
           .toString()
@@ -158,6 +163,7 @@ class Logger {
   static String getStamp(Level level) {
     final String name = level.name.toUpperCase().padRight(instance.TAG_WIDTH);
     final String tag = Logger.getVerbosityColour(level, '$name |');
+
     return '$tag';
   }
 

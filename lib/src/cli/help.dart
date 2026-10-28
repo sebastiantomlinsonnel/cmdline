@@ -79,6 +79,7 @@ class HelpPrinter {
     }
 
     lines.add('\n');
+
     return lines.join('\n');
   }
 

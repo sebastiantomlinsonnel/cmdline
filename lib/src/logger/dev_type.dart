@@ -9,6 +9,7 @@ enum DevType {
 
   static String getDevType(DevType type, bool blink) {
     String string = blink ? '$BLINK_RAPID⬤ DEV $RESET_BLINK' : '⬤ DEV ';
+
     return switch (type) {
       DevType.message =>
         '${string.foreground(const AsciiColourRgb.hex(0xFF77FF)).bold.background(const AsciiColorRgb.hex(0x2A2A70))}$RESET_BOLD_AND_DIM$RESET_BLINK',
