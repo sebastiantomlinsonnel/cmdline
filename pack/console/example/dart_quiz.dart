@@ -16,10 +16,10 @@ class Question {
       var chooser = Chooser<String>(scramble(choices!), message: 'Answer: ');
       return chooser.chooseSync() == answer;
     } else if (answer is String) {
-      return Prompter('${message} ').promptSync()?.toLowerCase().trim() ==
+      return Prompter('$message ').promptSync()?.toLowerCase().trim() ==
           answer.toLowerCase().trim();
     } else if (answer is bool) {
-      return Prompter('${message} ').askSync() == answer;
+      return Prompter('$message ').askSync() == answer;
     } else {
       throw Exception('');
     }
@@ -72,7 +72,7 @@ void main() {
 
 void results() {
   print('Quiz Results:');
-  print('  Correct: ${points}');
+  print('  Correct: $points');
   print('  Incorrect: ${questionCount - points}');
   print('  Score: ${((points / questionCount) * 100).toStringAsFixed(2)}%');
 }

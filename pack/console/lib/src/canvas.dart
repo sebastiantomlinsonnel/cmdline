@@ -29,7 +29,7 @@ class ConsoleCanvas extends Canvas {
         ? spec
         : spec is int
             ? PixelSpec(color: spec)
-            : throw Exception('Invalid Pixel Spec: ${spec}');
+            : throw Exception('Invalid Pixel Spec: $spec');
   }
 
   void flush() {

@@ -59,7 +59,7 @@ class ANSIMatcher extends Matcher {
 
   @override
   bool matches(item, Map matchState) =>
-      item.toString() == '${Console.ANSI_ESCAPE}${value}';
+      item.toString() == '${Console.ANSI_ESCAPE}$value';
 
   @override
   Description describeMismatch(item, Description mismatchDescription,

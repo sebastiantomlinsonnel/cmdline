@@ -27,7 +27,7 @@ class ProgressBar {
     var w = Console.columns - digits - 4;
 
     var count = (ratio * w).toInt();
-    var before = '${percent}% [';
+    var before = '$percent% [';
     var after = ']';
 
     var out = StringBuffer(before);

@@ -7,5 +7,5 @@ void main() {
   );
 
   var letter = chooser.chooseSync();
-  print('You chose ${letter}.');
+  print('You chose $letter.');
 }

@@ -45,7 +45,7 @@ class _DoubleBracketVariableStyle extends VariableStyle {
 
   @override
   String replace(String input, String variable, String value) {
-    return input.replaceAll('{{${variable}}}', value);
+    return input.replaceAll('{{$variable}}', value);
   }
 }
 
@@ -71,7 +71,7 @@ class _BashBracketVariableStyle extends VariableStyle {
 
   @override
   String replace(String input, String variable, String value) {
-    return input.replaceAll('\${${variable}}', value);
+    return input.replaceAll('\${$variable}', value);
   }
 }
 
@@ -97,7 +97,7 @@ class _SingleBracketVariableStyle extends VariableStyle {
 
   @override
   String replace(String input, String variable, String value) {
-    return input.replaceAll('{${variable}}', value);
+    return input.replaceAll('{$variable}', value);
   }
 }
 
@@ -124,7 +124,7 @@ String format(String input,
         if (index < 0 || index > args.length - 1) {
           throw RangeError.range(index, 0, args.length - 1);
         }
-        out = style.replace(out, '${index}', args[index]);
+        out = style.replace(out, '$index', args[index]);
         continue;
         // ignore: empty_catches
       } on FormatException {}
@@ -142,7 +142,7 @@ String format(String input,
       }
 
       if (_COLORS.containsKey(color)) {
-        out = style.replace(out, '${id}', _COLORS[color].toString());
+        out = style.replace(out, '$id', _COLORS[color].toString());
         continue;
       }
 
@@ -155,7 +155,7 @@ String format(String input,
     if (id.startsWith('env.')) {
       var envVariable = id.substring(4);
       if (envVariable.isEmpty) {
-        throw Exception('Unknown Key: ${id}');
+        throw Exception('Unknown Key: $id');
       }
       var value = Platform.environment[envVariable];
       value ??= '';
@@ -167,7 +167,7 @@ String format(String input,
       var variable = id.substring(9);
 
       if (variable.isEmpty) {
-        throw Exception('Unknown Key: ${id}');
+        throw Exception('Unknown Key: $id');
       }
 
       var value = _resolvePlatformVariable(variable);
@@ -180,7 +180,7 @@ String format(String input,
       var value = resolver(id);
       out = style.replace(out, id, value);
     } else {
-      throw Exception('Unknown Key: ${id}');
+      throw Exception('Unknown Key: $id');
     }
   }
 
@@ -200,6 +200,6 @@ String _resolvePlatformVariable(String name) {
     case 'script':
       return Platform.script.toString();
     default:
-      throw Exception('Unsupported Platform Variable: ${name}');
+      throw Exception('Unsupported Platform Variable: $name');
   }
 }

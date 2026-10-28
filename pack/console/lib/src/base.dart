@@ -177,7 +177,7 @@ class Console {
   static void sgr(int id, [List<int>? params]) {
     String stuff;
     if (params != null) {
-      stuff = "${id};${params.join(";")}";
+      stuff = "$id;${params.join(";")}";
     } else {
       stuff = id.toString();
     }
@@ -197,7 +197,7 @@ class Console {
 
   static String? readLine() => _adapter.read();
 
-  static void writeANSI(String after) => write('${ANSI_ESCAPE}${after}');
+  static void writeANSI(String after) => write('$ANSI_ESCAPE$after');
 
   static CursorPosition getCursorPosition() {
     var lm = _adapter.lineMode;
@@ -240,5 +240,5 @@ class CursorPosition {
   CursorPosition(this.column, this.row);
 
   @override
-  String toString() => '(${column}, ${row})';
+  String toString() => '($column, $row)';
 }

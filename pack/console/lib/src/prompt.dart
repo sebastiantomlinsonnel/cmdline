@@ -55,7 +55,7 @@ class Chooser<T> {
   Chooser(this.choices,
       {this.message = 'Choice: ', this.formatter = _defaultFormatter});
 
-  static String _defaultFormatter(input, int index) => '[${index}] ${input}';
+  static String _defaultFormatter(input, int index) => '[$index] $input';
 
   T chooseSync() {
     var buff = StringBuffer();
