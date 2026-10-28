@@ -79,6 +79,12 @@ extension AsciiStyledString on String {
   /// Does exactly the same thing.
   String underlineColor(AsciiInk colour) => underlineColour(colour);
 
+  /// Makes this text a clickable link that opens [url].
+  ///
+  /// Uses [hyperlink]. Terminals without link support just show the text.
+  /// Add styles before the link, e.g. `'docs'.underline.link(url)`.
+  String link(String url) => hyperlink(url, this);
+
   /// Applies any escape code you pass in.
   ///
   /// For codes without their own getter, or ones you build yourself, e.g.

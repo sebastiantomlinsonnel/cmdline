@@ -37,6 +37,4 @@ final cli = CLI(
   ],
 );
 
-void main(List<String> args) {
-  cli.start(args);
-}
+void main(List<String> args) => cli.start(args);

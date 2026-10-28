@@ -4,8 +4,6 @@ import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
-import 'constants/frames.dart';
-
 class Logger {
   static final Logger instance = Logger._();
   Timer? _spinnerTimer;
@@ -204,6 +202,9 @@ class Logger {
     _spinnerLabel = label;
     // if (!stdout.hasTerminal) return; // piped output: skip the animation
 
+    // Hide the cursor so it doesn't flicker over the spinner.
+    stdout.write(HIDE_CURSOR);
+
     int frame = 0;
     void draw() {
       final String text = '${kSPINNER_FRAMES[frame]} $label';
@@ -222,7 +223,7 @@ class Logger {
     _spinnerTimer?.cancel();
     _spinnerTimer = null;
     _spinnerLabel = null;
-    stdout.write(CLEAR_LINE);
+    stdout.write('$CLEAR_LINE$SHOW_CURSOR');
     _printAt(message ?? label, level);
   }
 
