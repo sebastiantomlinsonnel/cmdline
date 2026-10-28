@@ -94,27 +94,18 @@ class HelpPrinter {
   List<List<String>> _optionRows(Command command) {
     final rows = <List<String>>[];
 
-    // Classic style uses "-x" for every short name. Split style uses "--"
-    // for flags and "-" for options, short or long.
-    final split = _dashes == DashStyle.split;
-    final flagShortDash = split ? '--' : '-';
-    final optionDash = split ? '-' : '--';
-
+    // Flags: "-u, --urgent". Options: "-T, -text <text>".
     for (final flag in command.flags) {
       if (flag.hidden) continue;
       final long = flag.negatable ? '--[no-]${flag.name}' : '--${flag.name}';
       final extra = flag.defaultValue ? ' ${'[on by default]'.dim}' : '';
-      rows.add([
-        _withShort(flagShortDash, flag.short, long),
-        '${flag.help}$extra',
-      ]);
+      rows.add([_withShort(flag.short, long), '${flag.help}$extra']);
     }
 
     for (final option in command.options) {
       if (option.hidden) continue;
-      final value = '<${option.valueName ?? option.name}>';
-      final long = '$optionDash${option.name} $value';
-      rows.add([_withShort('-', option.short, long), _optionHelp(option)]);
+      final long = '-${option.name} <${option.valueName ?? option.name}>';
+      rows.add([_withShort(option.short, long), _optionHelp(option)]);
     }
 
     return rows;
@@ -135,26 +126,15 @@ class HelpPrinter {
   ///
   /// The `-v` short name is left out if something else already uses it.
   List<String> _verboseRow() {
-    final dash = _dashes == DashStyle.split ? '--' : '-';
     String? short = Cli.verboseFlag.short;
     for (final command in commands) {
-      if (command.findFlagByShort('v') != null ||
-          command.findOptionByShort('v') != null) {
-        short = null;
-      }
+      if (command.findFlagByShort('v') != null) short = null;
     }
 
     return [
-      _withShort(dash, short, '--${Cli.verboseFlag.name}'),
+      _withShort(short, '--${Cli.verboseFlag.name}'),
       Cli.verboseFlag.help,
     ];
-  }
-
-  /// The dash style of the program, or classic if it isn't a [Cli].
-  DashStyle get _dashes {
-    final root = commands.first;
-
-    return root is Cli ? root.dashes : DashStyle.classic;
   }
 
   /// The help text of [option], followed by its rules in dim text.
@@ -173,13 +153,9 @@ class HelpPrinter {
 
   /// Puts the short name in front, like `-v, --verbose`, or lines it up.
   ///
-  /// [dash] is what goes before the short name, `-` or `--`. Without a short
-  /// name, spaces of the same width keep the long names in one column.
-  String _withShort(String dash, String? short, String long) {
-    if (short == null) return '${' ' * (dash.length + 3)}$long';
-
-    return '$dash$short, $long';
-  }
+  /// Without a short name, four spaces keep the long names in one column.
+  String _withShort(String? short, String long) =>
+      short == null ? '    $long' : '-$short, $long';
 
   /// The sub-commands of [command] that aren't hidden.
   List<Command> _visibleCommands(Command command) => [

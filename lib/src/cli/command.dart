@@ -53,7 +53,7 @@ class Command {
   /// Creates a command and checks that no two parts share a name.
   ///
   /// Throws an [ArgumentError] if two flags, options or commands use the same
-  /// name, or a short name isn't exactly one letter.
+  /// name, or a name breaks the dash rules (see [Flag] and [Option]).
   Command({
     required this.name,
     this.about = '',
@@ -116,18 +116,47 @@ class Command {
     return null;
   }
 
-  /// Throws if two parts of this command share a name.
+  /// Throws if a name breaks the rules or two parts share a name.
+  ///
+  /// The rules:
+  /// * flags: long `--urgent`, short is one lowercase letter `-u`
+  /// * options: long `-text`, short is one capital letter `-T`
+  /// * long names are lowercase and at least two characters
   void _checkNames() {
     final seen = <String>{};
 
     for (final flag in flags) {
+      _checkLongName(flag.name);
       _claim(seen, '--${flag.name}');
-      _claimShort(seen, flag.short);
+
+      final short = flag.short;
+      if (short != null) {
+        if (!_isLetter(short) || short != short.toLowerCase()) {
+          throw ArgumentError(
+            'The flag "${flag.name}" needs one lowercase letter as its short '
+            'name, like "u".',
+          );
+        }
+        _claim(seen, '-$short');
+      }
     }
+
     for (final option in options) {
-      _claim(seen, '--${option.name}');
-      _claimShort(seen, option.short);
+      _checkLongName(option.name);
+      _claim(seen, '-${option.name}');
+
+      final short = option.short;
+      if (short != null) {
+        if (!_isLetter(short) || short != short.toUpperCase()) {
+          throw ArgumentError(
+            'The option "${option.name}" needs one capital letter as its '
+            'short name, like "T".',
+          );
+        }
+        _claim(seen, '-$short');
+      }
     }
+
     for (final command in commands) {
       _claim(seen, command.name);
       for (final alias in command.aliases) {
@@ -136,14 +165,24 @@ class Command {
     }
   }
 
-  /// Checks a one-letter name and adds it to [seen].
-  void _claimShort(Set<String> seen, String? short) {
-    if (short == null) return;
-    if (short.length != 1) {
-      throw ArgumentError('Short name "$short" in "$name" must be one letter.');
+  /// Throws if [longName] isn't lowercase or is shorter than two characters.
+  ///
+  /// One-character names are kept for short names, so `-t` and `-text` can
+  /// never be mixed up.
+  void _checkLongName(String longName) {
+    if (longName.length < 2 || longName != longName.toLowerCase()) {
+      throw ArgumentError(
+        '"$longName" in "$name" must be lowercase and at least two '
+        'characters long.',
+      );
     }
-    _claim(seen, '-$short');
   }
+
+  /// Whether [text] is exactly one letter.
+  ///
+  /// Letters change between upper and lower case; digits and symbols don't.
+  bool _isLetter(String text) =>
+      text.length == 1 && text.toLowerCase() != text.toUpperCase();
 
   /// Adds [label] to [seen], or throws if it is already there.
   void _claim(Set<String> seen, String label) {

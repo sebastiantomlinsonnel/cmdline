@@ -7,12 +7,14 @@
 /// Flag('verbose', short: 'v', help: 'Print extra detail')
 /// ```
 class Flag {
-  /// The long name, typed as `--name`.
+  /// The long name, typed with two dashes as `--name`.
+  ///
+  /// Must be lowercase and at least two characters.
   final String name;
 
-  /// An optional one-letter name, typed as `-x`.
+  /// An optional short name: one lowercase letter, typed as `-x`.
   ///
-  /// Short flags can be grouped, so `-abc` turns on `-a`, `-b` and `-c`.
+  /// Lowercase means flag; capitals are kept for options.
   final String? short;
 
   /// One line explaining the flag, shown in the help screen.

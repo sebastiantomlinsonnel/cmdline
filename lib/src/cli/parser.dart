@@ -34,8 +34,9 @@ class ParseResult {
 /// never uses this directly, because [Cli.start] does it for you.
 ///
 /// It understands:
-/// * `--name value`, `--name=value`, `-n value` and `-nvalue` for options
-/// * `--flag`, `-f`, grouped `-abc`, and `--no-flag` for negatable flags
+/// * flags: `--urgent`, `-u` (one lowercase letter), and `--no-urgent` for
+///   negatable flags
+/// * options: `-text Buy`, `-text=Buy`, `-T Buy` (one capital letter)
 /// * command names (and aliases), which switch to that command
 /// * `--`, after which every word goes into [Input.rest]
 /// * `--help`, `-h`, `help <command>` and `--version`
@@ -76,17 +77,9 @@ class Parser {
         _rest.addAll(arguments.sublist(_next));
         break;
       } else if (word.startsWith('--')) {
-        if (cli.dashes == DashStyle.split) {
-          _readSplitFlag(word.substring(2));
-        } else {
-          _readLong(word.substring(2));
-        }
+        _readLongFlag(word.substring(2));
       } else if (word.startsWith('-') && word.length > 1) {
-        if (cli.dashes == DashStyle.split) {
-          _readSplitOption(word.substring(1));
-        } else {
-          _readShort(word.substring(1));
-        }
+        _readSingleDash(word.substring(1));
       } else {
         _readWord(word);
       }
@@ -108,87 +101,13 @@ class Parser {
     );
   }
 
-  /// Reads a word that started with `--`, like `--name=Sam` or `--verbose`.
-  void _readLong(String text) {
-    var name = text;
-    String? value;
-
-    final equals = text.indexOf('=');
-    if (equals != -1) {
-      name = text.substring(0, equals);
-      value = text.substring(equals + 1);
-    }
-
-    final option = _findOption(name);
-    if (option != null) {
-      _addOptionValue(option, value ?? _takeValue('--$name'));
-
-      return;
-    }
-
-    final flag = _findFlag(name);
-    if (flag != null) {
-      if (value != null) _fail('The flag --$name does not take a value.');
-      _setFlag(flag, true);
-
-      return;
-    }
-
-    if (name.startsWith('no-')) {
-      final negated = _findFlag(name.substring(3));
-      if (negated != null && negated.negatable) {
-        _setFlag(negated, false);
-
-        return;
-      }
-    }
-
-    if (name == 'help') {
-      _helpWanted = true;
-    } else if (name == 'version' && cli.version != null) {
-      _versionWanted = true;
-    } else {
-      _fail('Unknown option --$name.');
-    }
-  }
-
-  /// Reads a word that started with a single `-`, like `-v` or `-abc`.
+  /// Reads a word that started with `--`. It is always a long flag.
   ///
-  /// Each letter is a flag, until one is an option: the rest of the word (or
-  /// the next word) is then that option's value.
-  void _readShort(String letters) {
-    for (var i = 0; i < letters.length; i++) {
-      final letter = letters[i];
-
-      final option = _findOptionByShort(letter);
-      if (option != null) {
-        final attached = letters.substring(i + 1);
-        _addOptionValue(
-          option,
-          attached.isNotEmpty ? attached : _takeValue('-$letter'),
-        );
-
-        return;
-      }
-
-      final flag = _findFlagByShort(letter);
-      if (flag != null) {
-        _setFlag(flag, true);
-      } else if (letter == 'h') {
-        _helpWanted = true;
-      } else {
-        _fail('Unknown option -$letter.');
-      }
-    }
-  }
-
-  /// In [DashStyle.split], reads a word that started with `--`: a flag.
-  ///
-  /// [text] can be the flag's long or short name, like `urgent` or `u`.
-  void _readSplitFlag(String text) {
+  /// For example `--urgent`, `--no-urgent`, `--help` or `--version`.
+  void _readLongFlag(String text) {
     final name = _nameBeforeEquals(text);
 
-    final flag = _findFlag(name) ?? _findFlagByShort(name);
+    final flag = _findFlag(name);
     if (flag != null) {
       if (name != text) _fail('The flag --$name does not take a value.');
       _setFlag(flag, true);
@@ -209,21 +128,30 @@ class Parser {
       _helpWanted = true;
     } else if (name == 'version' && cli.version != null) {
       _versionWanted = true;
-    } else if ((_findOption(name) ?? _findOptionByShort(name)) != null) {
-      _fail('--$name is an option. Use -$name instead.');
+    } else if (_findOption(name) != null) {
+      _fail('"$name" is an option, so it uses one dash: -$name');
     } else {
       _fail('Unknown flag --$name.');
     }
   }
 
-  /// In [DashStyle.split], reads a word that started with `-`: an option.
+  /// Reads a word that started with one `-`.
   ///
-  /// [text] can be the option's long or short name, with the value after an
-  /// `=` or in the next word, like `text=Buy` or `t`.
-  void _readSplitOption(String text) {
+  /// * one lowercase letter is a short flag, like `-u`
+  /// * one capital letter is a short option, like `-T Buy`
+  /// * anything longer is a long option, like `-text Buy` or `-text=Buy`
+  void _readSingleDash(String text) {
     final name = _nameBeforeEquals(text);
 
-    final option = _findOption(name) ?? _findOptionByShort(name);
+    if (name.length == 1 && name == name.toLowerCase()) {
+      _readShortFlag(name, text);
+
+      return;
+    }
+
+    final option = name.length == 1
+        ? _findOptionByShort(name)
+        : _findOption(name);
     if (option != null) {
       final value = name == text
           ? _takeValue('-$name')
@@ -233,13 +161,40 @@ class Parser {
       return;
     }
 
-    if (name == 'h') {
-      _helpWanted = true;
-    } else if ((_findFlag(name) ?? _findFlagByShort(name)) != null) {
-      _fail('-$name is a flag. Use --$name instead.');
-    } else {
-      _fail('Unknown option -$name.');
+    // Friendly hints for the most likely mix-ups.
+    final lower = name.toLowerCase();
+    if (name.length == 1 && _findFlagByShort(lower) != null) {
+      _fail('-$name is not an option. Flags use lowercase: -$lower');
     }
+    if (_findFlag(name) != null) {
+      _fail('"$name" is a flag, so it uses two dashes: --$name');
+    }
+    _fail('Unknown option -$name.');
+  }
+
+  /// Reads a short flag: one lowercase [letter], like `-u`.
+  ///
+  /// [text] is the whole word without the dash, to spot `-u=yes`.
+  void _readShortFlag(String letter, String text) {
+    final flag = _findFlagByShort(letter);
+    if (flag != null) {
+      if (letter != text) _fail('The flag -$letter does not take a value.');
+      _setFlag(flag, true);
+
+      return;
+    }
+
+    if (letter == 'h') {
+      _helpWanted = true;
+
+      return;
+    }
+
+    final upper = letter.toUpperCase();
+    if (_findOptionByShort(upper) != null) {
+      _fail('-$letter is not a flag. Options use capitals: -$upper');
+    }
+    _fail('Unknown flag -$letter.');
   }
 
   /// The part of [text] before the first `=`, or all of it if there is none.

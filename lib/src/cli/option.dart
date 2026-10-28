@@ -4,17 +4,21 @@
 /// `run` with `input.option('name')`, or `input.options('name')` when
 /// [multiple] is on.
 ///
-/// The user can type the value in any of these ways:
-/// `--name Sam`, `--name=Sam`, `-n Sam` or `-nSam`.
+/// Options always use one dash, so the user can type the value in any of
+/// these ways: `-name Sam`, `-name=Sam` or `-N Sam`.
 ///
 /// ```dart
-/// Option('priority', allowed: ['low', 'high'], defaultValue: 'low')
+/// Option('priority', short: 'P', allowed: ['low', 'high'], defaultValue: 'low')
 /// ```
 class Option {
-  /// The long name, typed as `--name`.
+  /// The long name, typed with one dash as `-name`.
+  ///
+  /// Must be lowercase and at least two characters.
   final String name;
 
-  /// An optional one-letter name, typed as `-x`.
+  /// An optional short name: one capital letter, typed as `-X`.
+  ///
+  /// Capital means option; lowercase is kept for flags.
   final String? short;
 
   /// One line explaining the option, shown in the help screen.
