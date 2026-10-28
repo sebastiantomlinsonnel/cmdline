@@ -1,0 +1,20 @@
+/// A mistake the user made when typing the command.
+///
+/// Thrown by [Parser] for things like an unknown option, a missing value or a
+/// missing required option. [Cli.start] catches it and prints it nicely, so
+/// you normally never see it yourself.
+class CliError implements Exception {
+  /// What went wrong, written for the user.
+  final String message;
+
+  /// The command the user was in when it went wrong, like `['todo', 'add']`.
+  ///
+  /// Used to suggest the right `--help` command.
+  final List<String> commandPath;
+
+  /// Creates an error with a [message] for the user.
+  const CliError(this.message, this.commandPath);
+
+  @override
+  String toString() => message;
+}

@@ -4,5 +4,14 @@ import 'package:cmdline/cmdline.dart';
 
 void main() {
   // CommandLineDemo.demo();
-  CommandLineDemo.printMessages();
+  // CommandLineDemo.printMessages();
+
+  Cli(name: 'Example', commands: [command]);
 }
+
+Command command = Command(
+  name: 'get',
+  run: (input) {
+    dev('Testing get');
+  },
+);

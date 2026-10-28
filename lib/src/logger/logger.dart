@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
-const List<String> _spinnerFrames = <String>[
+const List<String> kSPINNER_FRAMES = <String>[
   '⠋',
   '⠙',
   '⠹',
@@ -16,12 +16,6 @@ const List<String> _spinnerFrames = <String>[
   '⠇',
   '⠏',
 ];
-final List<String> _d2 = List<String>.generate(
-  100,
-  (int i) => i < 10 ? '0$i' : '$i',
-  growable: false,
-);
-const int _tagWidth = 5;
 
 class Logger {
   static final Logger instance = Logger._();
@@ -31,11 +25,19 @@ class Logger {
   bool get isSpinning => _spinnerLabel != null;
   bool showTimestampInOutput = false;
 
-  Logger._();
-
   void Function(String message, String asciiMessage)? onLog;
   bool debugMode = true;
   Set<String>? levels;
+
+  Logger._();
+
+  int TAG_WIDTH = 5;
+
+  final List<String> _d2 = List<String>.generate(
+    100,
+    (int i) => i < 10 ? '0$i' : '$i',
+    growable: false,
+  );
 
   /// The open log file, or null when logs aren't being saved.
   _LogFile? _out;
@@ -163,7 +165,7 @@ class Logger {
   /// Width of the longest level name (TRACE / DEBUG), so every tag lines up.
 
   static String getStamp(Level level) {
-    final String name = level.name.toUpperCase().padRight(_tagWidth);
+    final String name = level.name.toUpperCase().padRight(instance.TAG_WIDTH);
     final String tag = Logger.getVerbosityColour(level, '$name |');
     return '$tag';
   }
@@ -211,9 +213,9 @@ class Logger {
 
     int frame = 0;
     void draw() {
-      final String text = '${_spinnerFrames[frame]} $label';
+      final String text = '${kSPINNER_FRAMES[frame]} $label';
       stdout.write('${CLEAR_LINE}${instance.getString(text, level)}');
-      frame = (frame + 1) % _spinnerFrames.length;
+      frame = (frame + 1) % kSPINNER_FRAMES.length;
     }
 
     draw();
@@ -346,7 +348,7 @@ class _LogFile {
   }
 
   void _stamp(StringBuffer b, DateTime t) {
-    final List<String> d2 = _d2;
+    final List<String> d2 = Logger.instance._d2;
     final int key = t.day | (t.month << 5) | (t.year << 9);
     if (key != _dayKey) {
       _dayKey = key;
