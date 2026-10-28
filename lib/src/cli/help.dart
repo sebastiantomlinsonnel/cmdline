@@ -29,6 +29,7 @@ class HelpPrinter {
     final command = commands.last;
     final path = [for (final c in commands) c.name].join(' ');
     final lines = <String>[];
+    lines.add('\n');
 
     // Title, e.g. "todo add" or "todo 1.0.0".
     var title = path.bold.foreground(_titleColour);
@@ -37,7 +38,7 @@ class HelpPrinter {
       title = '$title ${'v${root.version}'.dim}';
     }
     lines.add(title);
-    if (command.about.isNotEmpty) lines.add(command.about);
+    if (command.about.isNotEmpty) lines.add(command.about.italic.dim);
 
     // Usage line.
     var usage = path;
@@ -76,6 +77,7 @@ class HelpPrinter {
       lines.add('Run "$path <command> --help" for more about a command.'.dim);
     }
 
+    lines.add('\n');
     return lines.join('\n');
   }
 
