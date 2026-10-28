@@ -30,6 +30,9 @@ export 'src/logger/constants/frames.dart';
 export 'src/logger/dev_type.dart';
 export 'src/logger/logger.dart';
 export 'src/logger/logs.dart';
+export 'src/process/executable.dart';
+export 'src/process/run_result.dart';
+export 'src/process/shell.dart';
 
 void dev(dynamic message) => Logger.print('$message', Level.dev);
 
