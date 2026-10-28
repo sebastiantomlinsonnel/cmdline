@@ -35,6 +35,7 @@ final cli = CLI(
       },
     ),
   ],
+  run: (input) {},
 );
 
 void main(List<String> args) => cli.start(args);

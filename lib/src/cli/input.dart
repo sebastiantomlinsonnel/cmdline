@@ -1,7 +1,11 @@
+import 'dart:io';
+
+import 'package:cmdline/cmdline.dart';
+
 /// Everything the user typed, ready to read inside a command's `run`.
 ///
 /// Flags and options from parent commands can be read here too, so a
-/// `--verbose` flag on the [Cli] works inside every sub-command.
+/// `--verbose` flag on the [CLI] works inside every sub-command.
 ///
 /// Asking for a name that was never declared throws an [ArgumentError], so
 /// spelling mistakes in your own code show up straight away.
@@ -9,6 +13,9 @@ class Input {
   final Map<String, bool> _flags;
   final Map<String, List<String>> _options;
   final Set<String> _given;
+
+  /// The picked commands from the top down, used to build the help screen.
+  final List<Command> _commands;
 
   /// Words that weren't flags, options or commands, like file names.
   ///
@@ -23,11 +30,33 @@ class Input {
     required Map<String, bool> flags,
     required Map<String, List<String>> options,
     required Set<String> given,
+    required List<Command> commands,
     required this.rest,
     required this.commandPath,
   }) : _flags = flags,
        _options = options,
-       _given = given;
+       _given = given,
+       _commands = commands;
+
+  /// Prints the help screen of the command that is running.
+  ///
+  /// The same screen `--help` shows. Handy when the user typed nothing:
+  ///
+  /// ```dart
+  /// run: (input) {
+  ///   if (input.rest.isEmpty) {
+  ///     input.help();
+  ///     return;
+  ///   }
+  ///   ...
+  /// }
+  /// ```
+  void help() => stdout.writeln(helpText);
+
+  /// The help screen of the command that is running, as a string.
+  ///
+  /// Use this instead of [help] to print it somewhere else, or to add to it.
+  String get helpText => HelpPrinter(_commands).build();
 
   /// Whether the flag called [name] is on.
   bool flag(String name) {

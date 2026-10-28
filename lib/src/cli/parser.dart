@@ -93,6 +93,7 @@ class Parser {
         flags: _flags,
         options: _options,
         given: _given,
+        commands: List.unmodifiable(_commands),
         rest: List.unmodifiable(_rest),
         commandPath: [for (final command in _commands) command.name],
       ),
