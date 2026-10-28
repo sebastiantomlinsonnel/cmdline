@@ -31,7 +31,7 @@ class ParseResult {
 /// Reads the user's arguments one word at a time.
 ///
 /// Make a new [Parser] for each list of arguments and call [parse]. Most code
-/// never uses this directly, because [Cli.start] does it for you.
+/// never uses this directly, because [CLI.start] does it for you.
 ///
 /// It understands:
 /// * flags: `--urgent`, `-u` (one lowercase letter), and `--no-urgent` for
@@ -42,7 +42,7 @@ class ParseResult {
 /// * `--help`, `-h`, `help <command>` and `--version`
 class Parser {
   /// The program whose commands, flags and options are understood.
-  final Cli cli;
+  final CLI cli;
 
   /// The words the user typed.
   final List<String> arguments;
@@ -67,7 +67,7 @@ class Parser {
 
   /// Reads every argument and returns what was found.
   ///
-  /// Throws a [CliError] when the user made a mistake.
+  /// Throws a [CLIError] when the user made a mistake.
   ParseResult parse() {
     while (_next < arguments.length) {
       final word = arguments[_next];
@@ -247,7 +247,7 @@ class Parser {
   void _addOptionValue(Option option, String value) {
     if (option.allowed.isNotEmpty && !option.allowed.contains(value)) {
       _fail(
-        '"$value" is not allowed for --${option.name}. '
+        '"$value" is not allowed for -${option.name}. '
         'Pick one of: ${option.allowed.join(', ')}.',
       );
     }
@@ -291,7 +291,7 @@ class Parser {
     }
 
     // The built-in verbose flag, in case no command declared its own.
-    _flags.putIfAbsent(Cli.verboseFlag.name, () => false);
+    _flags.putIfAbsent(CLI.verboseFlag.name, () => false);
   }
 
   /// Looks for an option called [name], from the picked command upwards.
@@ -317,31 +317,31 @@ class Parser {
 
   /// Looks for a flag called [name], from the picked command upwards.
   ///
-  /// Falls back to the built-in [Cli.verboseFlag].
+  /// Falls back to the built-in [CLI.verboseFlag].
   Flag? _findFlag(String name) {
     for (final command in _commands.reversed) {
       final flag = command.findFlag(name);
       if (flag != null) return flag;
     }
 
-    return name == Cli.verboseFlag.name ? Cli.verboseFlag : null;
+    return name == CLI.verboseFlag.name ? CLI.verboseFlag : null;
   }
 
   /// Looks for a flag with the short name [letter], from the picked command
   /// upwards.
   ///
-  /// Falls back to the built-in [Cli.verboseFlag].
+  /// Falls back to the built-in [CLI.verboseFlag].
   Flag? _findFlagByShort(String letter) {
     for (final command in _commands.reversed) {
       final flag = command.findFlagByShort(letter);
       if (flag != null) return flag;
     }
 
-    return letter == Cli.verboseFlag.short ? Cli.verboseFlag : null;
+    return letter == CLI.verboseFlag.short ? CLI.verboseFlag : null;
   }
 
-  /// Stops parsing with a [CliError] for the user.
+  /// Stops parsing with a [CLIError] for the user.
   Never _fail(String message) {
-    throw CliError(message, [for (final command in _commands) command.name]);
+    throw CLIError(message, [for (final command in _commands) command.name]);
   }
 }

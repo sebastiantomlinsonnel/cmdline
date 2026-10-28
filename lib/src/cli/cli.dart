@@ -18,7 +18,7 @@ import 'package:cmdline/cmdline.dart';
 ///
 /// void main(List<String> arguments) => cli.start(arguments);
 /// ```
-class Cli extends Command {
+class CLI extends Command {
   /// The version shown by `--version` and at the top of the help screen.
   ///
   /// When left out, `--version` isn't available.
@@ -35,7 +35,7 @@ class Cli extends Command {
   );
 
   /// Creates the program.
-  Cli({
+  CLI({
     required super.name,
     super.about,
     this.version,
@@ -56,7 +56,7 @@ class Cli extends Command {
     final ParseResult result;
     try {
       result = Parser(this, arguments).parse();
-    } on CliError catch (error) {
+    } on CLIError catch (error) {
       stderr.writeln(HelpPrinter.error(error));
       exitCode = 64;
 

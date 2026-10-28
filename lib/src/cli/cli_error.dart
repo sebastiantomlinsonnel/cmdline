@@ -3,7 +3,7 @@
 /// Thrown by [Parser] for things like an unknown option, a missing value or a
 /// missing required option. [Cli.start] catches it and prints it nicely, so
 /// you normally never see it yourself.
-class CliError implements Exception {
+class CLIError implements Exception {
   /// What went wrong, written for the user.
   final String message;
 
@@ -13,7 +13,7 @@ class CliError implements Exception {
   final List<String> commandPath;
 
   /// Creates an error with a [message] for the user.
-  const CliError(this.message, this.commandPath);
+  const CLIError(this.message, this.commandPath);
 
   @override
   String toString() => message;

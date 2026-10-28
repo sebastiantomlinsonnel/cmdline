@@ -1,10 +1,8 @@
 import 'package:cmdline/cmdline.dart';
 
-/// clear && dart run bin\example.dart
-final cli = Cli(
+final cli = CLI(
   name: 'todo',
   about: 'A demo todo app',
-  // version: '0.0.1',
   commands: [
     Command(name: 'demo', run: (input) => CommandLineDemo.printMessages()),
     Command(

@@ -16,7 +16,7 @@ const AsciiColour _errorColour = AsciiColour(9);
 ///
 /// Give it the picked commands from the top down (like `[todo, add]`) and
 /// call [build]. It returns the text instead of printing it, so it is easy to
-/// test. [Cli.start] prints it for you on `--help`.
+/// test. [CLI.start] prints it for you on `--help`.
 class HelpPrinter {
   /// The picked commands from the top down. The last one gets the help.
   final List<Command> commands;
@@ -34,7 +34,7 @@ class HelpPrinter {
     // Title, e.g. "todo add" or "todo 1.0.0".
     var title = path.bold.foreground(_titleColour);
     final root = commands.first;
-    if (root is Cli && root.version != null && commands.length == 1) {
+    if (root is CLI && root.version != null && commands.length == 1) {
       title = '$title ${'v${root.version}'.dim}';
     }
     lines.add(title);
@@ -62,7 +62,7 @@ class HelpPrinter {
       ..._optionRows(command),
       if (!_declaresVerbose()) _verboseRow(),
       ['-h, --help', 'Show this help'],
-      if (root is Cli && root.version != null && commands.length == 1)
+      if (root is CLI && root.version != null && commands.length == 1)
         ['    --version', 'Show the version'],
     ]);
 
@@ -83,7 +83,7 @@ class HelpPrinter {
   }
 
   /// Builds the red error message and a hint about `--help`.
-  static String error(CliError error) {
+  static String error(CLIError error) {
     final path = error.commandPath.join(' ');
 
     return '${'Error:'.bold.foreground(_errorColour)} ${error.message}\n'
@@ -116,24 +116,24 @@ class HelpPrinter {
   /// If so, it is already listed and the built-in row is left out.
   bool _declaresVerbose() {
     for (final command in commands) {
-      if (command.findFlag(Cli.verboseFlag.name) != null) return true;
+      if (command.findFlag(CLI.verboseFlag.name) != null) return true;
     }
 
     return false;
   }
 
-  /// The help row for the built-in [Cli.verboseFlag].
+  /// The help row for the built-in [CLI.verboseFlag].
   ///
   /// The `-v` short name is left out if something else already uses it.
   List<String> _verboseRow() {
-    String? short = Cli.verboseFlag.short;
+    String? short = CLI.verboseFlag.short;
     for (final command in commands) {
       if (command.findFlagByShort('v') != null) short = null;
     }
 
     return [
-      _withShort(short, '--${Cli.verboseFlag.name}'),
-      Cli.verboseFlag.help,
+      _withShort(short, '--${CLI.verboseFlag.name}'),
+      CLI.verboseFlag.help,
     ];
   }
 
