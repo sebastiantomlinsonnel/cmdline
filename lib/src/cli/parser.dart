@@ -76,9 +76,17 @@ class Parser {
         _rest.addAll(arguments.sublist(_next));
         break;
       } else if (word.startsWith('--')) {
-        _readLong(word.substring(2));
+        if (cli.dashes == DashStyle.split) {
+          _readSplitFlag(word.substring(2));
+        } else {
+          _readLong(word.substring(2));
+        }
       } else if (word.startsWith('-') && word.length > 1) {
-        _readShort(word.substring(1));
+        if (cli.dashes == DashStyle.split) {
+          _readSplitOption(word.substring(1));
+        } else {
+          _readShort(word.substring(1));
+        }
       } else {
         _readWord(word);
       }
@@ -172,6 +180,73 @@ class Parser {
         _fail('Unknown option -$letter.');
       }
     }
+  }
+
+  /// In [DashStyle.split], reads a word that started with `--`: a flag.
+  ///
+  /// [text] can be the flag's long or short name, like `urgent` or `u`.
+  void _readSplitFlag(String text) {
+    final name = _nameBeforeEquals(text);
+
+    final flag = _findFlag(name) ?? _findFlagByShort(name);
+    if (flag != null) {
+      if (name != text) _fail('The flag --$name does not take a value.');
+      _setFlag(flag, true);
+
+      return;
+    }
+
+    if (name.startsWith('no-')) {
+      final negated = _findFlag(name.substring(3));
+      if (negated != null && negated.negatable) {
+        _setFlag(negated, false);
+
+        return;
+      }
+    }
+
+    if (name == 'help') {
+      _helpWanted = true;
+    } else if (name == 'version' && cli.version != null) {
+      _versionWanted = true;
+    } else if ((_findOption(name) ?? _findOptionByShort(name)) != null) {
+      _fail('--$name is an option. Use -$name instead.');
+    } else {
+      _fail('Unknown flag --$name.');
+    }
+  }
+
+  /// In [DashStyle.split], reads a word that started with `-`: an option.
+  ///
+  /// [text] can be the option's long or short name, with the value after an
+  /// `=` or in the next word, like `text=Buy` or `t`.
+  void _readSplitOption(String text) {
+    final name = _nameBeforeEquals(text);
+
+    final option = _findOption(name) ?? _findOptionByShort(name);
+    if (option != null) {
+      final value = name == text
+          ? _takeValue('-$name')
+          : text.substring(name.length + 1);
+      _addOptionValue(option, value);
+
+      return;
+    }
+
+    if (name == 'h') {
+      _helpWanted = true;
+    } else if ((_findFlag(name) ?? _findFlagByShort(name)) != null) {
+      _fail('-$name is a flag. Use --$name instead.');
+    } else {
+      _fail('Unknown option -$name.');
+    }
+  }
+
+  /// The part of [text] before the first `=`, or all of it if there is none.
+  String _nameBeforeEquals(String text) {
+    final equals = text.indexOf('=');
+
+    return equals == -1 ? text : text.substring(0, equals);
   }
 
   /// Reads a plain word: a command name, `help`, or a leftover word.
