@@ -35,12 +35,9 @@ class Logger {
 
   String? get path => _out?.file.path;
 
-  String getString(dynamic message, Level level, {DateTime? time}) {
+  String getString(dynamic message, Level level) {
     String timestamp = '';
-    if (showTimestampInOutput) {
-      if (time == null) time = DateTime.now();
-      timestamp = '${getTimestamp(time)} ';
-    }
+    if (showTimestampInOutput == true) timestamp = '${getTimestamp()} ';
     return [timestamp, Logger.getStamp(level), ' $message'].join();
   }
 
@@ -125,7 +122,8 @@ class Logger {
     if (start < n) b.write(s.substring(start));
   }
 
-  static String getTimestamp(DateTime now) {
+  static String getTimestamp() {
+    DateTime now = DateTime.now();
     final String ms = now.millisecond.toString().padLeft(3, '0');
     return [
       now.hour
@@ -242,11 +240,7 @@ class Logger {
 
   static void print(String message, Level verbosity) {
     final DateTime now = DateTime.now();
-    final String ascii = Logger.instance.getString(
-      message,
-      verbosity,
-      time: now,
-    );
+    final String ascii = Logger.instance.getString(message, verbosity);
     stdout.writeln(ascii);
     final Logger inst = Logger.instance;
     inst.add(now, verbosity.name.toUpperCase(), message);
