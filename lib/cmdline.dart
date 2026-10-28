@@ -24,15 +24,14 @@ export 'src/cli/help.dart';
 export 'src/cli/input.dart';
 export 'src/cli/option.dart';
 export 'src/cli/parser.dart';
-export 'src/cmdline/cmdline.dart';
-export 'src/cmdline/demo.dart';
+export 'src/cmdline/helpers/demo.dart';
+export 'src/cmdline/helpers/executable.dart';
+export 'src/cmdline/helpers/run_result.dart';
+export 'src/cmdline/helpers/shell.dart';
 export 'src/logger/constants/frames.dart';
 export 'src/logger/dev_type.dart';
 export 'src/logger/logger.dart';
 export 'src/logger/logs.dart';
-export 'src/process/executable.dart';
-export 'src/process/run_result.dart';
-export 'src/process/shell.dart';
 
 void dev(dynamic message) => Logger.print('$message', Level.dev);
 
@@ -47,3 +46,11 @@ void pass(dynamic message) => Logger.print('$message', Level.pass);
 void warn(dynamic message) => Logger.print('$message', Level.warn);
 
 void log(dynamic message) => Logger.print('$message', Level.log);
+
+Future<void> delay(int milliseconds, {int? seconds}) async {
+  await Future.delayed(
+    Duration(milliseconds: milliseconds, seconds: seconds ?? 0),
+  ).whenComplete(() {
+    return;
+  });
+}
