@@ -1,3 +1,8 @@
+## 0.1.1
+
+- Added the missing ASCII characters
+- Fixed CLI help misprinting
+
 ## 0.1.0
 
 - Rudimentary CLI SDK complete
