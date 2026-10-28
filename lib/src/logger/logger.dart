@@ -4,14 +4,34 @@ import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
-class Logger {
-  Logger._();
+const List<String> _spinnerFrames = <String>[
+  '⠋',
+  '⠙',
+  '⠹',
+  '⠸',
+  '⠼',
+  '⠴',
+  '⠦',
+  '⠧',
+  '⠇',
+  '⠏',
+];
+final List<String> _d2 = List<String>.generate(
+  100,
+  (int i) => i < 10 ? '0$i' : '$i',
+  growable: false,
+);
+const int _tagWidth = 5;
 
+class Logger {
+  static final Logger instance = Logger._();
+  Timer? _spinnerTimer;
+  String? _spinnerLabel;
+
+  bool get isSpinning => _spinnerLabel != null;
   bool showTimestampInOutput = false;
 
-  /// The single logger. Always available; it only writes to a file after
-  /// [open] has been called.
-  static final Logger instance = Logger._();
+  Logger._();
 
   void Function(String message, String asciiMessage)? onLog;
   bool debugMode = true;
@@ -141,7 +161,6 @@ class Logger {
   }
 
   /// Width of the longest level name (TRACE / DEBUG), so every tag lines up.
-  static const int _tagWidth = 5;
 
   static String getStamp(Level level) {
     final String name = level.name.toUpperCase().padRight(_tagWidth);
@@ -178,41 +197,9 @@ class Logger {
     }
   }
 
-  static final List<String> _d2 = List<String>.generate(
-    100,
-    (int i) => i < 10 ? '0$i' : '$i',
-    growable: false,
-  );
-
-  static const Map<Level, String> _tags = <Level, String>{
-    Level.trace: '[TRACE] ',
-    Level.debug: '[DEBUG] ',
-    Level.fail: '[FAIL ] ',
-    Level.pass: '[PASS ] ',
-    Level.warn: '[WARN ] ',
-    Level.log: '[LOG  ] ',
-  };
-
-  static const List<String> _spinnerFrames = <String>[
-    '⠋',
-    '⠙',
-    '⠹',
-    '⠸',
-    '⠼',
-    '⠴',
-    '⠦',
-    '⠧',
-    '⠇',
-    '⠏',
-  ];
-  static Timer? _spinnerTimer;
-  static String? _spinnerLabel;
-
-  static bool get isSpinning => _spinnerLabel != null;
-
   /// Shows an animated spinner on the current line until [stopSpinner].
   /// Starting a new one replaces any spinner already running.
-  static void startSpinner(
+  void startSpinner(
     String label, {
     Level level = Level.log,
     Duration interval = const Duration(milliseconds: 300),
@@ -234,7 +221,7 @@ class Logger {
   }
 
   /// Stops the spinner and prints [message] (or the spinner's label) at [level].
-  static void stopSpinner([String? message, Level level = Level.pass]) {
+  void stopSpinner([String? message, Level level = Level.pass]) {
     final String? label = _spinnerLabel;
     if (label == null) return;
     _spinnerTimer?.cancel();
@@ -282,7 +269,7 @@ class Logger {
   }
 }
 
-/// Buffered, rotating writer for tFhe log file. Only exists while open.
+/// Buffered, rotating writer for the log file. Only exists while open.
 class _LogFile {
   final File file;
   IOSink _sink;
@@ -335,7 +322,7 @@ class _LogFile {
   void write(DateTime now, String level, String message, {bool force = false}) {
     final StringBuffer buffer = _buffer;
     _stamp(buffer, now);
-    buffer.write(Logger._tags[level] ?? '[$level] ');
+    buffer.write('$level |');
     Logger._plain(buffer, message);
     buffer.write('\n');
 
@@ -359,7 +346,7 @@ class _LogFile {
   }
 
   void _stamp(StringBuffer b, DateTime t) {
-    final List<String> d2 = Logger._d2;
+    final List<String> d2 = _d2;
     final int key = t.day | (t.month << 5) | (t.year << 9);
     if (key != _dayKey) {
       _dayKey = key;

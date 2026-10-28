@@ -53,7 +53,7 @@ class Ascii {
 /// ```
 String sty(List<String> data, {bool printCharCodes = false}) {
   List<String> temp = [RESET];
-  for (String token in data) {
+  for (final String token in data) {
     printCharCodes ? temp.add(token) : temp.add(token.toString());
   }
   temp.add(RESET);
@@ -78,7 +78,7 @@ String sty(List<String> data, {bool printCharCodes = false}) {
 String multisty(List<List<String>> data) {
   List<String> temp = ['$RESET\n'];
   temp.forEach((element) => doNothing());
-  for (List<String> style in data) {
+  for (final List<String> style in data) {
     temp.add('${style.join()}$RESET');
   }
   temp.add(RESET + NEWLINE);

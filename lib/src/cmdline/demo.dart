@@ -4,9 +4,9 @@ class CommandLineDemo {
   const CommandLineDemo._();
 
   static Future<String> demo() async {
-    Logger.startSpinner('Starting logger');
+    Logger.instance.startSpinner('Starting logger');
     await delay(0, seconds: 3);
-    Logger.stopSpinner('Loading Complete!', Level.pass);
+    Logger.instance.stopSpinner('Loading Complete!', Level.pass);
     return Logger.instance.getString('Built, not logged', Level.debug);
   }
 

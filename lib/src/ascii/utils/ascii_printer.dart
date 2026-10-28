@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cmdline/cmdline.dart';
 
 /// Builds one line from codes and values, and prints it with a final [RESET].
@@ -40,7 +42,7 @@ class AsciiPrinter {
   /// is the same as [toString].
   String output() {
     final string = toString();
-    print(string);
+    stdout.writeln(string);
 
     return string;
   }
