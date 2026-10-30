@@ -1,3 +1,7 @@
+## 0.2.0
+
+- Process helpers
+
 ## 0.1.1
 
 - Added the missing ASCII characters
