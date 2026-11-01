@@ -16,7 +16,7 @@ class Logger {
   bool debugMode = true;
   Set<String>? levels;
 
-  /// Whether trace and debug messages are shown in the terminal.
+  /// Whether dev and debug messages are shown in the terminal.
   ///
   /// On by default. [Cli.start] turns it off unless the user typed
   /// `--verbose`. Hidden messages still go to the log file and [onLog].
@@ -255,7 +255,7 @@ class Logger {
     final DateTime now = DateTime.now();
     final String ascii = Logger.instance.getString(message, verbosity);
     final Logger inst = Logger.instance;
-    final bool isDetail = verbosity == Level.trace || verbosity == Level.debug;
+    final bool isDetail = verbosity == Level.dev || verbosity == Level.debug;
     if (inst.verbose || !isDetail) stdout.writeln(ascii);
     inst.add(now, verbosity.name.toUpperCase(), message);
     final onLog = inst.onLog;

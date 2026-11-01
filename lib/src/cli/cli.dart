@@ -26,7 +26,7 @@ class CLI extends Command {
 
   /// The `--verbose` / `-v` flag every [Cli] gets for free.
   ///
-  /// Read it with `input.verbose`. When the user types it, trace and debug
+  /// Read it with `input.verbose`. When the user types it, dev and debug
   /// log messages are shown. Declare your own `verbose` flag to replace it.
   static const Flag verboseFlag = Flag(
     'verbose',
@@ -69,7 +69,7 @@ class CLI extends Command {
       return;
     }
 
-    // Show trace and debug messages only when the user asked for detail.
+    // Show dev and debug messages only when the user asked for detail.
     Logger.instance.verbose = result.input.verbose;
 
     final run = result.command.run;
