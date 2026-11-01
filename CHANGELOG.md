@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Fixed the error message when missing a required option
+
 ## 0.2.0
 
 - Process helpers

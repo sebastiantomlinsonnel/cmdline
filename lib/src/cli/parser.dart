@@ -283,7 +283,7 @@ class Parser {
         if (_options.containsKey(option.name)) continue;
 
         if (option.required && checkRequired) {
-          _fail('Missing the required option --${option.name}.');
+          _fail('Missing the required option -${option.name}.');
         }
 
         final defaultValue = option.defaultValue;
