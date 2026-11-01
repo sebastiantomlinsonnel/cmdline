@@ -1,6 +1,7 @@
 ## 0.2.1
 
 - Fixed the error message when missing a required option
+- dev messages only print with `--verbose` flag
 
 ## 0.2.0
 
