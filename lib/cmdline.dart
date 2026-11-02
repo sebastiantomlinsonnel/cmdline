@@ -30,6 +30,7 @@ export 'src/cmdline/helpers/process_functions.dart';
 export 'src/cmdline/helpers/process_helpers.dart';
 export 'src/cmdline/helpers/process_result_helpers.dart';
 export 'src/cmdline/helpers/stream_helpers.dart';
+export 'src/cmdline/helpers/terminal_command.dart';
 export 'src/logger/constants/frames.dart';
 export 'src/logger/dev_type.dart';
 export 'src/logger/logger.dart';

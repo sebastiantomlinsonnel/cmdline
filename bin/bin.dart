@@ -4,6 +4,12 @@ final cli = CLI(
   name: 'example',
   about: 'A basic todo example app',
   commands: [
+    Command(
+      name: 'profile',
+      run: (input) async {
+        await TerminalCommand.run(r'(Get-Content $PROFILE).contains("# RUN.EXE")');
+      },
+    ),
     Command(name: 'demo', run: (input) => CommandLineDemo.printMessages()),
     Command(
       name: 'add',
