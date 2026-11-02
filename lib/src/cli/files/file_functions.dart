@@ -157,7 +157,7 @@ DateTime lastModified(String path) => FileStat.statSync(path).modified;
 /// lib
 /// ├─ src
 /// │  ╰─ cli.dart
-/// ╰─ cmdline.dart
+/// ╰─ example.dart
 /// ```
 void showTree(String path, {int maxDepth = 8, bool showHidden = false}) {
   if (!isDirectory(path)) throw FileError('No folder to show', path);

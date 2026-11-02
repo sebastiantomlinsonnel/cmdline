@@ -81,7 +81,6 @@ CLI cli = CLI(
       about: 'Download with a progress bar',
       run: (input) => CommandLineDemo.download(),
     ),
-
     Command(
       name: 'prompts',
       about: 'ask, confirm and the arrow-key menu',
