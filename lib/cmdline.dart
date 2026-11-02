@@ -15,6 +15,7 @@ export 'src/ascii/extensions/ascii_styled_string.dart';
 export 'src/ascii/palettes/ascii_colour.dart';
 export 'src/ascii/palettes/ascii_colour_rgb.dart';
 export 'src/ascii/palettes/ascii_ink.dart';
+export 'src/ascii/palettes/ascii_palette.dart';
 export 'src/ascii/utils/ascii_printer.dart';
 export 'src/cli/cli.dart';
 export 'src/cli/commands/cli_error.dart';

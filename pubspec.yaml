@@ -1,8 +1,14 @@
 name: cmdline
-description: A command and CLI SDK
+description: An SDK for console development
 version: 0.3.0
 repository: https://git.recollect.cc/sebas/cmdline
 homepage: https://recollect.cc/
+topics:
+  - logging
+  - console
+  - cli
+  - terminal
+  - command
 
 environment:
   sdk: ^3.13.5

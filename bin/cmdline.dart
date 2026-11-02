@@ -12,7 +12,16 @@ final cli = CLI(
         );
       },
     ),
-    Command(name: 'demo', run: (input) => CommandLineDemo.printMessages()),
+    Command(
+      name: 'demo',
+      about: 'Everything that needs no typing',
+      run: (input) => CommandLineDemo.demo(),
+    ),
+    Command(
+      name: 'demo-all',
+      about: 'Prompts, menus and other things that need typing',
+      run: (input) => CommandLineDemo.demoAll(),
+    ),
     Command(
       name: 'cli',
       about: 'Try the cli helpers',
@@ -46,6 +55,26 @@ final cli = CLI(
           name: 'shell',
           about: 'Running commands from strings',
           run: (input) => CommandLineDemo.shell(),
+        ),
+        Command(
+          name: 'styling',
+          about: 'Text styles, colours and the palette',
+          run: (input) => CommandLineDemo.styling(),
+        ),
+        Command(
+          name: 'progress',
+          about: 'Progress bars',
+          run: (input) => CommandLineDemo.progressBar(),
+        ),
+        Command(
+          name: 'paths',
+          about: 'Joining and splitting paths',
+          run: (input) => CommandLineDemo.paths(),
+        ),
+        Command(
+          name: 'processes',
+          about: 'Starting, reading and stopping programs',
+          run: (input) => CommandLineDemo.processes(),
         ),
         Command(
           name: 'fetch',
@@ -89,4 +118,8 @@ final cli = CLI(
   },
 );
 
-void main(List<String> args) => cli.start(args);
+Future<void> main(List<String> args) async {
+  // Logger.instance.startSpinner('Spinner...', level: Level.trace);
+  // await delay(10);
+  cli.start(args);
+}

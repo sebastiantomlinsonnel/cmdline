@@ -1,18 +1,80 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
+/// Small runnable tours of what the package can do.
+///
+/// [demo] runs everything that needs no typing, so it works anywhere, even
+/// with output piped to a file. [demoAll] runs the parts that ask you
+/// things or hand over the keyboard, so it needs a real terminal.
 class CommandLineDemo {
   const CommandLineDemo._();
 
-  static Future<String> demo() async {
+  /// Runs every demo that doesn't need you to type anything.
+  static Future<void> demo() async {
+    await _section('Logger', () async {
+      await spinnerDemo();
+      printMessages();
+      await logFile();
+    });
+    await _section('Styling', () => styling());
+    await _section('Progress bar', () => progressBar());
+    await _section('Theme', () => theme());
+    await _section('Boxes and tables', () => format());
+    await _section('Paths', () => paths());
+    await _section('Files', () => files());
+    await _section('Environment', () => environment());
+    await _section('Shell commands', () => shell());
+    await _section('Terminal folder', () => terminalFolder());
+    await _section('Processes', () => processes());
+    await _section('Download', () => download());
+  }
+
+  /// Runs every demo that asks you things or hands over the keyboard.
+  ///
+  /// Needs a real terminal for the arrow-key menu, hidden typing and the
+  /// interactive command.
+  static Future<void> demoAll() async {
+    await _section('Prompts', () => prompts());
+    await _section('Interactive command', () => interactiveCommand());
+    await _section('Default app', () => openApp());
+  }
+
+  /// Prints a heading for one part of the demo, then runs it.
+  ///
+  /// If the part throws, the error is shown and the demo moves on.
+  static Future<void> _section(
+    String title,
+    FutureOr<void> Function() part,
+  ) async {
+    CliTheme.say('');
+    CliTheme.say(
+      ' $title '.bold.inverse.foreground(CliTheme.current.highlight),
+    );
+    try {
+      await part();
+    } catch (error) {
+      fail('$title failed: $error');
+    }
+  }
+
+  /// Shows a spinner, then turns it into a PASS line.
+  static Future<String> spinnerDemo() async {
     Logger.instance.startSpinner('Starting logger');
-    await delay(3);
+    await delay(1.5);
     Logger.instance.stopSpinner('Loading Complete!', Level.pass);
+
+    final result = await spinWhile(
+      'Asking dart for its version',
+      Process.run('dart', ['--version']),
+    );
+    log('dart --version gave exit code ${result.exitCode}');
 
     return Logger.instance.getString('Built, not logged', Level.debug);
   }
 
+  /// Prints one message of each log level.
   static void printMessages() {
     trace('This is a trace message');
     debug('This is a $BOLD debug message');
@@ -20,7 +82,118 @@ class CommandLineDemo {
     Logger.instance.showTimestampInOutput = true;
     pass('This type shows that something has NOT failed');
     warn('This will show when you want to warn');
+    Logger.instance.showTimestampInOutput = false;
     dev('Dev messages only show in debug mode and aren\'t logged');
+    log('Plain log messages look like this');
+  }
+
+  /// Saves log messages to a file, then shows what the file holds.
+  static Future<void> logFile() async {
+    final dir = Directory.systemTemp.createTempSync('cmdline_log_').path;
+    final path = join(dir, 'demo.log');
+    try {
+      await Logger.open(path, append: false);
+      log('This line goes to the screen and to demo.log');
+      warn('So does this warning');
+      await Logger.close();
+
+      CliTheme.say(box(path.readText.trim(), title: 'demo.log'));
+    } finally {
+      await Logger.close();
+      deleteDir(dir);
+    }
+  }
+
+  /// Shows text styles, colours, the palette and the low-level printers.
+  static void styling() {
+    CliTheme.say(
+      [
+        'bold'.bold,
+        'dim'.dim,
+        'italic'.italic,
+        'underline'.underline,
+        'curly'.curlyUnderline.underlineColour(AsciiPalette.rose),
+        'strike'.strikethrough,
+        'inverse'.inverse,
+        'overline'.overline,
+      ].join('  '),
+    );
+
+    // 256-colour palette: cube colours and greys.
+    final cube = StringBuffer();
+    for (var red = 0; red <= 5; red++) {
+      cube.write('  '.background(AsciiColour.rgb(red, 5 - red, 2)));
+    }
+    final greys = StringBuffer();
+    for (var step = 0; step < 24; step += 2) {
+      greys.write(' '.background(AsciiColour.grey(step)));
+    }
+    CliTheme.say('Cube: $cube   Greys: $greys');
+
+    // True colour, and blending one colour over another.
+    final palette = {
+      'orchid': AsciiPalette.orchid,
+      'mint': AsciiPalette.mint,
+      'sky': AsciiPalette.sky,
+      'lavender': AsciiPalette.lavender,
+      'rose': AsciiPalette.rose,
+      'peach': AsciiPalette.peach,
+      'butter': AsciiPalette.butter,
+      'aqua': AsciiPalette.aqua,
+    };
+    CliTheme.say(
+      palette.entries.map((e) => e.key.foreground(e.value)).join(' '),
+    );
+    CliTheme.say(
+      [
+        for (final amount in [1.0, 0.75, 0.5, 0.25])
+          ' ${(amount * 100).round()}% '.background(
+            AsciiPalette.sky.opacity(amount),
+          ),
+      ].join(),
+    );
+
+    // The older, code-list way of styling.
+    CliTheme.say(sty([BOLD, RED_FG, 'sty:', RESET, ' codes and text joined']));
+    stdout.write(
+      multisty([
+        [GREEN_FG, 'multisty: ok '],
+        [YELLOW_FG, 'warn '],
+        [RED_FG, 'fail'],
+      ]),
+    );
+    AsciiPrinter([
+      BOLD,
+      'AsciiPrinter:',
+      RESET_BOLD_AND_DIM,
+      AsciiPalette.aqua.fg,
+      42,
+    ], separator: ' ').output();
+
+    final linked = 'Dart docs'.underline.link('https://dart.dev');
+    CliTheme.say('A link: $linked');
+    log('Without styles: "${linked.plain}"');
+  }
+
+  /// Fills a progress bar, then one that fails.
+  static Future<void> progressBar() async {
+    final bar = ProgressBar('Copying files', total: 40);
+    for (var i = 0; i < 40; i++) {
+      await delay(0.03);
+      bar.add();
+    }
+    bar.done('Copied 40 files');
+
+    final broken = ProgressBar(
+      'Uploading',
+      total: 10,
+      colour: AsciiPalette.peach,
+    );
+    for (var i = 0; i < 6; i++) {
+      await delay(0.05);
+      broken.add();
+    }
+    broken.failed('Upload stopped at 60%');
   }
 
   /// Shows the default theme, then the same box with a custom theme.
@@ -41,6 +214,55 @@ class CommandLineDemo {
     CliTheme.current = const CliTheme();
   }
 
+  /// Shows a box and a table, with styled cells that still line up.
+  static void format() {
+    final theme = CliTheme.current;
+    CliTheme.say(
+      box('Boxes fit their text,\neven ${'styled'.bold.italic} text.'),
+    );
+    CliTheme.say(
+      table(
+        [
+          ['paths.dart', 'Paths', 212],
+          ['menu.dart', 'Prompts', 230],
+          ['fetch.dart', 'Downloads'.foreground(theme.highlight), 98],
+        ],
+        header: ['File', 'Area', 'Lines'],
+        rightAligned: {2},
+      ),
+    );
+  }
+
+  /// Builds and takes apart a few paths.
+  static void paths() {
+    final file = joinAll([
+      homeDirectory,
+      'projects',
+      'app',
+      'lib',
+      'main.dart',
+    ]);
+    CliTheme.say(
+      table(
+        [
+          ['join', file],
+          ['basename', basename(file)],
+          ['basenameWithoutExtension', basenameWithoutExtension(file)],
+          ['fileExtension', fileExtension(file)],
+          ['dirname', dirname(file)],
+          [
+            'normalize',
+            normalize(joinAll(['a', '..', 'b', '.', 'c'])),
+          ],
+          ['isAbsolute', isAbsolute(file)],
+          ['absolute', absolute('lib')],
+          ['pwd', pwd],
+        ],
+        header: ['Function', 'Result'],
+      ),
+    );
+  }
+
   /// Builds a small folder, shows it as a tree, searches it, then cleans up.
   static Future<void> files() async {
     final dir = Directory.systemTemp.createTempSync('cmdline_demo_').path;
@@ -48,8 +270,10 @@ class CommandLineDemo {
       join(dir, 'lib', 'main.dart').write('void main() {}');
       join(dir, 'lib', 'src', 'helper.dart').write('// helper');
       join(dir, 'README.md').write('# Demo');
+      join(dir, 'README.md').append('More text');
       touch(join(dir, 'build', 'out.txt'));
       copy(join(dir, 'README.md'), join(dir, 'docs', 'README.md'));
+      copyTree(join(dir, 'lib'), join(dir, 'backup'));
 
       showTree(dir);
 
@@ -59,12 +283,123 @@ class CommandLineDemo {
 
       final changed = replace(join(dir, 'README.md'), 'Demo', 'Demo project');
       log('Changed $changed place(s) in README.md');
+      log('README.md lines: ${join(dir, 'README.md').readLines}');
+      log('README.md is ${fileLength(join(dir, 'README.md'))} bytes');
 
       try {
         copy(join(dir, 'README.md'), join(dir, 'docs', 'README.md'));
       } on FileError catch (error) {
         CliTheme.say(error.styled);
       }
+    } finally {
+      deleteDir(dir);
+    }
+  }
+
+  /// Looks up programs, changes a variable and PATH, and shows PATH.
+  static Future<void> environment() async {
+    for (final program in ['dart', 'git', 'cmdline_missing_tool']) {
+      final found = which(program);
+      CliTheme.say(
+        found == null
+            ? CliTheme.current.errorLine('$program not found')
+            : CliTheme.current.successLine('$program: $found'),
+      );
+    }
+
+    env['CMDLINE_DEMO'] = 'set from Dart';
+    final command = Platform.isWindows
+        ? r'$env:CMDLINE_DEMO'
+        : r'echo "$CMDLINE_DEMO"';
+    log('A command sees: ${await command.firstLine}');
+    env['CMDLINE_DEMO'] = null;
+
+    final tools = join(pwd, 'demo_tools');
+    env.prependToPath(tools);
+    log('demo_tools on PATH: ${env.isOnPath(tools)}');
+    env.removeFromPath(tools);
+    log('demo_tools on PATH after removing: ${env.isOnPath(tools)}');
+
+    env.printAll(only: '*PATH*');
+  }
+
+  /// Runs commands from strings, including one that fails.
+  static Future<void> shell() async {
+    await 'dart --version'.run;
+    final branch = await 'git branch --show-current'.start(
+      show: false,
+      nothrow: true,
+    );
+    log('Git branch: ${branch.ok ? branch.output.trim() : '(not a repo)'}');
+
+    final listing = Platform.isWindows ? 'Get-ChildItem -Name' : 'ls';
+    final names = await listing.toList(nothrow: true);
+    log('This folder has ${names.length} entries');
+
+    final failing = Platform.isWindows ? 'cmd /c exit 3' : 'exit 3';
+    final result = await failing.start(nothrow: true);
+    log('The failing command gave exit code ${result.exitCode}');
+
+    try {
+      await failing.start(show: false);
+    } on ProcessFailed catch (error) {
+      warn('Caught ProcessFailed: $error');
+    }
+
+    log('Running as admin/root: ${await isPrivilegedUser}');
+  }
+
+  /// Shows that a `cd` carries over to the next command.
+  static Future<void> terminalFolder() async {
+    final start = TerminalCommand.directory;
+    try {
+      await TerminalCommand.run('cd ${_quoted(Directory.systemTemp.path)}');
+      log('After cd, commands run in: ${TerminalCommand.directory}');
+
+      if (Platform.isWindows) {
+        final viaCmd = await TerminalCommand.run(
+          'cd',
+          shell: TerminalShell.cmd,
+          show: false,
+        );
+        log('cmd agrees: ${viaCmd.output.trim()}');
+      }
+    } finally {
+      TerminalCommand.directory = start;
+    }
+  }
+
+  /// Starts a program, reads its lines, and stops one that runs too long.
+  static Future<void> processes() async {
+    final echo = await Process.start('dart', ['--version']);
+    await echo.closeInput();
+    final lines = await echo.stdout.lines.toList();
+    final errors = await echo.stderr.text;
+    log(
+      'dart printed ${lines.length} line(s): ${[...lines, errors.trim()].where((line) => line.isNotEmpty).join(' ')}',
+    );
+
+    final slow = Platform.isWindows
+        ? await Process.start('ping', ['-n', '30', '127.0.0.1'])
+        : await Process.start('sleep', ['30']);
+    final code = await slow.waitFor(const Duration(seconds: 1));
+    log(
+      code == null
+          ? 'The slow program was stopped after 1 second'
+          : 'The slow program finished with $code',
+    );
+  }
+
+  /// Downloads a small file with a progress bar, then shows it.
+  static Future<void> download() async {
+    final dir = Directory.systemTemp.createTempSync('cmdline_fetch_').path;
+    try {
+      final saveTo = join(dir, 'VERSION.json');
+      await fetch(
+        'https://storage.googleapis.com/dart-archive/channels/stable/release/latest/VERSION',
+        saveTo,
+      );
+      CliTheme.say(box(saveTo.readText.trim(), title: 'Latest Dart'));
     } finally {
       deleteDir(dir);
     }
@@ -88,6 +423,11 @@ class CommandLineDemo {
       'Blue',
       'Purple',
     ], defaultOption: 'Green');
+    final file = menu('Pick a file', [
+      'lib/main.dart',
+      'lib/src/app.dart',
+      'test/app_test.dart',
+    ], format: basename);
     final save = confirm('Save these settings?', defaultValue: true);
 
     CliTheme.say(
@@ -97,6 +437,7 @@ class CommandLineDemo {
           'Port:     $port',
           'Password: ${'*' * secret.length}',
           'Colour:   $colour',
+          'File:     $file',
           'Saved:    ${save ? 'yes' : 'no'}',
         ].join('\n'),
         title: 'Answers',
@@ -104,74 +445,26 @@ class CommandLineDemo {
     );
   }
 
-  /// Shows a box and a table, with styled cells that still line up.
-  static void format() {
-    final theme = CliTheme.current;
-    CliTheme.say(
-      box('Boxes fit their text,\neven ${'styled'.bold.italic} text.'),
-    );
-    CliTheme.say(
-      table(
-        [
-          ['paths.dart', 'Paths', 212],
-          ['menu.dart', 'Prompts', 230],
-          ['fetch.dart', 'Downloads'.foreground(theme.highlight), 98],
-        ],
-        header: ['File', 'Area', 'Lines'],
-        rightAligned: {2},
-      ),
-    );
-  }
-
-  /// Looks up programs, changes a variable and shows PATH.
-  static Future<void> environment() async {
-    for (final program in ['dart', 'git', 'cmdline_missing_tool']) {
-      final found = which(program);
-      CliTheme.say(
-        found == null
-            ? CliTheme.current.errorLine('$program not found')
-            : CliTheme.current.successLine('$program: $found'),
-      );
-    }
-
-    env['CMDLINE_DEMO'] = 'set from Dart';
+  /// Hands the keyboard to a shell command that asks a question.
+  static Future<void> interactiveCommand() async {
     final command = Platform.isWindows
-        ? r'$env:CMDLINE_DEMO'
-        : r'echo "$CMDLINE_DEMO"';
-    log('A command sees: ${await command.firstLine}');
-    env['CMDLINE_DEMO'] = null;
-
-    env.printAll(only: '*PATH*');
+        ? r'$name = Read-Host "Type your name"; Write-Host "Hello, $name"'
+        : r'printf "Type your name: "; read name; echo "Hello, $name"';
+    await command.start(interactive: true);
   }
 
-  /// Runs commands from strings, including one that fails.
-  static Future<void> shell() async {
-    await 'dart --version'.run;
-    final branch = await 'git branch --show-current'.start(
-      show: false,
-      nothrow: true,
-    );
-    log('Git branch: ${branch.ok ? branch.output.trim() : '(not a repo)'}');
-
-    final failing = Platform.isWindows ? 'cmd /c exit 3' : 'exit 3';
-    final result = await failing.start(nothrow: true);
-    log('The failing command gave exit code ${result.exitCode}');
-
-    log('Running as admin/root: ${await isPrivilegedUser}');
-  }
-
-  /// Downloads a small file with a progress bar, then shows it.
-  static Future<void> download() async {
-    final dir = Directory.systemTemp.createTempSync('cmdline_fetch_').path;
-    try {
-      final saveTo = join(dir, 'VERSION.json');
-      await fetch(
-        'https://storage.googleapis.com/dart-archive/channels/stable/release/latest/VERSION',
-        saveTo,
-      );
-      CliTheme.say(box(saveTo.readText.trim(), title: 'Latest Dart'));
-    } finally {
-      deleteDir(dir);
+  /// Opens a web page in the browser, if you say yes.
+  static Future<void> openApp() async {
+    if (confirm('Open dart.dev in your browser?', defaultValue: false)) {
+      await openWithDefaultApp('https://dart.dev');
+      pass('Opened dart.dev');
+    } else {
+      log('Skipped opening the browser');
     }
   }
+
+  /// Quotes [path] for the default shell.
+  static String _quoted(String path) => Platform.isWindows
+      ? "'${path.replaceAll("'", "''")}'"
+      : "'${path.replaceAll("'", r"'\''")}'";
 }
