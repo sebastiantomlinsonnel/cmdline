@@ -5,13 +5,13 @@ import 'package:cmdline/cmdline.dart';
 
 /// Small runnable tours of what the package can do.
 ///
-/// [demo] runs everything that needs no typing, so it works anywhere, even
+/// [docs] runs everything that needs no typing, so it works anywhere, even
 /// with output piped to a file. [demoAll] runs the parts that ask you
 /// things or hand over the keyboard, so it needs a real terminal.
 class CommandLineDemo {
   const CommandLineDemo._();
 
-  /// Runs every demo that doesn't need you to type anything.
+  /// Runs every docs that doesn't need you to type anything.
   static Future<void> demo() async {
     await _section('Logger', () async {
       await spinnerDemo();
@@ -31,7 +31,7 @@ class CommandLineDemo {
     await _section('Download', () => download());
   }
 
-  /// Runs every demo that asks you things or hands over the keyboard.
+  /// Runs every docs that asks you things or hands over the keyboard.
   ///
   /// Needs a real terminal for the arrow-key menu, hidden typing and the
   /// interactive command.
@@ -41,9 +41,9 @@ class CommandLineDemo {
     await _section('Default app', () => openApp());
   }
 
-  /// Prints a heading for one part of the demo, then runs it.
+  /// Prints a heading for one part of the docs, then runs it.
   ///
-  /// If the part throws, the error is shown and the demo moves on.
+  /// If the part throws, the error is shown and the docs moves on.
   static Future<void> _section(
     String title,
     FutureOr<void> Function() part,
@@ -90,14 +90,14 @@ class CommandLineDemo {
   /// Saves log messages to a file, then shows what the file holds.
   static Future<void> logFile() async {
     final dir = Directory.systemTemp.createTempSync('cmdline_log_').path;
-    final path = join(dir, 'demo.log');
+    final path = join(dir, 'docs.log');
     try {
       await Logger.open(path, append: false);
-      log('This line goes to the screen and to demo.log');
+      log('This line goes to the screen and to docs.log');
       warn('So does this warning');
       await Logger.close();
 
-      CliTheme.say(box(path.readText.trim(), title: 'demo.log'));
+      CliTheme.say(box(path.readText.trim(), title: 'docs.log'));
     } finally {
       await Logger.close();
       deleteDir(dir);
