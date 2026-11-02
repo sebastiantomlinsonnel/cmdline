@@ -1,3 +1,7 @@
+## 0.2.2
+
+- Added running terminal commands
+
 ## 0.2.1
 
 - Fixed the error message when missing a required option
