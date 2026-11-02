@@ -38,7 +38,7 @@ class HelpPrinter {
       title = '$title ${'v${root.version}'.dim}';
     }
     lines.add(title);
-    if (command.about.isNotEmpty) lines.add(command.about.italic.dim);
+    if (command.help.isNotEmpty) lines.add(command.help.italic.dim);
 
     // Usage line.
     var usage = path;
@@ -53,7 +53,7 @@ class HelpPrinter {
     for (final sub in _visibleCommands(command)) {
       var label = sub.name;
       if (sub.aliases.isNotEmpty) label += ', ${sub.aliases.join(', ')}';
-      rows.add([label, sub.about]);
+      rows.add([label, sub.help]);
     }
     _addSection(lines, 'Commands', rows);
 

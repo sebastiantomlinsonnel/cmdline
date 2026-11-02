@@ -37,7 +37,7 @@ class CLI extends Command {
   /// Creates the program.
   CLI({
     required super.name,
-    super.about,
+    super.help,
     this.version,
     super.flags,
     super.options,

@@ -26,7 +26,7 @@ class Command {
   final String name;
 
   /// One line explaining the command, shown in the help screen.
-  final String about;
+  final String help;
 
   /// Other words that also pick this command, like `ls` for `list`.
   final List<String> aliases;
@@ -56,7 +56,7 @@ class Command {
   /// name, or a name breaks the dash rules (see [Flag] and [Option]).
   Command({
     required this.name,
-    this.about = '',
+    this.help = '',
     this.aliases = const [],
     this.flags = const [],
     this.options = const [],
