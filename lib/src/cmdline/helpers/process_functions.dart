@@ -46,7 +46,7 @@ Future<String?> findProgram(String name) async {
 
 /// The path of a file in the same folder as the running script.
 ///
-/// Handy for tools you ship next to your code, like `example/speedtest.exe`.
+/// Handy for tools you ship next to your code, like `bin/speedtest.exe`.
 /// If the file isn't there, [fileName] is given back as it is, so
 /// `Process.start` tries your PATH instead.
 ///

@@ -1,3 +1,7 @@
+## 1.0.0
+
+- Initial release
+
 ## 0.3.0
 
 - Improved the colours

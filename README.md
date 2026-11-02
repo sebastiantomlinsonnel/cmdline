@@ -11,20 +11,24 @@ dart run example\main.dart
 
 ## LOGGING
 
-![demo-1-logging.gif](docs/demo-1-logging.gif)
+![demo-1-logging.gif](doc/demo-1-logging.gif)
 
 ## STYLING
 
-![demo-2-styling.gif](docs/demo-2-styling.gif)
+![demo-2-styling.gif](doc/demo-2-styling.gif)
 
 ## PROGRESS
 
-![demo-3-progress.gif](docs/demo-3-progress.gif)
+![demo-3-progress.gif](doc/demo-3-progress.gif)
 
 ## TABLES
 
-![demo-4-tables.gif](docs/demo-4-tables.gif)
+![demo-4-tables.gif](doc/demo-4-tables.gif)
 
 ## FILES
 
-![demo-5-files.gif](docs/demo-5-files.gif)
+![demo-5-files.gif](doc/demo-5-files.gif)
+
+## SHELL
+
+![demo-6-shell.gif](doc/demo-6-shell.gif)

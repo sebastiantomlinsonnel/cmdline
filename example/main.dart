@@ -344,7 +344,7 @@ Future<void> _files() async {
   try {
     join(app, 'pubspec.yaml').write('name: my_app');
     join(app, 'README.md').write('# my_app');
-    join(app, 'example', 'my_app.dart').write('void main() {}');
+    join(app, 'bin', 'my_app.dart').write('void main() {}');
     joinAll([app, 'lib', 'src', 'app.dart']).write('// app');
     join(app, 'test', 'app_test.dart').write('// tests');
 

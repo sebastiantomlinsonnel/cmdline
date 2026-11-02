@@ -4,7 +4,7 @@ Makes one GIF per scene of the demo showcase, with VHS.
 
 .DESCRIPTION
 Compiles example/main.dart, times each scene, and records it with VHS
-(https://github.com/charmbracelet/vhs) into docs/demo-<number>-<name>.gif.
+(https://github.com/charmbracelet/vhs) into doc/demo-<number>-<name>.gif.
 Nothing is screen recorded: VHS runs the demo in a hidden terminal.
 
 Needs vhs on your PATH: winget install charmbracelet.vhs
@@ -17,8 +17,8 @@ Which scenes to make, like -Scenes 2,5. Makes all of them when left out.
 The VHS colour theme. Run "vhs themes" to see them all.
 
 .EXAMPLE
-./tool/generate_gifs.ps1
-./tool/generate_gifs.ps1 -Scenes 3
+./scripts/generate_gifs.ps1
+./scripts/generate_gifs.ps1 -Scenes 3
 #>
 param(
     [int[]] $Scenes,
@@ -51,7 +51,7 @@ foreach ($number in $Scenes) {
 }
 
 New-Item -ItemType Directory -Force $work | Out-Null
-New-Item -ItemType Directory -Force (Join-Path $root 'docs') | Out-Null
+New-Item -ItemType Directory -Force (Join-Path $root 'doc') | Out-Null
 
 Push-Location $root
 try {
@@ -61,7 +61,7 @@ try {
 
     foreach ($number in $Scenes) {
         $name = $names[$number - 1]
-        $gif = "docs/demo-$number-$name.gif"
+        $gif = "doc/demo-$number-$name.gif"
 
         # Run the scene once to see how long the GIF should be.
         $time = Measure-Command { & $exe -S $number *> $null }
@@ -96,4 +96,4 @@ Sleep ${length}ms
     Pop-Location
 }
 
-Write-Host "Done. The GIFs are in docs/."
+Write-Host "Done. The GIFs are in doc/."
