@@ -4,6 +4,7 @@ final cli = CLI(
   name: 'example',
   about: 'A basic todo example app',
   commands: [
+    /// PROFILE
     Command(
       name: 'profile',
       run: (input) async {
@@ -12,16 +13,28 @@ final cli = CLI(
         );
       },
     ),
+
+    /// DEMO
     Command(
       name: 'demo',
       about: 'Everything that needs no typing',
-      run: (input) => CommandLineDemo.demo(),
+      flags: [
+        const Flag(
+          'all',
+          short: 'a',
+          help: 'Show prompts, menus and other things that need typing',
+        ),
+      ],
+      run: (input) {
+        if (input.flag('all')) {
+          CommandLineDemo.demoAll();
+        } else {
+          return CommandLineDemo.demo();
+        }
+      },
     ),
-    Command(
-      name: 'demo-all',
-      about: 'Prompts, menus and other things that need typing',
-      run: (input) => CommandLineDemo.demoAll(),
-    ),
+
+    /// CLI
     Command(
       name: 'cli',
       about: 'Try the cli helpers',
@@ -83,6 +96,8 @@ final cli = CLI(
         ),
       ],
     ),
+
+    /// ADD
     Command(
       name: 'add',
       about: 'Add a task',
@@ -103,6 +118,8 @@ final cli = CLI(
         }
       },
     ),
+
+    /// LIST
     Command(
       name: 'list',
       about: 'Show your tasks',
