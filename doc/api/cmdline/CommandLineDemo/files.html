@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the files method from the CommandLineDemo class, for the Dart programming language.">
+  <title>files method - CommandLineDemo class - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">cmdline</a></li>
+    <li><a href="../../cmdline/">cmdline.dart</a></li>
+    <li><a href="../../cmdline/CommandLineDemo-class.html">CommandLineDemo</a></li>
+    <li class="self-crumb">files static method</li>
+  </ol>
+  <div class="self-name">files</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="cmdline&#47;CommandLineDemo-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">files</span> static method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+<span class="name ">files</span>(<wbr>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Builds a small folder, shows it as a tree, searches it, then cleans up.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; files() async {
+  final dir = Directory.systemTemp.createTempSync(&#39;cmdline_demo_&#39;).path;
+  try {
+    join(dir, &#39;lib&#39;, &#39;main.dart&#39;).write(&#39;void main() {}&#39;);
+    join(dir, &#39;lib&#39;, &#39;src&#39;, &#39;helper.dart&#39;).write(&#39;&#47;&#47; helper&#39;);
+    join(dir, &#39;README.md&#39;).write(&#39;# Demo&#39;);
+    join(dir, &#39;README.md&#39;).append(&#39;More text&#39;);
+    touch(join(dir, &#39;build&#39;, &#39;out.txt&#39;));
+    copy(join(dir, &#39;README.md&#39;), join(dir, &#39;docs&#39;, &#39;README.md&#39;));
+    copyTree(join(dir, &#39;lib&#39;), join(dir, &#39;backup&#39;));
+
+    showTree(dir);
+
+    final found = await find(&#39;*.dart&#39;, workingDirectory: dir).toList();
+    log(&#39;Found ${found.length} Dart files:&#39;);
+    found.map((file) =&gt; &#39;  ${basename(file)}&#39;.bold).forEach(CliTheme.say);
+
+    final changed = replace(join(dir, &#39;README.md&#39;), &#39;Demo&#39;, &#39;Demo project&#39;);
+    log(&#39;Changed $changed place(s) in README.md&#39;);
+    log(&#39;README.md lines: ${join(dir, &#39;README.md&#39;).readLines}&#39;);
+    log(&#39;README.md is ${fileLength(join(dir, &#39;README.md&#39;))} bytes&#39;);
+
+    try {
+      copy(join(dir, &#39;README.md&#39;), join(dir, &#39;docs&#39;, &#39;README.md&#39;));
+    } on FileError catch (error) {
+      CliTheme.say(error.styled);
+    }
+  } finally {
+    deleteDir(dir);
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">cmdline</a></li>
+    <li><a href="../../cmdline/">cmdline</a></li>
+    <li><a href="../../cmdline/CommandLineDemo-class.html">CommandLineDemo</a></li>
+    <li class="self-crumb">files static method</li>
+</ol>
+
+    <h5>CommandLineDemo class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      1.0.1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
