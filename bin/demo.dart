@@ -140,7 +140,7 @@ Future<void> showcase() async {
 void _clear() => stdout.write('$CLEAR_SCREEN$CURSOR_HOME$HIDE_CURSOR');
 
 /// A short pause between lines, so they appear one at a time.
-Future<void> _beat() => delay(0.35);
+Future<void> _beat() => delay(0.25);
 
 /// Shows one numbered scene, then pauses so it can be read.
 Future<void> _scene(
@@ -156,9 +156,9 @@ Future<void> _scene(
   );
   CliTheme.say(' ${'─' * 40}'.dim.foreground(theme.border));
   CliTheme.say('');
-  await delay(0.5);
+  await delay(0.2);
   await body();
-  await delay(2.5);
+  await delay(1.6);
 }
 
 /// A title card with the package name.
@@ -173,7 +173,7 @@ Future<void> _intro() async {
       ].join('\n'),
     ),
   );
-  await delay(2);
+  await delay(1.5);
 }
 
 /// Points viewers at how to get the package.
@@ -190,13 +190,13 @@ Future<void> _outro() async {
     ),
   );
   CliTheme.say('');
-  await delay(3);
+  await delay(2);
 }
 
 /// A spinner, then one message of each log level.
 Future<void> _logging() async {
   Logger.instance.startSpinner('Installing dependencies');
-  await delay(1.8);
+  await delay(1.2);
   Logger.instance.stopSpinner('Dependencies installed', Level.pass);
   await _beat();
 
@@ -226,7 +226,7 @@ Future<void> _styling() async {
       'inverse'.inverse,
     ].join('  '),
   );
-  await delay(0.8);
+  await delay(0.5);
   CliTheme.say('');
 
   final palette = {
@@ -250,24 +250,32 @@ Future<void> _styling() async {
   }
   CliTheme.say('');
 
-  // Fade from sky to rose, one cell at a time.
+  // Fade from sky to rose, drawn in a few quick chunks.
   const width = 48;
-  for (var i = 0; i < width; i++) {
-    final amount = 1 - i / (width - 1);
-    stdout.write(
-      ' '.background(AsciiPalette.sky.opacity(amount, over: AsciiPalette.rose)),
-    );
-    await delay(0.015);
+  const chunk = 6;
+  for (var start = 0; start < width; start += chunk) {
+    for (var i = start; i < start + chunk; i++) {
+      final amount = 1 - i / (width - 1);
+      stdout.write(
+        ' '.background(
+          AsciiPalette.sky.opacity(amount, over: AsciiPalette.rose),
+        ),
+      );
+    }
+    await delay(0.05);
   }
   stdout.writeln();
 }
 
 /// Three progress bars: two finish and one fails.
 Future<void> _progress() async {
+  // Moves the bar to [upTo] in a fixed number of frames, so the time it
+  // takes doesn't depend on how many steps the bar has.
   Future<void> fill(ProgressBar bar, int upTo, double seconds) async {
-    for (var i = 0; i < upTo; i++) {
-      await delay(seconds / upTo);
-      bar.add();
+    const frames = 15;
+    for (var frame = 1; frame <= frames; frame++) {
+      await delay(seconds / frames);
+      bar.update((upTo * frame / frames).round());
     }
   }
 
@@ -276,7 +284,7 @@ Future<void> _progress() async {
     total: 60,
     colour: AsciiPalette.sky,
   );
-  await fill(download, 60, 1.5);
+  await fill(download, 60, 1);
   download.done('Downloaded 12.4 MB');
   await _beat();
 
@@ -285,7 +293,7 @@ Future<void> _progress() async {
     total: 40,
     colour: AsciiPalette.lavender,
   );
-  await fill(compile, 40, 1.2);
+  await fill(compile, 40, 0.8);
   compile.done('Compiled 40 files');
   await _beat();
 
@@ -294,8 +302,8 @@ Future<void> _progress() async {
     total: 50,
     colour: AsciiPalette.peach,
   );
-  await fill(upload, 35, 1);
-  await delay(0.4);
+  await fill(upload, 35, 0.7);
+  await delay(0.3);
   upload.failed('Upload stopped at 70%');
 }
 
@@ -315,7 +323,7 @@ Future<void> _tables() async {
       rightAligned: {1},
     ),
   );
-  await delay(1);
+  await delay(0.6);
   CliTheme.say(
     box(
       '${'2'.bold} packages can be updated.\n'
@@ -337,7 +345,7 @@ Future<void> _files() async {
     join(app, 'test', 'app_test.dart').write('// tests');
 
     showTree(app);
-    await delay(1);
+    await delay(0.6);
     CliTheme.say('');
 
     final found = await find('*.dart', workingDirectory: app).toList();
@@ -356,8 +364,6 @@ Future<void> _files() async {
 Future<void> _shell() async {
   // Verbose mode shows each command before it runs.
   await 'dart --version'.run;
-  await _beat();
-  await 'git --version'.run;
   await _beat();
   await 'git rev-parse --verify no-such-branch'.start(nothrow: true);
 }
