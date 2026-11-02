@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Changed `about` property of [Command] to `help`
+
 ## 1.0.1
 
 - Fixed [README.md] on pub.dev
