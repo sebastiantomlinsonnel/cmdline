@@ -4,36 +4,6 @@ final cli = CLI(
   name: 'example',
   about: 'A basic todo example app',
   commands: [
-    /// PROFILE
-    Command(
-      name: 'profile',
-      run: (input) async {
-        await TerminalCommand.run(
-          r'(Get-Content $PROFILE).contains("# RUN.EXE")',
-        );
-      },
-    ),
-
-    /// DEMO
-    Command(
-      name: 'demo',
-      about: 'Everything that needs no typing',
-      flags: [
-        const Flag(
-          'all',
-          short: 'a',
-          help: 'Show prompts, menus and other things that need typing',
-        ),
-      ],
-      run: (input) {
-        if (input.flag('all')) {
-          CommandLineDemo.demoAll();
-        } else {
-          return CommandLineDemo.demo();
-        }
-      },
-    ),
-
     /// CLI
     Command(
       name: 'cli',
