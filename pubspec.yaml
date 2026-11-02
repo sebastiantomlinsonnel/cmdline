@@ -1,6 +1,6 @@
 name: cmdline
 description: A command and CLI SDK
-version: 0.2.3
+version: 0.3.0
 repository: https://git.recollect.cc/sebas/cmdline
 homepage: https://recollect.cc/
 

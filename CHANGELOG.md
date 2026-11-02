@@ -1,3 +1,7 @@
+## 0.3.0
+
+- Improved the colours
+
 ## 0.2.3
 
 - Added a ton of CLI helpers
