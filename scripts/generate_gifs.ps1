@@ -31,9 +31,9 @@ $ErrorActionPreference = 'Stop'
 $names = @('logging', 'styling', 'progress', 'tables', 'files', 'shell')
 
 # How the GIFs look. 90 columns fit the longest line (dart --version).
-$fontSize = 16
-$width = 940
-$height = 520
+$fontSize = 20
+$width = 1180
+$height = 650
 
 $root = Split-Path $PSScriptRoot -Parent
 $work = Join-Path $root '.dart_tool/demo_gifs'
@@ -75,7 +75,7 @@ Set Shell "pwsh"
 Set FontSize $fontSize
 Set Width $width
 Set Height $height
-Set Padding 20
+Set Padding 24
 Set Theme "$Theme"
 
 Hide

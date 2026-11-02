@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
+Future<void> main(List<String> args) async => await cli.start(args);
+
 CLI cli = CLI(
   name: 'demo',
   about: 'Features demo',
@@ -152,8 +154,6 @@ Future<void> showcase({int? only}) async {
     stdout.write(SHOW_CURSOR);
   }
 }
-
-void _clear() => stdout.write('$CLEAR_SCREEN$CURSOR_HOME$HIDE_CURSOR');
 
 Future<void> _beat() => delay(0.25);
 
@@ -370,4 +370,4 @@ Future<void> _shell() async {
   await 'git rev-parse --verify no-such-branch'.start(nothrow: true);
 }
 
-Future<void> main(List<String> args) async => await cli.start(args);
+void _clear() => stdout.write('$CLEAR_SCREEN$CURSOR_HOME$HIDE_CURSOR');
