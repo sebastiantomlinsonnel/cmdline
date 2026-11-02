@@ -170,19 +170,15 @@ class Logger {
   static String getVerbosityColour(Level level, String data) {
     switch (level) {
       case Level.trace:
-        return data.foreground(const AsciiColourRgb.hex(0xFF77FF)).bold;
+        return data.foreground(const AsciiColourRgb.hex(0xDD6EED)).bold;
       case Level.debug:
         return data
             .foreground(const AsciiColour.rgb(3, 5, 4).opacity(0.8))
             .bold;
       case Level.fail:
-        return data
-            .foreground(const AsciiColour.rgb(5, 0, 0).opacity(0.9))
-            .bold;
+        return data.foreground(const AsciiColourRgb(173, 59, 59)).bold;
       case Level.pass:
-        return data
-            .foreground(const AsciiColour.rgb(1, 5, 1).opacity(0.8))
-            .bold;
+        return data.foreground(const AsciiColourRgb(98, 175, 105)).bold;
       case Level.warn:
         return data
             .foreground(const AsciiColour.rgb(5, 3, 0).opacity(0.9))
