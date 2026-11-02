@@ -16,7 +16,7 @@ enum TerminalShell {
   /// Bash, on Mac and Linux (or Git Bash / WSL on Windows).
   bash,
 
-  /// The basic POSIX shell (`/bin/sh`) on Mac and Linux.
+  /// The basic POSIX shell (`/example/sh`) on Mac and Linux.
   sh;
 
   /// The usual shell for this system.
@@ -189,7 +189,7 @@ class TerminalCommand {
 
       case TerminalShell.bash:
       case TerminalShell.sh:
-        final program = shell == TerminalShell.bash ? 'bash' : '/bin/sh';
+        final program = shell == TerminalShell.bash ? 'bash' : '/example/sh';
 
         return (program, ['-c', _shScript(command, folderFile)]);
     }

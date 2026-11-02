@@ -3,7 +3,7 @@
 Makes one GIF per scene of the demo showcase, with VHS.
 
 .DESCRIPTION
-Compiles bin/demo.dart, times each scene, and records it with VHS
+Compiles example/main.dart, times each scene, and records it with VHS
 (https://github.com/charmbracelet/vhs) into docs/demo-<number>-<name>.gif.
 Nothing is screen recorded: VHS runs the demo in a hidden terminal.
 
@@ -17,8 +17,8 @@ Which scenes to make, like -Scenes 2,5. Makes all of them when left out.
 The VHS colour theme. Run "vhs themes" to see them all.
 
 .EXAMPLE
-./tool/gifs.ps1
-./tool/gifs.ps1 -Scenes 3
+./tool/generate_gifs.ps1
+./tool/generate_gifs.ps1 -Scenes 3
 #>
 param(
     [int[]] $Scenes,
@@ -27,7 +27,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-# Must match the order of _scenes in bin/demo.dart.
+# Must match the order of _scenes in example/main.dart.
 $names = @('logging', 'styling', 'progress', 'tables', 'files', 'shell')
 
 # How the GIFs look. 90 columns fit the longest line (dart --version).
@@ -57,7 +57,7 @@ Push-Location $root
 try {
     Write-Host 'Compiling the demo...'
     dart compile exe bin/demo.dart -o $exe | Out-Null
-    if ($LASTEXITCODE -ne 0) { throw 'Compiling bin/demo.dart failed.' }
+    if ($LASTEXITCODE -ne 0) { throw 'Compiling example/main.dart failed.' }
 
     foreach ($number in $Scenes) {
         $name = $names[$number - 1]

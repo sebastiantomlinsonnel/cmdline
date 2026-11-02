@@ -4,7 +4,7 @@ import 'dart:io';
 /// Makes a program started with `Process.start` easier to work with.
 ///
 /// ```dart
-/// final process = await Process.start('dart', ['run', 'bin/server.dart']);
+/// final process = await Process.start('dart', ['run', 'example/server.dart']);
 /// process.stdout.lines.listen(log);
 /// process.writeLine('hello');
 /// final code = await process.waitFor(const Duration(seconds: 30));

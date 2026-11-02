@@ -119,16 +119,10 @@ CLI cli = CLI(
     final scene = input.option('scene');
     await showcase(only: scene == null ? null : int.parse(scene));
 
-    // Gives a GIF recorder time to stop before the shell prompt comes back.
     if (input.flag('hold')) await delay(5);
   },
 );
 
-Future<void> main(List<String> args) async => await cli.start(args);
-
-/// The scenes of [showcase], in order: a title and what to show.
-///
-/// `tool/gifs.ps1` makes one GIF per scene, named after its title.
 final List<(String, Future<void> Function())> _scenes = [
   ('Logging', _logging),
   ('Styling', _styling),
@@ -138,17 +132,7 @@ final List<(String, Future<void> Function())> _scenes = [
   ('Shell commands', _shell),
 ];
 
-/// A short, paced tour of the package, made for recording a GIF.
-///
-/// Each scene starts on a clear screen with a numbered heading, and pauses
-/// at the end so viewers can read it. Nothing personal (like your PATH or
-/// home folder) is shown. The longest line is `dart --version`, so a 90-column
-/// terminal fits everything.
-///
-/// With [only], just that scene (counting from 1) is shown, without the
-/// title card and closing card.
 Future<void> showcase({int? only}) async {
-  // Show debug and trace lines, even without --verbose.
   Logger.instance.verbose = true;
   try {
     if (only != null) {
@@ -169,13 +153,10 @@ Future<void> showcase({int? only}) async {
   }
 }
 
-/// Clears the screen and hides the cursor, ready for the next scene.
 void _clear() => stdout.write('$CLEAR_SCREEN$CURSOR_HOME$HIDE_CURSOR');
 
-/// A short pause between lines, so they appear one at a time.
 Future<void> _beat() => delay(0.25);
 
-/// Shows one numbered scene, then pauses so it can be read.
 Future<void> _scene(
   int number,
   String title,
@@ -194,7 +175,6 @@ Future<void> _scene(
   await delay(1.6);
 }
 
-/// A title card with the package name.
 Future<void> _intro() async {
   _clear();
   CliTheme.say('');
@@ -209,7 +189,6 @@ Future<void> _intro() async {
   await delay(1.5);
 }
 
-/// Points viewers at how to get the package.
 Future<void> _outro() async {
   _clear();
   CliTheme.say('');
@@ -226,7 +205,6 @@ Future<void> _outro() async {
   await delay(2);
 }
 
-/// A spinner, then one message of each log level.
 Future<void> _logging() async {
   Logger.instance.startSpinner('Installing dependencies');
   await delay(1.2);
@@ -246,7 +224,6 @@ Future<void> _logging() async {
   pass('Build finished in 3.2s');
 }
 
-/// Text styles, the colour palette and a blended gradient.
 Future<void> _styling() async {
   CliTheme.say(
     [
@@ -283,7 +260,6 @@ Future<void> _styling() async {
   }
   CliTheme.say('');
 
-  // Fade from sky to rose, drawn in a few quick chunks.
   const width = 48;
   const chunk = 6;
   for (var start = 0; start < width; start += chunk) {
@@ -300,10 +276,7 @@ Future<void> _styling() async {
   stdout.writeln();
 }
 
-/// Three progress bars: two finish and one fails.
 Future<void> _progress() async {
-  // Moves the bar to [upTo] in a fixed number of frames, so the time it
-  // takes doesn't depend on how many steps the bar has.
   Future<void> fill(ProgressBar bar, int upTo, double seconds) async {
     const frames = 15;
     for (var frame = 1; frame <= frames; frame++) {
@@ -340,7 +313,6 @@ Future<void> _progress() async {
   upload.failed('Upload stopped at 70%');
 }
 
-/// A table with styled cells, and a summary box.
 Future<void> _tables() async {
   final ok = 'up to date'.foreground(AsciiPalette.mint);
   final old = 'update'.foreground(AsciiPalette.butter);
@@ -366,14 +338,13 @@ Future<void> _tables() async {
   );
 }
 
-/// Builds a small project, shows it as a tree and searches it.
 Future<void> _files() async {
   final temp = Directory.systemTemp.createTempSync('cmdline_gif_').path;
   final app = join(temp, 'my_app');
   try {
     join(app, 'pubspec.yaml').write('name: my_app');
     join(app, 'README.md').write('# my_app');
-    join(app, 'bin', 'my_app.dart').write('void main() {}');
+    join(app, 'example', 'my_app.dart').write('void main() {}');
     joinAll([app, 'lib', 'src', 'app.dart']).write('// app');
     join(app, 'test', 'app_test.dart').write('// tests');
 
@@ -393,10 +364,10 @@ Future<void> _files() async {
   }
 }
 
-/// Runs commands from strings, including one that fails.
 Future<void> _shell() async {
-  // Verbose mode shows each command before it runs.
   await 'dart --version'.run;
   await _beat();
   await 'git rev-parse --verify no-such-branch'.start(nothrow: true);
 }
+
+Future<void> main(List<String> args) async => await cli.start(args);
