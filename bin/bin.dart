@@ -7,10 +7,53 @@ final cli = CLI(
     Command(
       name: 'profile',
       run: (input) async {
-        await TerminalCommand.run(r'(Get-Content $PROFILE).contains("# RUN.EXE")');
+        await TerminalCommand.run(
+          r'(Get-Content $PROFILE).contains("# RUN.EXE")',
+        );
       },
     ),
     Command(name: 'demo', run: (input) => CommandLineDemo.printMessages()),
+    Command(
+      name: 'cli',
+      about: 'Try the cli helpers',
+      commands: [
+        Command(
+          name: 'theme',
+          about: 'Default and custom themes',
+          run: (input) => CommandLineDemo.theme(),
+        ),
+        Command(
+          name: 'files',
+          about: 'File helpers, find and showTree',
+          run: (input) => CommandLineDemo.files(),
+        ),
+        Command(
+          name: 'prompts',
+          about: 'ask, confirm and the arrow-key menu',
+          run: (input) => CommandLineDemo.prompts(),
+        ),
+        Command(
+          name: 'format',
+          about: 'Boxes and tables',
+          run: (input) => CommandLineDemo.format(),
+        ),
+        Command(
+          name: 'env',
+          about: 'Variables, PATH and which',
+          run: (input) => CommandLineDemo.environment(),
+        ),
+        Command(
+          name: 'shell',
+          about: 'Running commands from strings',
+          run: (input) => CommandLineDemo.shell(),
+        ),
+        Command(
+          name: 'fetch',
+          about: 'Download with a progress bar',
+          run: (input) => CommandLineDemo.download(),
+        ),
+      ],
+    ),
     Command(
       name: 'add',
       about: 'Add a task',
@@ -41,7 +84,9 @@ final cli = CLI(
       },
     ),
   ],
-  run: (input) {},
+  run: (input) {
+    input.help();
+  },
 );
 
 void main(List<String> args) => cli.start(args);
