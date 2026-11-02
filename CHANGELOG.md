@@ -1,3 +1,7 @@
+## 0.2.3
+
+- Added a ton of CLI helpers
+
 ## 0.2.2
 
 - Added running terminal commands
