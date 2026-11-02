@@ -1,7 +1,7 @@
 name: cmdline
 description: An SDK for console development
 version: 1.0.0
-repository: https://git.recollect.cc/sebas/cmdline
+repository: https://github.com/sebastiantomlinsonnel/cmdline
 homepage: https://recollect.cc/
 topics:
   - logging

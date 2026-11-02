@@ -8,24 +8,24 @@ An SDK for console development
 
 ## LOGGING
 
-![demo-1-logging.gif](doc/demo-1-logging.gif)
+![demo-1-logging.gif](https://raw.githubusercontent.com/sebastiantomlinsonnel/cmdline/master/doc/demo-1-logging.gif)
 
 ## STYLING
 
-![demo-2-styling.gif](doc/demo-2-styling.gif)
+![demo-2-styling.gif](https://raw.githubusercontent.com/sebastiantomlinsonnel/cmdline/master/doc/demo-2-styling.gif)
 
 ## PROGRESS
 
-![demo-3-progress.gif](doc/demo-3-progress.gif)
+![demo-3-progress.gif](https://raw.githubusercontent.com/sebastiantomlinsonnel/cmdline/master/doc/demo-3-progress.gif)
 
 ## TABLES
 
-![demo-4-tables.gif](doc/demo-4-tables.gif)
+![demo-4-tables.gif](https://raw.githubusercontent.com/sebastiantomlinsonnel/cmdline/master/doc/demo-4-tables.gif)
 
 ## FILES
 
-![demo-5-files.gif](doc/demo-5-files.gif)
+![demo-5-files.gif](https://raw.githubusercontent.com/sebastiantomlinsonnel/cmdline/master/doc/demo-5-files.gif)
 
 ## SHELL
 
-![demo-6-shell.gif](doc/demo-6-shell.gif)
+![demo-6-shell.gif](https://raw.githubusercontent.com/sebastiantomlinsonnel/cmdline/master/doc/demo-6-shell.gif)
