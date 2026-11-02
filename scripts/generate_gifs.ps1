@@ -56,7 +56,7 @@ New-Item -ItemType Directory -Force (Join-Path $root 'docs') | Out-Null
 Push-Location $root
 try {
     Write-Host 'Compiling the demo...'
-    dart compile exe bin/demo.dart -o $exe | Out-Null
+    dart compile exe example\main.dart -o $exe | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'Compiling example/main.dart failed.' }
 
     foreach ($number in $Scenes) {
