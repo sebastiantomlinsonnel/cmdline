@@ -11,6 +11,20 @@ CLI cli = CLI(
       short: 'a',
       help: 'Show prompts, menus and other things that need typing',
     ),
+    const Flag(
+      'hold',
+      help: 'Keep the screen still for a few seconds at the end',
+      hidden: true,
+    ),
+  ],
+  options: [
+    Option(
+      'scene',
+      short: 'S',
+      help: 'Show only this scene of the showcase',
+      valueName: 'number',
+      allowed: [for (var i = 1; i <= _scenes.length; i++) '$i'],
+    ),
   ],
   commands: [
     Command(
@@ -99,19 +113,30 @@ CLI cli = CLI(
       run: (input) => CommandLineDemo.openApp(),
     ),
   ],
-  run: (input) {
-    if (input.flag('all')) {
-      return CommandLineDemo.demoAll();
-    } else {
-      return showcase();
-    }
+  run: (input) async {
+    if (input.flag('all')) return CommandLineDemo.demoAll();
+
+    final scene = input.option('scene');
+    await showcase(only: scene == null ? null : int.parse(scene));
+
+    // Gives a GIF recorder time to stop before the shell prompt comes back.
+    if (input.flag('hold')) await delay(5);
   },
 );
 
 Future<void> main(List<String> args) async => await cli.start(args);
 
-/// How many scenes [showcase] has, for the "1/6" counter.
-const _sceneCount = 6;
+/// The scenes of [showcase], in order: a title and what to show.
+///
+/// `tool/gifs.ps1` makes one GIF per scene, named after its title.
+final List<(String, Future<void> Function())> _scenes = [
+  ('Logging', _logging),
+  ('Styling', _styling),
+  ('Progress', _progress),
+  ('Boxes and tables', _tables),
+  ('Files', _files),
+  ('Shell commands', _shell),
+];
 
 /// A short, paced tour of the package, made for recording a GIF.
 ///
@@ -119,17 +144,25 @@ const _sceneCount = 6;
 /// at the end so viewers can read it. Nothing personal (like your PATH or
 /// home folder) is shown. The longest line is `dart --version`, so a 90-column
 /// terminal fits everything.
-Future<void> showcase() async {
+///
+/// With [only], just that scene (counting from 1) is shown, without the
+/// title card and closing card.
+Future<void> showcase({int? only}) async {
   // Show debug and trace lines, even without --verbose.
   Logger.instance.verbose = true;
   try {
+    if (only != null) {
+      final (title, body) = _scenes[only - 1];
+      await _scene(only, title, body);
+
+      return;
+    }
+
     await _intro();
-    await _scene(1, 'Logging', _logging);
-    await _scene(2, 'Styling', _styling);
-    await _scene(3, 'Progress', _progress);
-    await _scene(4, 'Boxes and tables', _tables);
-    await _scene(5, 'Files', _files);
-    await _scene(6, 'Shell commands', _shell);
+    for (var i = 0; i < _scenes.length; i++) {
+      final (title, body) = _scenes[i];
+      await _scene(i + 1, title, body);
+    }
     await _outro();
   } finally {
     stdout.write(SHOW_CURSOR);
@@ -152,7 +185,7 @@ Future<void> _scene(
   _clear();
   CliTheme.say('');
   CliTheme.say(
-    ' $number/$_sceneCount '.dim + title.bold.foreground(theme.highlight),
+    ' $number/${_scenes.length} '.dim + title.bold.foreground(theme.highlight),
   );
   CliTheme.say(' ${'─' * 40}'.dim.foreground(theme.border));
   CliTheme.say('');
