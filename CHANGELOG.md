@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Fixed the spinner labels not resetting
+
 ## 1.0.2
 
 - Changed `about` property of [Command] to `help`

@@ -195,10 +195,7 @@ class Logger {
   }) {
     _spinnerTimer?.cancel();
     _spinnerTimer = null;
-    _spinnerLabel = label;
-    // if (!stdout.hasTerminal) return; // piped output: skip the animation
-
-    // Hide the cursor so it doesn't flicker over the spinner.
+    _spinnerLabel = '\rlabel';
     stdout.write(HIDE_CURSOR);
 
     int frame = 0;
