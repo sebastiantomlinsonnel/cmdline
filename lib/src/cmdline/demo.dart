@@ -24,7 +24,6 @@ class CommandLineDemo {
     await _section('Boxes and tables', () => format());
     await _section('Paths', () => paths());
     await _section('Files', () => files());
-    await _section('Environment', () => environment());
     await _section('Shell commands', () => shell());
     await _section('Terminal folder', () => terminalFolder());
     await _section('Processes', () => processes());
@@ -90,7 +89,7 @@ class CommandLineDemo {
   /// Saves log messages to a file, then shows what the file holds.
   static Future<void> logFile() async {
     final dir = Directory.systemTemp.createTempSync('cmdline_log_').path;
-    final path = join(dir, 'demo.log');
+    final path = CMD.fs.join(dir, 'demo.log');
     try {
       await Logger.open(path, append: false);
       log('This line goes to the screen and to demo.log');
@@ -235,8 +234,8 @@ class CommandLineDemo {
 
   /// Builds and takes apart a few paths.
   static void paths() {
-    final file = joinAll([
-      homeDirectory,
+    final file = CMD.fs.joinAll([
+      CMD.fs.homeDirectory,
       'projects',
       'app',
       'lib',
@@ -246,17 +245,17 @@ class CommandLineDemo {
       CMD.draw.table(
         [
           ['join', file],
-          ['basename', basename(file)],
-          ['basenameWithoutExtension', basenameWithoutExtension(file)],
-          ['fileExtension', fileExtension(file)],
-          ['dirname', dirname(file)],
+          ['basename', CMD.fs.basename(file)],
+          ['basenameWithoutExtension', CMD.fs.basenameWithoutExtension(file)],
+          ['fileExtension', CMD.fs.fileExtension(file)],
+          ['dirname', CMD.fs.dirname(file)],
           [
             'normalize',
-            normalize(joinAll(['a', '..', 'b', '.', 'c'])),
+            CMD.fs.normalize(CMD.fs.joinAll(['a', '..', 'b', '.', 'c'])),
           ],
-          ['isAbsolute', isAbsolute(file)],
-          ['absolute', absolute('lib')],
-          ['pwd', pwd],
+          ['isAbsolute', CMD.fs.isAbsolute(file)],
+          ['absolute', CMD.fs.absolute('lib')],
+          ['pwd', CMD.fs.pwd],
         ],
         header: ['Function', 'Result'],
       ),
@@ -267,64 +266,47 @@ class CommandLineDemo {
   static Future<void> files() async {
     final dir = Directory.systemTemp.createTempSync('cmdline_demo_').path;
     try {
-      join(dir, 'lib', 'main.dart').write('void main() {}');
-      join(dir, 'lib', 'src', 'helper.dart').write('// helper');
-      join(dir, 'README.md').write('# Demo');
-      join(dir, 'README.md').append('More text');
-      CMD.fs.touch(join(dir, 'build', 'out.txt'));
-      CMD.fs.copy(join(dir, 'README.md'), join(dir, 'docs', 'README.md'));
-      CMD.fs.copyTree(join(dir, 'lib'), join(dir, 'backup'));
+      CMD.fs.join(dir, 'lib', 'main.dart').write('void main() {}');
+      CMD.fs.join(dir, 'lib', 'src', 'helper.dart').write('// helper');
+      CMD.fs.join(dir, 'README.md').write('# Demo');
+      CMD.fs.join(dir, 'README.md').append('More text');
+      CMD.fs.touch(CMD.fs.join(dir, 'build', 'out.txt'));
+      CMD.fs.copy(
+        CMD.fs.join(dir, 'README.md'),
+        CMD.fs.join(dir, 'docs', 'README.md'),
+      );
+      CMD.fs.copyTree(CMD.fs.join(dir, 'lib'), CMD.fs.join(dir, 'backup'));
 
       CMD.fs.showTree(dir);
 
       final found = await CMD.fs.find('*.dart', workingDirectory: dir).toList();
       log('Found ${found.length} Dart files:');
-      found.map((file) => '  ${basename(file)}'.bold).forEach(CliTheme.say);
+      found
+          .map((file) => '  ${CMD.fs.basename(file)}'.bold)
+          .forEach(CliTheme.say);
 
       final changed = CMD.fs.replace(
-        join(dir, 'README.md'),
+        CMD.fs.join(dir, 'README.md'),
         'Demo',
         'Demo project',
       );
       log('Changed $changed place(s) in README.md');
-      log('README.md lines: ${join(dir, 'README.md').readLines}');
-      log('README.md is ${CMD.fs.fileLength(join(dir, 'README.md'))} bytes');
+      log('README.md lines: ${CMD.fs.join(dir, 'README.md').readLines}');
+      log(
+        'README.md is ${CMD.fs.fileLength(CMD.fs.join(dir, 'README.md'))} bytes',
+      );
 
       try {
-        CMD.fs.copy(join(dir, 'README.md'), join(dir, 'docs', 'README.md'));
+        CMD.fs.copy(
+          CMD.fs.join(dir, 'README.md'),
+          CMD.fs.join(dir, 'docs', 'README.md'),
+        );
       } on FileError catch (error) {
         CliTheme.say(error.styled);
       }
     } finally {
       CMD.fs.deleteDir(dir);
     }
-  }
-
-  /// Looks up programs, changes a variable and PATH, and shows PATH.
-  static Future<void> environment() async {
-    for (final program in ['dart', 'git', 'cmdline_missing_tool']) {
-      final found = which(program);
-      CliTheme.say(
-        found == null
-            ? CliTheme.current.errorLine('$program not found')
-            : CliTheme.current.successLine('$program: $found'),
-      );
-    }
-
-    env['CMDLINE_DEMO'] = 'set from Dart';
-    final command = Platform.isWindows
-        ? r'$env:CMDLINE_DEMO'
-        : r'echo "$CMDLINE_DEMO"';
-    log('A command sees: ${await command.firstLine}');
-    env['CMDLINE_DEMO'] = null;
-
-    final tools = join(pwd, 'demo_tools');
-    env.prependToPath(tools);
-    log('demo_tools on PATH: ${env.isOnPath(tools)}');
-    env.removeFromPath(tools);
-    log('demo_tools on PATH after removing: ${env.isOnPath(tools)}');
-
-    env.printAll(only: '*PATH*');
   }
 
   /// Runs commands from strings, including one that fails.
@@ -350,7 +332,7 @@ class CommandLineDemo {
       warn('Caught ProcessFailed: $error');
     }
 
-    log('Running as admin/root: ${await isPrivilegedUser}');
+    log('Running as admin/root: ${await CMD.shell.isPrivilegedUser}');
   }
 
   /// Shows that a `cd` carries over to the next command.
@@ -398,7 +380,7 @@ class CommandLineDemo {
   static Future<void> download() async {
     final dir = Directory.systemTemp.createTempSync('cmdline_fetch_').path;
     try {
-      final saveTo = join(dir, 'VERSION.json');
+      final saveTo = CMD.fs.join(dir, 'VERSION.json');
       await CMD.net.fetch(
         'https://storage.googleapis.com/dart-archive/channels/stable/release/latest/VERSION',
         saveTo,
@@ -413,26 +395,26 @@ class CommandLineDemo {
   ///
   /// Needs a real terminal for the arrow-key menu and hidden typing.
   static void prompts() {
-    final name = ask('Project name', defaultValue: 'my_app');
-    final port = ask(
+    final name = CMD.prompt.ask('Project name', defaultValue: 'my_app');
+    final port = CMD.prompt.ask(
       'Port',
       defaultValue: '8080',
       validator: (answer) =>
           int.tryParse(answer) == null ? 'Type a number' : null,
     );
-    final secret = ask('Password', hidden: true, required: false);
-    final colour = menu('Favourite colour', [
+    final secret = CMD.prompt.ask('Password', hidden: true, required: false);
+    final colour = CMD.prompt.menu('Favourite colour', [
       'Red',
       'Green',
       'Blue',
       'Purple',
     ], defaultOption: 'Green');
-    final file = menu('Pick a file', [
+    final file = CMD.prompt.menu('Pick a file', [
       'lib/main.dart',
       'lib/src/app.dart',
       'test/app_test.dart',
-    ], format: basename);
-    final save = confirm('Save these settings?', defaultValue: true);
+    ], format: CMD.fs.basename);
+    final save = CMD.prompt.confirm('Save these settings?', defaultValue: true);
 
     CliTheme.say(
       CMD.draw.box(
@@ -459,7 +441,10 @@ class CommandLineDemo {
 
   /// Opens a web page in the browser, if you say yes.
   static Future<void> openApp() async {
-    if (confirm('Open dart.dev in your browser?', defaultValue: false)) {
+    if (CMD.prompt.confirm(
+      'Open dart.dev in your browser?',
+      defaultValue: false,
+    )) {
       await openWithDefaultApp('https://dart.dev');
       pass('Opened dart.dev');
     } else {
@@ -472,5 +457,3 @@ class CommandLineDemo {
       ? "'${path.replaceAll("'", "''")}'"
       : "'${path.replaceAll("'", r"'\''")}'";
 }
-
-void a() {}

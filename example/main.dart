@@ -75,11 +75,6 @@ CLI cli = CLI(
       run: (input) => CommandLineDemo.files(),
     ),
     Command(
-      name: 'env',
-      help: 'Variables, PATH and which',
-      run: (input) => CommandLineDemo.environment(),
-    ),
-    Command(
       name: 'shell',
       help: 'Running commands from strings',
       run: (input) => CommandLineDemo.shell(),
@@ -340,13 +335,13 @@ Future<void> _tables() async {
 
 Future<void> _files() async {
   final temp = Directory.systemTemp.createTempSync('cmdline_gif_').path;
-  final app = join(temp, 'my_app');
+  final app = CMD.fs.join(temp, 'my_app');
   try {
-    join(app, 'pubspec.yaml').write('name: my_app');
-    join(app, 'README.md').write('# my_app');
-    join(app, 'bin', 'my_app.dart').write('void main() {}');
-    joinAll([app, 'lib', 'src', 'app.dart']).write('// app');
-    join(app, 'test', 'app_test.dart').write('// tests');
+    CMD.fs.join(app, 'pubspec.yaml').write('name: my_app');
+    CMD.fs.join(app, 'README.md').write('# my_app');
+    CMD.fs.join(app, 'bin', 'my_app.dart').write('void main() {}');
+    CMD.fs.joinAll([app, 'lib', 'src', 'app.dart']).write('// app');
+    CMD.fs.join(app, 'test', 'app_test.dart').write('// tests');
 
     CMD.fs.showTree(app);
     await delay(0.6);
@@ -356,7 +351,7 @@ Future<void> _files() async {
     pass('Found ${found.length} Dart files');
     await _beat();
     for (final file in found) {
-      CliTheme.say('  ${CliTheme.current.pointer} ${basename(file)}'.dim);
+      CliTheme.say('  ${CliTheme.current.pointer} ${CMD.fs.basename(file)}'.dim);
       await _beat();
     }
   } finally {

@@ -56,5 +56,6 @@ extension StringFile on String {
   }
 
   /// Creates the folder this file goes in, if it is missing.
-  void _ensureParent() => Directory(dirname(this)).createSync(recursive: true);
+  void _ensureParent() =>
+      Directory(CMD.fs.dirname(this)).createSync(recursive: true);
 }

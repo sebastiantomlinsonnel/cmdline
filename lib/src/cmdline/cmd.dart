@@ -7,7 +7,12 @@ class CMD {
   static FS get fs => const FS._();
 
   static Draw get draw => const Draw._();
+
   static Net get net => const Net._();
+
+  static Prompt get prompt => const Prompt._();
+
+  static Shell get shell => const Shell._();
 
   const CMD._();
 }
@@ -50,7 +55,7 @@ class FS {
   void copy(String from, String to, {bool overwrite = false}) {
     if (!isFile(from)) throw FileError('No file to copy', from);
 
-    final target = isDirectory(to) ? join(to, basename(from)) : to;
+    final target = isDirectory(to) ? CMD.fs.join(to, basename(from)) : to;
     if (!overwrite && exists(target)) {
       throw FileError('Already exists', target);
     }
@@ -323,6 +328,222 @@ class FS {
 
     return RegExp(out.toString(), caseSensitive: !Platform.isWindows);
   }
+
+  /// Joins up to four path parts with this system's separator.
+  ///
+  /// Empty parts are skipped, and an absolute part starts the path over, so
+  /// `join('a', '/b')` gives `/b`. Use [joinAll] for more parts.
+  ///
+  /// ```dart
+  /// join(homeDirectory, '.config', 'app.json'); // C:\Users\me\.config\app.json
+  /// ```
+  String join(String first, [String? second, String? third, String? fourth]) =>
+      joinAll([first, ?second, ?third, ?fourth]);
+
+  /// Joins any number of path parts with this system's separator.
+  ///
+  /// Works like [join], for when the parts are already in a list.
+  String joinAll(Iterable<String> parts) {
+    var result = '';
+    for (final part in parts) {
+      if (part.isEmpty) continue;
+      if (_rootLength(part) > 0 || result.isEmpty) {
+        result = part;
+      } else if (_isSeparator(result[result.length - 1])) {
+        result += part;
+      } else {
+        result += '${Platform.pathSeparator}$part';
+      }
+    }
+
+    return result;
+  }
+
+  /// Cleans up [path]: removes `.`, works out `..` and doubled separators.
+  ///
+  /// On Windows, `/` is turned into `\`. An empty path gives `.`.
+  ///
+  /// ```dart
+  /// normalize('a/./b/../c'); // a\c on Windows, a/c elsewhere
+  /// ```
+  String normalize(String path) {
+    if (path.isEmpty) return '.';
+
+    final separator = Platform.pathSeparator;
+    final cleaned = Platform.isWindows ? path.replaceAll('/', r'\') : path;
+    final rootLength = _rootLength(cleaned);
+    final root = cleaned.substring(0, rootLength);
+
+    final parts = <String>[];
+    for (final part in cleaned.substring(rootLength).split(separator)) {
+      if (part.isEmpty || part == '.') continue;
+      if (part != '..') {
+        parts.add(part);
+      } else if (parts.isNotEmpty && parts.last != '..') {
+        parts.removeLast();
+      } else if (root.isEmpty) {
+        // Only a relative path can climb above where it starts.
+        parts.add('..');
+      }
+    }
+
+    final body = parts.join(separator);
+    if (root.isEmpty) return body.isEmpty ? '.' : body;
+    // A UNC root like \\server\share needs a separator before the rest.
+    final needsSeparator =
+        body.isNotEmpty &&
+        !_isSeparator(root[root.length - 1]) &&
+        !_isDrive(root);
+
+    return needsSeparator ? '$root$separator$body' : '$root$body';
+  }
+
+  /// Whether [path] starts from the top of a drive or the file system.
+  ///
+  /// `C:\x`, `\\server\share` and `/x` are absolute; `x`, `.\x` and `C:x`
+  /// are not.
+  bool isAbsolute(String path) {
+    final rootLength = _rootLength(path);
+    if (rootLength == 0) return false;
+    if (!Platform.isWindows) return true;
+
+    // "\x" on its own is relative to the current drive.
+    return path.startsWith(r'\\') ||
+        path.startsWith('//') ||
+        (rootLength == 3 && _isDrive(path.substring(0, 2)));
+  }
+
+  /// [path] as a full, cleaned-up path, starting from [pwd] if it is relative.
+  String absolute(String path) {
+    if (isAbsolute(path)) return normalize(path);
+
+    return normalize(File(path.isEmpty ? '.' : path).absolute.path);
+  }
+
+  /// The last part of [path], like `app.json` from `config/app.json`.
+  ///
+  /// Trailing separators are ignored, so `a/b/` gives `b`.
+  String basename(String path) {
+    final trimmed = _trimEnd(path);
+    final rootLength = _rootLength(trimmed);
+    if (trimmed.length == rootLength) return trimmed;
+
+    return trimmed.substring(math.max(_lastSeparator(trimmed) + 1, rootLength));
+  }
+
+  /// The last part of [path] without its ending, like `app` from `app.json`.
+  String basenameWithoutExtension(String path) {
+    final name = basename(path);
+    final ending = fileExtension(name);
+
+    return name.substring(0, name.length - ending.length);
+  }
+
+  /// The ending of [path]'s last part, dot included, like `.json`.
+  ///
+  /// Gives an empty string when there is none. A name that only starts with a
+  /// dot, like `.bashrc`, has no ending.
+  String fileExtension(String path) {
+    final name = basename(path);
+    final dot = name.lastIndexOf('.');
+
+    return dot <= 0 ? '' : name.substring(dot);
+  }
+
+  /// Everything in [path] before its last part, like `config` from
+  /// `config/app.json`.
+  ///
+  /// Gives `.` when [path] has only one part.
+  String dirname(String path) {
+    final trimmed = _trimEnd(path);
+    final rootLength = _rootLength(trimmed);
+    if (trimmed.length == rootLength) return trimmed.isEmpty ? '.' : trimmed;
+
+    final last = _lastSeparator(trimmed);
+    if (last < rootLength) {
+      return rootLength == 0 ? '.' : trimmed.substring(0, rootLength);
+    }
+
+    return _trimEnd(trimmed.substring(0, last));
+  }
+
+  /// The user's home folder, like `C:\Users\me` or `/home/me`.
+  String get homeDirectory {
+    final env = Platform.environment;
+    final home = Platform.isWindows ? env['USERPROFILE'] : env['HOME'];
+
+    return home ?? Directory.current.path;
+  }
+
+  /// The folder your app is working in.
+  ///
+  /// Setting it also moves [TerminalCommand.directory], so commands run there
+  /// too. The folder must exist.
+  String get pwd => Directory.current.path;
+
+  set pwd(String path) {
+    Directory.current = path;
+    TerminalCommand.directory = Directory.current.path;
+  }
+
+  /// Whether [char] separates folders on this system.
+  bool _isSeparator(String char) =>
+      char == '/' || (Platform.isWindows && char == r'\');
+
+  /// Whether [text] is a bare drive like `C:`.
+  bool _isDrive(String text) =>
+      Platform.isWindows &&
+      text.length == 2 &&
+      text[1] == ':' &&
+      RegExp('[a-zA-Z]').hasMatch(text[0]);
+
+  /// Where the last separator in [path] is, or -1 if there is none.
+  int _lastSeparator(String path) {
+    final slash = path.lastIndexOf('/');
+    if (!Platform.isWindows) return slash;
+
+    return math.max(slash, path.lastIndexOf(r'\'));
+  }
+
+  /// [path] without separators at the end, keeping the root itself.
+  String _trimEnd(String path) {
+    final rootLength = _rootLength(path);
+    var end = path.length;
+    while (end > rootLength && _isSeparator(path[end - 1])) {
+      end--;
+    }
+
+    return path.substring(0, end);
+  }
+
+  /// How long the root at the start of [path] is.
+  ///
+  /// The root is `/`, `C:\`, `C:`, `\` or `\\server\share`. Gives 0 for a
+  /// relative path.
+  int _rootLength(String path) {
+    if (path.isEmpty) return 0;
+    if (!Platform.isWindows) return path.startsWith('/') ? 1 : 0;
+
+    final twoSeparators =
+        path.length >= 2 && _isSeparator(path[0]) && _isSeparator(path[1]);
+    if (twoSeparators) {
+      // A network path: \\server\share is the root.
+      var at = 2;
+      for (var parts = 0; parts < 2; parts++) {
+        while (at < path.length && !_isSeparator(path[at])) {
+          at++;
+        }
+        if (parts == 0 && at < path.length) at++;
+      }
+
+      return at;
+    }
+    if (path.length >= 2 && _isDrive(path.substring(0, 2))) {
+      return path.length >= 3 && _isSeparator(path[2]) ? 3 : 2;
+    }
+
+    return _isSeparator(path[0]) ? 1 : 0;
+  }
 }
 
 class Draw {
@@ -448,6 +669,7 @@ class Draw {
 
 class Net {
   const Net._();
+
   /// Downloads [url] and saves it to the file [saveTo].
   ///
   /// With [showProgress], a [ProgressBar] fills as the file arrives (or a
@@ -466,16 +688,16 @@ class Net {
   /// );
   /// ```
   Future<void> fetch(
-      String url,
-      String saveTo, {
-        bool showProgress = true,
-        bool overwrite = false,
-      }) async {
+    String url,
+    String saveTo, {
+    bool showProgress = true,
+    bool overwrite = false,
+  }) async {
     if (!overwrite && CMD.fs.exists(saveTo))
       throw FileError('Already exists', saveTo);
 
     final theme = CliTheme.current;
-    final name = basename(saveTo);
+    final name = CMD.fs.basename(saveTo);
     final client = HttpClient();
     final partial = File('$saveTo.part');
     ProgressBar? bar;
@@ -498,7 +720,7 @@ class Net {
         }
       }
 
-      CMD.fs.createDir(dirname(saveTo));
+      CMD.fs.createDir(CMD.fs.dirname(saveTo));
       final sink = partial.openWrite();
       var received = 0;
       var lastPercent = -1;
@@ -548,5 +770,553 @@ class Net {
       Logger.instance.stopSpinner(null, Level.log);
     }
   }
+}
 
+class Prompt {
+  const Prompt._();
+
+  /// Asks the user a question and gives back what they type.
+  ///
+  /// The question is drawn with [CliTheme.current]. A wrong answer shows an
+  /// error line and asks again.
+  ///
+  /// * [defaultValue]: used when the user just presses Enter. Shown dim after
+  ///   the question.
+  /// * [hidden]: don't show what is typed, for passwords.
+  /// * [required]: an empty answer isn't allowed (unless there's a default).
+  /// * [validator]: gives back a problem to show, or null if the answer is ok.
+  ///
+  /// ```dart
+  /// final name = ask('Project name', defaultValue: 'my_app');
+  /// final port = ask('Port', validator: (a) =>
+  ///     int.tryParse(a) == null ? 'Type a number' : null);
+  /// final secret = ask('Password', hidden: true);
+  /// ```
+  String ask(
+    String prompt, {
+    String? defaultValue,
+    bool hidden = false,
+    bool required = true,
+    String? Function(String answer)? validator,
+  }) {
+    return PromptLine.run<String>(
+      prompt,
+      hint: defaultValue == null || hidden ? '' : '($defaultValue)',
+      hidden: hidden,
+      shown: (answer) => hidden ? BULLET * answer.length : answer,
+      check: (typed) {
+        final answer = typed.isEmpty ? defaultValue ?? '' : typed;
+        final problem = answer.isEmpty && required
+            ? 'An answer is needed'
+            : validator?.call(answer);
+
+        return (value: answer, problem: problem);
+      },
+    );
+  }
+
+  /// Asks a yes or no question and gives back true for yes.
+  ///
+  /// A dim `[Y/n]` hint shows which answer Enter picks when there is a
+  /// [defaultValue]; without one, the user must type y or n.
+  ///
+  /// ```dart
+  /// if (confirm('Delete the build folder?', defaultValue: false)) {
+  ///   deleteDir('build');
+  /// }
+  /// ```
+  bool confirm(String prompt, {bool? defaultValue}) {
+    final hint = switch (defaultValue) {
+      true => '[Y/n]',
+      false => '[y/N]',
+      null => '[y/n]',
+    };
+
+    return PromptLine.run<bool>(
+      prompt,
+      hint: hint,
+      shown: (yes) => yes ? 'Yes' : 'No',
+      check: (typed) {
+        final answer = switch (typed.toLowerCase()) {
+          'y' || 'yes' => true,
+          'n' || 'no' => false,
+          '' => defaultValue,
+          _ => null,
+        };
+
+        return (
+          value: answer,
+          problem: answer == null ? 'Please type y or n' : null,
+        );
+      },
+    );
+  }
+
+  /// Lets the user pick one of [options] and gives back the one they picked.
+  ///
+  /// In a terminal, the options are a list you move through with the arrow
+  /// keys (or `j`/`k`), and pick with Enter. Number keys jump straight to an
+  /// option. The current row shows the theme's pointer in its highlight
+  /// colour. When there's no terminal (or colour is off) it falls back to a
+  /// numbered list and asks for a number.
+  ///
+  /// * [format]: how each option is shown. Defaults to `toString()`.
+  /// * [defaultOption]: the option picked at the start.
+  ///
+  /// ```dart
+  /// final colour = menu('Pick a colour', ['Red', 'Green', 'Blue']);
+  /// final file = menu('Open which file?', files, format: basename);
+  /// ```
+  T menu<T>(
+    String prompt,
+    List<T> options, {
+    String Function(T option)? format,
+    T? defaultOption,
+  }) {
+    if (options.isEmpty) throw ArgumentError.value(options, 'options', 'Empty');
+
+    final labels = [
+      for (final option in options) format?.call(option) ?? '$option',
+    ];
+    final start = math.max(
+      defaultOption == null ? 0 : options.indexOf(defaultOption),
+      0,
+    );
+
+    final interactive =
+        CliTheme.useColour && stdin.hasTerminal && stdout.hasTerminal;
+    final picked = interactive
+        ? _MenuScreen(prompt, labels, start).run()
+        : _numberedMenu(prompt, labels, start);
+
+    return options[picked];
+  }
+
+  /// Prints the options as a numbered list and asks for a number.
+  int _numberedMenu(String prompt, List<String> labels, int start) {
+    final theme = CliTheme.current;
+    CliTheme.say(
+      '${'?'.foreground(theme.hint)} '
+      '${prompt.bold.foreground(theme.question)}',
+    );
+    for (var i = 0; i < labels.length; i++) {
+      CliTheme.say('  ${'${i + 1})'.foreground(theme.hint)} ${labels[i]}');
+    }
+
+    final number = PromptLine.run<int>(
+      'Number',
+      hint: '(${start + 1})',
+      shown: (index) => labels[index],
+      check: (typed) {
+        if (typed.isEmpty) return (value: start, problem: null);
+        final index = (int.tryParse(typed) ?? 0) - 1;
+        final ok = index >= 0 && index < labels.length;
+
+        return (
+          value: ok ? index : null,
+          problem: ok ? null : 'Type a number from 1 to ${labels.length}',
+        );
+      },
+    );
+
+    return number;
+  }
+}
+
+/// The arrow-key menu, drawn and redrawn in place.
+class _MenuScreen {
+  final String prompt;
+  final List<String> labels;
+  int selected;
+
+  /// The first option shown, when there are more options than fit.
+  int _top = 0;
+
+  /// How many option rows were drawn last time, to move back over them.
+  int _drawnRows = 0;
+
+  /// The option a number key picked, counting from 0.
+  int _number = 0;
+
+  _MenuScreen(this.prompt, this.labels, this.selected);
+
+  /// How many options fit on screen at once.
+  int get _pageSize {
+    final rows = stdout.hasTerminal ? stdout.terminalLines : 24;
+
+    return math.min(labels.length, math.max(rows - 2, 3));
+  }
+
+  /// Shows the menu, reads keys until Enter, and gives back the picked index.
+  int run() {
+    final theme = CliTheme.current;
+    final question = prompt.bold.foreground(theme.question);
+    stdout.write(
+      '${'?'.foreground(theme.hint)} $question '
+      '${'(↑/↓ and Enter)'.dim.foreground(theme.hint)}\n$HIDE_CURSOR',
+    );
+
+    final echo = stdin.echoMode;
+    final line = stdin.lineMode;
+    // Windows needs echo off before line mode can be turned off.
+    stdin
+      ..echoMode = false
+      ..lineMode = false;
+    try {
+      _draw();
+      while (true) {
+        final key = _readKey();
+        if (key == _Key.enter) break;
+        if (key == _Key.cancel) {
+          _restore(echo, line);
+          exit(130);
+        }
+        if (key == _Key.up) selected = (selected - 1) % labels.length;
+        if (key == _Key.down) selected = (selected + 1) % labels.length;
+        if (key == _Key.number && _number < labels.length) selected = _number;
+        _draw();
+      }
+    } finally {
+      _restore(echo, line);
+    }
+
+    // Swap the whole menu for one line with the answer.
+    final done =
+        '${theme.tick.foreground(theme.success)} $question '
+        '${labels[selected].plain.foreground(theme.answer)}';
+    stdout.write('${cursorUp(_drawnRows + 1)}\r$CLEAR_TO_SCREEN_END$done\n');
+
+    return selected;
+  }
+
+  /// Draws the visible options, replacing the ones drawn before.
+  void _draw() {
+    final theme = CliTheme.current;
+    final page = _pageSize;
+    if (selected < _top) _top = selected;
+    if (selected >= _top + page) _top = selected - page + 1;
+
+    final width = stdout.hasTerminal ? stdout.terminalColumns - 4 : 76;
+    final out = StringBuffer(SYNC_START);
+    if (_drawnRows > 0) out.write('${cursorUp(_drawnRows)}\r');
+    out.write(CLEAR_TO_SCREEN_END);
+
+    for (var i = _top; i < _top + page; i++) {
+      final label = _fit(labels[i], width);
+      if (i == selected) {
+        out.write(
+          '${'${theme.pointer} $label'.bold.foreground(theme.highlight)}\n',
+        );
+      } else {
+        out.write('  $label$RESET\n');
+      }
+    }
+    out.write(SYNC_END);
+    _drawnRows = page;
+    stdout.write(out);
+  }
+
+  /// [label] cut down to [width] visible characters, ending in an ellipsis.
+  ///
+  /// The length is measured without escape codes, so styled labels aren't
+  /// cut short. A label that needs cutting loses its styles.
+  String _fit(String label, int width) {
+    final plain = label.plain;
+    if (plain.length <= width || width < 2) return label;
+
+    return '${plain.substring(0, width - 1)}$ELLIPSIS';
+  }
+
+  /// Puts the terminal back the way it was and shows the cursor.
+  void _restore(bool echo, bool line) {
+    // Line mode must come back before echo on Windows.
+    stdin
+      ..lineMode = line
+      ..echoMode = echo;
+    stdout.write(SHOW_CURSOR);
+  }
+
+  /// Reads one key press and works out what it means.
+  _Key _readKey() {
+    final byte = stdin.readByteSync();
+    switch (byte) {
+      case -1 || 3:
+        // Input closed, or Ctrl+C.
+        return _Key.cancel;
+      case 10 || 13:
+        return _Key.enter;
+      case 27:
+        // ESC [ A is up and ESC [ B is down (ESC O A/B on some terminals).
+        final second = stdin.readByteSync();
+        if (second != 0x5B && second != 0x4F) return _Key.other;
+
+        return _arrow(stdin.readByteSync(), up: 0x41, down: 0x42);
+      case 0 || 0xE0:
+        // Older Windows consoles send 0xE0 then H for up or P for down.
+        return _arrow(stdin.readByteSync(), up: 0x48, down: 0x50);
+      case 0x6B || 0x77:
+        // k or w
+        return _Key.up;
+      case 0x6A || 0x73:
+        // j or s
+        return _Key.down;
+      case final digit when digit >= 0x31 && digit <= 0x39:
+        _number = digit - 0x31;
+
+        return _Key.number;
+      default:
+        return _Key.other;
+    }
+  }
+
+  /// Up, down or nothing, depending on whether [byte] is [up] or [down].
+  _Key _arrow(int byte, {required int up, required int down}) {
+    if (byte == up) return _Key.up;
+    if (byte == down) return _Key.down;
+
+    return _Key.other;
+  }
+}
+
+/// A key press the menu cares about.
+enum _Key { up, down, enter, cancel, number, other }
+
+/// What a prompt's check makes of the typed text.
+///
+/// Either a [value] to give back, or a [problem] to show before asking again.
+typedef PromptCheck<T> = ({T? value, String? problem}) Function(String typed);
+
+/// Asks one question on one line until the answer passes a check.
+///
+/// Used by [ask], [confirm] and the plain [menu]. With colour on, a wrong
+/// answer shows a themed error line under the question, and the question is
+/// redrawn in place. Once answered, the line is redrawn with a tick and the
+/// answer in the theme's answer colour.
+class PromptLine {
+  const PromptLine._();
+
+  /// Shows [question] (with an optional dim [hint]) until [check] accepts.
+  ///
+  /// [shown] turns the accepted value into the text echoed after the
+  /// question. With [hidden], typing isn't shown on screen. If input ends
+  /// (stdin is closed), [check] gets an empty string, and if that isn't
+  /// accepted a [StdinException] is thrown.
+  static T run<T>(
+    String question, {
+    required PromptCheck<T> check,
+    required String Function(T value) shown,
+    String hint = '',
+    bool hidden = false,
+  }) {
+    final theme = CliTheme.current;
+    final fancy = CliTheme.useColour && stdout.hasTerminal;
+    final text = question.bold.foreground(theme.question);
+    final hintText = hint.isEmpty ? '' : ' ${hint.dim.foreground(theme.hint)}';
+    final asked = '${'?'.foreground(theme.hint)} $text$hintText ';
+
+    var showingProblem = false;
+    while (true) {
+      CliTheme.write(asked);
+      final typed = _readLine(hidden: hidden);
+      final result = check(typed?.trim() ?? '');
+
+      // Wipe the old error line under the question.
+      if (fancy && showingProblem) stdout.write('\r$CLEAR_TO_SCREEN_END');
+
+      final value = result.value;
+      if (result.problem == null && value is T) {
+        if (fancy) {
+          final done =
+              '${theme.tick.foreground(theme.success)} $text '
+              '${shown(value).foreground(theme.answer)}';
+          stdout.write('${cursorUp()}\r$CLEAR_LINE$done$RESET\n');
+        }
+
+        return value;
+      }
+      if (typed == null) {
+        throw const StdinException('Input ended before an answer was given');
+      }
+
+      final problem = theme.errorLine(result.problem ?? 'Try again');
+      if (fancy) {
+        // Show the error under the question, then go back up to ask again.
+        stdout.write('$problem${cursorUp()}\r$CLEAR_LINE');
+        showingProblem = true;
+      } else {
+        CliTheme.say(problem);
+      }
+    }
+  }
+
+  /// Reads one line from stdin, hiding what is typed if [hidden] is true.
+  ///
+  /// Gives back null when stdin has closed.
+  static String? _readLine({required bool hidden}) {
+    if (!hidden || !stdin.hasTerminal) return stdin.readLineSync();
+
+    final echo = stdin.echoMode;
+    stdin.echoMode = false;
+    try {
+      return stdin.readLineSync();
+    } finally {
+      stdin.echoMode = echo;
+      // Enter wasn't shown either, so move to the next line ourselves.
+      stdout.writeln();
+    }
+  }
+}
+
+class Shell {
+  const Shell._();
+
+  /// Whether your app is running as administrator (Windows) or root (Mac and
+  /// Linux).
+  ///
+  /// Worked out once and remembered.
+  ///
+  /// ```dart
+  /// if (!await isPrivilegedUser) {
+  ///   CliTheme.say(CliTheme.current.errorLine('Please run this as admin'));
+  /// }
+  /// ```
+  Future<bool> get isPrivilegedUser async => await _check();
+
+  /// Runs your app again as administrator or root, with the same arguments.
+  ///
+  /// On Windows, Windows asks the user first and the app opens in a new
+  /// window. Elsewhere it runs through `sudo` in this terminal. Gives back the
+  /// new run's exit code; your app should usually exit with it straight after.
+  ///
+  /// Does nothing and gives back 0 if the app already has these rights.
+  ///
+  /// ```dart
+  /// void main(List<String> args) async {
+  ///   if (!await isPrivilegedUser) exit(await withPrivileges(args));
+  ///   // ... admin work ...
+  /// }
+  /// ```
+  Future<int> withPrivileges(List<String> arguments) async {
+    if (await isPrivilegedUser) return 0;
+
+    final program = Platform.resolvedExecutable;
+    final script = Platform.script.toFilePath();
+    final isCompiled = script == program || !script.endsWith('.dart');
+    final args = [if (!isCompiled) script, ...arguments];
+
+    if (Platform.isWindows) {
+      return openInNewWindow(
+        program,
+        args: args,
+        workingDirectory: CMD.fs.pwd,
+        asAdmin: true,
+        wait: true,
+      );
+    }
+
+    final process = await Process.start('sudo', [
+      program,
+      ...args,
+    ], mode: ProcessStartMode.inheritStdio);
+
+    return process.exitCode;
+  }
+
+  /// Asks the system whether this process has admin or root rights.
+  Future<bool> _check() async {
+    try {
+      if (Platform.isWindows) {
+        // "net session" only works for administrators.
+        final result = await Process.run('net', ['session']);
+
+        return result.exitCode == 0;
+      }
+      final result = await Process.run('id', ['-u']);
+
+      return result.output.trim() == '0';
+    } on ProcessException {
+      return false;
+    }
+  }
+}
+
+/// Runs this string as a terminal command, through [TerminalCommand].
+///
+/// The command goes to a shell, so pipes, `cd` and variables all work, and
+/// the folder carries over between commands. It runs with [env].
+///
+/// When a command fails, a themed error line is printed and a
+/// [ProcessFailed] is thrown, unless you use [start] with `nothrow: true`.
+/// In verbose mode ([Logger.verbose]), each command is shown first as a dim
+/// `➜ command` line.
+///
+/// ```dart
+/// await 'git pull'.run;
+/// final files = await 'git ls-files'.toList();
+/// final branch = await 'git branch --show-current'.firstLine;
+/// await 'dart test'.forEach((line) => print(line.toUpperCase()));
+/// ```
+extension StringRun on String {
+  /// Runs the command, showing what it prints.
+  ///
+  /// Throws a [ProcessFailed] if it fails.
+  Future<ProcessResult> get run => start();
+
+  /// Runs the command with options.
+  ///
+  /// * [show]: print what the command prints as it runs.
+  /// * [interactive]: hand the keyboard over, for commands that ask things.
+  /// * [nothrow]: give back a failed result instead of throwing.
+  /// * [shell]: the shell to use. Defaults to [TerminalCommand.defaultShell].
+  Future<ProcessResult> start({
+    bool show = true,
+    bool interactive = false,
+    bool nothrow = false,
+    TerminalShell? shell,
+  }) async {
+    final theme = CliTheme.current;
+    if (Logger.instance.verbose) {
+      CliTheme.say('${theme.pointer} $this'.dim.foreground(theme.hint));
+    }
+
+    final result = await TerminalCommand.run(
+      this,
+      shell: shell,
+      show: show,
+      interactive: interactive,
+    );
+    if (result.ok) return result;
+
+    if (show) {
+      CliTheme.say(
+        theme.errorLine('Failed with exit code ${result.exitCode}: ') +
+            '$this'.bold.foreground(theme.error),
+      );
+    }
+    if (!nothrow) throw ProcessFailed(result);
+
+    return result;
+  }
+
+  /// Runs the command quietly and gives back the lines it printed.
+  ///
+  /// Empty lines are left out. Throws a [ProcessFailed] if it fails, unless
+  /// [nothrow] is true.
+  Future<List<String>> toList({bool nothrow = false}) async =>
+      (await start(show: false, nothrow: nothrow)).lines;
+
+  /// Runs the command quietly and gives back the first line it printed.
+  ///
+  /// Null if it printed nothing. Throws a [ProcessFailed] if it fails.
+  Future<String?> get firstLine async {
+    final lines = await toList();
+
+    return lines.isEmpty ? null : lines.first;
+  }
+
+  /// Runs the command quietly and calls [action] with each line it printed.
+  ///
+  /// Throws a [ProcessFailed] if it fails.
+  Future<void> forEach(void Function(String line) action) async =>
+      (await toList()).forEach(action);
 }

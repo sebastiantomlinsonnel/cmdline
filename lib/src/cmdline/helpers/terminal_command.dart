@@ -2,8 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:cmdline/cmdline.dart';
-
 /// The shells [TerminalCommand] can run commands in.
 enum TerminalShell {
   /// PowerShell. Uses PowerShell 7 (`pwsh`) if it is installed, and
@@ -118,7 +116,6 @@ class TerminalCommand {
         args,
         workingDirectory: _startFolder(),
         // Use the app's own copy, so changes made through `env` carry over.
-        environment: env.all,
         includeParentEnvironment: false,
         mode: interactive
             ? ProcessStartMode.inheritStdio
