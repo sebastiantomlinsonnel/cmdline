@@ -94,7 +94,7 @@ class Env {
   /// [only] is a wildcard pattern like `JAVA*`. Long values are cut to fit
   /// the terminal.
   void printAll({String? only}) {
-    final matcher = only == null ? null : globToRegExp(only);
+    final matcher = only == null ? null : CMD.fs.globToRegExp(only);
     final names =
         _values.keys.where((name) => matcher?.hasMatch(name) ?? true).toList()
           ..sort((a, b) => a.toLowerCase().compareTo(b.toLowerCase()));
@@ -111,7 +111,7 @@ class Env {
         : '${value.substring(0, valueWidth - 1)}$ELLIPSIS';
 
     CliTheme.say(
-      table(
+      CMD.draw.table(
         [
           for (final name in names)
             [name.foreground(CliTheme.current.highlight), fit(_values[name]!)],
@@ -172,7 +172,7 @@ List<String> _withEndings(String name) {
 
 /// Whether [path] is a file that can be run.
 bool _isProgram(String path) {
-  if (!isFile(path)) return false;
+  if (!CMD.fs.isFile(path)) return false;
   if (Platform.isWindows) return true;
 
   // Any of the three "execute" permission bits.

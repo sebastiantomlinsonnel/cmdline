@@ -179,7 +179,7 @@ Future<void> _intro() async {
   _clear();
   CliTheme.say('');
   CliTheme.say(
-    box(
+    CMD.draw.box(
       [
         'cmdline'.bold.foreground(AsciiPalette.sky),
         'Friendly command line tools in Dart'.dim,
@@ -193,7 +193,7 @@ Future<void> _outro() async {
   _clear();
   CliTheme.say('');
   CliTheme.say(
-    box(
+    CMD.draw.box(
       [
         'dart pub add cmdline'.bold.foreground(AsciiPalette.mint),
         'Logging, prompts, styling, files and shell'.dim,
@@ -317,7 +317,7 @@ Future<void> _tables() async {
   final ok = 'up to date'.foreground(AsciiPalette.mint);
   final old = 'update'.foreground(AsciiPalette.butter);
   CliTheme.say(
-    table(
+    CMD.draw.table(
       [
         ['args', '2.7.0', ok],
         ['http', '1.2.2', old],
@@ -330,7 +330,7 @@ Future<void> _tables() async {
   );
   await delay(0.6);
   CliTheme.say(
-    box(
+    CMD.draw.box(
       '${'2'.bold} packages can be updated.\n'
       'Run ${'dart pub upgrade'.foreground(AsciiPalette.sky)} to get them.',
       title: 'Summary',
@@ -348,11 +348,11 @@ Future<void> _files() async {
     joinAll([app, 'lib', 'src', 'app.dart']).write('// app');
     join(app, 'test', 'app_test.dart').write('// tests');
 
-    showTree(app);
+    CMD.fs.showTree(app);
     await delay(0.6);
     CliTheme.say('');
 
-    final found = await find('*.dart', workingDirectory: app).toList();
+    final found = await CMD.fs.find('*.dart', workingDirectory: app).toList();
     pass('Found ${found.length} Dart files');
     await _beat();
     for (final file in found) {
@@ -360,7 +360,7 @@ Future<void> _files() async {
       await _beat();
     }
   } finally {
-    deleteDir(temp);
+    CMD.fs.deleteDir(temp);
   }
 }
 

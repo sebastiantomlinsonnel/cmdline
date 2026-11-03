@@ -18,7 +18,7 @@ extension StringFile on String {
   ///
   /// Throws a [FileError] if there is no file here.
   String get readText {
-    if (!isFile(this)) throw FileError('No file to read', this);
+    if (!CMD.fs.isFile(this)) throw FileError('No file to read', this);
 
     return File(this).readAsStringSync();
   }
@@ -27,7 +27,7 @@ extension StringFile on String {
   ///
   /// Throws a [FileError] if there is no file here.
   List<String> get readLines {
-    if (!isFile(this)) throw FileError('No file to read', this);
+    if (!CMD.fs.isFile(this)) throw FileError('No file to read', this);
 
     return File(this).readAsLinesSync();
   }

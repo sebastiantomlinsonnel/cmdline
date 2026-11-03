@@ -97,10 +97,10 @@ class CommandLineDemo {
       warn('So does this warning');
       await Logger.close();
 
-      CliTheme.say(box(path.readText.trim(), title: 'demo.log'));
+      CliTheme.say(CMD.draw.box(path.readText.trim(), title: 'demo.log'));
     } finally {
       await Logger.close();
-      deleteDir(dir);
+      CMD.fs.deleteDir(dir);
     }
   }
 
@@ -201,7 +201,7 @@ class CommandLineDemo {
     final theme = CliTheme.current;
     CliTheme.say(theme.successLine('A success line'));
     CliTheme.say(theme.errorLine('An error line'));
-    CliTheme.say(box('The default theme', title: 'Theme'));
+    CliTheme.say(CMD.draw.box('The default theme', title: 'Theme'));
 
     CliTheme.current = const CliTheme(
       question: AsciiColour(13),
@@ -210,7 +210,7 @@ class CommandLineDemo {
       tick: '+',
     );
     CliTheme.say(CliTheme.current.successLine('A custom theme'));
-    CliTheme.say(box('Double lines in pink', title: 'Custom'));
+    CliTheme.say(CMD.draw.box('Double lines in pink', title: 'Custom'));
     CliTheme.current = const CliTheme();
   }
 
@@ -218,10 +218,10 @@ class CommandLineDemo {
   static void format() {
     final theme = CliTheme.current;
     CliTheme.say(
-      box('Boxes fit their text,\neven ${'styled'.bold.italic} text.'),
+      CMD.draw.box('Boxes fit their text,\neven ${'styled'.bold.italic} text.'),
     );
     CliTheme.say(
-      table(
+      CMD.draw.table(
         [
           ['paths.dart', 'Paths', 212],
           ['menu.dart', 'Prompts', 230],
@@ -243,7 +243,7 @@ class CommandLineDemo {
       'main.dart',
     ]);
     CliTheme.say(
-      table(
+      CMD.draw.table(
         [
           ['join', file],
           ['basename', basename(file)],
@@ -271,28 +271,32 @@ class CommandLineDemo {
       join(dir, 'lib', 'src', 'helper.dart').write('// helper');
       join(dir, 'README.md').write('# Demo');
       join(dir, 'README.md').append('More text');
-      touch(join(dir, 'build', 'out.txt'));
-      copy(join(dir, 'README.md'), join(dir, 'docs', 'README.md'));
-      copyTree(join(dir, 'lib'), join(dir, 'backup'));
+      CMD.fs.touch(join(dir, 'build', 'out.txt'));
+      CMD.fs.copy(join(dir, 'README.md'), join(dir, 'docs', 'README.md'));
+      CMD.fs.copyTree(join(dir, 'lib'), join(dir, 'backup'));
 
-      showTree(dir);
+      CMD.fs.showTree(dir);
 
-      final found = await find('*.dart', workingDirectory: dir).toList();
+      final found = await CMD.fs.find('*.dart', workingDirectory: dir).toList();
       log('Found ${found.length} Dart files:');
       found.map((file) => '  ${basename(file)}'.bold).forEach(CliTheme.say);
 
-      final changed = replace(join(dir, 'README.md'), 'Demo', 'Demo project');
+      final changed = CMD.fs.replace(
+        join(dir, 'README.md'),
+        'Demo',
+        'Demo project',
+      );
       log('Changed $changed place(s) in README.md');
       log('README.md lines: ${join(dir, 'README.md').readLines}');
-      log('README.md is ${fileLength(join(dir, 'README.md'))} bytes');
+      log('README.md is ${CMD.fs.fileLength(join(dir, 'README.md'))} bytes');
 
       try {
-        copy(join(dir, 'README.md'), join(dir, 'docs', 'README.md'));
+        CMD.fs.copy(join(dir, 'README.md'), join(dir, 'docs', 'README.md'));
       } on FileError catch (error) {
         CliTheme.say(error.styled);
       }
     } finally {
-      deleteDir(dir);
+      CMD.fs.deleteDir(dir);
     }
   }
 
@@ -395,13 +399,13 @@ class CommandLineDemo {
     final dir = Directory.systemTemp.createTempSync('cmdline_fetch_').path;
     try {
       final saveTo = join(dir, 'VERSION.json');
-      await fetch(
+      await CMD.net.fetch(
         'https://storage.googleapis.com/dart-archive/channels/stable/release/latest/VERSION',
         saveTo,
       );
-      CliTheme.say(box(saveTo.readText.trim(), title: 'Latest Dart'));
+      CliTheme.say(CMD.draw.box(saveTo.readText.trim(), title: 'Latest Dart'));
     } finally {
-      deleteDir(dir);
+      CMD.fs.deleteDir(dir);
     }
   }
 
@@ -431,7 +435,7 @@ class CommandLineDemo {
     final save = confirm('Save these settings?', defaultValue: true);
 
     CliTheme.say(
-      box(
+      CMD.draw.box(
         [
           'Name:     ${name.bold}',
           'Port:     $port',
@@ -468,3 +472,5 @@ class CommandLineDemo {
       ? "'${path.replaceAll("'", "''")}'"
       : "'${path.replaceAll("'", r"'\''")}'";
 }
+
+void a() {}
