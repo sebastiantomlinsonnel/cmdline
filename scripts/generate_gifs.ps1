@@ -39,14 +39,20 @@ $root = Split-Path $PSScriptRoot -Parent
 $work = Join-Path $root '.dart_tool/demo_gifs'
 $exe = Join-Path $work 'demo.exe'
 
-if (-not (Get-Command vhs -ErrorAction SilentlyContinue)) {
+if (-not (Get-Command vhs -ErrorAction SilentlyContinue))
+{
     throw 'vhs is not installed. Install it with: winget install charmbracelet.vhs'
 }
 
-if (-not $Scenes) { $Scenes = 1..$names.Count }
-foreach ($number in $Scenes) {
-    if ($number -lt 1 -or $number -gt $names.Count) {
-        throw "There is no scene $number. Pick from 1 to $($names.Count)."
+if (-not $Scenes)
+{
+    $Scenes = 1..$names.Count
+}
+foreach ($number in $Scenes)
+{
+    if ($number -lt 1 -or $number -gt $names.Count)
+    {
+        throw "There is no scene $number. Pick from 1 to $( $names.Count )."
     }
 }
 
@@ -54,12 +60,17 @@ New-Item -ItemType Directory -Force $work | Out-Null
 New-Item -ItemType Directory -Force (Join-Path $root 'doc') | Out-Null
 
 Push-Location $root
-try {
+try
+{
     Write-Host 'Compiling the demo...'
     dart compile exe example\main.dart -o $exe | Out-Null
-    if ($LASTEXITCODE -ne 0) { throw 'Compiling example/main.dart failed.' }
+    if ($LASTEXITCODE -ne 0)
+    {
+        throw 'Compiling example/main.dart failed.'
+    }
 
-    foreach ($number in $Scenes) {
+    foreach ($number in $Scenes)
+    {
         $name = $names[$number - 1]
         $gif = "doc/demo-$number-$name.gif"
 
@@ -88,11 +99,16 @@ Sleep ${length}ms
         $tapeFile = Join-Path $work "scene-$number.tape"
         Set-Content -Path $tapeFile -Value $tape -Encoding utf8NoBOM
 
-        Write-Host "Recording $gif ($([math]::Round($length / 1000, 1))s)..."
+        Write-Host "Recording $gif ($([math]::Round($length / 1000, 1) )s)..."
         vhs $tapeFile
-        if ($LASTEXITCODE -ne 0) { throw "VHS failed on scene $number." }
+        if ($LASTEXITCODE -ne 0)
+        {
+            throw "VHS failed on scene $number."
+        }
     }
-} finally {
+}
+finally
+{
     Pop-Location
 }
 
