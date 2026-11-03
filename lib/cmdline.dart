@@ -29,7 +29,6 @@ export 'src/cli/parser/option.dart';
 export 'src/cli/parser/parser.dart';
 export 'src/cli/theme/cli_theme.dart';
 export 'src/cmdline/cmd.dart';
-export 'src/cmdline/demo.dart';
 export 'src/cmdline/helpers/process_failed.dart';
 export 'src/cmdline/helpers/process_functions.dart';
 export 'src/cmdline/helpers/process_helpers.dart';

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
+import 'package:cmdline/src/demo.dart';
 
 Future<void> main(List<String> args) async => await cli.start(args);
 
@@ -351,7 +352,9 @@ Future<void> _files() async {
     pass('Found ${found.length} Dart files');
     await _beat();
     for (final file in found) {
-      CliTheme.say('  ${CliTheme.current.pointer} ${CMD.fs.basename(file)}'.dim);
+      CliTheme.say(
+        '  ${CliTheme.current.pointer} ${CMD.fs.basename(file)}'.dim,
+      );
       await _beat();
     }
   } finally {
