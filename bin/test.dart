@@ -5,11 +5,11 @@ const String STRING = 'Hello World!';
 const String STYLED = '$BOLD$UNDERLINE$ENCIRCLE' + STRING + RESET;
 
 Future<void> main() async {
-  writeln('$STYLED : ${const Ansi(STYLED).visible}');
+  stressTest(true);
 
+  trace('$STYLED\n\n${const Ansi(STYLED).visible}$NEWLINE');
   await openLogFile();
   printAllNames();
-  // stressTest(false);
 }
 
 void stressTest(bool clear) {
