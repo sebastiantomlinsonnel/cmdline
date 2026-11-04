@@ -1,6 +1,7 @@
 ## 1.0.3
 
 - Fixed the spinner labels not resetting
+- Created CMD to organise top level functions
 
 ## 1.0.2
 

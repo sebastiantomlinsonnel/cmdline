@@ -1,6 +1,6 @@
 name: cmdline
 description: An SDK for console development
-version: 1.0.2
+version: 1.0.3
 repository: https://github.com/sebastiantomlinsonnel/cmdline
 homepage: https://recollect.cc/
 topics:
