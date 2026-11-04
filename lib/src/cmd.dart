@@ -13,9 +13,13 @@ export 'cmd/helpers/stream_helpers.dart';
 export 'cmd/helpers/terminal_command.dart';
 
 part 'cmd/draw.dart';
+
 part 'cmd/fs.dart';
+
 part 'cmd/net.dart';
+
 part 'cmd/prompt.dart';
+
 part 'cmd/shell.dart';
 
 /// CMDLine helpers
@@ -38,6 +42,7 @@ class CMD {
   const CMD._();
 }
 
+/// A delayed future of however many seconds
 Future<void> delay(double seconds) async {
   final int _seconds = seconds.floor();
   final int _milliseconds = ((seconds - _seconds) * 1000).ceil();
