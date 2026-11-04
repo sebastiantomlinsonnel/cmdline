@@ -1,3 +1,7 @@
+## 1.1.0
+
+- Added args that aren't options or flags
+
 ## 1.0.3
 
 - Fixed the spinner labels not resetting

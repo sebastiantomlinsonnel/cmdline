@@ -13,6 +13,7 @@ class Input {
   final Map<String, bool> _flags;
   final Map<String, List<String>> _options;
   final Set<String> _given;
+  final Map<String, String?> _arguments;
 
   /// The picked commands from the top down, used to build the help screen.
   final List<Command> _commands;
@@ -30,12 +31,14 @@ class Input {
     required Map<String, bool> flags,
     required Map<String, List<String>> options,
     required Set<String> given,
+    Map<String, String?> arguments = const {},
     required List<Command> commands,
     required this.rest,
     required this.commandPath,
   }) : _flags = flags,
        _options = options,
        _given = given,
+       _arguments = arguments,
        _commands = commands;
 
   /// Prints the help screen of the command that is running.
@@ -66,6 +69,17 @@ class Input {
     }
 
     return value;
+  }
+
+  /// The word typed for the argument called [name], or `null` if left out.
+  ///
+  /// Only optional arguments can be `null`; required ones are always there.
+  String? argument(String name) {
+    if (!_arguments.containsKey(name)) {
+      throw ArgumentError('There is no argument called "$name".');
+    }
+
+    return _arguments[name];
   }
 
   /// The value of the option called [name], or `null` if it has none.

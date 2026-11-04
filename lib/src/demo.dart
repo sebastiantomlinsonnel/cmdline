@@ -44,9 +44,9 @@ class CommandLineDemo {
   ///
   /// If the part throws, the error is shown and the demo moves on.
   static Future<void> _section(
-      String title,
-      FutureOr<void> Function() part,
-      ) async {
+    String title,
+    FutureOr<void> Function() part,
+  ) async {
     CliTheme.say('');
     CliTheme.say(
       ' $title '.bold.inverse.foreground(CliTheme.current.highlight),
@@ -400,7 +400,7 @@ class CommandLineDemo {
       'Port',
       defaultValue: '8080',
       validator: (answer) =>
-      int.tryParse(answer) == null ? 'Type a number' : null,
+          int.tryParse(answer) == null ? 'Type a number' : null,
     );
     final secret = CMD.prompt.ask('Password', hidden: true, required: false);
     final colour = CMD.prompt.menu('Favourite colour', [

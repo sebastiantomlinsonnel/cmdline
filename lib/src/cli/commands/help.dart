@@ -43,6 +43,9 @@ class HelpPrinter {
     // Usage line.
     var usage = path;
     if (_visibleCommands(command).isNotEmpty) usage += ' <command>';
+    for (final argument in command.arguments) {
+      usage += ' ${_argumentLabel(argument)}';
+    }
     usage += ' [options]';
     lines.add('');
     lines.add(_heading('Usage'));
@@ -56,6 +59,12 @@ class HelpPrinter {
       rows.add([label, sub.help]);
     }
     _addSection(lines, 'Commands', rows);
+
+    // Plain words the command expects, like <key>.
+    _addSection(lines, 'Arguments', [
+      for (final argument in command.arguments)
+        [_argumentLabel(argument), _argumentHelp(argument)],
+    ]);
 
     // This command's own flags and options, plus the built-in ones.
     _addSection(lines, 'Options', [
@@ -150,6 +159,17 @@ class HelpPrinter {
     if (notes.isEmpty) return option.help;
 
     return '${option.help} ${'[${notes.join(', ')}]'.dim}'.trim();
+  }
+
+  /// How [argument] is written: `<key>` when required, `[key]` when not.
+  String _argumentLabel(Argument argument) =>
+      argument.required ? '<${argument.name}>' : '[${argument.name}]';
+
+  /// The help text of [argument], with "required" or "optional" in dim text.
+  String _argumentHelp(Argument argument) {
+    final note = argument.required ? '[required]' : '[optional]';
+
+    return '${argument.help} ${note.dim}'.trim();
   }
 
   /// Puts the short name in front, like `-v, --verbose`, or lines it up.

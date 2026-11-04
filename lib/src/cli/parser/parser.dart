@@ -53,6 +53,7 @@ class Parser {
   final Map<String, bool> _flags = {};
   final Map<String, List<String>> _options = {};
   final Set<String> _given = {};
+  final Map<String, String?> _arguments = {};
   final List<String> _rest = [];
   bool _helpWanted = false;
   bool _versionWanted = false;
@@ -93,6 +94,7 @@ class Parser {
         flags: _flags,
         options: _options,
         given: _given,
+        arguments: _arguments,
         commands: List.unmodifiable(_commands),
         rest: List.unmodifiable(_rest),
         commandPath: [for (final command in _commands) command.name],
@@ -293,6 +295,27 @@ class Parser {
 
     // The built-in verbose flag, in case no command declared its own.
     _flags.putIfAbsent(CLI.verboseFlag.name, () => false);
+
+    _fillArguments(checkRequired);
+  }
+
+  /// Gives the leftover words to the picked command's arguments, in order.
+  ///
+  /// The first word goes to the first argument, the second to the second, and
+  /// so on. Extra words stay in [Input.rest].
+  void _fillArguments(bool checkRequired) {
+    final arguments = _commands.last.arguments;
+
+    for (var i = 0; i < arguments.length; i++) {
+      final argument = arguments[i];
+      final word = i < _rest.length ? _rest[i] : null;
+
+      if (word == null && argument.required && checkRequired) {
+        _fail('Missing <${argument.name}>.');
+      }
+
+      _arguments[argument.name] = word;
+    }
   }
 
   /// Looks for an option called [name], from the picked command upwards.

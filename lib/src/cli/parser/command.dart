@@ -37,6 +37,9 @@ class Command {
   /// The settings with values this command understands.
   final List<Option> options;
 
+  /// The plain words this command expects, like `c` in `run to c`.
+  final List<Argument> arguments;
+
   /// Commands inside this one, like `add` inside `todo`.
   final List<Command> commands;
 
@@ -60,6 +63,7 @@ class Command {
     this.aliases = const [],
     this.flags = const [],
     this.options = const [],
+    this.arguments = const [],
     this.commands = const [],
     this.run,
     this.hidden = false,
@@ -154,6 +158,20 @@ class Command {
           );
         }
         _claim(seen, '-$short');
+      }
+    }
+
+    var sawOptional = false;
+    for (final argument in arguments) {
+      _claim(seen, '<${argument.name}>');
+
+      if (!argument.required) {
+        sawOptional = true;
+      } else if (sawOptional) {
+        throw ArgumentError(
+          'The argument "${argument.name}" in "$name" is required, so it must '
+          'come before the optional ones.',
+        );
       }
     }
 

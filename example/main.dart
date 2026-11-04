@@ -104,6 +104,23 @@ CLI cli = CLI(
       run: (input) => CommandLineDemo.interactiveCommand(),
     ),
     Command(
+      name: 'to',
+      help: 'Show the saved path for a key',
+      arguments: [
+        const Argument('key', help: 'The saved key, like "c"'),
+        const Argument('sub', help: 'A folder inside it', required: false),
+      ],
+      run: (input) {
+        final paths = {'c': r'C:\', 'home': CMD.fs.homeDirectory};
+        final path = paths[input.argument('key')];
+        if (path == null)
+          return fail('No path saved as "${input.argument('key')}".');
+
+        final sub = input.argument('sub');
+        log(sub == null ? path : CMD.fs.join(path, sub));
+      },
+    ),
+    Command(
       name: 'open',
       help: 'Open dart.dev in your browser',
       run: (input) => CommandLineDemo.openApp(),
@@ -118,6 +135,7 @@ CLI cli = CLI(
     if (input.flag('hold')) await delay(5);
   },
 );
+
 final List<(String, Future<void> Function())> _scenes = [
   ('Logging', _logging),
   ('Styling', _styling),
@@ -366,3 +384,5 @@ Future<void> _shell() async {
 }
 
 void _clear() => stdout.write('$CLEAR_SCREEN$CURSOR_HOME$HIDE_CURSOR');
+
+Future<void> main(List<String> args) async => await cli.start(args);

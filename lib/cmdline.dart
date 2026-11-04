@@ -22,6 +22,7 @@ export 'src/cli/commands/cli_error.dart';
 export 'src/cli/commands/help.dart';
 export 'src/cli/files/file_error.dart';
 export 'src/cli/files/string_file_extension.dart';
+export 'src/cli/parser/argument.dart';
 export 'src/cli/parser/command.dart';
 export 'src/cli/parser/flag.dart';
 export 'src/cli/parser/input.dart';

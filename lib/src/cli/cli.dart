@@ -41,6 +41,7 @@ class CLI extends Command {
     this.version,
     super.flags,
     super.options,
+    super.arguments,
     super.commands,
     super.run,
   });
@@ -52,10 +53,10 @@ class CLI extends Command {
   /// * `--version` prints [name] and [version].
   /// * A mistake prints a red error and sets the exit code to 64.
   /// * A command without a `run` function prints its help screen.
-  Future<void> start(List<String> arguments) async {
+  Future<void> start(List<String> args) async {
     final ParseResult result;
     try {
-      result = Parser(this, arguments).parse();
+      result = Parser(this, args).parse();
     } on CLIError catch (error) {
       stderr.writeln(HelpPrinter.error(error));
       exitCode = 64;
