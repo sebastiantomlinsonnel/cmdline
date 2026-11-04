@@ -64,7 +64,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>Stops the spinner and prints <code>message</code> (or the spinner's label) at <code>level</code>.</p>
+  <p>Stops the spinner and prints <code>message</code> (or the spinner's label) at <code>level</code></p>
 </section>
 
 
@@ -78,7 +78,7 @@
   _spinnerTimer = null;
   _spinnerLabel = null;
   stdout.write(&#39;$CLEAR_LINE$SHOW_CURSOR&#39;);
-  _printAt(message ?? label, level);
+  print(getString(message ?? label, level));
 }</code></pre>
 </section>
 
@@ -107,7 +107,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.1.0
+      2.0.0-dev.1
   </span>
   
 </footer>

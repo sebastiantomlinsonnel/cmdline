@@ -74,19 +74,19 @@
   <pre class="language-dart"><code class="language-dart">String getVerbosityColour(Level level, String data) {
   switch (level) {
     case Level.trace:
-      return data.foreground(AsciiPalette.orchid).bold;
+      return data.foreground(AnsiPalette.orchid).bold;
     case Level.debug:
-      return data.foreground(AsciiPalette.mint).bold;
+      return data.foreground(AnsiPalette.mint).bold;
     case Level.fail:
-      return data.foreground(AsciiPalette.brick).bold;
+      return data.foreground(AnsiPalette.brick).bold;
     case Level.pass:
-      return data.foreground(AsciiPalette.leaf).bold;
+      return data.foreground(AnsiPalette.leaf).bold;
     case Level.warn:
-      return data.foreground(AsciiPalette.amber).bold;
+      return data.foreground(AnsiPalette.amber).bold;
     case Level.log:
-      return data.foreground(AsciiPalette.snow).bold;
+      return data.foreground(AnsiPalette.snow).bold;
     case Level.dev:
-      return &#39;${AsciiPalette.silver.bg}${AsciiPalette.ink.fg}$data&#39;.bold;
+      return data.foreground(AnsiPalette.rose).bold;
   }
 }</code></pre>
 </section>
@@ -116,7 +116,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.1.0
+      2.0.0-dev.1
   </span>
   
 </footer>

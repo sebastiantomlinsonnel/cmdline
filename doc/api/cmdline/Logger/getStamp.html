@@ -55,8 +55,9 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-<span class="name ">getStamp</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="getStamp-param-level"><span class="type-annotation"><a href="../../cmdline/Level.html">Level</a></span> <span class="parameter-name">level</span></span></li>
-</ol>)
+<span class="name ">getStamp</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="getStamp-param-level"><span class="type-annotation"><a href="../../cmdline/Level.html">Level</a></span> <span class="parameter-name">level</span>, [</span></li>
+<li><span class="parameter" id="getStamp-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span></span></li>
+</ol>])
 
       
 
@@ -70,11 +71,13 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String getStamp(Level level) {
-  final String name = level.name.toUpperCase().padRight(TAG_WIDTH);
-  final String tag = Logger.instance.getVerbosityColour(level, &#39;$name |&#39;);
+  <pre class="language-dart"><code class="language-dart">String getStamp(Level level, [String? tag]) {
+  final String name = tag?.toUpperCase() ?? level.name.toUpperCase();
+  final String fitted = name.length &gt; _TAG_WIDTH
+      ? name.substring(0, _TAG_WIDTH)
+      : name;
 
-  return &#39;$tag&#39;;
+  return getVerbosityColour(level, &#39;${fitted.padRight(_TAG_WIDTH)}|&#39;);
 }</code></pre>
 </section>
 
@@ -103,7 +106,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.1.0
+      2.0.0-dev.1
   </span>
   
 </footer>

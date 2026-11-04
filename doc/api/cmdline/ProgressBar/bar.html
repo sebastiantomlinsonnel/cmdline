@@ -57,7 +57,7 @@
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
 <span class="name ">bar</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="bar-param-fraction"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span> <span class="parameter-name">fraction</span>, {</span></li>
 <li><span class="parameter" id="bar-param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">width</span> = <span class="default-value">30</span>, </span></li>
-<li><span class="parameter" id="bar-param-colour"><span class="type-annotation"><a href="../../cmdline/AsciiInk-class.html">AsciiInk</a></span> <span class="parameter-name">colour</span> = <span class="default-value">const AsciiColour(10)</span>, </span></li>
+<li><span class="parameter" id="bar-param-colour"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">colour</span> = <span class="default-value">const AnsiColour(10)</span>, </span></li>
 </ol>})
 
       
@@ -77,7 +77,7 @@
   <pre class="language-dart"><code class="language-dart">static String bar(
   double fraction, {
   int width = 30,
-  AsciiInk colour = const AsciiColour(10),
+  AnsiInk colour = const AnsiColour(10),
 }) {
   &#47;&#47; Count in eighths of a character, so the bar grows smoothly.
   final eighths = (fraction.clamp(0.0, 1.0) * width * 8).round();
@@ -117,7 +117,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.1.0
+      2.0.0-dev.1
   </span>
   
 </footer>

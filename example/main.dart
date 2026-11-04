@@ -384,18 +384,18 @@ class CommandLineDemo {
       warn('Caught ProcessFailed: $error');
     }
 
-    log('Running as admin/root: ${await CMD.shell.isPrivilegedUser}');
+    log('Running as admin/root: ${await CMD.isPrivilegedUser}');
   }
 
   /// Shows that a `cd` carries over to the next command.
   static Future<void> terminalFolder() async {
-    final start = TerminalCommand.directory;
+    final start = ShellCommand.directory;
     try {
-      await TerminalCommand.run('cd ${_quoted(Directory.systemTemp.path)}');
-      log('After cd, commands run in: ${TerminalCommand.directory}');
+      await ShellCommand.run('cd ${_quoted(Directory.systemTemp.path)}');
+      log('After cd, commands run in: ${ShellCommand.directory}');
 
       if (Platform.isWindows) {
-        final viaCmd = await TerminalCommand.run(
+        final viaCmd = await ShellCommand.run(
           'cd',
           shell: TerminalShell.cmd,
           show: false,
@@ -403,7 +403,7 @@ class CommandLineDemo {
         log('cmd agrees: ${viaCmd.output.trim()}');
       }
     } finally {
-      TerminalCommand.directory = start;
+      ShellCommand.directory = start;
     }
   }
 
@@ -756,4 +756,4 @@ Future<void> _shell() async {
 
 void _clear() => stdout.write('$CLEAR_SCREEN$CURSOR_HOME$HIDE_CURSOR');
 
-Future<void> main(List<String> args) async => await cli.start(args);
+// Future<void> main(List<String> args) async => await cli.start(args);

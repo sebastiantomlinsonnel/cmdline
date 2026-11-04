@@ -17,7 +17,7 @@ import 'package:cmdline/cmdline.dart';
 /// Use [paint] or [say] to print styled text, so colour is dropped when the
 /// terminal can't show it or the user set `NO_COLOR`.
 class CliTheme {
-  /// The colour of questions in [ask], [confirm] and [menu].
+  /// The colour of questions in [CMD.prompt.ask], [CMD.prompt.confirm] and [CMD.prompt.menu].
   final AnsiInk question;
 
   /// The colour of the user's answer after it is picked.
@@ -32,7 +32,7 @@ class CliTheme {
   /// The colour of success lines.
   final AnsiInk success;
 
-  /// The colour of the picked row in a [menu].
+  /// The colour of the picked row in a [CMD.prompt.menu].
   final AnsiInk highlight;
 
   /// The colour of box and table lines.
@@ -41,7 +41,7 @@ class CliTheme {
   /// The line characters for boxes, tables and trees.
   final BoxChars box;
 
-  /// The symbol in front of the picked [menu] row.
+  /// The symbol in front of the picked [CMD.prompt.menu] row.
   final String pointer;
 
   /// The symbol in front of success lines.
@@ -88,7 +88,7 @@ class CliTheme {
   /// closes the line.
   static void say(String text) {
     if (useColour) {
-      Ansi(text).write();
+      write('${Ansi(text)}$RESET');
     } else {
       stdout.writeln(text.plain);
     }

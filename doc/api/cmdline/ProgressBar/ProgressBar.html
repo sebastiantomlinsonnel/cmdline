@@ -57,7 +57,7 @@
       <span class="name ">ProgressBar</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span>, {</span></li>
 <li><span class="parameter" id="param-total"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">total</span>, </span></li>
 <li><span class="parameter" id="param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">width</span> = <span class="default-value">30</span>, </span></li>
-<li><span class="parameter" id="param-colour"><span class="type-annotation"><a href="../../cmdline/AsciiInk-class.html">AsciiInk</a></span> <span class="parameter-name">colour</span> = <span class="default-value">const AsciiColour(10)</span>, </span></li>
+<li><span class="parameter" id="param-colour"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">colour</span> = <span class="default-value">const AnsiColour(10)</span>, </span></li>
 </ol>})
     </section>
     
@@ -73,7 +73,7 @@
   this.label, {
   required this.total,
   this.width = 30,
-  this.colour = const AsciiColour(10),
+  this.colour = const AnsiColour(10),
 }) {
   &#47;&#47; Hide the cursor so it doesn&#39;t flicker over the bar.
   stdout.write(HIDE_CURSOR);
@@ -106,7 +106,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.1.0
+      2.0.0-dev.1
   </span>
   
 </footer>

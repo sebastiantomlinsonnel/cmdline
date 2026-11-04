@@ -27,7 +27,7 @@
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline.dart</a></li>
     <li><a href="../../cmdline/Logger-class.html">Logger</a></li>
-    <li class="self-crumb">open static method</li>
+    <li class="self-crumb">open method</li>
   </ol>
   <div class="self-name">open</div>
   <form class="search navbar-right" role="search">
@@ -49,21 +49,16 @@
     data-above-sidebar="cmdline&#47;Logger-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">open</span> static method 
+<h1><span class="kind-method">open</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../cmdline/Logger-class.html">Logger</a></span>&gt;</span></span>
+<span class="returntype"><a href="../../cmdline/Logger-class.html">Logger</a></span>
 <span class="name ">open</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="open-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, {</span></li>
 <li><span class="parameter" id="open-param-append"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">append</span> = <span class="default-value">true</span>, </span></li>
-<li><span class="parameter" id="open-param-flushInterval"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Duration-class.html">Duration</a></span> <span class="parameter-name">flushInterval</span> = <span class="default-value">const Duration(seconds: 2)</span>, </span></li>
-<li><span class="parameter" id="open-param-flushThreshold"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">flushThreshold</span> = <span class="default-value">16 * 1024</span>, </span></li>
-<li><span class="parameter" id="open-param-maxBytes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">maxBytes</span> = <span class="default-value">5 * 1024 * 1024</span>, </span></li>
-<li><span class="parameter" id="open-param-levels"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">levels</span>, </span></li>
 <li><span class="parameter" id="open-param-onLog"><span class="type-annotation">void</span> <span class="parameter-name">onLog</span>(<ol class="parameter-list single-line"> <li><span class="parameter" id="param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span></li>
 </ol>)?, </span></li>
-<li><span class="parameter" id="open-param-debugMode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">debugMode</span> = <span class="default-value">true</span>, </span></li>
 </ol>})
 
       
@@ -78,29 +73,16 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static Future&lt;Logger&gt; open(
-  String path, {
-  bool append = true,
-  Duration flushInterval = const Duration(seconds: 2),
-  int flushThreshold = 16 * 1024,
-  int maxBytes = 5 * 1024 * 1024,
-  Set&lt;String&gt;? levels,
-  void Function(String message)? onLog,
-  bool debugMode = true,
-}) async {
-  await close();
-
-  final Logger m = instance..onLog = onLog;
-
-  m._out = await _LogFile.open(
-    path,
-    append: append,
-    flushInterval: flushInterval,
-    flushThreshold: flushThreshold,
-    maxBytes: maxBytes,
+  <pre class="language-dart"><code class="language-dart">Logger open(String path, {bool append = true, void Function(String)? onLog}) {
+  if (logFile != null) close();
+  final File file = File(path);
+  file.parent.createSync(recursive: true);
+  logFile = file.openSync(
+    mode: append ? FileMode.writeOnlyAppend : FileMode.writeOnly,
   );
+  this.onLog = onLog;
 
-  return m;
+  return this;
 }</code></pre>
 </section>
 
@@ -117,7 +99,7 @@
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline</a></li>
     <li><a href="../../cmdline/Logger-class.html">Logger</a></li>
-    <li class="self-crumb">open static method</li>
+    <li class="self-crumb">open method</li>
 </ol>
 
     <h5>Logger class</h5>
@@ -129,7 +111,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.1.0
+      2.0.0-dev.1
   </span>
   
 </footer>

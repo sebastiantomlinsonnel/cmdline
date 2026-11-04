@@ -55,10 +55,9 @@
     
 <section class="desc markdown">
   <p>Builds one line from codes and values, and prints it with a final <a href="../cmdline/RESET-constant.html">RESET</a>.</p>
-<p><a href="../cmdline/AnsiPrinter/tokens.html">tokens</a> can mix escape codes, <a href="../cmdline/AsciiInk-class.html">AsciiInk</a> codes and any other value; each
-is turned into text with <code>toString()</code>. Unlike <code>sty</code> there is no leading
-<a href="../cmdline/RESET-constant.html">RESET</a>, so styles already active in the terminal carry in.</p>
-<pre class="language-dart"><code class="language-dart">AsciiPrinter([BOLD, 'Total:', RESET_BOLD_AND_DIM, 42], separator: ' ')
+<p><a href="../cmdline/AnsiPrinter/tokens.html">tokens</a> can mix escape codes, <a href="../cmdline/AnsiInk-class.html">AnsiInk</a> codes and any other value; each
+is turned into text with <code>toString()</code>.</p>
+<pre class="language-dart"><code class="language-dart">AnsiPrinter([BOLD, 'Total:', RESET_BOLD_AND_DIM, 42], separator: ' ')
     .output();
 </code></pre>
 </section>
@@ -175,7 +174,7 @@ is turned into text with <code>toString()</code>. Unlike <code>sty</code> there 
 
 </dt>
 <dd>
-  The joined line with <a href="../cmdline/RESET-constant.html">RESET</a> at the end, exactly as <a href="../cmdline/AnsiPrinter/output.html">output</a> prints it.
+  The joined line with <a href="../cmdline/RESET-constant.html">RESET</a>a t the end, exactly as <a href="../cmdline/AnsiPrinter/output.html">output</a> prints it.
   <div class="features"><span class="feature">override</span></div>
 
 </dd>
@@ -248,7 +247,7 @@ is turned into text with <code>toString()</code>. Unlike <code>sty</code> there 
 <footer>
   <span class="no-break">
     cmdline
-      1.1.0
+      2.0.0-dev.1
   </span>
   
 </footer>

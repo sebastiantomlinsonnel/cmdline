@@ -5,8 +5,7 @@ import 'package:cmdline/cmdline.dart';
 /// Builds one line from codes and values, and prints it with a final [RESET].
 ///
 /// [tokens] can mix escape codes, [AnsiInk] codes and any other value; each
-/// is turned into text with `toString()`. Unlike [sty] there is no leading
-/// [RESET], so styles already active in the terminal carry in.
+/// is turned into text with `toString()`.
 ///
 /// ```dart
 /// AnsiPrinter([BOLD, 'Total:', RESET_BOLD_AND_DIM, 42], separator: ' ')
@@ -47,7 +46,7 @@ class AnsiPrinter {
     return string;
   }
 
-  /// The joined line with [RESET] at the end, exactly as [output] prints it.
+  /// The joined line with [RESET]a t the end, exactly as [output] prints it.
   ///
   /// Same as calling [value] with this printer's [tokens] and [separator].
   @override

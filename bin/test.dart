@@ -3,9 +3,13 @@ import 'package:cmdline/cmdline.dart';
 const String LOG_FILE = r'X:\Flutter\cmdline\log';
 
 Future<void> main() async {
-  await openLogFile();
-  printAllNames();
-  stressTest(true);
+  const String string = 'abcdefg';
+  final List<String> letters = string.split('');
+  trace(letters);
+
+  // await openLogFile();
+  // printAllNames();
+  // stressTest(true);
 }
 
 void stressTest(bool clear) {

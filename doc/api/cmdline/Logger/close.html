@@ -27,7 +27,7 @@
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline.dart</a></li>
     <li><a href="../../cmdline/Logger-class.html">Logger</a></li>
-    <li class="self-crumb">close static method</li>
+    <li class="self-crumb">close method</li>
   </ol>
   <div class="self-name">close</div>
   <form class="search navbar-right" role="search">
@@ -49,12 +49,12 @@
     data-above-sidebar="cmdline&#47;Logger-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">close</span> static method 
+<h1><span class="kind-method">close</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+<span class="returntype">void</span>
 <span class="name ">close</span>(<wbr>)
 
       
@@ -69,10 +69,9 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; close() async {
-  final _LogFile? out = instance._out;
-  instance._out = null;
-  await out?.close();
+  <pre class="language-dart"><code class="language-dart">void close() {
+  logFile?.closeSync();
+  logFile = null;
 }</code></pre>
 </section>
 
@@ -89,7 +88,7 @@
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline</a></li>
     <li><a href="../../cmdline/Logger-class.html">Logger</a></li>
-    <li class="self-crumb">close static method</li>
+    <li class="self-crumb">close method</li>
 </ol>
 
     <h5>Logger class</h5>
@@ -101,7 +100,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.1.0
+      2.0.0-dev.1
   </span>
   
 </footer>
