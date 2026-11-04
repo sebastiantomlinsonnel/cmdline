@@ -8,15 +8,11 @@ import 'package:cmdline/cmdline.dart';
 
 export 'helpers/process_failed.dart';
 export 'terminal_command.dart';
-export 'types/extensions.dart';
 export 'types/file_error.dart';
 
 part 'parts/draw.dart';
-
 part 'parts/fs.dart';
-
 part 'parts/net.dart';
-
 part 'parts/prompt.dart';
 
 /// CMDLine helpers

@@ -5,15 +5,14 @@ import 'dart:io';
 import 'package:cmdline/cmdline.dart';
 
 export 'cli.dart';
-export 'commands/cli_error.dart';
-export 'commands/help.dart';
-export 'parser/argument.dart';
-export 'parser/command.dart';
-export 'parser/flag.dart';
+export 'cli_error.dart';
+export 'command.dart';
+export 'parser/arguments.dart';
 export 'parser/input.dart';
-export 'parser/option.dart';
 export 'parser/parser.dart';
+export 'parser/parser_result.dart';
 export 'theme/cli_theme.dart';
+export 'theme/help.dart';
 
 /// The whole program: the top command plus a version and a [start] method.
 ///

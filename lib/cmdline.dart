@@ -7,8 +7,8 @@ export 'src/cli/cli.dart';
 /// CMD lib
 export 'src/cmd/cmd.dart';
 
-/// EXTENSION lib
-export 'src/ext/ext.dart';
+/// EXTENSIONS
+export 'src/extensions.dart';
 
 /// LOGGING lib
 export 'src/logging/logging.dart';

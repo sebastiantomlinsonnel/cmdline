@@ -11,11 +11,11 @@ export 'constants/regular_expressions.dart';
 export 'constants/screen.dart';
 export 'constants/styling.dart';
 export 'constants/terminal.dart';
-export 'extensions/ansi_styled_string.dart';
 export 'palettes/ansi_colour.dart';
 export 'palettes/ansi_colour_rgb.dart';
 export 'palettes/ansi_ink.dart';
 export 'palettes/ansi_palette.dart';
+export 'palettes/ansi_theme.dart';
 export 'utils/ansi_printer.dart';
 
 /// A string with escape codes already in it, waiting to be printed.

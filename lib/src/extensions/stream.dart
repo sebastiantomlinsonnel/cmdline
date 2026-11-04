@@ -1,5 +1,4 @@
-import 'dart:convert';
-import 'dart:io';
+part of '../extensions.dart';
 
 /// Turns a program's output (`process.stdout` or `process.stderr`) into text.
 ///

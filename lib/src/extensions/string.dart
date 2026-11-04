@@ -1,4 +1,4 @@
-import 'package:cmdline/cmdline.dart';
+part of '../extensions.dart';
 
 /// Counts how many characters at the start of [text] are style codes.
 ///

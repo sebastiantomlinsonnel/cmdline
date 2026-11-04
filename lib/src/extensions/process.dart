@@ -1,5 +1,4 @@
-import 'dart:async';
-import 'dart:io';
+part of '../extensions.dart';
 
 /// Makes a program started with `Process.start` easier to work with.
 ///
