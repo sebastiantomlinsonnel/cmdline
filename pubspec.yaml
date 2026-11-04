@@ -1,6 +1,6 @@
 name: cmdline
 description: An SDK for console development
-version: 2.0.0-dev.1
+version: 2.0.0-dev.2
 homepage: https://pub.dev/packages/cmdline
 topics:
   - logging
