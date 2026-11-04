@@ -27,7 +27,7 @@
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline.dart</a></li>
     <li><a href="../../cmdline/Logger-class.html">Logger</a></li>
-    <li class="self-crumb">getStamp static method</li>
+    <li class="self-crumb">getStamp method</li>
   </ol>
   <div class="self-name">getStamp</div>
   <form class="search navbar-right" role="search">
@@ -49,7 +49,7 @@
     data-above-sidebar="cmdline&#47;Logger-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">getStamp</span> static method 
+<h1><span class="kind-method">getStamp</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
@@ -70,8 +70,8 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static String getStamp(Level level) {
-  final String name = level.name.toUpperCase().padRight(instance.TAG_WIDTH);
+  <pre class="language-dart"><code class="language-dart">String getStamp(Level level) {
+  final String name = level.name.toUpperCase().padRight(TAG_WIDTH);
   final String tag = Logger.instance.getVerbosityColour(level, &#39;$name |&#39;);
 
   return &#39;$tag&#39;;
@@ -91,7 +91,7 @@
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline</a></li>
     <li><a href="../../cmdline/Logger-class.html">Logger</a></li>
-    <li class="self-crumb">getStamp static method</li>
+    <li class="self-crumb">getStamp method</li>
 </ol>
 
     <h5>Logger class</h5>

@@ -520,7 +520,6 @@ final List<(String, Future<void> Function())> _scenes = [
 ];
 
 Future<void> _showcase({int? only}) async {
-  Logger.instance.verbose = true;
   try {
     if (only != null) {
       final (title, body) = _scenes[only - 1];

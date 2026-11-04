@@ -54,20 +54,27 @@
 
     <section class="multi-line-signature">
         
-<span class="returntype">void</span>
-<span class="name ">trace</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="trace-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+<span class="name ">trace</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="trace-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">message</span></span></li>
 </ol>)
 
         
 
     </section>
     
+<section class="desc markdown">
+  <p>Magenta</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void trace(dynamic message) =&gt; Logger.print(&#39;$message&#39;, Level.trace);</code></pre>
+  <pre class="language-dart"><code class="language-dart">String trace(Object? message) {
+  final String _message = Logger.getString(message, Level.trace);
+  Logger.print(&#39;$_message&#39;);
+  return _message;
+}</code></pre>
 </section>
 
 

@@ -55,8 +55,7 @@
     <section class="multi-line-signature">
       
 <span class="returntype">void</span>
-<span class="name ">print</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="print-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span>, </span></li>
-<li><span class="parameter" id="print-param-verbosity"><span class="type-annotation"><a href="../../cmdline/Level.html">Level</a></span> <span class="parameter-name">verbosity</span></span></li>
+<span class="name ">print</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="print-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span></li>
 </ol>)
 
       
@@ -71,17 +70,12 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static void print(String message, Level verbosity) {
-  final DateTime now = DateTime.now();
-  final String ascii = Logger.getString(message, verbosity);
-  final Logger inst = Logger.instance;
-  final bool isDetail = verbosity == Level.dev || verbosity == Level.debug;
-  if (inst.verbose || !isDetail) stdout.writeln(ascii);
-  inst._add(now, verbosity.name.toUpperCase(), message);
-  final onLog = inst.onLog;
-  if (onLog == null) return;
+  <pre class="language-dart"><code class="language-dart">static void print(String message) {
+  stdout.writeln(message);
+  Logger.instance.._saveLog(message);
+
   try {
-    onLog(message, ascii);
+    Logger.instance.onLog?.call(message);
   } catch (e) {
     fail(e);
   }

@@ -13,13 +13,9 @@ export 'cmd/helpers/stream_helpers.dart';
 export 'cmd/helpers/terminal_command.dart';
 
 part 'cmd/draw.dart';
-
 part 'cmd/fs.dart';
-
 part 'cmd/net.dart';
-
 part 'cmd/prompt.dart';
-
 part 'cmd/shell.dart';
 
 /// CMDLine helpers

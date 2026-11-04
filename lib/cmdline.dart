@@ -10,63 +10,63 @@ export 'src/cmd.dart';
 export 'src/logger.dart';
 
 /// stdout.write
-String write(dynamic data) {
+String write(Object? data) {
   final String _data = data.toString();
   stdout.write(_data);
   return _data;
 }
 
 /// stdout.writeln
-String writeln(dynamic data) {
+String writeln(Object? data) {
   final String _data = data.toString();
   stdout.writeln(_data);
   return _data;
 }
 
 /// Black on White background
-String dev(dynamic message) {
+String dev(Object? message) {
   final String _message = Logger.getString(message, Level.dev);
   Logger.print('$_message');
   return _message;
 }
 
 /// Magenta
-String trace(dynamic message) {
+String trace(Object? message) {
   final String _message = Logger.getString(message, Level.trace);
   Logger.print('$_message');
   return _message;
 }
 
 /// Green
-String debug(dynamic message) {
+String debug(Object? message) {
   final String _message = Logger.getString(message, Level.debug);
   Logger.print('$_message');
   return _message;
 }
 
 /// Red
-String fail(dynamic message) {
+String fail(Object? message) {
   final String _message = Logger.getString(message, Level.fail);
   Logger.print('$_message');
   return _message;
 }
 
 /// Green
-String pass(dynamic message) {
+String pass(Object? message) {
   final String _message = Logger.getString(message, Level.pass);
   Logger.print('$_message');
   return _message;
 }
 
 /// Orange
-String warn(dynamic message) {
+String warn(Object? message) {
   final String _message = Logger.getString(message, Level.warn);
   Logger.print('$_message');
   return _message;
 }
 
 /// White
-String log(dynamic message) {
+String log(Object? message) {
   final String _message = Logger.getString(message, Level.log);
   Logger.print('$_message');
   return _message;

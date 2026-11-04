@@ -108,10 +108,6 @@ extension StringRun on String {
     TerminalShell? shell,
   }) async {
     final theme = CliTheme.current;
-    if (Logger.instance.verbose) {
-      CliTheme.say('${theme.pointer} $this'.dim.foreground(theme.hint));
-    }
-
     final result = await TerminalCommand.run(
       this,
       shell: shell,

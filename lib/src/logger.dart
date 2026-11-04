@@ -10,27 +10,16 @@ export 'logger/frames.dart';
 export 'logger/level.dart';
 export 'logger/progress_bar.dart';
 
+/// The width of the longest verbosity tag
+const int TAG_WIDTH = 5;
+
 /// A complex yet intuitive logger
 class Logger {
-  /// Singleton
-  static final Logger instance = Logger._();
-  Timer? _spinnerTimer;
-  String? _spinnerLabel;
-
-  /// Check if there is a currently active spinner
-  bool get isSpinning => _spinnerLabel != null;
-
   /// Show the timestamp
   bool showTimestampInOutput = false;
 
   /// Run after every log
   void Function(String message)? onLog;
-
-  /// Controls whether [dev] and [debug] logs are shown
-  bool debugMode = true;
-
-  /// The position of the `|` in the output
-  int TAG_WIDTH = 5;
 
   /// The open log file, or null when logs aren't being saved.
   _LogFile? _out;
@@ -41,18 +30,20 @@ class Logger {
   /// Path of the log file if it exists
   String? get path => _out?.file.path;
 
-  /// Whether dev and debug messages are shown in the terminal.
-  ///
-  /// On by default. [Cli.start] turns it off unless the user typed
-  /// `--verbose`. Hidden messages still go to the log file and [onLog].
-  bool verbose = true;
-
-  /// PRIVATE
   Logger._();
+
+  Timer? _spinnerTimer;
+  String? _spinnerLabel;
+
+  /// Singleton pattern
+  static final Logger instance = Logger._();
+
+  /// Check if there is a currently active spinner
+  bool get isSpinning => _spinnerLabel != null;
 
   /// Outputs a log message using [Logger]
   static void print(String message) {
-    if (Logger.instance.verbose) writeln(message);
+    stdout.writeln(message);
     Logger.instance.._saveLog(message);
 
     try {
@@ -84,9 +75,7 @@ class Logger {
   }) async {
     await close();
 
-    final Logger m = instance
-      ..onLog = onLog
-      ..debugMode = debugMode;
+    final Logger m = instance..onLog = onLog;
 
     m._out = await _LogFile.open(
       path,
@@ -146,7 +135,7 @@ class Logger {
   /// Width of the longest level name (TRACE / DEBUG), so every tag lines up.
 
   String getStamp(Level level) {
-    final String name = level.name.toUpperCase().padRight(instance.TAG_WIDTH);
+    final String name = level.name.toUpperCase().padRight(TAG_WIDTH);
     final String tag = Logger.instance.getVerbosityColour(level, '$name |');
 
     return '$tag';
@@ -335,5 +324,3 @@ class _LogFile {
     _drain();
   }
 }
-
-

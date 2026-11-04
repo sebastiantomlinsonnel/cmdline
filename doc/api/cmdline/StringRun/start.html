@@ -86,10 +86,6 @@
   TerminalShell? shell,
 }) async {
   final theme = CliTheme.current;
-  if (Logger.instance.verbose) {
-    CliTheme.say(&#39;${theme.pointer} $this&#39;.dim.foreground(theme.hint));
-  }
-
   final result = await TerminalCommand.run(
     this,
     shell: shell,

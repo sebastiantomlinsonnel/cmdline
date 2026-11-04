@@ -59,7 +59,7 @@
 the folder carries over between commands. It runs with <code>env</code>.</p>
 <p>When a command fails, a themed error line is printed and a
 <a href="../cmdline/ProcessFailed-class.html">ProcessFailed</a> is thrown, unless you use <a href="../cmdline/StringRun/start.html">start</a> with <code>nothrow: true</code>.
-In verbose mode (<a href="../cmdline/Logger/verbose.html">Logger.verbose</a>), each command is shown first as a dim
+In verbose mode (<code>Logger.verbose</code>), each command is shown first as a dim
 <code>➜ command</code> line.</p>
 <pre class="language-dart"><code class="language-dart">await 'git pull'.run;
 final files = await 'git ls-files'.toList();

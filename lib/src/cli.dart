@@ -85,9 +85,6 @@ class CLI extends Command {
       return;
     }
 
-    // Show dev and debug messages only when the user asked for detail.
-    Logger.instance.verbose = result.input.verbose;
-
     final run = result.command.run;
     if (result.helpWanted || run == null) {
       stdout.writeln(HelpPrinter(result.commands).build());
