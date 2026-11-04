@@ -18,7 +18,6 @@ class CommandLineDemo {
       printMessages();
       await logFile();
     });
-    await _section('Styling', () => styling());
     await _section('Progress bar', () => progressBar());
     await _section('Theme', () => theme());
     await _section('Boxes and tables', () => format());
@@ -101,77 +100,6 @@ class CommandLineDemo {
       await Logger.close();
       CMD.fs.deleteDir(dir);
     }
-  }
-
-  /// Shows text styles, colours, the palette and the low-level printers.
-  static void styling() {
-    CliTheme.say(
-      [
-        'bold'.bold,
-        'dim'.dim,
-        'italic'.italic,
-        'underline'.underline,
-        'curly'.curlyUnderline.underlineColour(AsciiPalette.rose),
-        'strike'.strikethrough,
-        'inverse'.inverse,
-        'overline'.overline,
-      ].join('  '),
-    );
-
-    // 256-colour palette: cube colours and greys.
-    final cube = StringBuffer();
-    for (var red = 0; red <= 5; red++) {
-      cube.write('  '.background(AsciiColour.rgb(red, 5 - red, 2)));
-    }
-    final greys = StringBuffer();
-    for (var step = 0; step < 24; step += 2) {
-      greys.write(' '.background(AsciiColour.grey(step)));
-    }
-    CliTheme.say('Cube: $cube   Greys: $greys');
-
-    // True colour, and blending one colour over another.
-    final palette = {
-      'orchid': AsciiPalette.orchid,
-      'mint': AsciiPalette.mint,
-      'sky': AsciiPalette.sky,
-      'lavender': AsciiPalette.lavender,
-      'rose': AsciiPalette.rose,
-      'peach': AsciiPalette.peach,
-      'butter': AsciiPalette.butter,
-      'aqua': AsciiPalette.aqua,
-    };
-    CliTheme.say(
-      palette.entries.map((e) => e.key.foreground(e.value)).join(' '),
-    );
-    CliTheme.say(
-      [
-        for (final amount in [1.0, 0.75, 0.5, 0.25])
-          ' ${(amount * 100).round()}% '.background(
-            AsciiPalette.sky.opacity(amount),
-          ),
-      ].join(),
-    );
-
-    // The older, code-list way of styling.
-    CliTheme.say(sty([BOLD, RED_FG, 'sty:', RESET, ' codes and text joined']));
-    stdout.write(
-      multisty([
-        [GREEN_FG, 'multisty: ok '],
-        [YELLOW_FG, 'warn '],
-        [RED_FG, 'fail'],
-      ]),
-    );
-    AsciiPrinter([
-      BOLD,
-      'AsciiPrinter:',
-      RESET_BOLD_AND_DIM,
-      AsciiPalette.aqua.fg,
-      42,
-    ], separator: ' ').output();
-
-    final linked = 'Dart docs'.underline.link('https://dart.dev');
-    CliTheme.say('A link: $linked');
-    log('Without styles: "${linked.plain}"');
   }
 
   /// Fills a progress bar, then one that fails.

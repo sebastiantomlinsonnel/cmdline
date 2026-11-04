@@ -44,11 +44,6 @@ CLI cli = CLI(
       run: (input) => CommandLineDemo.logFile(),
     ),
     Command(
-      name: 'styling',
-      help: 'Text styles, colours and the palette',
-      run: (input) => CommandLineDemo.styling(),
-    ),
-    Command(
       name: 'progress',
       help: 'Progress bars',
       run: (input) => CommandLineDemo.progressBar(),

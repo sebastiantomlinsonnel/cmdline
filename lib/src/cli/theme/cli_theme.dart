@@ -84,11 +84,11 @@ class CliTheme {
 
   /// Prints [text] on its own line, dropping the colour if it is turned off.
   ///
-  /// With colour on it goes through [Ascii.output], so a [RESET] always
+  /// With colour on it goes through [Ansi.output], so a [RESET] always
   /// closes the line.
   static void say(String text) {
     if (useColour) {
-      Ascii(text).output();
+      Ansi(text).output();
     } else {
       stdout.writeln(text.plain);
     }

@@ -12,7 +12,7 @@ import 'package:cmdline/cmdline.dart';
 /// AsciiPrinter([BOLD, 'Total:', RESET_BOLD_AND_DIM, 42], separator: ' ')
 ///     .output();
 /// ```
-class AsciiPrinter {
+class AnsiPrinter {
   /// The pieces to print, in order.
   ///
   /// `null` items print as `null`, the same as [List.join].
@@ -27,11 +27,11 @@ class AsciiPrinter {
   /// Stores [tokens] and [separator] for printing later.
   ///
   /// Nothing is printed until [output] is called.
-  const AsciiPrinter(this.tokens, {this.separator = ''});
+  const AnsiPrinter(this.tokens, {this.separator = ''});
 
   /// Joins [tokens] with [separator] and adds [RESET], without printing.
   ///
-  /// Static so it can be used without creating an [AsciiPrinter], e.g. to
+  /// Static so it can be used without creating an [AnsiPrinter], e.g. to
   /// build a string for a log or a test.
   static String value(List<Object?> tokens, {String separator = ''}) =>
       '${tokens.join(separator)}$RESET';
