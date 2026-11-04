@@ -1,8 +1,14 @@
+library logger;
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
+
+export 'logger/frames.dart';
+export 'logger/level.dart';
+export 'logger/progress_bar.dart';
 
 /// A complex yet intuitive logger
 class Logger {

@@ -98,7 +98,7 @@ void main(List&lt;String&gt; arguments) =&gt; cli.start(arguments);
     <h2>Constructors</h2>
     <dl class="constructor-summary-list">
         <dt id="CLI.new" class="callable">
-          <span class="name"><a href="../cmdline/CLI/CLI.html">CLI</a></span><span class="signature">({<span class="parameter" id="param-name"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span><span class="parameter" id="param-about"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">about</span> = <span class="default-value">&#39;&#39;</span>, </span><span class="parameter" id="param-version"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">version</span>, </span><span class="parameter" id="param-flags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/Flag-class.html">Flag</a></span>&gt;</span></span> <span class="parameter-name">flags</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="param-options"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/Option-class.html">Option</a></span>&gt;</span></span> <span class="parameter-name">options</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="param-commands"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/Command-class.html">Command</a></span>&gt;</span></span> <span class="parameter-name">commands</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="param-run"><span class="type-annotation"><a href="../cmdline/RunCommand.html">RunCommand</a>?</span> <span class="parameter-name">run</span></span>})</span>
+          <span class="name"><a href="../cmdline/CLI/CLI.html">CLI</a></span><span class="signature">({<span class="parameter" id="param-name"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span><span class="parameter" id="param-help"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">help</span> = <span class="default-value">&#39;&#39;</span>, </span><span class="parameter" id="param-version"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">version</span>, </span><span class="parameter" id="param-flags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/Flag-class.html">Flag</a></span>&gt;</span></span> <span class="parameter-name">flags</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="param-options"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/Option-class.html">Option</a></span>&gt;</span></span> <span class="parameter-name">options</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="param-arguments"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/Argument-class.html">Argument</a></span>&gt;</span></span> <span class="parameter-name">arguments</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="param-commands"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/Command-class.html">Command</a></span>&gt;</span></span> <span class="parameter-name">commands</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="param-run"><span class="type-annotation"><a href="../cmdline/RunCommand.html">RunCommand</a>?</span> <span class="parameter-name">run</span></span>})</span>
         </dt>
         <dd>
           Creates the program.
@@ -111,18 +111,6 @@ void main(List&lt;String&gt; arguments) =&gt; cli.start(arguments);
       id="instance-properties">
     <h2>Properties</h2>
     <dl class="properties">
-        <dt id="about" class="property inherited">
-  <span class="name"><a href="../cmdline/Command/about.html">about</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  
-
-</dt>
-<dd class="inherited">
-  One line explaining the command, shown in the help screen.
-  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
-
-</dd>
-
         <dt id="aliases" class="property inherited">
   <span class="name"><a href="../cmdline/Command/aliases.html">aliases</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
@@ -131,6 +119,18 @@ void main(List&lt;String&gt; arguments) =&gt; cli.start(arguments);
 </dt>
 <dd class="inherited">
   Other words that also pick this command, like <code>ls</code> for <code>list</code>.
+  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="arguments" class="property inherited">
+  <span class="name"><a href="../cmdline/Command/arguments.html">arguments</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/Argument-class.html">Argument</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd class="inherited">
+  The plain words this command expects, like <code>c</code> in <code>run to c</code>.
   <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -168,6 +168,18 @@ void main(List&lt;String&gt; arguments) =&gt; cli.start(arguments);
 <dd class="inherited">
   The hash code for this object.
   <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="help" class="property inherited">
+  <span class="name"><a href="../cmdline/Command/help.html">help</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  One line explaining the command, shown in the help screen.
+  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -331,7 +343,7 @@ void main(List&lt;String&gt; arguments) =&gt; cli.start(arguments);
 </dd>
 
         <dt id="start" class="callable">
-  <span class="name"><a href="../cmdline/CLI/start.html">start</a></span><span class="signature">(<wbr><span class="parameter" id="start-param-arguments"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">arguments</span></span>)
+  <span class="name"><a href="../cmdline/CLI/start.html">start</a></span><span class="signature">(<wbr><span class="parameter" id="start-param-args"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">args</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
   </span>
   
@@ -423,7 +435,7 @@ void main(List&lt;String&gt; arguments) =&gt; cli.start(arguments);
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>

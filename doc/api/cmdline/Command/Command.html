@@ -55,10 +55,11 @@
     <section class="multi-line-signature">
       
       <span class="name ">Command</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="param-name"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span></li>
-<li><span class="parameter" id="param-about"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">about</span> = <span class="default-value">&#39;&#39;</span>, </span></li>
+<li><span class="parameter" id="param-help"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">help</span> = <span class="default-value">&#39;&#39;</span>, </span></li>
 <li><span class="parameter" id="param-aliases"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">aliases</span> = <span class="default-value">const []</span>, </span></li>
 <li><span class="parameter" id="param-flags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../cmdline/Flag-class.html">Flag</a></span>&gt;</span></span> <span class="parameter-name">flags</span> = <span class="default-value">const []</span>, </span></li>
 <li><span class="parameter" id="param-options"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../cmdline/Option-class.html">Option</a></span>&gt;</span></span> <span class="parameter-name">options</span> = <span class="default-value">const []</span>, </span></li>
+<li><span class="parameter" id="param-arguments"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../cmdline/Argument-class.html">Argument</a></span>&gt;</span></span> <span class="parameter-name">arguments</span> = <span class="default-value">const []</span>, </span></li>
 <li><span class="parameter" id="param-commands"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../cmdline/Command-class.html">Command</a></span>&gt;</span></span> <span class="parameter-name">commands</span> = <span class="default-value">const []</span>, </span></li>
 <li><span class="parameter" id="param-run"><span class="type-annotation"><a href="../../cmdline/RunCommand.html">RunCommand</a>?</span> <span class="parameter-name">run</span>, </span></li>
 <li><span class="parameter" id="param-hidden"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">hidden</span> = <span class="default-value">false</span>, </span></li>
@@ -77,10 +78,11 @@ name, or a name breaks the dash rules (see <a href="../../cmdline/Flag-class.htm
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Command({
   required this.name,
-  this.about = &#39;&#39;,
+  this.help = &#39;&#39;,
   this.aliases = const [],
   this.flags = const [],
   this.options = const [],
+  this.arguments = const [],
   this.commands = const [],
   this.run,
   this.hidden = false,
@@ -114,7 +116,7 @@ name, or a name breaks the dash rules (see <a href="../../cmdline/Flag-class.htm
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>

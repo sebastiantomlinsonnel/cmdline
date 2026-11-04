@@ -68,8 +68,8 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; delay(double seconds) async {
-  int _seconds = seconds.floor();
-  int _milliseconds = ((seconds - _seconds) * 1000).ceil();
+  final int _seconds = seconds.floor();
+  final int _milliseconds = ((seconds - _seconds) * 1000).ceil();
   return Future.delayed(
     Duration(milliseconds: _milliseconds, seconds: _seconds),
   );
@@ -100,7 +100,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>

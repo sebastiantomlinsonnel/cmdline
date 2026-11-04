@@ -72,7 +72,7 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static String getStamp(Level level) {
   final String name = level.name.toUpperCase().padRight(instance.TAG_WIDTH);
-  final String tag = Logger.getVerbosityColour(level, &#39;$name |&#39;);
+  final String tag = Logger.instance.getVerbosityColour(level, &#39;$name |&#39;);
 
   return &#39;$tag&#39;;
 }</code></pre>
@@ -103,7 +103,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>

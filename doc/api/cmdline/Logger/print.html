@@ -63,6 +63,9 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Outputs a log message using <a href="../../cmdline/Logger-class.html">Logger</a></p>
+</section>
 
 
     
@@ -70,11 +73,11 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static void print(String message, Level verbosity) {
   final DateTime now = DateTime.now();
-  final String ascii = Logger.instance.getString(message, verbosity);
+  final String ascii = Logger.getString(message, verbosity);
   final Logger inst = Logger.instance;
   final bool isDetail = verbosity == Level.dev || verbosity == Level.debug;
   if (inst.verbose || !isDetail) stdout.writeln(ascii);
-  inst.add(now, verbosity.name.toUpperCase(), message);
+  inst._add(now, verbosity.name.toUpperCase(), message);
   final onLog = inst.onLog;
   if (onLog == null) return;
   try {
@@ -110,7 +113,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>

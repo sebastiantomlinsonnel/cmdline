@@ -64,12 +64,28 @@
     <section class="summary offset-anchor" id="classes">
       <h2>Classes</h2>
       <dl>
-          <dt id="Ascii">
-  <span class="name "><a href="../cmdline/Ascii-class.html">Ascii</a></span> 
+          <dt id="Ansi">
+  <span class="name "><a href="../cmdline/Ansi-class.html">Ansi</a></span> 
 
 </dt>
 <dd>
   A string with escape codes already in it, waiting to be printed.
+</dd>
+
+          <dt id="AnsiPrinter">
+  <span class="name "><a href="../cmdline/AnsiPrinter-class.html">AnsiPrinter</a></span> 
+
+</dt>
+<dd>
+  Builds one line from codes and values, and prints it with a final <a href="../cmdline/RESET-constant.html">RESET</a>.
+</dd>
+
+          <dt id="Argument">
+  <span class="name "><a href="../cmdline/Argument-class.html">Argument</a></span> 
+
+</dt>
+<dd>
+  A plain word the user types without a dash, like <code>c</code> in <code>run to c</code>.
 </dd>
 
           <dt id="AsciiColour">
@@ -104,14 +120,6 @@
   The shared colours for the package's look.
 </dd>
 
-          <dt id="AsciiPrinter">
-  <span class="name "><a href="../cmdline/AsciiPrinter-class.html">AsciiPrinter</a></span> 
-
-</dt>
-<dd>
-  Builds one line from codes and values, and prints it with a final <a href="../cmdline/RESET-constant.html">RESET</a>.
-</dd>
-
           <dt id="BoxChars">
   <span class="name "><a href="../cmdline/BoxChars-class.html">BoxChars</a></span> 
 
@@ -136,28 +144,20 @@
   The colours and symbols shared by prompts, menus, tables and file helpers.
 </dd>
 
+          <dt id="CMD">
+  <span class="name "><a href="../cmdline/CMD-class.html">CMD</a></span> 
+
+</dt>
+<dd>
+  CMDLine helpers
+</dd>
+
           <dt id="Command">
   <span class="name "><a href="../cmdline/Command-class.html">Command</a></span> 
 
 </dt>
 <dd>
   One thing your program can do, like <code>add</code> in <code>todo add</code>.
-</dd>
-
-          <dt id="CommandLineDemo">
-  <span class="name "><a href="../cmdline/CommandLineDemo-class.html">CommandLineDemo</a></span> 
-
-</dt>
-<dd>
-  Small runnable tours of what the package can do.
-</dd>
-
-          <dt id="Env">
-  <span class="name "><a href="../cmdline/Env-class.html">Env</a></span> 
-
-</dt>
-<dd>
-  The type of <a href="../cmdline/env.html">env</a>. Use <a href="../cmdline/env.html">env</a> instead of making your own.
 </dd>
 
           <dt id="Flag">
@@ -189,7 +189,7 @@
 
 </dt>
 <dd>
-  
+  A complex yet intuitive logger
 </dd>
 
           <dt id="Option">
@@ -246,20 +246,12 @@
     <section class="summary offset-anchor" id="enums">
       <h2>Enums</h2>
       <dl>
-          <dt id="DevType">
-  <span class="name "><a href="../cmdline/DevType.html">DevType</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
           <dt id="Level">
   <span class="name "><a href="../cmdline/Level.html">Level</a></span> 
 
 </dt>
 <dd>
-  
+  Logger verbosity levels
 </dd>
 
           <dt id="TerminalShell">
@@ -4095,7 +4087,7 @@
 
 </dt>
 <dd>
-  
+  Clears line
   
 
 </dd>
@@ -14411,155 +14403,10 @@
       </dl>
     </section>
 
-    <section class="summary offset-anchor" id="properties">
-      <h2>Properties</h2>
-      <dl class="properties">
-          <dt id="env" class="property">
-  <span class="name"><a href="../cmdline/env.html">env</a></span>
-  <span class="signature">&#8594; <a href="../cmdline/Env-class.html">Env</a></span>
-  
-
-</dt>
-<dd>
-  Your app's own copy of the environment variables.
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
-          <dt id="homeDirectory" class="property">
-  <span class="name"><a href="../cmdline/homeDirectory.html">homeDirectory</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  
-
-</dt>
-<dd>
-  The user's home folder, like <code>C:\Users\me</code> or <code>/home/me</code>.
-  <div class="features"><span class="feature">no setter</span></div>
-
-</dd>
-
-          <dt id="isPrivilegedUser" class="property">
-  <span class="name"><a href="../cmdline/isPrivilegedUser.html">isPrivilegedUser</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
-  
-
-</dt>
-<dd>
-  Whether your app is running as administrator (Windows) or root (Mac and
-Linux).
-  <div class="features"><span class="feature">no setter</span></div>
-
-</dd>
-
-          <dt id="pwd" class="property">
-  <span class="name"><a href="../cmdline/pwd.html">pwd</a></span>
-  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  
-
-</dt>
-<dd>
-  The folder your app is working in.
-  <div class="features"><span class="feature">getter/setter pair</span></div>
-
-</dd>
-
-      </dl>
-    </section>
 
     <section class="summary offset-anchor" id="functions">
       <h2>Functions</h2>
       <dl class="callables">
-          <dt id="absolute" class="callable">
-  <span class="name"><a href="../cmdline/absolute.html">absolute</a></span><span class="signature">(<wbr><span class="parameter" id="absolute-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  <code>path</code> as a full, cleaned-up path, starting from <a href="../cmdline/pwd.html">pwd</a> if it is relative.
-  
-
-</dd>
-
-          <dt id="ask" class="callable">
-  <span class="name"><a href="../cmdline/ask.html">ask</a></span><span class="signature">(<wbr><span class="parameter" id="ask-param-prompt"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">prompt</span>, {</span><span class="parameter" id="ask-param-defaultValue"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">defaultValue</span>, </span><span class="parameter" id="ask-param-hidden"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">hidden</span> = <span class="default-value">false</span>, </span><span class="parameter" id="ask-param-required"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">required</span> = <span class="default-value">true</span>, </span><span class="parameter" id="ask-param-validator"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">validator</span>(<span class="parameter" id="param-answer"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">answer</span></span>)?</span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Asks the user a question and gives back what they type.
-  
-
-</dd>
-
-          <dt id="basename" class="callable">
-  <span class="name"><a href="../cmdline/basename.html">basename</a></span><span class="signature">(<wbr><span class="parameter" id="basename-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  The last part of <code>path</code>, like <code>app.json</code> from <code>config/app.json</code>.
-  
-
-</dd>
-
-          <dt id="basenameWithoutExtension" class="callable">
-  <span class="name"><a href="../cmdline/basenameWithoutExtension.html">basenameWithoutExtension</a></span><span class="signature">(<wbr><span class="parameter" id="basenameWithoutExtension-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  The last part of <code>path</code> without its ending, like <code>app</code> from <code>app.json</code>.
-  
-
-</dd>
-
-          <dt id="box" class="callable">
-  <span class="name"><a href="../cmdline/box.html">box</a></span><span class="signature">(<wbr><span class="parameter" id="box-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span>, {</span><span class="parameter" id="box-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span></span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  <code>text</code> drawn inside a box made of the theme's line characters.
-  
-
-</dd>
-
-          <dt id="confirm" class="callable">
-  <span class="name"><a href="../cmdline/confirm.html">confirm</a></span><span class="signature">(<wbr><span class="parameter" id="confirm-param-prompt"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">prompt</span>, {</span><span class="parameter" id="confirm-param-defaultValue"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">defaultValue</span></span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Asks a yes or no question and gives back true for yes.
-  
-
-</dd>
-
-          <dt id="copy" class="callable">
-  <span class="name"><a href="../cmdline/copy.html">copy</a></span><span class="signature">(<wbr><span class="parameter" id="copy-param-from"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">from</span>, </span><span class="parameter" id="copy-param-to"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">to</span>, {</span><span class="parameter" id="copy-param-overwrite"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">overwrite</span> = <span class="default-value">false</span></span>})
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Copies the file at <code>from</code> to <code>to</code>.
-  
-
-</dd>
-
           <dt id="copyToClipboard" class="callable">
   <span class="name"><a href="../cmdline/copyToClipboard.html">copyToClipboard</a></span><span class="signature">(<wbr><span class="parameter" id="copyToClipboard-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -14569,32 +14416,6 @@ Linux).
 </dt>
 <dd>
   Copies <code>text</code> to the user's clipboard.
-  
-
-</dd>
-
-          <dt id="copyTree" class="callable">
-  <span class="name"><a href="../cmdline/copyTree.html">copyTree</a></span><span class="signature">(<wbr><span class="parameter" id="copyTree-param-from"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">from</span>, </span><span class="parameter" id="copyTree-param-to"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">to</span>, {</span><span class="parameter" id="copyTree-param-overwrite"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">overwrite</span> = <span class="default-value">false</span>, </span><span class="parameter" id="copyTree-param-filter"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">filter</span>(<span class="parameter" id="param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)?</span>})
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Copies everything in the folder <code>from</code> into the folder <code>to</code>.
-  
-
-</dd>
-
-          <dt id="createDir" class="callable">
-  <span class="name"><a href="../cmdline/createDir.html">createDir</a></span><span class="signature">(<wbr><span class="parameter" id="createDir-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Creates the folder at <code>path</code>, along with any missing parent folders.
   
 
 </dd>
@@ -14729,32 +14550,6 @@ Linux).
 
 </dd>
 
-          <dt id="deleteDir" class="callable">
-  <span class="name"><a href="../cmdline/deleteDir.html">deleteDir</a></span><span class="signature">(<wbr><span class="parameter" id="deleteDir-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Deletes the folder at <code>path</code> and everything in it.
-  
-
-</dd>
-
-          <dt id="deleteFile" class="callable">
-  <span class="name"><a href="../cmdline/deleteFile.html">deleteFile</a></span><span class="signature">(<wbr><span class="parameter" id="deleteFile-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Deletes the file at <code>path</code>.
-  
-
-</dd>
-
           <dt id="dev" class="callable">
   <span class="name"><a href="../cmdline/dev.html">dev</a></span><span class="signature">(<wbr><span class="parameter" id="dev-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span></span>)
     <span class="returntype parameter">&#8594; void</span>
@@ -14768,33 +14563,6 @@ Linux).
 
 </dd>
 
-          <dt id="dirname" class="callable">
-  <span class="name"><a href="../cmdline/dirname.html">dirname</a></span><span class="signature">(<wbr><span class="parameter" id="dirname-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Everything in <code>path</code> before its last part, like <code>config</code> from
-<code>config/app.json</code>.
-  
-
-</dd>
-
-          <dt id="exists" class="callable">
-  <span class="name"><a href="../cmdline/exists.html">exists</a></span><span class="signature">(<wbr><span class="parameter" id="exists-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Whether anything (a file, folder or link) is at <code>path</code>.
-  
-
-</dd>
-
           <dt id="fail" class="callable">
   <span class="name"><a href="../cmdline/fail.html">fail</a></span><span class="signature">(<wbr><span class="parameter" id="fail-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span></span>)
     <span class="returntype parameter">&#8594; void</span>
@@ -14804,58 +14572,6 @@ Linux).
 </dt>
 <dd>
   
-  
-
-</dd>
-
-          <dt id="fetch" class="callable">
-  <span class="name"><a href="../cmdline/fetch.html">fetch</a></span><span class="signature">(<wbr><span class="parameter" id="fetch-param-url"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, </span><span class="parameter" id="fetch-param-saveTo"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">saveTo</span>, {</span><span class="parameter" id="fetch-param-showProgress"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">showProgress</span> = <span class="default-value">true</span>, </span><span class="parameter" id="fetch-param-overwrite"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">overwrite</span> = <span class="default-value">false</span></span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Downloads <code>url</code> and saves it to the file <code>saveTo</code>.
-  
-
-</dd>
-
-          <dt id="fileExtension" class="callable">
-  <span class="name"><a href="../cmdline/fileExtension.html">fileExtension</a></span><span class="signature">(<wbr><span class="parameter" id="fileExtension-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  The ending of <code>path</code>'s last part, dot included, like <code>.json</code>.
-  
-
-</dd>
-
-          <dt id="fileLength" class="callable">
-  <span class="name"><a href="../cmdline/fileLength.html">fileLength</a></span><span class="signature">(<wbr><span class="parameter" id="fileLength-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  The size of the file at <code>path</code>, in bytes.
-  
-
-</dd>
-
-          <dt id="find" class="callable">
-  <span class="name"><a href="../cmdline/find.html">find</a></span><span class="signature">(<wbr><span class="parameter" id="find-param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">pattern</span>, {</span><span class="parameter" id="find-param-workingDirectory"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">workingDirectory</span>, </span><span class="parameter" id="find-param-recursive"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">recursive</span> = <span class="default-value">true</span>, </span><span class="parameter" id="find-param-types"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-io/FileSystemEntityType-class.html">FileSystemEntityType</a></span>&gt;</span></span> <span class="parameter-name">types</span> = <span class="default-value">const {FileSystemEntityType.file}</span>, </span><span class="parameter" id="find-param-includeHidden"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">includeHidden</span> = <span class="default-value">false</span></span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Finds files (or folders) whose names match a wildcard <code>pattern</code>.
   
 
 </dd>
@@ -14964,19 +14680,6 @@ Linux).
 
 </dd>
 
-          <dt id="globToRegExp" class="callable">
-  <span class="name"><a href="../cmdline/globToRegExp.html">globToRegExp</a></span><span class="signature">(<wbr><span class="parameter" id="globToRegExp-param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">pattern</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/RegExp-class.html">RegExp</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Turns a wildcard pattern like <code>*.dart</code> into a <a href="https://api.flutter.dev/flutter/dart-core/RegExp-class.html">RegExp</a> that matches it.
-  
-
-</dd>
-
           <dt id="hyperlink" class="callable">
   <span class="name"><a href="../cmdline/hyperlink.html">hyperlink</a></span><span class="signature">(<wbr><span class="parameter" id="hyperlink-param-url"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, </span><span class="parameter" id="hyperlink-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -14986,97 +14689,6 @@ Linux).
 </dt>
 <dd>
   Makes <code>text</code> a clickable link that opens <code>url</code>.
-  
-
-</dd>
-
-          <dt id="isAbsolute" class="callable">
-  <span class="name"><a href="../cmdline/isAbsolute.html">isAbsolute</a></span><span class="signature">(<wbr><span class="parameter" id="isAbsolute-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Whether <code>path</code> starts from the top of a drive or the file system.
-  
-
-</dd>
-
-          <dt id="isDirectory" class="callable">
-  <span class="name"><a href="../cmdline/isDirectory.html">isDirectory</a></span><span class="signature">(<wbr><span class="parameter" id="isDirectory-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Whether <code>path</code> is a folder.
-  
-
-</dd>
-
-          <dt id="isFile" class="callable">
-  <span class="name"><a href="../cmdline/isFile.html">isFile</a></span><span class="signature">(<wbr><span class="parameter" id="isFile-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Whether <code>path</code> is a file.
-  
-
-</dd>
-
-          <dt id="isLink" class="callable">
-  <span class="name"><a href="../cmdline/isLink.html">isLink</a></span><span class="signature">(<wbr><span class="parameter" id="isLink-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Whether <code>path</code> is a link (shortcut) to another file or folder.
-  
-
-</dd>
-
-          <dt id="join" class="callable">
-  <span class="name"><a href="../cmdline/join.html">join</a></span><span class="signature">(<wbr><span class="parameter" id="join-param-first"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">first</span>, [</span><span class="parameter" id="join-param-second"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">second</span>, </span><span class="parameter" id="join-param-third"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">third</span>, </span><span class="parameter" id="join-param-fourth"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">fourth</span></span>])
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Joins up to four path parts with this system's separator.
-  
-
-</dd>
-
-          <dt id="joinAll" class="callable">
-  <span class="name"><a href="../cmdline/joinAll.html">joinAll</a></span><span class="signature">(<wbr><span class="parameter" id="joinAll-param-parts"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">parts</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Joins any number of path parts with this system's separator.
-  
-
-</dd>
-
-          <dt id="lastModified" class="callable">
-  <span class="name"><a href="../cmdline/lastModified.html">lastModified</a></span><span class="signature">(<wbr><span class="parameter" id="lastModified-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  When the file or folder at <code>path</code> was last changed.
   
 
 </dd>
@@ -15094,58 +14706,6 @@ Linux).
 
 </dd>
 
-          <dt id="menu" class="callable">
-  <span class="name"><a href="../cmdline/menu.html">menu</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="menu-param-prompt"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">prompt</span>, </span><span class="parameter" id="menu-param-options"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">options</span>, {</span><span class="parameter" id="menu-param-format"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">format</span>(<span class="parameter" id="param-option"><span class="type-annotation">T</span> <span class="parameter-name">option</span></span>)?, </span><span class="parameter" id="menu-param-defaultOption"><span class="type-annotation">T?</span> <span class="parameter-name">defaultOption</span></span>})
-    <span class="returntype parameter">&#8594; T</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Lets the user pick one of <code>options</code> and gives back the one they picked.
-  
-
-</dd>
-
-          <dt id="move" class="callable">
-  <span class="name"><a href="../cmdline/move.html">move</a></span><span class="signature">(<wbr><span class="parameter" id="move-param-from"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">from</span>, </span><span class="parameter" id="move-param-to"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">to</span>, {</span><span class="parameter" id="move-param-overwrite"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">overwrite</span> = <span class="default-value">false</span></span>})
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Moves (or renames) the file at <code>from</code> to <code>to</code>.
-  
-
-</dd>
-
-          <dt id="moveTree" class="callable">
-  <span class="name"><a href="../cmdline/moveTree.html">moveTree</a></span><span class="signature">(<wbr><span class="parameter" id="moveTree-param-from"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">from</span>, </span><span class="parameter" id="moveTree-param-to"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">to</span>, {</span><span class="parameter" id="moveTree-param-overwrite"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">overwrite</span> = <span class="default-value">false</span></span>})
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Moves everything in the folder <code>from</code> into the folder <code>to</code>.
-  
-
-</dd>
-
-          <dt id="multisty" class="callable">
-  <span class="name"><a href="../cmdline/multisty.html">multisty</a></span><span class="signature">(<wbr><span class="parameter" id="multisty-param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">data</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Joins several styled segments, resetting the style after each one.
-  
-
-</dd>
-
           <dt id="nextToScript" class="callable">
   <span class="name"><a href="../cmdline/nextToScript.html">nextToScript</a></span><span class="signature">(<wbr><span class="parameter" id="nextToScript-param-fileName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">fileName</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -15155,19 +14715,6 @@ Linux).
 </dt>
 <dd>
   The path of a file in the same folder as the running script.
-  
-
-</dd>
-
-          <dt id="normalize" class="callable">
-  <span class="name"><a href="../cmdline/normalize.html">normalize</a></span><span class="signature">(<wbr><span class="parameter" id="normalize-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Cleans up <code>path</code>: removes <code>.</code>, works out <code>..</code> and doubled separators.
   
 
 </dd>
@@ -15211,19 +14758,6 @@ Linux).
 
 </dd>
 
-          <dt id="padPlain" class="callable">
-  <span class="name"><a href="../cmdline/padPlain.html">padPlain</a></span><span class="signature">(<wbr><span class="parameter" id="padPlain-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span>, </span><span class="parameter" id="padPlain-param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">width</span>, {</span><span class="parameter" id="padPlain-param-right"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">right</span> = <span class="default-value">false</span></span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  <code>text</code> padded with spaces to <code>width</code> visible characters.
-  
-
-</dd>
-
           <dt id="pass" class="callable">
   <span class="name"><a href="../cmdline/pass.html">pass</a></span><span class="signature">(<wbr><span class="parameter" id="pass-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span></span>)
     <span class="returntype parameter">&#8594; void</span>
@@ -15233,19 +14767,6 @@ Linux).
 </dt>
 <dd>
   
-  
-
-</dd>
-
-          <dt id="replace" class="callable">
-  <span class="name"><a href="../cmdline/replace.html">replace</a></span><span class="signature">(<wbr><span class="parameter" id="replace-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, </span><span class="parameter" id="replace-param-existing"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">existing</span>, </span><span class="parameter" id="replace-param-replacement"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">replacement</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Replaces <code>existing</code> with <code>replacement</code> everywhere in the file at <code>path</code>.
   
 
 </dd>
@@ -15289,19 +14810,6 @@ Linux).
 
 </dd>
 
-          <dt id="showTree" class="callable">
-  <span class="name"><a href="../cmdline/showTree.html">showTree</a></span><span class="signature">(<wbr><span class="parameter" id="showTree-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, {</span><span class="parameter" id="showTree-param-maxDepth"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">maxDepth</span> = <span class="default-value">8</span>, </span><span class="parameter" id="showTree-param-showHidden"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">showHidden</span> = <span class="default-value">false</span></span>})
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Prints the folder at <code>path</code> as a tree, with lines from <a href="../cmdline/CliTheme-class.html">CliTheme</a>.
-  
-
-</dd>
-
           <dt id="spinWhile" class="callable">
   <span class="name"><a href="../cmdline/spinWhile.html">spinWhile</a></span><span class="signature">(<wbr><span class="parameter" id="spinWhile-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span>, </span><span class="parameter" id="spinWhile-param-running"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-io/ProcessResult-class.html">ProcessResult</a></span>&gt;</span></span> <span class="parameter-name">running</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-io/ProcessResult-class.html">ProcessResult</a></span>&gt;</span></span>
@@ -15311,32 +14819,6 @@ Linux).
 </dt>
 <dd>
   Shows a spinner with <code>message</code> until <code>running</code> finishes.
-  
-
-</dd>
-
-          <dt id="sty" class="callable">
-  <span class="name"><a href="../cmdline/sty.html">sty</a></span><span class="signature">(<wbr><span class="parameter" id="sty-param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">data</span>, {</span><span class="parameter" id="sty-param-printCharCodes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">printCharCodes</span> = <span class="default-value">false</span></span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Joins style codes and text into one string, with a <a href="../cmdline/RESET-constant.html">RESET</a> on each side.
-  
-
-</dd>
-
-          <dt id="table" class="callable">
-  <span class="name"><a href="../cmdline/table.html">table</a></span><span class="signature">(<wbr><span class="parameter" id="table-param-rows"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">rows</span>, {</span><span class="parameter" id="table-param-header"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span>&gt;</span>?</span> <span class="parameter-name">header</span>, </span><span class="parameter" id="table-param-rightAligned"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">rightAligned</span> = <span class="default-value">const {}</span></span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  <code>rows</code> drawn as a table with the theme's line characters.
   
 
 </dd>
@@ -15380,19 +14862,6 @@ Linux).
 
 </dd>
 
-          <dt id="touch" class="callable">
-  <span class="name"><a href="../cmdline/touch.html">touch</a></span><span class="signature">(<wbr><span class="parameter" id="touch-param-path"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Creates an empty file at <code>path</code>, or updates its time if it is there.
-  
-
-</dd>
-
           <dt id="trace" class="callable">
   <span class="name"><a href="../cmdline/trace.html">trace</a></span><span class="signature">(<wbr><span class="parameter" id="trace-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span></span>)
     <span class="returntype parameter">&#8594; void</span>
@@ -15419,19 +14888,6 @@ Linux).
 
 </dd>
 
-          <dt id="which" class="callable">
-  <span class="name"><a href="../cmdline/which.html">which</a></span><span class="signature">(<wbr><span class="parameter" id="which-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
-  </span>
-  
-
-</dt>
-<dd>
-  The full path of the program <code>name</code> found on <a href="../cmdline/Env/path.html">Env.path</a>, or null.
-  
-
-</dd>
-
           <dt id="windowTitle" class="callable">
   <span class="name"><a href="../cmdline/windowTitle.html">windowTitle</a></span><span class="signature">(<wbr><span class="parameter" id="windowTitle-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">title</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -15445,15 +14901,28 @@ Linux).
 
 </dd>
 
-          <dt id="withPrivileges" class="callable">
-  <span class="name"><a href="../cmdline/withPrivileges.html">withPrivileges</a></span><span class="signature">(<wbr><span class="parameter" id="withPrivileges-param-arguments"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">arguments</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+          <dt id="write" class="callable">
+  <span class="name"><a href="../cmdline/write.html">write</a></span><span class="signature">(<wbr><span class="parameter" id="write-param-data"><span class="type-annotation">dynamic</span> <span class="parameter-name">data</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
   </span>
   
 
 </dt>
 <dd>
-  Runs your app again as administrator or root, with the same arguments.
+  
+  
+
+</dd>
+
+          <dt id="writeln" class="callable">
+  <span class="name"><a href="../cmdline/writeln.html">writeln</a></span><span class="signature">(<wbr><span class="parameter" id="writeln-param-data"><span class="type-annotation">dynamic</span> <span class="parameter-name">data</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
   
 
 </dd>
@@ -15556,7 +15025,7 @@ Linux).
 
 </dt>
 <dd>
-  Thrown when a file helper like <a href="../cmdline/copy.html">copy</a> or <a href="../cmdline/move.html">move</a> can't do its job.
+  Thrown when a file helper like <code>copy</code> or <code>move</code> can't do its job.
 </dd>
 
           <dt id="ProcessFailed">
@@ -15596,7 +15065,7 @@ Linux).
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>

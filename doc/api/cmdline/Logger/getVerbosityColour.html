@@ -27,7 +27,7 @@
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline.dart</a></li>
     <li><a href="../../cmdline/Logger-class.html">Logger</a></li>
-    <li class="self-crumb">getVerbosityColour static method</li>
+    <li class="self-crumb">getVerbosityColour method</li>
   </ol>
   <div class="self-name">getVerbosityColour</div>
   <form class="search navbar-right" role="search">
@@ -49,7 +49,7 @@
     data-above-sidebar="cmdline&#47;Logger-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">getVerbosityColour</span> static method 
+<h1><span class="kind-method">getVerbosityColour</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
@@ -63,12 +63,15 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Get the styling for a log message</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static String getVerbosityColour(Level level, String data) {
+  <pre class="language-dart"><code class="language-dart">String getVerbosityColour(Level level, String data) {
   switch (level) {
     case Level.trace:
       return data.foreground(AsciiPalette.orchid).bold;
@@ -101,7 +104,7 @@
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline</a></li>
     <li><a href="../../cmdline/Logger-class.html">Logger</a></li>
-    <li class="self-crumb">getVerbosityColour static method</li>
+    <li class="self-crumb">getVerbosityColour method</li>
 </ol>
 
     <h5>Logger class</h5>
@@ -113,7 +116,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>

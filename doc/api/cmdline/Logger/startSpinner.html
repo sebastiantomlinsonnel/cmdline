@@ -80,16 +80,13 @@ Starting a new one replaces any spinner already running.</p>
 }) {
   _spinnerTimer?.cancel();
   _spinnerTimer = null;
-  _spinnerLabel = label;
-  &#47;&#47; if (!stdout.hasTerminal) return; &#47;&#47; piped output: skip the animation
-
-  &#47;&#47; Hide the cursor so it doesn&#39;t flicker over the spinner.
+  _spinnerLabel = &#39;\rlabel&#39;;
   stdout.write(HIDE_CURSOR);
 
   int frame = 0;
   void draw() {
     final String text = &#39;${kSPINNER_FRAMES[frame]} $label&#39;;
-    stdout.write(&#39;${CLEAR_LINE}${instance.getString(text, level)}&#39;);
+    stdout.write(&#39;${CLEAR_LINE}${getString(text, level)}&#39;);
     frame = (frame + 1) % kSPINNER_FRAMES.length;
   }
 
@@ -123,7 +120,7 @@ Starting a new one replaces any spinner already running.</p>
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>

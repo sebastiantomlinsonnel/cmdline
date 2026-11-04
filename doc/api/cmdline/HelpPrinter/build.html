@@ -82,11 +82,16 @@
     title = &#39;$title ${&#39;v${root.version}&#39;.dim}&#39;;
   }
   lines.add(title);
-  if (command.about.isNotEmpty) lines.add(command.about.italic.dim);
+  if (command.help.isNotEmpty) lines.add(command.help.italic.dim);
+
+  final StringBuffer buf = StringBuffer(path);
 
   &#47;&#47; Usage line.
   var usage = path;
-  if (_visibleCommands(command).isNotEmpty) usage += &#39; &lt;command&gt;&#39;;
+  if (_visibleCommands(command).isNotEmpty) buf.write(&#39; &lt;command&gt;&#39;);
+  for (final argument in command.arguments) {
+    buf.write(&#39; ${_argumentLabel(argument)}&#39;);
+  }
   usage += &#39; [options]&#39;;
   lines.add(&#39;&#39;);
   lines.add(_heading(&#39;Usage&#39;));
@@ -97,9 +102,15 @@
   for (final sub in _visibleCommands(command)) {
     var label = sub.name;
     if (sub.aliases.isNotEmpty) label += &#39;, ${sub.aliases.join(&#39;, &#39;)}&#39;;
-    rows.add([label, sub.about]);
+    rows.add([label, sub.help]);
   }
   _addSection(lines, &#39;Commands&#39;, rows);
+
+  &#47;&#47; Plain words the command expects, like &lt;key&gt;.
+  _addSection(lines, &#39;Arguments&#39;, [
+    for (final argument in command.arguments)
+      [_argumentLabel(argument), _argumentHelp(argument)],
+  ]);
 
   &#47;&#47; This command&#39;s own flags and options, plus the built-in ones.
   _addSection(lines, &#39;Options&#39;, [
@@ -153,7 +164,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>

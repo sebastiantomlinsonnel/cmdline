@@ -56,7 +56,7 @@
 <section class="desc markdown">
   <p>Runs this string as a terminal command, through <a href="../cmdline/TerminalCommand-class.html">TerminalCommand</a>.</p>
 <p>The command goes to a shell, so pipes, <code>cd</code> and variables all work, and
-the folder carries over between commands. It runs with <a href="../cmdline/env.html">env</a>.</p>
+the folder carries over between commands. It runs with <code>env</code>.</p>
 <p>When a command fails, a themed error line is printed and a
 <a href="../cmdline/ProcessFailed-class.html">ProcessFailed</a> is thrown, unless you use <a href="../cmdline/StringRun/start.html">start</a> with <code>nothrow: true</code>.
 In verbose mode (<a href="../cmdline/Logger/verbose.html">Logger.verbose</a>), each command is shown first as a dim
@@ -209,7 +209,7 @@ await 'dart test'.forEach((line) =&gt; print(line.toUpperCase()));
 <footer>
   <span class="no-break">
     cmdline
-      1.0.1
+      1.1.0
   </span>
   
 </footer>
