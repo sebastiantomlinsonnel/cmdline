@@ -1,19 +1,28 @@
 import 'package:cmdline/cmdline.dart';
 
+const String LOG_FILE = r'X:\Flutter\cmdline\log';
+
 Future<void> main() async {
-  Logger.instance.showTimestampInOutput = true;
+  await openLogFile();
+  printAllNames();
+  stressTest();
+}
 
-  log('Starting logger');
-  await Logger.instance.open(r'X:\Flutter\cmdline\logs\1');
-  pass('Log file opened');
-
+void stressTest() {
   final Stopwatch _clock = Stopwatch()..start();
-
   for (var i = 0; i < 1000; ++i) {
-    dev('TESTING', tag: 'roSe', showTimestamp: true);
+    printAllNames();
   }
+  _clock.stop();
+  write('$CLEAR_SCREEN$CLEAR_LINE${cursorTo(0, 0)}');
+  trace(
+    'Stress test took ${_clock.elapsedMicroseconds}μs|${_clock.elapsedMilliseconds}ms',
+  );
+}
 
-  trace(_clock.elapsedMicroseconds);
+Future<void> openLogFile() async {
+  CMD.fs.tryDeleteFile(LOG_FILE);
+  await Logger.instance.open(LOG_FILE);
 }
 
 void printAllNames() {

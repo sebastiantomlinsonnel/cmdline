@@ -79,6 +79,14 @@ class _FS {
     File(path).deleteSync();
   }
 
+  /// Tries to delete the file at [path].
+  ///
+  /// Returns if it isn't a file.
+  void tryDeleteFile(String path) {
+    if (!isFile(path)) return;
+    File(path).deleteSync();
+  }
+
   /// Creates the folder at [path], along with any missing parent folders.
   ///
   /// Does nothing if it is already there.
@@ -89,6 +97,14 @@ class _FS {
   /// Throws a [FileError] if it isn't a folder.
   void deleteDir(String path) {
     if (!isDirectory(path)) throw FileError('No folder to delete', path);
+    Directory(path).deleteSync(recursive: true);
+  }
+
+  /// Tries to delete the folder at [path] and everything in it.
+  ///
+  /// Returns if it isn't a folder.
+  void tryDeleteDir(String path) {
+    if (!isDirectory(path)) return;
     Directory(path).deleteSync(recursive: true);
   }
 

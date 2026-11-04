@@ -12,7 +12,7 @@ part 'constants.dart';
 /// A complex yet intuitive logger
 class Logger {
   /// Show the timestamp
-  bool showTimestampInOutput = false;
+  bool showTimestampInOutput = true;
 
   /// Run after every log
   void Function(String message)? onLog;
@@ -39,36 +39,10 @@ class Logger {
   /// Singleton pattern
   static final Logger instance = Logger._();
 
-  /// Start Logger with a log file
-  Future<Logger> open(
-    String path, {
-    bool append = true,
-    void Function(String)? onLog,
-  }) async {
-    close(); // don't leak an earlier file
-    final File file = File(path);
-    file.parent.createSync(recursive: true); // in case logs/ doesn't exist
-    logFile = file.openSync(
-      mode: append ? FileMode.writeOnlyAppend : FileMode.writeOnly,
-    );
-    this.onLog = onLog;
-
-    return this;
-  }
-
-  /// Stops saving to the file. The instance stays usable (console only).
-  void close() {
-    logFile?.closeSync();
-    logFile = null;
-  }
-
-  /// Writes a log to the logfile
-  void write(String message) => logFile?.writeStringSync(message);
-
   /// Outputs a log message using [Logger]
   static void print(String message) {
     stdout.writeln(message);
-    Logger.instance..write(message);
+    writeToLogFile(message);
     try {
       Logger.instance.onLog?.call(message);
     } catch (e) {
@@ -100,6 +74,10 @@ class Logger {
     _message.write(' $message');
     return _message.toString();
   }
+
+  /// Writes a log to the logfile
+  static void writeToLogFile(String message) =>
+      instance.logFile?.writeStringSync('$message\n');
 
   /// Time since the last log, 5 characters wide
   String _sinceLast() {
@@ -205,24 +183,25 @@ class Logger {
     _spinnerTimer = null;
     _spinnerLabel = null;
     stdout.write('$CLEAR_LINE$SHOW_CURSOR');
-    _printAt(message ?? label, level);
+    print(getString(message ?? label, level));
   }
 
-  /// Prints through the normal printers, so it also reaches the file and onLog
-  void _printAt(String m, Level level) {
-    switch (level) {
-      case Level.pass:
-        pass(m);
-      case Level.fail:
-        fail(m);
-      case Level.warn:
-        warn(m);
-      case Level.debug:
-        debug(m);
-      case Level.trace:
-        trace(m);
-      case Level.log || Level.dev:
-        log(m);
-    }
+  /// Start Logger with a log file
+  Logger open(String path, {bool append = true, void Function(String)? onLog}) {
+    if (logFile != null) close();
+    final File file = File(path);
+    file.parent.createSync(recursive: true);
+    logFile = file.openSync(
+      mode: append ? FileMode.writeOnlyAppend : FileMode.writeOnly,
+    );
+    this.onLog = onLog;
+
+    return this;
+  }
+
+  /// Stops saving to the file. The instance stays usable (console only).
+  void close() {
+    logFile?.closeSync();
+    logFile = null;
   }
 }
