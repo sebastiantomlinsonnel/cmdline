@@ -14,7 +14,7 @@ enum TerminalShell {
   bash,
 
   /// The basic POSIX shell (`/bin/sh`) on Mac and Linux.
-  sh;
+  sh,
 }
 
 /// Runs commands as if you typed them into a terminal.
@@ -43,18 +43,23 @@ enum TerminalShell {
 class ShellCommand {
   /// The shell command
   final String command;
+
   /// The type of shells [ShellCommand] can commands in
   final TerminalShell? shell;
+
+  /// Whether to show it in the current terminal
   final bool show;
+
+  /// Running as interactive allows writing to the process's [stdin]
   final bool interactive;
 
   /// [command]
   const ShellCommand(
-      this.command, {
-        this.shell,
-        this.show = true,
-        this.interactive = false,
-      });
+    this.command, {
+    this.shell,
+    this.show = true,
+    this.interactive = false,
+  });
 
   /// Runs [command] in a shell and gives back what happened.
   ///
@@ -72,11 +77,11 @@ class ShellCommand {
   /// The result works with the `ok`, `output`, `lines` and `throwIfFailed`
   /// helpers.
   static Future<ProcessResult> run(
-      String command, {
-        TerminalShell? shell,
-        bool show = true,
-        bool interactive = false,
-      }) async {
+    String command, {
+    TerminalShell? shell,
+    bool show = true,
+    bool interactive = false,
+  }) async {
     final chosen = shell ?? defaultShell;
 
     // The shell writes the folder it ended in to this file, so the next
@@ -154,12 +159,12 @@ class ShellCommand {
 
   /// The program and arguments that run [command] in [shell].
   static Future<(String, List<String>)> _startArgs(
-      TerminalShell shell,
-      String command,
-      String folderFile,
-      String tempFolder,
-      bool interactive,
-      ) async {
+    TerminalShell shell,
+    String command,
+    String folderFile,
+    String tempFolder,
+    bool interactive,
+  ) async {
     switch (shell) {
       case TerminalShell.powershell:
         final script = _powershellScript(command, folderFile);
@@ -168,26 +173,26 @@ class ShellCommand {
         final encoded = base64.encode(_utf16le(script));
 
         return (
-        await _findPowershell(),
-        [
-          '-NoProfile',
-          '-NoLogo',
-          if (!interactive) '-NonInteractive',
-          '-ExecutionPolicy',
-          'Bypass',
-          '-EncodedCommand',
-          encoded,
-        ],
+          await _findPowershell(),
+          [
+            '-NoProfile',
+            '-NoLogo',
+            if (!interactive) '-NonInteractive',
+            '-ExecutionPolicy',
+            'Bypass',
+            '-EncodedCommand',
+            encoded,
+          ],
         );
 
       case TerminalShell.cmd:
-      // A batch file dodges cmd's quoting rules for "cmd /c".
+        // A batch file dodges cmd's quoting rules for "cmd /c".
         final batch = File('$tempFolder${Platform.pathSeparator}command.bat');
         batch.writeAsStringSync(_cmdScript(command, folderFile));
 
         return (
-        Platform.environment['ComSpec'] ?? 'cmd.exe',
-        ['/d', '/c', batch.path],
+          Platform.environment['ComSpec'] ?? 'cmd.exe',
+          ['/d', '/c', batch.path],
         );
 
       case TerminalShell.bash:
