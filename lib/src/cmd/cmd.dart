@@ -11,6 +11,8 @@ export 'helpers/process_helpers.dart';
 export 'helpers/process_result_helpers.dart';
 export 'helpers/stream_helpers.dart';
 export 'helpers/terminal_command.dart';
+export 'types/extensions.dart';
+export 'types/file_error.dart';
 
 part 'draw.dart';
 part 'fs.dart';

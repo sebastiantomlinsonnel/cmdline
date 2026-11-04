@@ -5,7 +5,7 @@
 - Made top level Logger functions return what they print
 - Removed _LogFile
 - Log file now uses a Random Access File
-- Can display the μs, ms and s since last logr
+- Can display the μs, ms and s since last log message
 - Added [CLEAR] constant that functions like `clear` in PowerShell
 
 ## 1.1.0

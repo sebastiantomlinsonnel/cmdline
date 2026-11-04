@@ -7,8 +7,6 @@ import 'package:cmdline/cmdline.dart';
 export 'cli.dart';
 export 'commands/cli_error.dart';
 export 'commands/help.dart';
-export 'files/file_error.dart';
-export 'files/string_file_extension.dart';
 export 'parser/argument.dart';
 export 'parser/command.dart';
 export 'parser/flag.dart';

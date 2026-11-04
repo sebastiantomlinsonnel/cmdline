@@ -1,4 +1,4 @@
-library;
+library cmdline;
 
 export 'src/ansi/ansi.dart';
 export 'src/cli/cli.dart';
