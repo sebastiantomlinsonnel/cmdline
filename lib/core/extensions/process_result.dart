@@ -1,4 +1,6 @@
-part of '../extensions.dart';
+import 'dart:io';
+
+import 'package:cmdline/cmdline.dart';
 
 /// Makes the result of `Process.run` easier to read.
 ///

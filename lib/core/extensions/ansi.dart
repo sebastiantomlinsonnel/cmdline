@@ -1,37 +1,4 @@
-part of '../extensions.dart';
-
-/// Counts how many characters at the start of [text] are style codes.
-///
-/// Skips over each leading `CSI <digits, ':' or ';'> m` sequence and stops at
-/// the first character that isn't part of one. Returns 0 when [text] doesn't
-/// start with a style code. [AnsiStyledString] uses it to add new codes after
-/// the existing ones, so chained styles stay grouped at the front.
-int _openingCodesLength(String text) {
-  int at = 0;
-
-  while (text.startsWith(CSI, at)) {
-    int scan = at + CSI.length;
-    while (scan < text.length && _isParameterByte(text.codeUnitAt(scan))) {
-      scan++;
-    }
-    if (!text.startsWith(SGR, scan)) break;
-    at = scan + SGR.length;
-  }
-
-  return at;
-}
-
-/// Whether [unit] can appear inside a style code's parameters.
-///
-/// True for the digits `0`-`9`, `:` and `;`, which are the only characters
-/// used between [CSI] and [SGR] in this library's codes.
-bool _isParameterByte(int unit) =>
-    (unit >= 0x30 && unit <= 0x39) || unit == 0x3A || unit == 0x3B;
-
-/// Whether [unit] is the letter that ends a [CSI] code, like `m` or `H`.
-///
-/// True for the characters from `@` to `~`.
-bool _isFinalByte(int unit) => unit >= 0x40 && unit <= 0x7E;
+import 'package:cmdline/cmdline.dart';
 
 /// Adds colours and text styles to any [String], and chains them together.
 ///
@@ -321,3 +288,36 @@ extension AnsiStyledString on String {
   /// Uses [ALTERNATIVE_FONT_9]. Most terminals ignore alternative fonts.
   String get alternativeFont9 => _wrap(ALTERNATIVE_FONT_9);
 }
+
+/// Counts how many characters at the start of [text] are style codes.
+///
+/// Skips over each leading `CSI <digits, ':' or ';'> m` sequence and stops at
+/// the first character that isn't part of one. Returns 0 when [text] doesn't
+/// start with a style code. [AnsiStyledString] uses it to add new codes after
+/// the existing ones, so chained styles stay grouped at the front.
+int _openingCodesLength(String text) {
+  int at = 0;
+
+  while (text.startsWith(CSI, at)) {
+    int scan = at + CSI.length;
+    while (scan < text.length && _isParameterByte(text.codeUnitAt(scan))) {
+      scan++;
+    }
+    if (!text.startsWith(SGR, scan)) break;
+    at = scan + SGR.length;
+  }
+
+  return at;
+}
+
+/// Whether [unit] can appear inside a style code's parameters.
+///
+/// True for the digits `0`-`9`, `:` and `;`, which are the only characters
+/// used between [CSI] and [SGR] in this library's codes.
+bool _isParameterByte(int unit) =>
+    (unit >= 0x30 && unit <= 0x39) || unit == 0x3A || unit == 0x3B;
+
+/// Whether [unit] is the letter that ends a [CSI] code, like `m` or `H`.
+///
+/// True for the characters from `@` to `~`.
+bool _isFinalByte(int unit) => unit >= 0x40 && unit <= 0x7E;

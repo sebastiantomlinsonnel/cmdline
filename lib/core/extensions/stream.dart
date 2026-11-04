@@ -1,4 +1,6 @@
-part of '../extensions.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 
 /// Turns a program's output (`process.stdout` or `process.stderr`) into text.
 ///

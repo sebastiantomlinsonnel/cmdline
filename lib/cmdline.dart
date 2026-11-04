@@ -1,14 +1,10 @@
-/// ANSI lib
+/// CORE library
+export 'core/core.dart';
+///  ANSI lib
 export 'src/ansi/ansi.dart';
-
-/// CLI lib
+///  CLI lib
 export 'src/cli/cli.dart';
-
-/// CMD lib
+///  CMD lib
 export 'src/cmd/cmd.dart';
-
-/// EXTENSIONS
-export 'src/extensions.dart';
-
-/// LOGGING lib
+///  LOGGING lib
 export 'src/logging/logging.dart';
