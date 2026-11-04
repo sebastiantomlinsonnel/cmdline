@@ -217,11 +217,11 @@ class CommandLineDemo {
       await Logger.instance.open(path, append: false);
       log('This line goes to the screen and to demo.log');
       warn('So does this warning');
-      await Logger.instance.close();
+      Logger.instance.close();
 
       CliTheme.say(CMD.draw.box(path.readText.trim(), title: 'demo.log'));
     } finally {
-      await Logger.instance.close();
+      Logger.instance.close();
       CMD.fs.deleteDir(dir);
     }
   }

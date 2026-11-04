@@ -1,5 +1,6 @@
 part of 'logger.dart';
 
+const int _TAG_WIDTH = 10;
 const List<String> _twoDigits = [
   '00',
   '01',

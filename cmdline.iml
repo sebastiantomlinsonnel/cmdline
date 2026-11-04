@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/doc" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/example" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bin" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
