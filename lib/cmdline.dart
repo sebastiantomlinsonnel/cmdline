@@ -71,3 +71,7 @@ String log(Object? message) {
   Logger.print('$_message');
   return _message;
 }
+
+Future<void> main() async {
+  await Logger.instance.logFile?.flush();
+}

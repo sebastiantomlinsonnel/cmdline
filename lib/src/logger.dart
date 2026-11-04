@@ -22,13 +22,16 @@ class Logger {
   void Function(String message)? onLog;
 
   /// The open log file, or null when logs aren't being saved.
-  _LogFile? _out;
+  _LogFile? logFile;
 
   /// Checks if there is a log file open for [Logger] to print logs to
-  bool get isOpen => _out != null;
+  bool get isOpen => logFile != null;
 
   /// Path of the log file if it exists
-  String? get path => _out?.file.path;
+  String? get path => logFile?.file.path;
+
+  /// Check if there is a currently active spinner
+  bool get isSpinning => _spinnerLabel != null;
 
   Logger._();
 
@@ -37,9 +40,6 @@ class Logger {
 
   /// Singleton pattern
   static final Logger instance = Logger._();
-
-  /// Check if there is a currently active spinner
-  bool get isSpinning => _spinnerLabel != null;
 
   /// Outputs a log message using [Logger]
   static void print(String message) {
@@ -57,13 +57,13 @@ class Logger {
   static String getString(dynamic message, Level level, {bool? showTimestamp}) {
     String timestamp = '';
     if (showTimestamp ?? Logger.instance.showTimestampInOutput)
-      timestamp = '${_getTimestamp()} ';
+      timestamp = '${instance._getTimestamp()} ';
 
     return [timestamp, Logger.instance.getStamp(level), ' $message'].join();
   }
 
   /// Start Logger with a log file
-  static Future<Logger> open(
+  Future<Logger> open(
     String path, {
     bool append = true,
     Duration flushInterval = const Duration(seconds: 2),
@@ -77,7 +77,7 @@ class Logger {
 
     final Logger m = instance..onLog = onLog;
 
-    m._out = await _LogFile.open(
+    m.logFile = await _LogFile.open(
       path,
       append: append,
       flushInterval: flushInterval,
@@ -88,23 +88,20 @@ class Logger {
     return m;
   }
 
-  /// Save log file
-  static Future<void> flush() async => instance._out?.flush();
-
   /// Stops saving to the file. The instance stays usable (console only).
-  static Future<void> close() async {
-    final _LogFile? out = instance._out;
-    instance._out = null;
+  Future<void> close() async {
+    final _LogFile? out = instance.logFile;
+    instance.logFile = null;
     await out?.close();
   }
 
   void _saveLog(String message) {
-    final _LogFile? out = _out;
+    final _LogFile? out = logFile;
     if (out == null) return;
     out.write(message);
   }
 
-  static String _getTimestamp() {
+  String _getTimestamp() {
     final DateTime now = DateTime.now();
     final String ms = now.millisecond.toString().padLeft(3, '0');
 
@@ -196,7 +193,7 @@ class Logger {
   }
 
   /// Prints through the normal printers, so it also reaches the file and onLog.
-  static void _printAt(String m, Level level) {
+  void _printAt(String m, Level level) {
     switch (level) {
       case Level.pass:
         pass(m);

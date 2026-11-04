@@ -214,14 +214,14 @@ class CommandLineDemo {
     final dir = Directory.systemTemp.createTempSync('cmdline_log_').path;
     final path = CMD.fs.join(dir, 'demo.log');
     try {
-      await Logger.open(path, append: false);
+      await Logger.instance.open(path, append: false);
       log('This line goes to the screen and to demo.log');
       warn('So does this warning');
-      await Logger.close();
+      await Logger.instance.close();
 
       CliTheme.say(CMD.draw.box(path.readText.trim(), title: 'demo.log'));
     } finally {
-      await Logger.close();
+      await Logger.instance.close();
       CMD.fs.deleteDir(dir);
     }
   }
