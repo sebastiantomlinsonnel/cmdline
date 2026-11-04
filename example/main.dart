@@ -759,9 +759,3 @@ Future<void> _shell() async {
 void _clear() => stdout.write('$CLEAR_SCREEN$CURSOR_HOME$HIDE_CURSOR');
 
 Future<void> main(List<String> args) async => await cli.start(args);
-
-/// Small runnable tours of what the package can do.
-///
-/// [demo] runs everything that needs no typing, so it works anywhere, even
-/// with output piped to a file. [demoAll] runs the parts that ask you
-/// things or hand over the keyboard, so it needs a real terminal.

@@ -11,7 +11,7 @@ export 'logger/level.dart';
 export 'logger/progress_bar.dart';
 
 /// The width of the longest verbosity tag
-const int TAG_WIDTH = 5;
+const int TAG_WIDTH = 10;
 
 /// A complex yet intuitive logger
 class Logger {
@@ -37,6 +37,8 @@ class Logger {
 
   Timer? _spinnerTimer;
   String? _spinnerLabel;
+  final Stopwatch _clock = Stopwatch()..start();
+  int _lastLog = 0;
 
   /// Singleton pattern
   static final Logger instance = Logger._();
@@ -45,7 +47,6 @@ class Logger {
   static void print(String message) {
     stdout.writeln(message);
     Logger.instance.._saveLog(message);
-
     try {
       Logger.instance.onLog?.call(message);
     } catch (e) {
@@ -53,13 +54,97 @@ class Logger {
     }
   }
 
-  /// Get a formatted string
-  static String getString(dynamic message, Level level, {bool? showTimestamp}) {
-    String timestamp = '';
-    if (showTimestamp ?? Logger.instance.showTimestampInOutput)
-      timestamp = '${instance._getTimestamp()} ';
+  /// Get the log for printing
+  static String getString(
+    dynamic message,
+    Level level, {
+    bool? showTimestamp,
+    String? tag,
+  }) {
+    final StringBuffer _message = StringBuffer();
+    if (showTimestamp ?? Logger.instance.showTimestampInOutput) {
+      _message.writeAll([instance._getTimestamp()]);
+    }
+    if (tag == null) {
+      _message.write(Logger.instance.getStamp(level));
+    } else {
+      _message.write(
+        Logger.instance.getStamp(
+          level,
+          tag.length > TAG_WIDTH ? tag.substring(0, TAG_WIDTH) : tag,
+        ),
+      );
+    }
+    _message.write(' $message');
+    return _message.toString();
+  }
 
-    return [timestamp, Logger.instance.getStamp(level), ' $message'].join();
+  /// '00' to '99' and '000' to '999', built once so logs skip toString/padLeft.
+  static final List<String> _d2 = List<String>.generate(
+    100,
+    (int i) => i.toString().padLeft(2, '0'),
+    growable: false,
+  );
+  static final List<String> _d3 = List<String>.generate(
+    1000,
+    (int i) => i.toString().padLeft(3, '0'),
+    growable: false,
+  );
+
+  /// Time since the last log, always 5 characters wide.
+  ///
+  /// Like `953μs`, `036ms`, `1.35s`, `12.4s` or ` 245s`.
+  String _sinceLast() {
+    final int now = _clock.elapsedMicroseconds;
+    final int us = now - _lastLog;
+    _lastLog = now;
+
+    if (us < 1000) return '${_d3[us]}μs';
+    if (us < 1000000) return '${_d3[us ~/ 1000]}ms';
+    if (us < 10000000) {
+      final int cs = us ~/ 10000; // hundredths of a second, 100–999
+      return '${cs ~/ 100}.${_d2[cs % 100]}s';
+    }
+    if (us < 100000000) {
+      final int ds = us ~/ 100000; // tenths of a second, 100–999
+      return '${ds ~/ 10}.${ds % 10}s';
+    }
+    final int s = us ~/ 1000000;
+
+    return s > 999 ? '>999s' : '${s}s'.padLeft(5);
+  }
+
+  String _getTimestamp() {
+    final DateTime now = DateTime.now();
+    final StringBuffer buf = StringBuffer();
+    buf.writeAll([
+      '['.foreground(const AsciiColour.grey(10)),
+      now.minute
+          .toString()
+          .padLeft(2, '0')
+          .foreground(const AsciiColour.grey(14))
+          .bold,
+      ':'.foreground(const AsciiColour.grey(14)),
+      now.second
+          .toString()
+          .padLeft(2, '0')
+          .foreground(const AsciiColour.grey(14))
+          .bold,
+      '+'.foreground(const AsciiColour.grey(14)),
+      '${_sinceLast()}] '.foreground(const AsciiColour.grey(10)),
+    ]);
+
+    return buf.toString();
+  }
+
+  /// Width of the longest level name (TRACE / DEBUG), so every tag lines up.
+  String getStamp(Level level, [String? tag]) {
+    final String name = tag?.toUpperCase() ?? level.name.toUpperCase();
+    final String fitted = name.length > TAG_WIDTH
+        ? name.substring(0, TAG_WIDTH)
+        : name;
+
+    return getVerbosityColour(level, '${fitted.padRight(TAG_WIDTH)}|');
   }
 
   /// Start Logger with a log file
@@ -101,43 +186,6 @@ class Logger {
     out.write(message);
   }
 
-  String _getTimestamp() {
-    final DateTime now = DateTime.now();
-    final String ms = now.millisecond.toString().padLeft(3, '0');
-
-    return [
-      now.hour
-          .toString()
-          .padLeft(2, '0')
-          .foreground(const AsciiColour.grey(14))
-          .bold,
-      ':'.foreground(const AsciiColour.grey(14)),
-      now.minute
-          .toString()
-          .padLeft(2, '0')
-          .foreground(const AsciiColour.grey(14))
-          .bold,
-      ':'.foreground(const AsciiColour.grey(14)),
-      now.second
-          .toString()
-          .padLeft(2, '0')
-          .foreground(const AsciiColour.grey(14))
-          .bold,
-      '.'.foreground(const AsciiColour.grey(14)),
-      ms.foreground(const AsciiColour.grey(10)),
-      ' ',
-    ].join();
-  }
-
-  /// Width of the longest level name (TRACE / DEBUG), so every tag lines up.
-
-  String getStamp(Level level) {
-    final String name = level.name.toUpperCase().padRight(TAG_WIDTH);
-    final String tag = Logger.instance.getVerbosityColour(level, '$name |');
-
-    return '$tag';
-  }
-
   /// Get the styling for a log message
   String getVerbosityColour(Level level, String data) {
     switch (level) {
@@ -154,7 +202,7 @@ class Logger {
       case Level.log:
         return data.foreground(AsciiPalette.snow).bold;
       case Level.dev:
-        return '${AsciiPalette.silver.bg}${AsciiPalette.ink.fg}$data'.bold;
+        return data.foreground(AsciiPalette.rose).bold;
     }
   }
 

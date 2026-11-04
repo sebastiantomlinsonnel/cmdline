@@ -24,8 +24,13 @@ String writeln(Object? data) {
 }
 
 /// Black on White background
-String dev(Object? message) {
-  final String _message = Logger.getString(message, Level.dev);
+String dev(Object? message, {String? tag, bool? showTimestamp}) {
+  final String _message = Logger.getString(
+    message,
+    Level.dev,
+    showTimestamp: showTimestamp,
+    tag: tag,
+  );
   Logger.print('$_message');
   return _message;
 }
@@ -73,5 +78,19 @@ String log(Object? message) {
 }
 
 Future<void> main() async {
-  await Logger.instance.logFile?.flush();
+  dev('Starting logger', showTimestamp: true);
+  Logger.instance.showTimestampInOutput = true;
+  dev('Started logger');
+
+  for (var i = 0; i < 100; ++i) {
+    dev('TESTING', tag: 'roSe');
+  }
+  dev('Finished testing tests', tag: 'roSe');
+
+  log('Building for release');
+  debug('Using cache in .dart_tool/build');
+  trace('Compiled 42 libraries');
+  warn('2 packages have newer versions');
+  fail('Could not reach the update server');
+  pass('Build finished in 3.2s');
 }
