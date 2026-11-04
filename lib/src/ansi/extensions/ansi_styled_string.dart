@@ -4,7 +4,7 @@ import 'package:cmdline/cmdline.dart';
 ///
 /// Skips over each leading `CSI <digits, ':' or ';'> m` sequence and stops at
 /// the first character that isn't part of one. Returns 0 when [text] doesn't
-/// start with a style code. [AsciiStyledString] uses it to add new codes after
+/// start with a style code. [AnsiStyledString] uses it to add new codes after
 /// the existing ones, so chained styles stay grouped at the front.
 int _openingCodesLength(String text) {
   int at = 0;
@@ -41,13 +41,13 @@ bool _isFinalByte(int unit) => unit >= 0x40 && unit <= 0x7E;
 /// earlier ones:
 ///
 /// ```dart
-/// print('Done'.bold.foreground(const AsciiColour(10)));
+/// print('Done'.bold.foreground(const AnsiColour(10)));
 /// // -> ESC[1m ESC[38;5;10m Done ESC[0m  (without the spaces)
 /// ```
 ///
 /// Many styles depend on the terminal; see the matching constants (such as
 /// [CURLY_UNDERLINE] or [FRAME]) for how widely each is supported.
-extension AsciiStyledString on String {
+extension AnsiStyledString on String {
   /// Puts [code] after this string's leading style codes and ends with [RESET].
   ///
   /// A trailing [RESET] from an earlier call is removed first, so chaining
@@ -64,25 +64,25 @@ extension AsciiStyledString on String {
 
   /// Sets the text colour.
   ///
-  /// Works with any [AsciiInk]: a palette [AsciiColour] or a true-colour
-  /// [AsciiColourRgb]. Uses [AsciiInk.fg].
-  String foreground(AsciiInk colour) => _wrap(colour.fg);
+  /// Works with any [AnsiInk]: a palette [AnsiColour] or a true-colour
+  /// [AnsiColourRgb]. Uses [AnsiInk.fg].
+  String foreground(AnsiInk colour) => _wrap(colour.fg);
 
   /// Sets the background colour.
   ///
-  /// Works with any [AsciiInk]. Uses [AsciiInk.bg].
-  String background(AsciiInk colour) => _wrap(colour.bg);
+  /// Works with any [AnsiInk]. Uses [AnsiInk.bg].
+  String background(AnsiInk colour) => _wrap(colour.bg);
 
   /// Sets the underline colour.
   ///
   /// Only visible together with an underline style such as [underline] or
-  /// [curlyUnderline]. Uses [AsciiInk.underline].
-  String underlineColour(AsciiInk colour) => _wrap(colour.underline);
+  /// [curlyUnderline]. Uses [AnsiInk.underline].
+  String underlineColour(AnsiInk colour) => _wrap(colour.underline);
 
   /// American spelling of [underlineColour].
   ///
   /// Does exactly the same thing.
-  String underlineColor(AsciiInk colour) => underlineColour(colour);
+  String underlineColor(AnsiInk colour) => underlineColour(colour);
 
   /// Makes this text a clickable link that opens [url].
   ///
@@ -103,7 +103,7 @@ extension AsciiStyledString on String {
   /// compare it with other text.
   ///
   /// ```dart
-  /// 'Done'.bold.foreground(const AsciiColour(10)).plain; // 'Done'
+  /// 'Done'.bold.foreground(const AnsiColour(10)).plain; // 'Done'
   /// ```
   String get plain {
     final result = StringBuffer();

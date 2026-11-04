@@ -238,7 +238,7 @@ class CommandLineDemo {
     final broken = ProgressBar(
       'Uploading',
       total: 10,
-      colour: AsciiPalette.peach,
+      colour: AnsiPalette.peach,
     );
     for (var i = 0; i < 6; i++) {
       await delay(0.05);
@@ -255,8 +255,8 @@ class CommandLineDemo {
     CliTheme.say(CMD.draw.box('The default theme', title: 'Theme'));
 
     CliTheme.current = const CliTheme(
-      question: AsciiColour(13),
-      border: AsciiColour(13),
+      question: AnsiColour(13),
+      border: AnsiColour(13),
       box: BoxChars.doubleLine,
       tick: '+',
     );
@@ -565,7 +565,7 @@ Future<void> _intro() async {
   CliTheme.say(
     CMD.draw.box(
       [
-        'cmdline'.bold.foreground(AsciiPalette.sky),
+        'cmdline'.bold.foreground(AnsiPalette.sky),
         'Friendly command line tools in Dart'.dim,
       ].join('\n'),
     ),
@@ -579,7 +579,7 @@ Future<void> _outro() async {
   CliTheme.say(
     CMD.draw.box(
       [
-        'dart pub add cmdline'.bold.foreground(AsciiPalette.mint),
+        'dart pub add cmdline'.bold.foreground(AnsiPalette.mint),
         'Logging, prompts, styling, files and shell'.dim,
       ].join('\n'),
       title: 'Get started',
@@ -615,7 +615,7 @@ Future<void> _styling() async {
       'dim'.dim,
       'italic'.italic,
       'underline'.underline,
-      'curly'.curlyUnderline.underlineColour(AsciiPalette.rose),
+      'curly'.curlyUnderline.underlineColour(AnsiPalette.rose),
       'strike'.strikethrough,
       'inverse'.inverse,
     ].join('  '),
@@ -624,14 +624,14 @@ Future<void> _styling() async {
   CliTheme.say('');
 
   final palette = {
-    'orchid': AsciiPalette.orchid,
-    'mint': AsciiPalette.mint,
-    'sky': AsciiPalette.sky,
-    'lavender': AsciiPalette.lavender,
-    'rose': AsciiPalette.rose,
-    'peach': AsciiPalette.peach,
-    'butter': AsciiPalette.butter,
-    'aqua': AsciiPalette.aqua,
+    'orchid': AnsiPalette.orchid,
+    'mint': AnsiPalette.mint,
+    'sky': AnsiPalette.sky,
+    'lavender': AnsiPalette.lavender,
+    'rose': AnsiPalette.rose,
+    'peach': AnsiPalette.peach,
+    'butter': AnsiPalette.butter,
+    'aqua': AnsiPalette.aqua,
   };
   final names = palette.keys.toList();
   for (var row = 0; row < names.length; row += 4) {
@@ -650,9 +650,7 @@ Future<void> _styling() async {
     for (var i = start; i < start + chunk; i++) {
       final amount = 1 - i / (width - 1);
       stdout.write(
-        ' '.background(
-          AsciiPalette.sky.opacity(amount, over: AsciiPalette.rose),
-        ),
+        ' '.background(AnsiPalette.sky.opacity(amount, over: AnsiPalette.rose)),
       );
     }
     await delay(0.05);
@@ -672,7 +670,7 @@ Future<void> _progress() async {
   final download = ProgressBar(
     'Downloading',
     total: 60,
-    colour: AsciiPalette.sky,
+    colour: AnsiPalette.sky,
   );
   await fill(download, 60, 1);
   download.done('Downloaded 12.4 MB');
@@ -681,7 +679,7 @@ Future<void> _progress() async {
   final compile = ProgressBar(
     'Compiling  ',
     total: 40,
-    colour: AsciiPalette.lavender,
+    colour: AnsiPalette.lavender,
   );
   await fill(compile, 40, 0.8);
   compile.done('Compiled 40 files');
@@ -690,7 +688,7 @@ Future<void> _progress() async {
   final upload = ProgressBar(
     'Uploading  ',
     total: 50,
-    colour: AsciiPalette.peach,
+    colour: AnsiPalette.peach,
   );
   await fill(upload, 35, 0.7);
   await delay(0.3);
@@ -698,8 +696,8 @@ Future<void> _progress() async {
 }
 
 Future<void> _tables() async {
-  final ok = 'up to date'.foreground(AsciiPalette.mint);
-  final old = 'update'.foreground(AsciiPalette.butter);
+  final ok = 'up to date'.foreground(AnsiPalette.mint);
+  final old = 'update'.foreground(AnsiPalette.butter);
   CliTheme.say(
     CMD.draw.table(
       [
@@ -716,7 +714,7 @@ Future<void> _tables() async {
   CliTheme.say(
     CMD.draw.box(
       '${'2'.bold} packages can be updated.\n'
-      'Run ${'dart pub upgrade'.foreground(AsciiPalette.sky)} to get them.',
+      'Run ${'dart pub upgrade'.foreground(AnsiPalette.sky)} to get them.',
       title: 'Summary',
     ),
   );

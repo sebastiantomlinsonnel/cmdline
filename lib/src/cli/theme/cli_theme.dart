@@ -18,25 +18,25 @@ import 'package:cmdline/cmdline.dart';
 /// terminal can't show it or the user set `NO_COLOR`.
 class CliTheme {
   /// The colour of questions in [ask], [confirm] and [menu].
-  final AsciiInk question;
+  final AnsiInk question;
 
   /// The colour of the user's answer after it is picked.
-  final AsciiInk answer;
+  final AnsiInk answer;
 
   /// The colour of hints like default values and `[Y/n]`.
-  final AsciiInk hint;
+  final AnsiInk hint;
 
   /// The colour of error lines.
-  final AsciiInk error;
+  final AnsiInk error;
 
   /// The colour of success lines.
-  final AsciiInk success;
+  final AnsiInk success;
 
   /// The colour of the picked row in a [menu].
-  final AsciiInk highlight;
+  final AnsiInk highlight;
 
   /// The colour of box and table lines.
-  final AsciiInk border;
+  final AnsiInk border;
 
   /// The line characters for boxes, tables and trees.
   final BoxChars box;
@@ -57,13 +57,13 @@ class CliTheme {
 
   /// Creates a theme. Anything left out keeps its default.
   const CliTheme({
-    this.question = const AsciiColour(14),
-    this.answer = const AsciiColour(10),
-    this.hint = const AsciiColour.grey(12),
-    this.error = const AsciiColour(9),
-    this.success = const AsciiColour(10),
-    this.highlight = const AsciiColour(14),
-    this.border = const AsciiColour.grey(10),
+    this.question = const AnsiColour(14),
+    this.answer = const AnsiColour(10),
+    this.hint = const AnsiColour.grey(12),
+    this.error = const AnsiColour(9),
+    this.success = const AnsiColour(10),
+    this.highlight = const AnsiColour(14),
+    this.border = const AnsiColour.grey(10),
     this.box = BoxChars.rounded,
     this.pointer = ARROW,
     this.tick = TICK,

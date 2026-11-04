@@ -1,5 +1,3 @@
-library logger;
-
 import 'dart:async';
 import 'dart:io';
 
@@ -104,20 +102,20 @@ class Logger {
     final DateTime now = DateTime.now();
     final StringBuffer buf = StringBuffer();
     buf.writeAll([
-      '['.foreground(const AsciiColour.grey(10)),
+      '['.foreground(const AnsiColour.grey(10)),
       now.minute
           .toString()
           .padLeft(2, '0')
-          .foreground(const AsciiColour.grey(14))
+          .foreground(const AnsiColour.grey(14))
           .bold,
-      ':'.foreground(const AsciiColour.grey(14)),
+      ':'.foreground(const AnsiColour.grey(14)),
       now.second
           .toString()
           .padLeft(2, '0')
-          .foreground(const AsciiColour.grey(14))
+          .foreground(const AnsiColour.grey(14))
           .bold,
-      '+'.foreground(const AsciiColour.grey(14)),
-      '${_sinceLast()}] '.foreground(const AsciiColour.grey(10)),
+      '+'.foreground(const AnsiColour.grey(14)),
+      '${_sinceLast()}] '.foreground(const AnsiColour.grey(10)),
     ]);
 
     return buf.toString();
@@ -137,19 +135,19 @@ class Logger {
   String getVerbosityColour(Level level, String data) {
     switch (level) {
       case Level.trace:
-        return data.foreground(AsciiPalette.orchid).bold;
+        return data.foreground(AnsiPalette.orchid).bold;
       case Level.debug:
-        return data.foreground(AsciiPalette.mint).bold;
+        return data.foreground(AnsiPalette.mint).bold;
       case Level.fail:
-        return data.foreground(AsciiPalette.brick).bold;
+        return data.foreground(AnsiPalette.brick).bold;
       case Level.pass:
-        return data.foreground(AsciiPalette.leaf).bold;
+        return data.foreground(AnsiPalette.leaf).bold;
       case Level.warn:
-        return data.foreground(AsciiPalette.amber).bold;
+        return data.foreground(AnsiPalette.amber).bold;
       case Level.log:
-        return data.foreground(AsciiPalette.snow).bold;
+        return data.foreground(AnsiPalette.snow).bold;
       case Level.dev:
-        return data.foreground(AsciiPalette.rose).bold;
+        return data.foreground(AnsiPalette.rose).bold;
     }
   }
 

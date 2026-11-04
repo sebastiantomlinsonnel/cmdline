@@ -4,12 +4,12 @@ import 'package:cmdline/cmdline.dart';
 
 /// Builds one line from codes and values, and prints it with a final [RESET].
 ///
-/// [tokens] can mix escape codes, [AsciiInk] codes and any other value; each
+/// [tokens] can mix escape codes, [AnsiInk] codes and any other value; each
 /// is turned into text with `toString()`. Unlike [sty] there is no leading
 /// [RESET], so styles already active in the terminal carry in.
 ///
 /// ```dart
-/// AsciiPrinter([BOLD, 'Total:', RESET_BOLD_AND_DIM, 42], separator: ' ')
+/// AnsiPrinter([BOLD, 'Total:', RESET_BOLD_AND_DIM, 42], separator: ' ')
 ///     .output();
 /// ```
 class AnsiPrinter {

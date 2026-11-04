@@ -5,18 +5,18 @@ import 'dart:math' as math;
 
 import 'package:cmdline/cmdline.dart';
 
-export 'cmd/helpers/process_failed.dart';
-export 'cmd/helpers/process_functions.dart';
-export 'cmd/helpers/process_helpers.dart';
-export 'cmd/helpers/process_result_helpers.dart';
-export 'cmd/helpers/stream_helpers.dart';
-export 'cmd/helpers/terminal_command.dart';
+export 'helpers/process_failed.dart';
+export 'helpers/process_functions.dart';
+export 'helpers/process_helpers.dart';
+export 'helpers/process_result_helpers.dart';
+export 'helpers/stream_helpers.dart';
+export 'helpers/terminal_command.dart';
 
-part 'cmd/draw.dart';
-part 'cmd/fs.dart';
-part 'cmd/net.dart';
-part 'cmd/prompt.dart';
-part 'cmd/shell.dart';
+part 'draw.dart';
+part 'fs.dart';
+part 'net.dart';
+part 'prompt.dart';
+part 'shell.dart';
 
 /// CMDLine helpers
 class CMD {

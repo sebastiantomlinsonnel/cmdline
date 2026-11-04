@@ -21,21 +21,21 @@ const String CSI = '$ESC[';
 ///
 /// `${CSI}38;5;`. Append a palette index from 0 to 255 and [SGR] to finish it:
 /// `'${FGCO}196$SGR'` makes the text bright red. The ready-made `*_FG`
-/// constants and [AsciiColour.fg] do the same thing.
+/// constants and [AnsiColour.fg] do the same thing.
 const String FGCO = '${CSI}38;5;';
 
 /// Start of a 256-colour background code; add an index and [SGR].
 ///
 /// `${CSI}48;5;`. Append a palette index from 0 to 255 and [SGR] to finish it:
 /// `'${BGCO}21$SGR'` gives a blue background. The ready-made `*_BG` constants
-/// and [AsciiColour.bg] do the same thing.
+/// and [AnsiColour.bg] do the same thing.
 const String BGCO = '${CSI}48;5;';
 
 /// Start of a 256-colour underline-colour code; add an index and [SGR].
 ///
 /// `${CSI}58;5;`. Append a palette index from 0 to 255 and [SGR] to finish it.
 /// It only shows while an underline style is on, and not every terminal
-/// supports coloured underlines. [AsciiColour.underline] builds the same code.
+/// supports coloured underlines. [AnsiColour.underline] builds the same code.
 const String ULCO = '${CSI}58;5;';
 
 /// The final letter that ends a style (Select Graphic Rendition) code.
@@ -47,7 +47,7 @@ const String SGR = 'm';
 /// Turns off every style and colour.
 ///
 /// `${CSI}0m`. Puts the terminal back to its default text. Printing helpers
-/// such as [Ascii.toString], [AsciiPrinter] and [AsciiStyledString] add it at
+/// such as [Ansi.toString], [AnsiPrinter] and [AnsiStyledString] add it at
 /// the end so a style never leaks into the next line.
 const String RESET = '${CSI}0$SGR';
 

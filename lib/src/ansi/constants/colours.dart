@@ -4986,1554 +4986,1554 @@ const String GREY_22_BG = '${CSI}48;$GREY_22$SGR';
 /// [RESET].
 const String GREY_23_BG = '${CSI}48;$GREY_23$SGR';
 
-/// Standard black as an [AsciiInk] (colour index 0).
+/// Standard black as an [AnsiInk] (colour index 0).
 ///
 /// Usually about #000000, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiBlack = AsciiColour(0);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiBlack = AnsiColour(0);
 
-/// Standard red as an [AsciiInk] (colour index 1).
+/// Standard red as an [AnsiInk] (colour index 1).
 ///
 /// Usually about #CD0000, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRed = AsciiColour(1);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRed = AnsiColour(1);
 
-/// Standard green as an [AsciiInk] (colour index 2).
+/// Standard green as an [AnsiInk] (colour index 2).
 ///
 /// Usually about #00CD00, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour ascii_green = AsciiColour(2);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansi_green = AnsiColour(2);
 
-/// Standard yellow as an [AsciiInk] (colour index 3).
+/// Standard yellow as an [AnsiInk] (colour index 3).
 ///
 /// Usually about #CDCD00, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiYellow = AsciiColour(3);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiYellow = AnsiColour(3);
 
-/// Standard blue as an [AsciiInk] (colour index 4).
+/// Standard blue as an [AnsiInk] (colour index 4).
 ///
 /// Usually about #0000EE, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiBlue = AsciiColour(4);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiBlue = AnsiColour(4);
 
-/// Standard magenta as an [AsciiInk] (colour index 5).
+/// Standard magenta as an [AnsiInk] (colour index 5).
 ///
 /// Usually about #CD00CD, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiMagenta = AsciiColour(5);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiMagenta = AnsiColour(5);
 
-/// Standard cyan as an [AsciiInk] (colour index 6).
+/// Standard cyan as an [AnsiInk] (colour index 6).
 ///
 /// Usually about #00CDCD, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiCyan = AsciiColour(6);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiCyan = AnsiColour(6);
 
-/// Standard white as an [AsciiInk] (colour index 7).
+/// Standard white as an [AnsiInk] (colour index 7).
 ///
 /// Usually about #E5E5E5, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiWhite = AsciiColour(7);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiWhite = AnsiColour(7);
 
-/// Bright black as an [AsciiInk] (colour index 8).
+/// Bright black as an [AnsiInk] (colour index 8).
 ///
 /// Usually about #7F7F7F, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiHighBlack = AsciiColour(8);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiHighBlack = AnsiColour(8);
 
-/// Bright red as an [AsciiInk] (colour index 9).
+/// Bright red as an [AnsiInk] (colour index 9).
 ///
 /// Usually about #FF0000, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiHighRed = AsciiColour(9);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiHighRed = AnsiColour(9);
 
-/// Bright green as an [AsciiInk] (colour index 10).
+/// Bright green as an [AnsiInk] (colour index 10).
 ///
 /// Usually about #00FF00, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiHighGreen = AsciiColour(10);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiHighGreen = AnsiColour(10);
 
-/// Bright yellow as an [AsciiInk] (colour index 11).
+/// Bright yellow as an [AnsiInk] (colour index 11).
 ///
 /// Usually about #FFFF00, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiHighYellow = AsciiColour(11);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiHighYellow = AnsiColour(11);
 
-/// Bright blue as an [AsciiInk] (colour index 12).
+/// Bright blue as an [AnsiInk] (colour index 12).
 ///
 /// Usually about #5C5CFF, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiHighBlue = AsciiColour(12);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiHighBlue = AnsiColour(12);
 
-/// Bright magenta as an [AsciiInk] (colour index 13).
+/// Bright magenta as an [AnsiInk] (colour index 13).
 ///
 /// Usually about #FF00FF, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiHighMagenta = AsciiColour(13);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiHighMagenta = AnsiColour(13);
 
-/// Bright cyan as an [AsciiInk] (colour index 14).
+/// Bright cyan as an [AnsiInk] (colour index 14).
 ///
 /// Usually about #00FFFF, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiHighCyan = AsciiColour(14);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiHighCyan = AnsiColour(14);
 
-/// Bright white as an [AsciiInk] (colour index 15).
+/// Bright white as an [AnsiInk] (colour index 15).
 ///
 /// Usually about #FFFFFF, but the terminal theme decides. Use `.fg`, `.bg` or
 /// `.underline` for the escape code, or pass it to
-/// [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiHighWhite = AsciiColour(15);
+/// [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiHighWhite = AnsiColour(15);
 
-/// Colour-cube red 0, green 0, blue 0 as an [AsciiInk] (colour index 16).
+/// Colour-cube red 0, green 0, blue 0 as an [AnsiInk] (colour index 16).
 ///
 /// About #000000. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb000 = AsciiColour(16);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb000 = AnsiColour(16);
 
-/// Colour-cube red 0, green 0, blue 1 as an [AsciiInk] (colour index 17).
+/// Colour-cube red 0, green 0, blue 1 as an [AnsiInk] (colour index 17).
 ///
 /// About #00005F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb001 = AsciiColour(17);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb001 = AnsiColour(17);
 
-/// Colour-cube red 0, green 0, blue 2 as an [AsciiInk] (colour index 18).
+/// Colour-cube red 0, green 0, blue 2 as an [AnsiInk] (colour index 18).
 ///
 /// About #000087. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb002 = AsciiColour(18);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb002 = AnsiColour(18);
 
-/// Colour-cube red 0, green 0, blue 3 as an [AsciiInk] (colour index 19).
+/// Colour-cube red 0, green 0, blue 3 as an [AnsiInk] (colour index 19).
 ///
 /// About #0000AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb003 = AsciiColour(19);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb003 = AnsiColour(19);
 
-/// Colour-cube red 0, green 0, blue 4 as an [AsciiInk] (colour index 20).
+/// Colour-cube red 0, green 0, blue 4 as an [AnsiInk] (colour index 20).
 ///
 /// About #0000D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb004 = AsciiColour(20);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb004 = AnsiColour(20);
 
-/// Colour-cube red 0, green 0, blue 5 as an [AsciiInk] (colour index 21).
+/// Colour-cube red 0, green 0, blue 5 as an [AnsiInk] (colour index 21).
 ///
 /// About #0000FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb005 = AsciiColour(21);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb005 = AnsiColour(21);
 
-/// Colour-cube red 0, green 1, blue 0 as an [AsciiInk] (colour index 22).
+/// Colour-cube red 0, green 1, blue 0 as an [AnsiInk] (colour index 22).
 ///
 /// About #005F00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb010 = AsciiColour(22);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb010 = AnsiColour(22);
 
-/// Colour-cube red 0, green 1, blue 1 as an [AsciiInk] (colour index 23).
+/// Colour-cube red 0, green 1, blue 1 as an [AnsiInk] (colour index 23).
 ///
 /// About #005F5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb011 = AsciiColour(23);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb011 = AnsiColour(23);
 
-/// Colour-cube red 0, green 1, blue 2 as an [AsciiInk] (colour index 24).
+/// Colour-cube red 0, green 1, blue 2 as an [AnsiInk] (colour index 24).
 ///
 /// About #005F87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb012 = AsciiColour(24);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb012 = AnsiColour(24);
 
-/// Colour-cube red 0, green 1, blue 3 as an [AsciiInk] (colour index 25).
+/// Colour-cube red 0, green 1, blue 3 as an [AnsiInk] (colour index 25).
 ///
 /// About #005FAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb013 = AsciiColour(25);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb013 = AnsiColour(25);
 
-/// Colour-cube red 0, green 1, blue 4 as an [AsciiInk] (colour index 26).
+/// Colour-cube red 0, green 1, blue 4 as an [AnsiInk] (colour index 26).
 ///
 /// About #005FD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb014 = AsciiColour(26);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb014 = AnsiColour(26);
 
-/// Colour-cube red 0, green 1, blue 5 as an [AsciiInk] (colour index 27).
+/// Colour-cube red 0, green 1, blue 5 as an [AnsiInk] (colour index 27).
 ///
 /// About #005FFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb015 = AsciiColour(27);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb015 = AnsiColour(27);
 
-/// Colour-cube red 0, green 2, blue 0 as an [AsciiInk] (colour index 28).
+/// Colour-cube red 0, green 2, blue 0 as an [AnsiInk] (colour index 28).
 ///
 /// About #008700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb020 = AsciiColour(28);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb020 = AnsiColour(28);
 
-/// Colour-cube red 0, green 2, blue 1 as an [AsciiInk] (colour index 29).
+/// Colour-cube red 0, green 2, blue 1 as an [AnsiInk] (colour index 29).
 ///
 /// About #00875F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb021 = AsciiColour(29);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb021 = AnsiColour(29);
 
-/// Colour-cube red 0, green 2, blue 2 as an [AsciiInk] (colour index 30).
+/// Colour-cube red 0, green 2, blue 2 as an [AnsiInk] (colour index 30).
 ///
 /// About #008787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb022 = AsciiColour(30);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb022 = AnsiColour(30);
 
-/// Colour-cube red 0, green 2, blue 3 as an [AsciiInk] (colour index 31).
+/// Colour-cube red 0, green 2, blue 3 as an [AnsiInk] (colour index 31).
 ///
 /// About #0087AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb023 = AsciiColour(31);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb023 = AnsiColour(31);
 
-/// Colour-cube red 0, green 2, blue 4 as an [AsciiInk] (colour index 32).
+/// Colour-cube red 0, green 2, blue 4 as an [AnsiInk] (colour index 32).
 ///
 /// About #0087D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb024 = AsciiColour(32);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb024 = AnsiColour(32);
 
-/// Colour-cube red 0, green 2, blue 5 as an [AsciiInk] (colour index 33).
+/// Colour-cube red 0, green 2, blue 5 as an [AnsiInk] (colour index 33).
 ///
 /// About #0087FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb025 = AsciiColour(33);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb025 = AnsiColour(33);
 
-/// Colour-cube red 0, green 3, blue 0 as an [AsciiInk] (colour index 34).
+/// Colour-cube red 0, green 3, blue 0 as an [AnsiInk] (colour index 34).
 ///
 /// About #00AF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb030 = AsciiColour(34);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb030 = AnsiColour(34);
 
-/// Colour-cube red 0, green 3, blue 1 as an [AsciiInk] (colour index 35).
+/// Colour-cube red 0, green 3, blue 1 as an [AnsiInk] (colour index 35).
 ///
 /// About #00AF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb031 = AsciiColour(35);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb031 = AnsiColour(35);
 
-/// Colour-cube red 0, green 3, blue 2 as an [AsciiInk] (colour index 36).
+/// Colour-cube red 0, green 3, blue 2 as an [AnsiInk] (colour index 36).
 ///
 /// About #00AF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb032 = AsciiColour(36);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb032 = AnsiColour(36);
 
-/// Colour-cube red 0, green 3, blue 3 as an [AsciiInk] (colour index 37).
+/// Colour-cube red 0, green 3, blue 3 as an [AnsiInk] (colour index 37).
 ///
 /// About #00AFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb033 = AsciiColour(37);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb033 = AnsiColour(37);
 
-/// Colour-cube red 0, green 3, blue 4 as an [AsciiInk] (colour index 38).
+/// Colour-cube red 0, green 3, blue 4 as an [AnsiInk] (colour index 38).
 ///
 /// About #00AFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb034 = AsciiColour(38);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb034 = AnsiColour(38);
 
-/// Colour-cube red 0, green 3, blue 5 as an [AsciiInk] (colour index 39).
+/// Colour-cube red 0, green 3, blue 5 as an [AnsiInk] (colour index 39).
 ///
 /// About #00AFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb035 = AsciiColour(39);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb035 = AnsiColour(39);
 
-/// Colour-cube red 0, green 4, blue 0 as an [AsciiInk] (colour index 40).
+/// Colour-cube red 0, green 4, blue 0 as an [AnsiInk] (colour index 40).
 ///
 /// About #00D700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb040 = AsciiColour(40);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb040 = AnsiColour(40);
 
-/// Colour-cube red 0, green 4, blue 1 as an [AsciiInk] (colour index 41).
+/// Colour-cube red 0, green 4, blue 1 as an [AnsiInk] (colour index 41).
 ///
 /// About #00D75F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb041 = AsciiColour(41);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb041 = AnsiColour(41);
 
-/// Colour-cube red 0, green 4, blue 2 as an [AsciiInk] (colour index 42).
+/// Colour-cube red 0, green 4, blue 2 as an [AnsiInk] (colour index 42).
 ///
 /// About #00D787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb042 = AsciiColour(42);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb042 = AnsiColour(42);
 
-/// Colour-cube red 0, green 4, blue 3 as an [AsciiInk] (colour index 43).
+/// Colour-cube red 0, green 4, blue 3 as an [AnsiInk] (colour index 43).
 ///
 /// About #00D7AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb043 = AsciiColour(43);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb043 = AnsiColour(43);
 
-/// Colour-cube red 0, green 4, blue 4 as an [AsciiInk] (colour index 44).
+/// Colour-cube red 0, green 4, blue 4 as an [AnsiInk] (colour index 44).
 ///
 /// About #00D7D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb044 = AsciiColour(44);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb044 = AnsiColour(44);
 
-/// Colour-cube red 0, green 4, blue 5 as an [AsciiInk] (colour index 45).
+/// Colour-cube red 0, green 4, blue 5 as an [AnsiInk] (colour index 45).
 ///
 /// About #00D7FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb045 = AsciiColour(45);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb045 = AnsiColour(45);
 
-/// Colour-cube red 0, green 5, blue 0 as an [AsciiInk] (colour index 46).
+/// Colour-cube red 0, green 5, blue 0 as an [AnsiInk] (colour index 46).
 ///
 /// About #00FF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb050 = AsciiColour(46);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb050 = AnsiColour(46);
 
-/// Colour-cube red 0, green 5, blue 1 as an [AsciiInk] (colour index 47).
+/// Colour-cube red 0, green 5, blue 1 as an [AnsiInk] (colour index 47).
 ///
 /// About #00FF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb051 = AsciiColour(47);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb051 = AnsiColour(47);
 
-/// Colour-cube red 0, green 5, blue 2 as an [AsciiInk] (colour index 48).
+/// Colour-cube red 0, green 5, blue 2 as an [AnsiInk] (colour index 48).
 ///
 /// About #00FF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb052 = AsciiColour(48);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb052 = AnsiColour(48);
 
-/// Colour-cube red 0, green 5, blue 3 as an [AsciiInk] (colour index 49).
+/// Colour-cube red 0, green 5, blue 3 as an [AnsiInk] (colour index 49).
 ///
 /// About #00FFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb053 = AsciiColour(49);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb053 = AnsiColour(49);
 
-/// Colour-cube red 0, green 5, blue 4 as an [AsciiInk] (colour index 50).
+/// Colour-cube red 0, green 5, blue 4 as an [AnsiInk] (colour index 50).
 ///
 /// About #00FFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb054 = AsciiColour(50);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb054 = AnsiColour(50);
 
-/// Colour-cube red 0, green 5, blue 5 as an [AsciiInk] (colour index 51).
+/// Colour-cube red 0, green 5, blue 5 as an [AnsiInk] (colour index 51).
 ///
 /// About #00FFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb055 = AsciiColour(51);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb055 = AnsiColour(51);
 
-/// Colour-cube red 1, green 0, blue 0 as an [AsciiInk] (colour index 52).
+/// Colour-cube red 1, green 0, blue 0 as an [AnsiInk] (colour index 52).
 ///
 /// About #5F0000. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb100 = AsciiColour(52);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb100 = AnsiColour(52);
 
-/// Colour-cube red 1, green 0, blue 1 as an [AsciiInk] (colour index 53).
+/// Colour-cube red 1, green 0, blue 1 as an [AnsiInk] (colour index 53).
 ///
 /// About #5F005F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb101 = AsciiColour(53);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb101 = AnsiColour(53);
 
-/// Colour-cube red 1, green 0, blue 2 as an [AsciiInk] (colour index 54).
+/// Colour-cube red 1, green 0, blue 2 as an [AnsiInk] (colour index 54).
 ///
 /// About #5F0087. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb102 = AsciiColour(54);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb102 = AnsiColour(54);
 
-/// Colour-cube red 1, green 0, blue 3 as an [AsciiInk] (colour index 55).
+/// Colour-cube red 1, green 0, blue 3 as an [AnsiInk] (colour index 55).
 ///
 /// About #5F00AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb103 = AsciiColour(55);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb103 = AnsiColour(55);
 
-/// Colour-cube red 1, green 0, blue 4 as an [AsciiInk] (colour index 56).
+/// Colour-cube red 1, green 0, blue 4 as an [AnsiInk] (colour index 56).
 ///
 /// About #5F00D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb104 = AsciiColour(56);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb104 = AnsiColour(56);
 
-/// Colour-cube red 1, green 0, blue 5 as an [AsciiInk] (colour index 57).
+/// Colour-cube red 1, green 0, blue 5 as an [AnsiInk] (colour index 57).
 ///
 /// About #5F00FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb105 = AsciiColour(57);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb105 = AnsiColour(57);
 
-/// Colour-cube red 1, green 1, blue 0 as an [AsciiInk] (colour index 58).
+/// Colour-cube red 1, green 1, blue 0 as an [AnsiInk] (colour index 58).
 ///
 /// About #5F5F00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb110 = AsciiColour(58);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb110 = AnsiColour(58);
 
-/// Colour-cube red 1, green 1, blue 1 as an [AsciiInk] (colour index 59).
+/// Colour-cube red 1, green 1, blue 1 as an [AnsiInk] (colour index 59).
 ///
 /// About #5F5F5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb111 = AsciiColour(59);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb111 = AnsiColour(59);
 
-/// Colour-cube red 1, green 1, blue 2 as an [AsciiInk] (colour index 60).
+/// Colour-cube red 1, green 1, blue 2 as an [AnsiInk] (colour index 60).
 ///
 /// About #5F5F87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb112 = AsciiColour(60);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb112 = AnsiColour(60);
 
-/// Colour-cube red 1, green 1, blue 3 as an [AsciiInk] (colour index 61).
+/// Colour-cube red 1, green 1, blue 3 as an [AnsiInk] (colour index 61).
 ///
 /// About #5F5FAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb113 = AsciiColour(61);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb113 = AnsiColour(61);
 
-/// Colour-cube red 1, green 1, blue 4 as an [AsciiInk] (colour index 62).
+/// Colour-cube red 1, green 1, blue 4 as an [AnsiInk] (colour index 62).
 ///
 /// About #5F5FD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb114 = AsciiColour(62);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb114 = AnsiColour(62);
 
-/// Colour-cube red 1, green 1, blue 5 as an [AsciiInk] (colour index 63).
+/// Colour-cube red 1, green 1, blue 5 as an [AnsiInk] (colour index 63).
 ///
 /// About #5F5FFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb115 = AsciiColour(63);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb115 = AnsiColour(63);
 
-/// Colour-cube red 1, green 2, blue 0 as an [AsciiInk] (colour index 64).
+/// Colour-cube red 1, green 2, blue 0 as an [AnsiInk] (colour index 64).
 ///
 /// About #5F8700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb120 = AsciiColour(64);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb120 = AnsiColour(64);
 
-/// Colour-cube red 1, green 2, blue 1 as an [AsciiInk] (colour index 65).
+/// Colour-cube red 1, green 2, blue 1 as an [AnsiInk] (colour index 65).
 ///
 /// About #5F875F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb121 = AsciiColour(65);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb121 = AnsiColour(65);
 
-/// Colour-cube red 1, green 2, blue 2 as an [AsciiInk] (colour index 66).
+/// Colour-cube red 1, green 2, blue 2 as an [AnsiInk] (colour index 66).
 ///
 /// About #5F8787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb122 = AsciiColour(66);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb122 = AnsiColour(66);
 
-/// Colour-cube red 1, green 2, blue 3 as an [AsciiInk] (colour index 67).
+/// Colour-cube red 1, green 2, blue 3 as an [AnsiInk] (colour index 67).
 ///
 /// About #5F87AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb123 = AsciiColour(67);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb123 = AnsiColour(67);
 
-/// Colour-cube red 1, green 2, blue 4 as an [AsciiInk] (colour index 68).
+/// Colour-cube red 1, green 2, blue 4 as an [AnsiInk] (colour index 68).
 ///
 /// About #5F87D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb124 = AsciiColour(68);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb124 = AnsiColour(68);
 
-/// Colour-cube red 1, green 2, blue 5 as an [AsciiInk] (colour index 69).
+/// Colour-cube red 1, green 2, blue 5 as an [AnsiInk] (colour index 69).
 ///
 /// About #5F87FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb125 = AsciiColour(69);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb125 = AnsiColour(69);
 
-/// Colour-cube red 1, green 3, blue 0 as an [AsciiInk] (colour index 70).
+/// Colour-cube red 1, green 3, blue 0 as an [AnsiInk] (colour index 70).
 ///
 /// About #5FAF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb130 = AsciiColour(70);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb130 = AnsiColour(70);
 
-/// Colour-cube red 1, green 3, blue 1 as an [AsciiInk] (colour index 71).
+/// Colour-cube red 1, green 3, blue 1 as an [AnsiInk] (colour index 71).
 ///
 /// About #5FAF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb131 = AsciiColour(71);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb131 = AnsiColour(71);
 
-/// Colour-cube red 1, green 3, blue 2 as an [AsciiInk] (colour index 72).
+/// Colour-cube red 1, green 3, blue 2 as an [AnsiInk] (colour index 72).
 ///
 /// About #5FAF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb132 = AsciiColour(72);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb132 = AnsiColour(72);
 
-/// Colour-cube red 1, green 3, blue 3 as an [AsciiInk] (colour index 73).
+/// Colour-cube red 1, green 3, blue 3 as an [AnsiInk] (colour index 73).
 ///
 /// About #5FAFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb133 = AsciiColour(73);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb133 = AnsiColour(73);
 
-/// Colour-cube red 1, green 3, blue 4 as an [AsciiInk] (colour index 74).
+/// Colour-cube red 1, green 3, blue 4 as an [AnsiInk] (colour index 74).
 ///
 /// About #5FAFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb134 = AsciiColour(74);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb134 = AnsiColour(74);
 
-/// Colour-cube red 1, green 3, blue 5 as an [AsciiInk] (colour index 75).
+/// Colour-cube red 1, green 3, blue 5 as an [AnsiInk] (colour index 75).
 ///
 /// About #5FAFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb135 = AsciiColour(75);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb135 = AnsiColour(75);
 
-/// Colour-cube red 1, green 4, blue 0 as an [AsciiInk] (colour index 76).
+/// Colour-cube red 1, green 4, blue 0 as an [AnsiInk] (colour index 76).
 ///
 /// About #5FD700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb140 = AsciiColour(76);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb140 = AnsiColour(76);
 
-/// Colour-cube red 1, green 4, blue 1 as an [AsciiInk] (colour index 77).
+/// Colour-cube red 1, green 4, blue 1 as an [AnsiInk] (colour index 77).
 ///
 /// About #5FD75F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb141 = AsciiColour(77);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb141 = AnsiColour(77);
 
-/// Colour-cube red 1, green 4, blue 2 as an [AsciiInk] (colour index 78).
+/// Colour-cube red 1, green 4, blue 2 as an [AnsiInk] (colour index 78).
 ///
 /// About #5FD787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb142 = AsciiColour(78);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb142 = AnsiColour(78);
 
-/// Colour-cube red 1, green 4, blue 3 as an [AsciiInk] (colour index 79).
+/// Colour-cube red 1, green 4, blue 3 as an [AnsiInk] (colour index 79).
 ///
 /// About #5FD7AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb143 = AsciiColour(79);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb143 = AnsiColour(79);
 
-/// Colour-cube red 1, green 4, blue 4 as an [AsciiInk] (colour index 80).
+/// Colour-cube red 1, green 4, blue 4 as an [AnsiInk] (colour index 80).
 ///
 /// About #5FD7D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb144 = AsciiColour(80);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb144 = AnsiColour(80);
 
-/// Colour-cube red 1, green 4, blue 5 as an [AsciiInk] (colour index 81).
+/// Colour-cube red 1, green 4, blue 5 as an [AnsiInk] (colour index 81).
 ///
 /// About #5FD7FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb145 = AsciiColour(81);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb145 = AnsiColour(81);
 
-/// Colour-cube red 1, green 5, blue 0 as an [AsciiInk] (colour index 82).
+/// Colour-cube red 1, green 5, blue 0 as an [AnsiInk] (colour index 82).
 ///
 /// About #5FFF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb150 = AsciiColour(82);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb150 = AnsiColour(82);
 
-/// Colour-cube red 1, green 5, blue 1 as an [AsciiInk] (colour index 83).
+/// Colour-cube red 1, green 5, blue 1 as an [AnsiInk] (colour index 83).
 ///
 /// About #5FFF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb151 = AsciiColour(83);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb151 = AnsiColour(83);
 
-/// Colour-cube red 1, green 5, blue 2 as an [AsciiInk] (colour index 84).
+/// Colour-cube red 1, green 5, blue 2 as an [AnsiInk] (colour index 84).
 ///
 /// About #5FFF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb152 = AsciiColour(84);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb152 = AnsiColour(84);
 
-/// Colour-cube red 1, green 5, blue 3 as an [AsciiInk] (colour index 85).
+/// Colour-cube red 1, green 5, blue 3 as an [AnsiInk] (colour index 85).
 ///
 /// About #5FFFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb153 = AsciiColour(85);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb153 = AnsiColour(85);
 
-/// Colour-cube red 1, green 5, blue 4 as an [AsciiInk] (colour index 86).
+/// Colour-cube red 1, green 5, blue 4 as an [AnsiInk] (colour index 86).
 ///
 /// About #5FFFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb154 = AsciiColour(86);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb154 = AnsiColour(86);
 
-/// Colour-cube red 1, green 5, blue 5 as an [AsciiInk] (colour index 87).
+/// Colour-cube red 1, green 5, blue 5 as an [AnsiInk] (colour index 87).
 ///
 /// About #5FFFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb155 = AsciiColour(87);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb155 = AnsiColour(87);
 
-/// Colour-cube red 2, green 0, blue 0 as an [AsciiInk] (colour index 88).
+/// Colour-cube red 2, green 0, blue 0 as an [AnsiInk] (colour index 88).
 ///
 /// About #870000. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb200 = AsciiColour(88);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb200 = AnsiColour(88);
 
-/// Colour-cube red 2, green 0, blue 1 as an [AsciiInk] (colour index 89).
+/// Colour-cube red 2, green 0, blue 1 as an [AnsiInk] (colour index 89).
 ///
 /// About #87005F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb201 = AsciiColour(89);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb201 = AnsiColour(89);
 
-/// Colour-cube red 2, green 0, blue 2 as an [AsciiInk] (colour index 90).
+/// Colour-cube red 2, green 0, blue 2 as an [AnsiInk] (colour index 90).
 ///
 /// About #870087. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb202 = AsciiColour(90);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb202 = AnsiColour(90);
 
-/// Colour-cube red 2, green 0, blue 3 as an [AsciiInk] (colour index 91).
+/// Colour-cube red 2, green 0, blue 3 as an [AnsiInk] (colour index 91).
 ///
 /// About #8700AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb203 = AsciiColour(91);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb203 = AnsiColour(91);
 
-/// Colour-cube red 2, green 0, blue 4 as an [AsciiInk] (colour index 92).
+/// Colour-cube red 2, green 0, blue 4 as an [AnsiInk] (colour index 92).
 ///
 /// About #8700D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb204 = AsciiColour(92);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb204 = AnsiColour(92);
 
-/// Colour-cube red 2, green 0, blue 5 as an [AsciiInk] (colour index 93).
+/// Colour-cube red 2, green 0, blue 5 as an [AnsiInk] (colour index 93).
 ///
 /// About #8700FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb205 = AsciiColour(93);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb205 = AnsiColour(93);
 
-/// Colour-cube red 2, green 1, blue 0 as an [AsciiInk] (colour index 94).
+/// Colour-cube red 2, green 1, blue 0 as an [AnsiInk] (colour index 94).
 ///
 /// About #875F00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb210 = AsciiColour(94);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb210 = AnsiColour(94);
 
-/// Colour-cube red 2, green 1, blue 1 as an [AsciiInk] (colour index 95).
+/// Colour-cube red 2, green 1, blue 1 as an [AnsiInk] (colour index 95).
 ///
 /// About #875F5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb211 = AsciiColour(95);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb211 = AnsiColour(95);
 
-/// Colour-cube red 2, green 1, blue 2 as an [AsciiInk] (colour index 96).
+/// Colour-cube red 2, green 1, blue 2 as an [AnsiInk] (colour index 96).
 ///
 /// About #875F87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb212 = AsciiColour(96);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb212 = AnsiColour(96);
 
-/// Colour-cube red 2, green 1, blue 3 as an [AsciiInk] (colour index 97).
+/// Colour-cube red 2, green 1, blue 3 as an [AnsiInk] (colour index 97).
 ///
 /// About #875FAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb213 = AsciiColour(97);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb213 = AnsiColour(97);
 
-/// Colour-cube red 2, green 1, blue 4 as an [AsciiInk] (colour index 98).
+/// Colour-cube red 2, green 1, blue 4 as an [AnsiInk] (colour index 98).
 ///
 /// About #875FD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb214 = AsciiColour(98);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb214 = AnsiColour(98);
 
-/// Colour-cube red 2, green 1, blue 5 as an [AsciiInk] (colour index 99).
+/// Colour-cube red 2, green 1, blue 5 as an [AnsiInk] (colour index 99).
 ///
 /// About #875FFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb215 = AsciiColour(99);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb215 = AnsiColour(99);
 
-/// Colour-cube red 2, green 2, blue 0 as an [AsciiInk] (colour index 100).
+/// Colour-cube red 2, green 2, blue 0 as an [AnsiInk] (colour index 100).
 ///
 /// About #878700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb220 = AsciiColour(100);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb220 = AnsiColour(100);
 
-/// Colour-cube red 2, green 2, blue 1 as an [AsciiInk] (colour index 101).
+/// Colour-cube red 2, green 2, blue 1 as an [AnsiInk] (colour index 101).
 ///
 /// About #87875F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb221 = AsciiColour(101);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb221 = AnsiColour(101);
 
-/// Colour-cube red 2, green 2, blue 2 as an [AsciiInk] (colour index 102).
+/// Colour-cube red 2, green 2, blue 2 as an [AnsiInk] (colour index 102).
 ///
 /// About #878787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb222 = AsciiColour(102);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb222 = AnsiColour(102);
 
-/// Colour-cube red 2, green 2, blue 3 as an [AsciiInk] (colour index 103).
+/// Colour-cube red 2, green 2, blue 3 as an [AnsiInk] (colour index 103).
 ///
 /// About #8787AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb223 = AsciiColour(103);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb223 = AnsiColour(103);
 
-/// Colour-cube red 2, green 2, blue 4 as an [AsciiInk] (colour index 104).
+/// Colour-cube red 2, green 2, blue 4 as an [AnsiInk] (colour index 104).
 ///
 /// About #8787D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb224 = AsciiColour(104);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb224 = AnsiColour(104);
 
-/// Colour-cube red 2, green 2, blue 5 as an [AsciiInk] (colour index 105).
+/// Colour-cube red 2, green 2, blue 5 as an [AnsiInk] (colour index 105).
 ///
 /// About #8787FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb225 = AsciiColour(105);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb225 = AnsiColour(105);
 
-/// Colour-cube red 2, green 3, blue 0 as an [AsciiInk] (colour index 106).
+/// Colour-cube red 2, green 3, blue 0 as an [AnsiInk] (colour index 106).
 ///
 /// About #87AF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb230 = AsciiColour(106);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb230 = AnsiColour(106);
 
-/// Colour-cube red 2, green 3, blue 1 as an [AsciiInk] (colour index 107).
+/// Colour-cube red 2, green 3, blue 1 as an [AnsiInk] (colour index 107).
 ///
 /// About #87AF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb231 = AsciiColour(107);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb231 = AnsiColour(107);
 
-/// Colour-cube red 2, green 3, blue 2 as an [AsciiInk] (colour index 108).
+/// Colour-cube red 2, green 3, blue 2 as an [AnsiInk] (colour index 108).
 ///
 /// About #87AF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb232 = AsciiColour(108);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb232 = AnsiColour(108);
 
-/// Colour-cube red 2, green 3, blue 3 as an [AsciiInk] (colour index 109).
+/// Colour-cube red 2, green 3, blue 3 as an [AnsiInk] (colour index 109).
 ///
 /// About #87AFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb233 = AsciiColour(109);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb233 = AnsiColour(109);
 
-/// Colour-cube red 2, green 3, blue 4 as an [AsciiInk] (colour index 110).
+/// Colour-cube red 2, green 3, blue 4 as an [AnsiInk] (colour index 110).
 ///
 /// About #87AFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb234 = AsciiColour(110);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb234 = AnsiColour(110);
 
-/// Colour-cube red 2, green 3, blue 5 as an [AsciiInk] (colour index 111).
+/// Colour-cube red 2, green 3, blue 5 as an [AnsiInk] (colour index 111).
 ///
 /// About #87AFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb235 = AsciiColour(111);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb235 = AnsiColour(111);
 
-/// Colour-cube red 2, green 4, blue 0 as an [AsciiInk] (colour index 112).
+/// Colour-cube red 2, green 4, blue 0 as an [AnsiInk] (colour index 112).
 ///
 /// About #87D700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb240 = AsciiColour(112);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb240 = AnsiColour(112);
 
-/// Colour-cube red 2, green 4, blue 1 as an [AsciiInk] (colour index 113).
+/// Colour-cube red 2, green 4, blue 1 as an [AnsiInk] (colour index 113).
 ///
 /// About #87D75F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb241 = AsciiColour(113);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb241 = AnsiColour(113);
 
-/// Colour-cube red 2, green 4, blue 2 as an [AsciiInk] (colour index 114).
+/// Colour-cube red 2, green 4, blue 2 as an [AnsiInk] (colour index 114).
 ///
 /// About #87D787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb242 = AsciiColour(114);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb242 = AnsiColour(114);
 
-/// Colour-cube red 2, green 4, blue 3 as an [AsciiInk] (colour index 115).
+/// Colour-cube red 2, green 4, blue 3 as an [AnsiInk] (colour index 115).
 ///
 /// About #87D7AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb243 = AsciiColour(115);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb243 = AnsiColour(115);
 
-/// Colour-cube red 2, green 4, blue 4 as an [AsciiInk] (colour index 116).
+/// Colour-cube red 2, green 4, blue 4 as an [AnsiInk] (colour index 116).
 ///
 /// About #87D7D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb244 = AsciiColour(116);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb244 = AnsiColour(116);
 
-/// Colour-cube red 2, green 4, blue 5 as an [AsciiInk] (colour index 117).
+/// Colour-cube red 2, green 4, blue 5 as an [AnsiInk] (colour index 117).
 ///
 /// About #87D7FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb245 = AsciiColour(117);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb245 = AnsiColour(117);
 
-/// Colour-cube red 2, green 5, blue 0 as an [AsciiInk] (colour index 118).
+/// Colour-cube red 2, green 5, blue 0 as an [AnsiInk] (colour index 118).
 ///
 /// About #87FF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb250 = AsciiColour(118);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb250 = AnsiColour(118);
 
-/// Colour-cube red 2, green 5, blue 1 as an [AsciiInk] (colour index 119).
+/// Colour-cube red 2, green 5, blue 1 as an [AnsiInk] (colour index 119).
 ///
 /// About #87FF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb251 = AsciiColour(119);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb251 = AnsiColour(119);
 
-/// Colour-cube red 2, green 5, blue 2 as an [AsciiInk] (colour index 120).
+/// Colour-cube red 2, green 5, blue 2 as an [AnsiInk] (colour index 120).
 ///
 /// About #87FF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb252 = AsciiColour(120);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb252 = AnsiColour(120);
 
-/// Colour-cube red 2, green 5, blue 3 as an [AsciiInk] (colour index 121).
+/// Colour-cube red 2, green 5, blue 3 as an [AnsiInk] (colour index 121).
 ///
 /// About #87FFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb253 = AsciiColour(121);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb253 = AnsiColour(121);
 
-/// Colour-cube red 2, green 5, blue 4 as an [AsciiInk] (colour index 122).
+/// Colour-cube red 2, green 5, blue 4 as an [AnsiInk] (colour index 122).
 ///
 /// About #87FFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb254 = AsciiColour(122);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb254 = AnsiColour(122);
 
-/// Colour-cube red 2, green 5, blue 5 as an [AsciiInk] (colour index 123).
+/// Colour-cube red 2, green 5, blue 5 as an [AnsiInk] (colour index 123).
 ///
 /// About #87FFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb255 = AsciiColour(123);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb255 = AnsiColour(123);
 
-/// Colour-cube red 3, green 0, blue 0 as an [AsciiInk] (colour index 124).
+/// Colour-cube red 3, green 0, blue 0 as an [AnsiInk] (colour index 124).
 ///
 /// About #AF0000. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb300 = AsciiColour(124);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb300 = AnsiColour(124);
 
-/// Colour-cube red 3, green 0, blue 1 as an [AsciiInk] (colour index 125).
+/// Colour-cube red 3, green 0, blue 1 as an [AnsiInk] (colour index 125).
 ///
 /// About #AF005F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb301 = AsciiColour(125);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb301 = AnsiColour(125);
 
-/// Colour-cube red 3, green 0, blue 2 as an [AsciiInk] (colour index 126).
+/// Colour-cube red 3, green 0, blue 2 as an [AnsiInk] (colour index 126).
 ///
 /// About #AF0087. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb302 = AsciiColour(126);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb302 = AnsiColour(126);
 
-/// Colour-cube red 3, green 0, blue 3 as an [AsciiInk] (colour index 127).
+/// Colour-cube red 3, green 0, blue 3 as an [AnsiInk] (colour index 127).
 ///
 /// About #AF00AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb303 = AsciiColour(127);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb303 = AnsiColour(127);
 
-/// Colour-cube red 3, green 0, blue 4 as an [AsciiInk] (colour index 128).
+/// Colour-cube red 3, green 0, blue 4 as an [AnsiInk] (colour index 128).
 ///
 /// About #AF00D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb304 = AsciiColour(128);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb304 = AnsiColour(128);
 
-/// Colour-cube red 3, green 0, blue 5 as an [AsciiInk] (colour index 129).
+/// Colour-cube red 3, green 0, blue 5 as an [AnsiInk] (colour index 129).
 ///
 /// About #AF00FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb305 = AsciiColour(129);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb305 = AnsiColour(129);
 
-/// Colour-cube red 3, green 1, blue 0 as an [AsciiInk] (colour index 130).
+/// Colour-cube red 3, green 1, blue 0 as an [AnsiInk] (colour index 130).
 ///
 /// About #AF5F00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb310 = AsciiColour(130);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb310 = AnsiColour(130);
 
-/// Colour-cube red 3, green 1, blue 1 as an [AsciiInk] (colour index 131).
+/// Colour-cube red 3, green 1, blue 1 as an [AnsiInk] (colour index 131).
 ///
 /// About #AF5F5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb311 = AsciiColour(131);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb311 = AnsiColour(131);
 
-/// Colour-cube red 3, green 1, blue 2 as an [AsciiInk] (colour index 132).
+/// Colour-cube red 3, green 1, blue 2 as an [AnsiInk] (colour index 132).
 ///
 /// About #AF5F87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb312 = AsciiColour(132);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb312 = AnsiColour(132);
 
-/// Colour-cube red 3, green 1, blue 3 as an [AsciiInk] (colour index 133).
+/// Colour-cube red 3, green 1, blue 3 as an [AnsiInk] (colour index 133).
 ///
 /// About #AF5FAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb313 = AsciiColour(133);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb313 = AnsiColour(133);
 
-/// Colour-cube red 3, green 1, blue 4 as an [AsciiInk] (colour index 134).
+/// Colour-cube red 3, green 1, blue 4 as an [AnsiInk] (colour index 134).
 ///
 /// About #AF5FD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb314 = AsciiColour(134);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb314 = AnsiColour(134);
 
-/// Colour-cube red 3, green 1, blue 5 as an [AsciiInk] (colour index 135).
+/// Colour-cube red 3, green 1, blue 5 as an [AnsiInk] (colour index 135).
 ///
 /// About #AF5FFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb315 = AsciiColour(135);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb315 = AnsiColour(135);
 
-/// Colour-cube red 3, green 2, blue 0 as an [AsciiInk] (colour index 136).
+/// Colour-cube red 3, green 2, blue 0 as an [AnsiInk] (colour index 136).
 ///
 /// About #AF8700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb320 = AsciiColour(136);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb320 = AnsiColour(136);
 
-/// Colour-cube red 3, green 2, blue 1 as an [AsciiInk] (colour index 137).
+/// Colour-cube red 3, green 2, blue 1 as an [AnsiInk] (colour index 137).
 ///
 /// About #AF875F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb321 = AsciiColour(137);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb321 = AnsiColour(137);
 
-/// Colour-cube red 3, green 2, blue 2 as an [AsciiInk] (colour index 138).
+/// Colour-cube red 3, green 2, blue 2 as an [AnsiInk] (colour index 138).
 ///
 /// About #AF8787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb322 = AsciiColour(138);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb322 = AnsiColour(138);
 
-/// Colour-cube red 3, green 2, blue 3 as an [AsciiInk] (colour index 139).
+/// Colour-cube red 3, green 2, blue 3 as an [AnsiInk] (colour index 139).
 ///
 /// About #AF87AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb323 = AsciiColour(139);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb323 = AnsiColour(139);
 
-/// Colour-cube red 3, green 2, blue 4 as an [AsciiInk] (colour index 140).
+/// Colour-cube red 3, green 2, blue 4 as an [AnsiInk] (colour index 140).
 ///
 /// About #AF87D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb324 = AsciiColour(140);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb324 = AnsiColour(140);
 
-/// Colour-cube red 3, green 2, blue 5 as an [AsciiInk] (colour index 141).
+/// Colour-cube red 3, green 2, blue 5 as an [AnsiInk] (colour index 141).
 ///
 /// About #AF87FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb325 = AsciiColour(141);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb325 = AnsiColour(141);
 
-/// Colour-cube red 3, green 3, blue 0 as an [AsciiInk] (colour index 142).
+/// Colour-cube red 3, green 3, blue 0 as an [AnsiInk] (colour index 142).
 ///
 /// About #AFAF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb330 = AsciiColour(142);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb330 = AnsiColour(142);
 
-/// Colour-cube red 3, green 3, blue 1 as an [AsciiInk] (colour index 143).
+/// Colour-cube red 3, green 3, blue 1 as an [AnsiInk] (colour index 143).
 ///
 /// About #AFAF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb331 = AsciiColour(143);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb331 = AnsiColour(143);
 
-/// Colour-cube red 3, green 3, blue 2 as an [AsciiInk] (colour index 144).
+/// Colour-cube red 3, green 3, blue 2 as an [AnsiInk] (colour index 144).
 ///
 /// About #AFAF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb332 = AsciiColour(144);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb332 = AnsiColour(144);
 
-/// Colour-cube red 3, green 3, blue 3 as an [AsciiInk] (colour index 145).
+/// Colour-cube red 3, green 3, blue 3 as an [AnsiInk] (colour index 145).
 ///
 /// About #AFAFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb333 = AsciiColour(145);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb333 = AnsiColour(145);
 
-/// Colour-cube red 3, green 3, blue 4 as an [AsciiInk] (colour index 146).
+/// Colour-cube red 3, green 3, blue 4 as an [AnsiInk] (colour index 146).
 ///
 /// About #AFAFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb334 = AsciiColour(146);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb334 = AnsiColour(146);
 
-/// Colour-cube red 3, green 3, blue 5 as an [AsciiInk] (colour index 147).
+/// Colour-cube red 3, green 3, blue 5 as an [AnsiInk] (colour index 147).
 ///
 /// About #AFAFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb335 = AsciiColour(147);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb335 = AnsiColour(147);
 
-/// Colour-cube red 3, green 4, blue 0 as an [AsciiInk] (colour index 148).
+/// Colour-cube red 3, green 4, blue 0 as an [AnsiInk] (colour index 148).
 ///
 /// About #AFD700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb340 = AsciiColour(148);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb340 = AnsiColour(148);
 
-/// Colour-cube red 3, green 4, blue 1 as an [AsciiInk] (colour index 149).
+/// Colour-cube red 3, green 4, blue 1 as an [AnsiInk] (colour index 149).
 ///
 /// About #AFD75F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb341 = AsciiColour(149);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb341 = AnsiColour(149);
 
-/// Colour-cube red 3, green 4, blue 2 as an [AsciiInk] (colour index 150).
+/// Colour-cube red 3, green 4, blue 2 as an [AnsiInk] (colour index 150).
 ///
 /// About #AFD787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb342 = AsciiColour(150);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb342 = AnsiColour(150);
 
-/// Colour-cube red 3, green 4, blue 3 as an [AsciiInk] (colour index 151).
+/// Colour-cube red 3, green 4, blue 3 as an [AnsiInk] (colour index 151).
 ///
 /// About #AFD7AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb343 = AsciiColour(151);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb343 = AnsiColour(151);
 
-/// Colour-cube red 3, green 4, blue 4 as an [AsciiInk] (colour index 152).
+/// Colour-cube red 3, green 4, blue 4 as an [AnsiInk] (colour index 152).
 ///
 /// About #AFD7D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb344 = AsciiColour(152);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb344 = AnsiColour(152);
 
-/// Colour-cube red 3, green 4, blue 5 as an [AsciiInk] (colour index 153).
+/// Colour-cube red 3, green 4, blue 5 as an [AnsiInk] (colour index 153).
 ///
 /// About #AFD7FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb345 = AsciiColour(153);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb345 = AnsiColour(153);
 
-/// Colour-cube red 3, green 5, blue 0 as an [AsciiInk] (colour index 154).
+/// Colour-cube red 3, green 5, blue 0 as an [AnsiInk] (colour index 154).
 ///
 /// About #AFFF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb350 = AsciiColour(154);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb350 = AnsiColour(154);
 
-/// Colour-cube red 3, green 5, blue 1 as an [AsciiInk] (colour index 155).
+/// Colour-cube red 3, green 5, blue 1 as an [AnsiInk] (colour index 155).
 ///
 /// About #AFFF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb351 = AsciiColour(155);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb351 = AnsiColour(155);
 
-/// Colour-cube red 3, green 5, blue 2 as an [AsciiInk] (colour index 156).
+/// Colour-cube red 3, green 5, blue 2 as an [AnsiInk] (colour index 156).
 ///
 /// About #AFFF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb352 = AsciiColour(156);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb352 = AnsiColour(156);
 
-/// Colour-cube red 3, green 5, blue 3 as an [AsciiInk] (colour index 157).
+/// Colour-cube red 3, green 5, blue 3 as an [AnsiInk] (colour index 157).
 ///
 /// About #AFFFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb353 = AsciiColour(157);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb353 = AnsiColour(157);
 
-/// Colour-cube red 3, green 5, blue 4 as an [AsciiInk] (colour index 158).
+/// Colour-cube red 3, green 5, blue 4 as an [AnsiInk] (colour index 158).
 ///
 /// About #AFFFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb354 = AsciiColour(158);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb354 = AnsiColour(158);
 
-/// Colour-cube red 3, green 5, blue 5 as an [AsciiInk] (colour index 159).
+/// Colour-cube red 3, green 5, blue 5 as an [AnsiInk] (colour index 159).
 ///
 /// About #AFFFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb355 = AsciiColour(159);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb355 = AnsiColour(159);
 
-/// Colour-cube red 4, green 0, blue 0 as an [AsciiInk] (colour index 160).
+/// Colour-cube red 4, green 0, blue 0 as an [AnsiInk] (colour index 160).
 ///
 /// About #D70000. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb400 = AsciiColour(160);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb400 = AnsiColour(160);
 
-/// Colour-cube red 4, green 0, blue 1 as an [AsciiInk] (colour index 161).
+/// Colour-cube red 4, green 0, blue 1 as an [AnsiInk] (colour index 161).
 ///
 /// About #D7005F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb401 = AsciiColour(161);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb401 = AnsiColour(161);
 
-/// Colour-cube red 4, green 0, blue 2 as an [AsciiInk] (colour index 162).
+/// Colour-cube red 4, green 0, blue 2 as an [AnsiInk] (colour index 162).
 ///
 /// About #D70087. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb402 = AsciiColour(162);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb402 = AnsiColour(162);
 
-/// Colour-cube red 4, green 0, blue 3 as an [AsciiInk] (colour index 163).
+/// Colour-cube red 4, green 0, blue 3 as an [AnsiInk] (colour index 163).
 ///
 /// About #D700AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb403 = AsciiColour(163);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb403 = AnsiColour(163);
 
-/// Colour-cube red 4, green 0, blue 4 as an [AsciiInk] (colour index 164).
+/// Colour-cube red 4, green 0, blue 4 as an [AnsiInk] (colour index 164).
 ///
 /// About #D700D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb404 = AsciiColour(164);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb404 = AnsiColour(164);
 
-/// Colour-cube red 4, green 0, blue 5 as an [AsciiInk] (colour index 165).
+/// Colour-cube red 4, green 0, blue 5 as an [AnsiInk] (colour index 165).
 ///
 /// About #D700FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb405 = AsciiColour(165);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb405 = AnsiColour(165);
 
-/// Colour-cube red 4, green 1, blue 0 as an [AsciiInk] (colour index 166).
+/// Colour-cube red 4, green 1, blue 0 as an [AnsiInk] (colour index 166).
 ///
 /// About #D75F00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb410 = AsciiColour(166);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb410 = AnsiColour(166);
 
-/// Colour-cube red 4, green 1, blue 1 as an [AsciiInk] (colour index 167).
+/// Colour-cube red 4, green 1, blue 1 as an [AnsiInk] (colour index 167).
 ///
 /// About #D75F5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb411 = AsciiColour(167);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb411 = AnsiColour(167);
 
-/// Colour-cube red 4, green 1, blue 2 as an [AsciiInk] (colour index 168).
+/// Colour-cube red 4, green 1, blue 2 as an [AnsiInk] (colour index 168).
 ///
 /// About #D75F87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb412 = AsciiColour(168);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb412 = AnsiColour(168);
 
-/// Colour-cube red 4, green 1, blue 3 as an [AsciiInk] (colour index 169).
+/// Colour-cube red 4, green 1, blue 3 as an [AnsiInk] (colour index 169).
 ///
 /// About #D75FAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb413 = AsciiColour(169);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb413 = AnsiColour(169);
 
-/// Colour-cube red 4, green 1, blue 4 as an [AsciiInk] (colour index 170).
+/// Colour-cube red 4, green 1, blue 4 as an [AnsiInk] (colour index 170).
 ///
 /// About #D75FD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb414 = AsciiColour(170);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb414 = AnsiColour(170);
 
-/// Colour-cube red 4, green 1, blue 5 as an [AsciiInk] (colour index 171).
+/// Colour-cube red 4, green 1, blue 5 as an [AnsiInk] (colour index 171).
 ///
 /// About #D75FFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb415 = AsciiColour(171);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb415 = AnsiColour(171);
 
-/// Colour-cube red 4, green 2, blue 0 as an [AsciiInk] (colour index 172).
+/// Colour-cube red 4, green 2, blue 0 as an [AnsiInk] (colour index 172).
 ///
 /// About #D78700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb420 = AsciiColour(172);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb420 = AnsiColour(172);
 
-/// Colour-cube red 4, green 2, blue 1 as an [AsciiInk] (colour index 173).
+/// Colour-cube red 4, green 2, blue 1 as an [AnsiInk] (colour index 173).
 ///
 /// About #D7875F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb421 = AsciiColour(173);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb421 = AnsiColour(173);
 
-/// Colour-cube red 4, green 2, blue 2 as an [AsciiInk] (colour index 174).
+/// Colour-cube red 4, green 2, blue 2 as an [AnsiInk] (colour index 174).
 ///
 /// About #D78787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb422 = AsciiColour(174);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb422 = AnsiColour(174);
 
-/// Colour-cube red 4, green 2, blue 3 as an [AsciiInk] (colour index 175).
+/// Colour-cube red 4, green 2, blue 3 as an [AnsiInk] (colour index 175).
 ///
 /// About #D787AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb423 = AsciiColour(175);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb423 = AnsiColour(175);
 
-/// Colour-cube red 4, green 2, blue 4 as an [AsciiInk] (colour index 176).
+/// Colour-cube red 4, green 2, blue 4 as an [AnsiInk] (colour index 176).
 ///
 /// About #D787D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb424 = AsciiColour(176);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb424 = AnsiColour(176);
 
-/// Colour-cube red 4, green 2, blue 5 as an [AsciiInk] (colour index 177).
+/// Colour-cube red 4, green 2, blue 5 as an [AnsiInk] (colour index 177).
 ///
 /// About #D787FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb425 = AsciiColour(177);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb425 = AnsiColour(177);
 
-/// Colour-cube red 4, green 3, blue 0 as an [AsciiInk] (colour index 178).
+/// Colour-cube red 4, green 3, blue 0 as an [AnsiInk] (colour index 178).
 ///
 /// About #D7AF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb430 = AsciiColour(178);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb430 = AnsiColour(178);
 
-/// Colour-cube red 4, green 3, blue 1 as an [AsciiInk] (colour index 179).
+/// Colour-cube red 4, green 3, blue 1 as an [AnsiInk] (colour index 179).
 ///
 /// About #D7AF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb431 = AsciiColour(179);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb431 = AnsiColour(179);
 
-/// Colour-cube red 4, green 3, blue 2 as an [AsciiInk] (colour index 180).
+/// Colour-cube red 4, green 3, blue 2 as an [AnsiInk] (colour index 180).
 ///
 /// About #D7AF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb432 = AsciiColour(180);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb432 = AnsiColour(180);
 
-/// Colour-cube red 4, green 3, blue 3 as an [AsciiInk] (colour index 181).
+/// Colour-cube red 4, green 3, blue 3 as an [AnsiInk] (colour index 181).
 ///
 /// About #D7AFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb433 = AsciiColour(181);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb433 = AnsiColour(181);
 
-/// Colour-cube red 4, green 3, blue 4 as an [AsciiInk] (colour index 182).
+/// Colour-cube red 4, green 3, blue 4 as an [AnsiInk] (colour index 182).
 ///
 /// About #D7AFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb434 = AsciiColour(182);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb434 = AnsiColour(182);
 
-/// Colour-cube red 4, green 3, blue 5 as an [AsciiInk] (colour index 183).
+/// Colour-cube red 4, green 3, blue 5 as an [AnsiInk] (colour index 183).
 ///
 /// About #D7AFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb435 = AsciiColour(183);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb435 = AnsiColour(183);
 
-/// Colour-cube red 4, green 4, blue 0 as an [AsciiInk] (colour index 184).
+/// Colour-cube red 4, green 4, blue 0 as an [AnsiInk] (colour index 184).
 ///
 /// About #D7D700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb440 = AsciiColour(184);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb440 = AnsiColour(184);
 
-/// Colour-cube red 4, green 4, blue 1 as an [AsciiInk] (colour index 185).
+/// Colour-cube red 4, green 4, blue 1 as an [AnsiInk] (colour index 185).
 ///
 /// About #D7D75F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb441 = AsciiColour(185);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb441 = AnsiColour(185);
 
-/// Colour-cube red 4, green 4, blue 2 as an [AsciiInk] (colour index 186).
+/// Colour-cube red 4, green 4, blue 2 as an [AnsiInk] (colour index 186).
 ///
 /// About #D7D787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb442 = AsciiColour(186);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb442 = AnsiColour(186);
 
-/// Colour-cube red 4, green 4, blue 3 as an [AsciiInk] (colour index 187).
+/// Colour-cube red 4, green 4, blue 3 as an [AnsiInk] (colour index 187).
 ///
 /// About #D7D7AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb443 = AsciiColour(187);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb443 = AnsiColour(187);
 
-/// Colour-cube red 4, green 4, blue 4 as an [AsciiInk] (colour index 188).
+/// Colour-cube red 4, green 4, blue 4 as an [AnsiInk] (colour index 188).
 ///
 /// About #D7D7D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb444 = AsciiColour(188);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb444 = AnsiColour(188);
 
-/// Colour-cube red 4, green 4, blue 5 as an [AsciiInk] (colour index 189).
+/// Colour-cube red 4, green 4, blue 5 as an [AnsiInk] (colour index 189).
 ///
 /// About #D7D7FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb445 = AsciiColour(189);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb445 = AnsiColour(189);
 
-/// Colour-cube red 4, green 5, blue 0 as an [AsciiInk] (colour index 190).
+/// Colour-cube red 4, green 5, blue 0 as an [AnsiInk] (colour index 190).
 ///
 /// About #D7FF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb450 = AsciiColour(190);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb450 = AnsiColour(190);
 
-/// Colour-cube red 4, green 5, blue 1 as an [AsciiInk] (colour index 191).
+/// Colour-cube red 4, green 5, blue 1 as an [AnsiInk] (colour index 191).
 ///
 /// About #D7FF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb451 = AsciiColour(191);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb451 = AnsiColour(191);
 
-/// Colour-cube red 4, green 5, blue 2 as an [AsciiInk] (colour index 192).
+/// Colour-cube red 4, green 5, blue 2 as an [AnsiInk] (colour index 192).
 ///
 /// About #D7FF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb452 = AsciiColour(192);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb452 = AnsiColour(192);
 
-/// Colour-cube red 4, green 5, blue 3 as an [AsciiInk] (colour index 193).
+/// Colour-cube red 4, green 5, blue 3 as an [AnsiInk] (colour index 193).
 ///
 /// About #D7FFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb453 = AsciiColour(193);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb453 = AnsiColour(193);
 
-/// Colour-cube red 4, green 5, blue 4 as an [AsciiInk] (colour index 194).
+/// Colour-cube red 4, green 5, blue 4 as an [AnsiInk] (colour index 194).
 ///
 /// About #D7FFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb454 = AsciiColour(194);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb454 = AnsiColour(194);
 
-/// Colour-cube red 4, green 5, blue 5 as an [AsciiInk] (colour index 195).
+/// Colour-cube red 4, green 5, blue 5 as an [AnsiInk] (colour index 195).
 ///
 /// About #D7FFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb455 = AsciiColour(195);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb455 = AnsiColour(195);
 
-/// Colour-cube red 5, green 0, blue 0 as an [AsciiInk] (colour index 196).
+/// Colour-cube red 5, green 0, blue 0 as an [AnsiInk] (colour index 196).
 ///
 /// About #FF0000. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb500 = AsciiColour(196);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb500 = AnsiColour(196);
 
-/// Colour-cube red 5, green 0, blue 1 as an [AsciiInk] (colour index 197).
+/// Colour-cube red 5, green 0, blue 1 as an [AnsiInk] (colour index 197).
 ///
 /// About #FF005F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb501 = AsciiColour(197);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb501 = AnsiColour(197);
 
-/// Colour-cube red 5, green 0, blue 2 as an [AsciiInk] (colour index 198).
+/// Colour-cube red 5, green 0, blue 2 as an [AnsiInk] (colour index 198).
 ///
 /// About #FF0087. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb502 = AsciiColour(198);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb502 = AnsiColour(198);
 
-/// Colour-cube red 5, green 0, blue 3 as an [AsciiInk] (colour index 199).
+/// Colour-cube red 5, green 0, blue 3 as an [AnsiInk] (colour index 199).
 ///
 /// About #FF00AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb503 = AsciiColour(199);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb503 = AnsiColour(199);
 
-/// Colour-cube red 5, green 0, blue 4 as an [AsciiInk] (colour index 200).
+/// Colour-cube red 5, green 0, blue 4 as an [AnsiInk] (colour index 200).
 ///
 /// About #FF00D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb504 = AsciiColour(200);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb504 = AnsiColour(200);
 
-/// Colour-cube red 5, green 0, blue 5 as an [AsciiInk] (colour index 201).
+/// Colour-cube red 5, green 0, blue 5 as an [AnsiInk] (colour index 201).
 ///
 /// About #FF00FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb505 = AsciiColour(201);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb505 = AnsiColour(201);
 
-/// Colour-cube red 5, green 1, blue 0 as an [AsciiInk] (colour index 202).
+/// Colour-cube red 5, green 1, blue 0 as an [AnsiInk] (colour index 202).
 ///
 /// About #FF5F00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb510 = AsciiColour(202);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb510 = AnsiColour(202);
 
-/// Colour-cube red 5, green 1, blue 1 as an [AsciiInk] (colour index 203).
+/// Colour-cube red 5, green 1, blue 1 as an [AnsiInk] (colour index 203).
 ///
 /// About #FF5F5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb511 = AsciiColour(203);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb511 = AnsiColour(203);
 
-/// Colour-cube red 5, green 1, blue 2 as an [AsciiInk] (colour index 204).
+/// Colour-cube red 5, green 1, blue 2 as an [AnsiInk] (colour index 204).
 ///
 /// About #FF5F87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb512 = AsciiColour(204);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb512 = AnsiColour(204);
 
-/// Colour-cube red 5, green 1, blue 3 as an [AsciiInk] (colour index 205).
+/// Colour-cube red 5, green 1, blue 3 as an [AnsiInk] (colour index 205).
 ///
 /// About #FF5FAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb513 = AsciiColour(205);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb513 = AnsiColour(205);
 
-/// Colour-cube red 5, green 1, blue 4 as an [AsciiInk] (colour index 206).
+/// Colour-cube red 5, green 1, blue 4 as an [AnsiInk] (colour index 206).
 ///
 /// About #FF5FD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb514 = AsciiColour(206);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb514 = AnsiColour(206);
 
-/// Colour-cube red 5, green 1, blue 5 as an [AsciiInk] (colour index 207).
+/// Colour-cube red 5, green 1, blue 5 as an [AnsiInk] (colour index 207).
 ///
 /// About #FF5FFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb515 = AsciiColour(207);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb515 = AnsiColour(207);
 
-/// Colour-cube red 5, green 2, blue 0 as an [AsciiInk] (colour index 208).
+/// Colour-cube red 5, green 2, blue 0 as an [AnsiInk] (colour index 208).
 ///
 /// About #FF8700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb520 = AsciiColour(208);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb520 = AnsiColour(208);
 
-/// Colour-cube red 5, green 2, blue 1 as an [AsciiInk] (colour index 209).
+/// Colour-cube red 5, green 2, blue 1 as an [AnsiInk] (colour index 209).
 ///
 /// About #FF875F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb521 = AsciiColour(209);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb521 = AnsiColour(209);
 
-/// Colour-cube red 5, green 2, blue 2 as an [AsciiInk] (colour index 210).
+/// Colour-cube red 5, green 2, blue 2 as an [AnsiInk] (colour index 210).
 ///
 /// About #FF8787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb522 = AsciiColour(210);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb522 = AnsiColour(210);
 
-/// Colour-cube red 5, green 2, blue 3 as an [AsciiInk] (colour index 211).
+/// Colour-cube red 5, green 2, blue 3 as an [AnsiInk] (colour index 211).
 ///
 /// About #FF87AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb523 = AsciiColour(211);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb523 = AnsiColour(211);
 
-/// Colour-cube red 5, green 2, blue 4 as an [AsciiInk] (colour index 212).
+/// Colour-cube red 5, green 2, blue 4 as an [AnsiInk] (colour index 212).
 ///
 /// About #FF87D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb524 = AsciiColour(212);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb524 = AnsiColour(212);
 
-/// Colour-cube red 5, green 2, blue 5 as an [AsciiInk] (colour index 213).
+/// Colour-cube red 5, green 2, blue 5 as an [AnsiInk] (colour index 213).
 ///
 /// About #FF87FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb525 = AsciiColour(213);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb525 = AnsiColour(213);
 
-/// Colour-cube red 5, green 3, blue 0 as an [AsciiInk] (colour index 214).
+/// Colour-cube red 5, green 3, blue 0 as an [AnsiInk] (colour index 214).
 ///
 /// About #FFAF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb530 = AsciiColour(214);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb530 = AnsiColour(214);
 
-/// Colour-cube red 5, green 3, blue 1 as an [AsciiInk] (colour index 215).
+/// Colour-cube red 5, green 3, blue 1 as an [AnsiInk] (colour index 215).
 ///
 /// About #FFAF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb531 = AsciiColour(215);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb531 = AnsiColour(215);
 
-/// Colour-cube red 5, green 3, blue 2 as an [AsciiInk] (colour index 216).
+/// Colour-cube red 5, green 3, blue 2 as an [AnsiInk] (colour index 216).
 ///
 /// About #FFAF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb532 = AsciiColour(216);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb532 = AnsiColour(216);
 
-/// Colour-cube red 5, green 3, blue 3 as an [AsciiInk] (colour index 217).
+/// Colour-cube red 5, green 3, blue 3 as an [AnsiInk] (colour index 217).
 ///
 /// About #FFAFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb533 = AsciiColour(217);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb533 = AnsiColour(217);
 
-/// Colour-cube red 5, green 3, blue 4 as an [AsciiInk] (colour index 218).
+/// Colour-cube red 5, green 3, blue 4 as an [AnsiInk] (colour index 218).
 ///
 /// About #FFAFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb534 = AsciiColour(218);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb534 = AnsiColour(218);
 
-/// Colour-cube red 5, green 3, blue 5 as an [AsciiInk] (colour index 219).
+/// Colour-cube red 5, green 3, blue 5 as an [AnsiInk] (colour index 219).
 ///
 /// About #FFAFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb535 = AsciiColour(219);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb535 = AnsiColour(219);
 
-/// Colour-cube red 5, green 4, blue 0 as an [AsciiInk] (colour index 220).
+/// Colour-cube red 5, green 4, blue 0 as an [AnsiInk] (colour index 220).
 ///
 /// About #FFD700. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb540 = AsciiColour(220);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb540 = AnsiColour(220);
 
-/// Colour-cube red 5, green 4, blue 1 as an [AsciiInk] (colour index 221).
+/// Colour-cube red 5, green 4, blue 1 as an [AnsiInk] (colour index 221).
 ///
 /// About #FFD75F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb541 = AsciiColour(221);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb541 = AnsiColour(221);
 
-/// Colour-cube red 5, green 4, blue 2 as an [AsciiInk] (colour index 222).
+/// Colour-cube red 5, green 4, blue 2 as an [AnsiInk] (colour index 222).
 ///
 /// About #FFD787. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb542 = AsciiColour(222);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb542 = AnsiColour(222);
 
-/// Colour-cube red 5, green 4, blue 3 as an [AsciiInk] (colour index 223).
+/// Colour-cube red 5, green 4, blue 3 as an [AnsiInk] (colour index 223).
 ///
 /// About #FFD7AF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb543 = AsciiColour(223);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb543 = AnsiColour(223);
 
-/// Colour-cube red 5, green 4, blue 4 as an [AsciiInk] (colour index 224).
+/// Colour-cube red 5, green 4, blue 4 as an [AnsiInk] (colour index 224).
 ///
 /// About #FFD7D7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb544 = AsciiColour(224);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb544 = AnsiColour(224);
 
-/// Colour-cube red 5, green 4, blue 5 as an [AsciiInk] (colour index 225).
+/// Colour-cube red 5, green 4, blue 5 as an [AnsiInk] (colour index 225).
 ///
 /// About #FFD7FF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb545 = AsciiColour(225);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb545 = AnsiColour(225);
 
-/// Colour-cube red 5, green 5, blue 0 as an [AsciiInk] (colour index 226).
+/// Colour-cube red 5, green 5, blue 0 as an [AnsiInk] (colour index 226).
 ///
 /// About #FFFF00. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb550 = AsciiColour(226);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb550 = AnsiColour(226);
 
-/// Colour-cube red 5, green 5, blue 1 as an [AsciiInk] (colour index 227).
+/// Colour-cube red 5, green 5, blue 1 as an [AnsiInk] (colour index 227).
 ///
 /// About #FFFF5F. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb551 = AsciiColour(227);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb551 = AnsiColour(227);
 
-/// Colour-cube red 5, green 5, blue 2 as an [AsciiInk] (colour index 228).
+/// Colour-cube red 5, green 5, blue 2 as an [AnsiInk] (colour index 228).
 ///
 /// About #FFFF87. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb552 = AsciiColour(228);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb552 = AnsiColour(228);
 
-/// Colour-cube red 5, green 5, blue 3 as an [AsciiInk] (colour index 229).
+/// Colour-cube red 5, green 5, blue 3 as an [AnsiInk] (colour index 229).
 ///
 /// About #FFFFAF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb553 = AsciiColour(229);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb553 = AnsiColour(229);
 
-/// Colour-cube red 5, green 5, blue 4 as an [AsciiInk] (colour index 230).
+/// Colour-cube red 5, green 5, blue 4 as an [AnsiInk] (colour index 230).
 ///
 /// About #FFFFD7. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb554 = AsciiColour(230);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb554 = AnsiColour(230);
 
-/// Colour-cube red 5, green 5, blue 5 as an [AsciiInk] (colour index 231).
+/// Colour-cube red 5, green 5, blue 5 as an [AnsiInk] (colour index 231).
 ///
 /// About #FFFFFF. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiRgb555 = AsciiColour(231);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiRgb555 = AnsiColour(231);
 
-/// Grey step 0 of 23 as an [AsciiInk] (colour index 232).
+/// Grey step 0 of 23 as an [AnsiInk] (colour index 232).
 ///
 /// About #080808. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey0 = AsciiColour(232);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey0 = AnsiColour(232);
 
-/// Grey step 1 of 23 as an [AsciiInk] (colour index 233).
+/// Grey step 1 of 23 as an [AnsiInk] (colour index 233).
 ///
 /// About #121212. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey1 = AsciiColour(233);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey1 = AnsiColour(233);
 
-/// Grey step 2 of 23 as an [AsciiInk] (colour index 234).
+/// Grey step 2 of 23 as an [AnsiInk] (colour index 234).
 ///
 /// About #1C1C1C. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey2 = AsciiColour(234);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey2 = AnsiColour(234);
 
-/// Grey step 3 of 23 as an [AsciiInk] (colour index 235).
+/// Grey step 3 of 23 as an [AnsiInk] (colour index 235).
 ///
 /// About #262626. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey3 = AsciiColour(235);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey3 = AnsiColour(235);
 
-/// Grey step 4 of 23 as an [AsciiInk] (colour index 236).
+/// Grey step 4 of 23 as an [AnsiInk] (colour index 236).
 ///
 /// About #303030. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey4 = AsciiColour(236);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey4 = AnsiColour(236);
 
-/// Grey step 5 of 23 as an [AsciiInk] (colour index 237).
+/// Grey step 5 of 23 as an [AnsiInk] (colour index 237).
 ///
 /// About #3A3A3A. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey5 = AsciiColour(237);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey5 = AnsiColour(237);
 
-/// Grey step 6 of 23 as an [AsciiInk] (colour index 238).
+/// Grey step 6 of 23 as an [AnsiInk] (colour index 238).
 ///
 /// About #444444. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey6 = AsciiColour(238);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey6 = AnsiColour(238);
 
-/// Grey step 7 of 23 as an [AsciiInk] (colour index 239).
+/// Grey step 7 of 23 as an [AnsiInk] (colour index 239).
 ///
 /// About #4E4E4E. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey7 = AsciiColour(239);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey7 = AnsiColour(239);
 
-/// Grey step 8 of 23 as an [AsciiInk] (colour index 240).
+/// Grey step 8 of 23 as an [AnsiInk] (colour index 240).
 ///
 /// About #585858. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey8 = AsciiColour(240);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey8 = AnsiColour(240);
 
-/// Grey step 9 of 23 as an [AsciiInk] (colour index 241).
+/// Grey step 9 of 23 as an [AnsiInk] (colour index 241).
 ///
 /// About #626262. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey9 = AsciiColour(241);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey9 = AnsiColour(241);
 
-/// Grey step 10 of 23 as an [AsciiInk] (colour index 242).
+/// Grey step 10 of 23 as an [AnsiInk] (colour index 242).
 ///
 /// About #6C6C6C. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey10 = AsciiColour(242);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey10 = AnsiColour(242);
 
-/// Grey step 11 of 23 as an [AsciiInk] (colour index 243).
+/// Grey step 11 of 23 as an [AnsiInk] (colour index 243).
 ///
 /// About #767676. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey11 = AsciiColour(243);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey11 = AnsiColour(243);
 
-/// Grey step 12 of 23 as an [AsciiInk] (colour index 244).
+/// Grey step 12 of 23 as an [AnsiInk] (colour index 244).
 ///
 /// About #808080. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey12 = AsciiColour(244);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey12 = AnsiColour(244);
 
-/// Grey step 13 of 23 as an [AsciiInk] (colour index 245).
+/// Grey step 13 of 23 as an [AnsiInk] (colour index 245).
 ///
 /// About #8A8A8A. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey13 = AsciiColour(245);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey13 = AnsiColour(245);
 
-/// Grey step 14 of 23 as an [AsciiInk] (colour index 246).
+/// Grey step 14 of 23 as an [AnsiInk] (colour index 246).
 ///
 /// About #949494. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey14 = AsciiColour(246);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey14 = AnsiColour(246);
 
-/// Grey step 15 of 23 as an [AsciiInk] (colour index 247).
+/// Grey step 15 of 23 as an [AnsiInk] (colour index 247).
 ///
 /// About #9E9E9E. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey15 = AsciiColour(247);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey15 = AnsiColour(247);
 
-/// Grey step 16 of 23 as an [AsciiInk] (colour index 248).
+/// Grey step 16 of 23 as an [AnsiInk] (colour index 248).
 ///
 /// About #A8A8A8. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey16 = AsciiColour(248);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey16 = AnsiColour(248);
 
-/// Grey step 17 of 23 as an [AsciiInk] (colour index 249).
+/// Grey step 17 of 23 as an [AnsiInk] (colour index 249).
 ///
 /// About #B2B2B2. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey17 = AsciiColour(249);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey17 = AnsiColour(249);
 
-/// Grey step 18 of 23 as an [AsciiInk] (colour index 250).
+/// Grey step 18 of 23 as an [AnsiInk] (colour index 250).
 ///
 /// About #BCBCBC. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey18 = AsciiColour(250);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey18 = AnsiColour(250);
 
-/// Grey step 19 of 23 as an [AsciiInk] (colour index 251).
+/// Grey step 19 of 23 as an [AnsiInk] (colour index 251).
 ///
 /// About #C6C6C6. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey19 = AsciiColour(251);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey19 = AnsiColour(251);
 
-/// Grey step 20 of 23 as an [AsciiInk] (colour index 252).
+/// Grey step 20 of 23 as an [AnsiInk] (colour index 252).
 ///
 /// About #D0D0D0. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey20 = AsciiColour(252);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey20 = AnsiColour(252);
 
-/// Grey step 21 of 23 as an [AsciiInk] (colour index 253).
+/// Grey step 21 of 23 as an [AnsiInk] (colour index 253).
 ///
 /// About #DADADA. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey21 = AsciiColour(253);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey21 = AnsiColour(253);
 
-/// Grey step 22 of 23 as an [AsciiInk] (colour index 254).
+/// Grey step 22 of 23 as an [AnsiInk] (colour index 254).
 ///
 /// About #E4E4E4. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey22 = AsciiColour(254);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey22 = AnsiColour(254);
 
-/// Grey step 23 of 23 as an [AsciiInk] (colour index 255).
+/// Grey step 23 of 23 as an [AnsiInk] (colour index 255).
 ///
 /// About #EEEEEE. Use `.fg`, `.bg` or `.underline` for the escape code, or pass
-/// it to [AsciiStyledString.foreground] and friends.
-const AsciiColour asciiGrey23 = AsciiColour(255);
+/// it to [AnsiStyledString.foreground] and friends.
+const AnsiColour ansiGrey23 = AnsiColour(255);

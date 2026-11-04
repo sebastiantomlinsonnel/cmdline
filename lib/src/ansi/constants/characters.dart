@@ -120,7 +120,7 @@ class BoxChars {
   /// Plain keyboard characters: `+-+`.
   ///
   /// A fallback for old consoles that can't show line characters.
-  static const BoxChars ascii = BoxChars(
+  static const BoxChars ansi = BoxChars(
     topLeft: '+',
     topRight: '+',
     bottomLeft: '+',

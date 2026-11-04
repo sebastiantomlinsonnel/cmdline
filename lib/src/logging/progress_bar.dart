@@ -31,7 +31,7 @@ class ProgressBar {
   final int width;
 
   /// The colour of the filled part of the bar.
-  final AsciiInk colour;
+  final AnsiInk colour;
 
   int _current = 0;
   String _lastDrawn = '';
@@ -41,7 +41,7 @@ class ProgressBar {
     this.label, {
     required this.total,
     this.width = 30,
-    this.colour = const AsciiColour(10),
+    this.colour = const AnsiColour(10),
   }) {
     // Hide the cursor so it doesn't flicker over the bar.
     stdout.write(HIDE_CURSOR);
@@ -86,7 +86,7 @@ class ProgressBar {
   static String bar(
     double fraction, {
     int width = 30,
-    AsciiInk colour = const AsciiColour(10),
+    AnsiInk colour = const AnsiColour(10),
   }) {
     // Count in eighths of a character, so the bar grows smoothly.
     final eighths = (fraction.clamp(0.0, 1.0) * width * 8).round();

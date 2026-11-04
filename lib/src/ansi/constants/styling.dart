@@ -96,7 +96,7 @@ const String RESET_ITALIC = '${CSI}23$SGR';
 
 /// Underlines text with a single straight line.
 ///
-/// SGR code 4. Colour the line with [ULCO] or [AsciiInk.underline]. Turn it
+/// SGR code 4. Colour the line with [ULCO] or [AnsiInk.underline]. Turn it
 /// off with [RESET_UNDERLINE].
 const String UNDERLINE = '${CSI}4$SGR';
 
@@ -271,18 +271,18 @@ const String RESET_SUPER_AND_SUBSCRIPT = '${CSI}75$SGR';
 
 /// Sets the text colour back to the terminal default.
 ///
-/// SGR code 39. Undoes any `*_FG` code or [AsciiInk.fg] without touching
+/// SGR code 39. Undoes any `*_FG` code or [AnsiInk.fg] without touching
 /// other styles.
 const String RESET_FG = '${CSI}39$SGR';
 
 /// Sets the background colour back to the terminal default.
 ///
-/// SGR code 49. Undoes any `*_BG` code or [AsciiInk.bg] without touching
+/// SGR code 49. Undoes any `*_BG` code or [AnsiInk.bg] without touching
 /// other styles.
 const String RESET_BG = '${CSI}49$SGR';
 
 /// Sets the underline colour back to the default (the text colour).
 ///
-/// SGR code 59. Undoes [ULCO] or [AsciiInk.underline]. The underline itself
+/// SGR code 59. Undoes [ULCO] or [AnsiInk.underline]. The underline itself
 /// stays on; turn that off with [RESET_UNDERLINE].
 const String RESET_UNDERLINE_COLOUR = '${CSI}59$SGR';

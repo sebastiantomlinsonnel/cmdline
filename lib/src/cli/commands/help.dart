@@ -1,16 +1,16 @@
 import 'package:cmdline/cmdline.dart';
 
 /// Colour of the program name in the title.
-const AsciiColour _titleColour = AsciiColour(14);
+const AnsiColour _titleColour = AnsiColour(14);
 
 /// Colour of command, flag and option names.
-const AsciiColour _nameColour = AsciiColour(10);
+const AnsiColour _nameColour = AnsiColour(10);
 
 /// Colour of section headings like "Usage".
-const AsciiColour _headingColour = AsciiColour(11);
+const AnsiColour _headingColour = AnsiColour(11);
 
 /// Colour of error messages.
-const AsciiColour _errorColour = AsciiColour(9);
+const AnsiColour _errorColour = AnsiColour(9);
 
 /// Builds the coloured help screen for a command.
 ///
