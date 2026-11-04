@@ -4,13 +4,9 @@ import 'dart:math' as math;
 import 'package:cmdline/cmdline.dart';
 
 part 'cmd/draw.dart';
-
 part 'cmd/fs.dart';
-
 part 'cmd/net.dart';
-
 part 'cmd/prompt.dart';
-
 part 'cmd/shell.dart';
 
 /// CMDLine helpers

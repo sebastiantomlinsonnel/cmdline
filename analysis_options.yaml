@@ -1,6 +1,5 @@
 # Core Dart lints. Needs `lints` in dev_dependencies (already in your pubspec).
 
-
 analyzer:
   language:
     strict-casts: true       # no silent casts from dynamic
