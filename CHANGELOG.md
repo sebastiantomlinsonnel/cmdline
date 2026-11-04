@@ -1,3 +1,7 @@
+## 1.1.1 (NEXT VERSION)
+
+- Refactored for `dart doc`
+
 ## 1.1.0
 
 - Added args that aren't options or flags

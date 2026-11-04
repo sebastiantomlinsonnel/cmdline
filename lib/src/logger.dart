@@ -24,30 +24,13 @@ class Logger {
   bool showTimestampInOutput = false;
 
   /// Run after every log
-  void Function(String message, String asciiMessage)? onLog;
+  void Function(String message)? onLog;
 
   /// Controls whether [dev] and [debug] logs are shown
   bool debugMode = true;
 
-  ///
-  Set<String>? levels;
-
-  /// Whether dev and debug messages are shown in the terminal.
-  ///
-  /// On by default. [Cli.start] turns it off unless the user typed
-  /// `--verbose`. Hidden messages still go to the log file and [onLog].
-  bool verbose = true;
-
-  Logger._();
-
   /// The position of the `|` in the output
   int TAG_WIDTH = 5;
-
-  final List<String> _d2 = List<String>.generate(
-    100,
-    (int i) => i < 10 ? '0$i' : '$i',
-    growable: false,
-  );
 
   /// The open log file, or null when logs aren't being saved.
   _LogFile? _out;
@@ -58,13 +41,39 @@ class Logger {
   /// Path of the log file if it exists
   String? get path => _out?.file.path;
 
+  /// Whether dev and debug messages are shown in the terminal.
+  ///
+  /// On by default. [Cli.start] turns it off unless the user typed
+  /// `--verbose`. Hidden messages still go to the log file and [onLog].
+  bool verbose = true;
+
+  /// PRIVATE
+  Logger._();
+
+  /// Outputs a log message using [Logger]
+  static void print(String message, Level verbosity) {
+    final bool isDetail = verbosity == Level.dev || verbosity == Level.debug;
+    if (Logger.instance.verbose || !isDetail) writeln(message);
+
+    Logger.instance.._saveLog(message);
+    final onLog = Logger.instance.onLog;
+
+    if (onLog == null) return;
+
+    try {
+      onLog(message);
+    } catch (e) {
+      fail(e);
+    }
+  }
+
   /// Get a formatted string
   static String getString(dynamic message, Level level, {bool? showTimestamp}) {
     String timestamp = '';
     if (showTimestamp ?? Logger.instance.showTimestampInOutput)
       timestamp = '${_getTimestamp()} ';
 
-    return [timestamp, Logger.getStamp(level), ' $message'].join();
+    return [timestamp, Logger.instance.getStamp(level), ' $message'].join();
   }
 
   /// Start Logger with a log file
@@ -75,13 +84,12 @@ class Logger {
     int flushThreshold = 16 * 1024,
     int maxBytes = 5 * 1024 * 1024,
     Set<String>? levels,
-    void Function(String message, String asciiMessage)? onLog,
+    void Function(String message)? onLog,
     bool debugMode = true,
   }) async {
     await close();
 
     final Logger m = instance
-      ..levels = levels
       ..onLog = onLog
       ..debugMode = debugMode;
 
@@ -106,43 +114,10 @@ class Logger {
     await out?.close();
   }
 
-  void _add(DateTime now, String level, String message) {
+  void _saveLog(String message) {
     final _LogFile? out = _out;
     if (out == null) return;
-
-    final Set<String>? only = levels;
-    if (only != null && !only.contains(level)) return;
-
-    out.write(now, level, message);
-  }
-
-  static void _plain(StringBuffer b, String s) {
-    if (!s.contains('\x1B')) {
-      b.write(s);
-
-      return;
-    }
-
-    final int n = s.length;
-    int i = 0;
-    int start = 0;
-    while (i < n) {
-      if (s.codeUnitAt(i) != 0x1B) {
-        i++;
-        continue;
-      }
-      if (i > start) b.write(s.substring(start, i));
-      i++;
-      if (i < n && s.codeUnitAt(i) == 0x5B) {
-        i++;
-        while (i < n) {
-          final int c = s.codeUnitAt(i++);
-          if (c >= 0x40 && c <= 0x7E) break;
-        }
-      }
-      start = i;
-    }
-    if (start < n) b.write(s.substring(start));
+    out.write(message);
   }
 
   static String _getTimestamp() {
@@ -175,7 +150,7 @@ class Logger {
 
   /// Width of the longest level name (TRACE / DEBUG), so every tag lines up.
 
-  static String getStamp(Level level) {
+  String getStamp(Level level) {
     final String name = level.name.toUpperCase().padRight(instance.TAG_WIDTH);
     final String tag = Logger.instance.getVerbosityColour(level, '$name |');
 
@@ -253,23 +228,6 @@ class Logger {
         log(m);
     }
   }
-
-  /// Outputs a log message using [Logger]
-  static void print(String message, Level verbosity) {
-    final DateTime now = DateTime.now();
-    final String ascii = Logger.getString(message, verbosity);
-    final Logger inst = Logger.instance;
-    final bool isDetail = verbosity == Level.dev || verbosity == Level.debug;
-    if (inst.verbose || !isDetail) stdout.writeln(ascii);
-    inst._add(now, verbosity.name.toUpperCase(), message);
-    final onLog = inst.onLog;
-    if (onLog == null) return;
-    try {
-      onLog(message, ascii);
-    } catch (e) {
-      fail(e);
-    }
-  }
 }
 
 /// Buffered, rotating writer for the log file. Only exists while open.
@@ -282,8 +240,6 @@ class _LogFile {
   late final Timer _timer;
   final StringBuffer _buffer = StringBuffer();
   bool _rotating = false;
-  String _day = '';
-  int _dayKey = -1;
 
   _LogFile._(
     this.file,
@@ -322,14 +278,9 @@ class _LogFile {
     );
   }
 
-  void write(DateTime now, String level, String message, {bool force = false}) {
-    final StringBuffer buffer = _buffer;
-    _stamp(buffer, now);
-    buffer.write('$level |');
-    Logger._plain(buffer, message);
-    buffer.write('\n');
-
-    if (force || buffer.length >= flushThreshold) _drain();
+  void write(String message, {bool force = false}) {
+    _buffer.write(message);
+    if (force || _buffer.length >= flushThreshold) _drain();
   }
 
   Future<void> flush() async {
@@ -346,31 +297,6 @@ class _LogFile {
       await _sink.flush();
       await _sink.close();
     } catch (_) {}
-  }
-
-  void _stamp(StringBuffer b, DateTime t) {
-    final List<String> d2 = Logger.instance._d2;
-    final int key = t.day | (t.month << 5) | (t.year << 9);
-    if (key != _dayKey) {
-      _dayKey = key;
-      _day = '${t.year}-${d2[t.month]}-${d2[t.day]} ';
-    }
-    b
-      ..write(_day)
-      ..write(d2[t.hour])
-      ..write(':')
-      ..write(d2[t.minute])
-      ..write(':')
-      ..write(d2[t.second])
-      ..write('.');
-
-    final int ms = t.millisecond;
-    if (ms < 10) {
-      b.write('00');
-    } else if (ms < 100) {
-      b.write('0');
-    }
-    b.write(ms);
   }
 
   void _drain() {

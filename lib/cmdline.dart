@@ -12,13 +12,15 @@ export 'src/cmd.dart';
 export 'src/logger.dart';
 
 String write(dynamic data) {
-  stdout.write(data);
-  return data.toString();
+  final String _data = data.toString();
+  stdout.write(_data);
+  return _data;
 }
 
 String writeln(dynamic data) {
-  stdout.writeln(data);
-  return data.toString();
+  final String _data = data.toString();
+  stdout.writeln(_data);
+  return _data;
 }
 
 void dev(dynamic message) => Logger.print('$message', Level.dev);
@@ -56,3 +58,7 @@ String getPass(dynamic message) => Logger.getString('$message', Level.pass);
 String getWarn(dynamic message) => Logger.getString('$message', Level.warn);
 
 String getLog(dynamic message) => Logger.getString('$message', Level.log);
+
+void main() {
+  writeln(Logger.getString('test', Level.trace, showTimestamp: true));
+}
