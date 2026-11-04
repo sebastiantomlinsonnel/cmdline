@@ -1,7 +1,7 @@
 part of '../cmd.dart';
 
-class Draw {
-  const Draw._();
+class _Draw {
+  const _Draw._();
 
   /// [text] drawn inside a box made of the theme's line characters.
   ///

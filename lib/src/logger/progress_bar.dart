@@ -109,7 +109,7 @@ class ProgressBar {
     if (text == _lastDrawn) return;
     _lastDrawn = text;
 
-    stdout.write('$CLEAR_LINE${Logger.instance.getString(text, Level.log)}');
+    stdout.write('$CLEAR_LINE${Logger.getString(text, Level.log)}');
   }
 
   /// Wipes the bar off the line and shows the cursor again.

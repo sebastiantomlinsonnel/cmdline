@@ -1,7 +1,7 @@
 part of '../cmd.dart';
 
-class Net {
-  const Net._();
+class _Net {
+  const _Net._();
 
   /// Downloads [url] and saves it to the file [saveTo].
   ///

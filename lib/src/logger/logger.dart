@@ -4,16 +4,26 @@ import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
+/// A complex yet intuitive logger
 class Logger {
+  /// Singleton
   static final Logger instance = Logger._();
   Timer? _spinnerTimer;
   String? _spinnerLabel;
 
+  /// Check if there is a currently active spinner
   bool get isSpinning => _spinnerLabel != null;
+
+  /// Show the timestamp
   bool showTimestampInOutput = false;
 
+  /// Run after every log
   void Function(String message, String asciiMessage)? onLog;
+
+  /// Controls whether [dev] and [debug] logs are shown
   bool debugMode = true;
+
+  ///
   Set<String>? levels;
 
   /// Whether dev and debug messages are shown in the terminal.
@@ -24,6 +34,7 @@ class Logger {
 
   Logger._();
 
+  /// The position of the `|` in the output
   int TAG_WIDTH = 5;
 
   final List<String> _d2 = List<String>.generate(
@@ -35,17 +46,22 @@ class Logger {
   /// The open log file, or null when logs aren't being saved.
   _LogFile? _out;
 
+  /// Checks if there is a log file open for [Logger] to print logs to
   bool get isOpen => _out != null;
 
+  /// Path of the log file if it exists
   String? get path => _out?.file.path;
 
-  String getString(dynamic message, Level level) {
+  /// Get a formatted string
+  static String getString(dynamic message, Level level, {bool? showTimestamp}) {
     String timestamp = '';
-    if (showTimestampInOutput) timestamp = '${getTimestamp()} ';
+    if (showTimestamp ?? Logger.instance.showTimestampInOutput)
+      timestamp = '${_getTimestamp()} ';
 
     return [timestamp, Logger.getStamp(level), ' $message'].join();
   }
 
+  /// Start Logger with a log file
   static Future<Logger> open(
     String path, {
     bool append = true,
@@ -74,6 +90,7 @@ class Logger {
     return m;
   }
 
+  /// Save log file
   static Future<void> flush() async => instance._out?.flush();
 
   /// Stops saving to the file. The instance stays usable (console only).
@@ -83,7 +100,7 @@ class Logger {
     await out?.close();
   }
 
-  void add(DateTime now, String level, String message) {
+  void _add(DateTime now, String level, String message) {
     final _LogFile? out = _out;
     if (out == null) return;
 
@@ -91,14 +108,6 @@ class Logger {
     if (only != null && !only.contains(level)) return;
 
     out.write(now, level, message);
-  }
-
-  static String strip(String s) {
-    if (!s.contains('\x1B')) return s;
-    final StringBuffer b = StringBuffer();
-    _plain(b, s);
-
-    return b.toString();
   }
 
   static void _plain(StringBuffer b, String s) {
@@ -130,8 +139,8 @@ class Logger {
     if (start < n) b.write(s.substring(start));
   }
 
-  static String getTimestamp() {
-    DateTime now = DateTime.now();
+  static String _getTimestamp() {
+    final DateTime now = DateTime.now();
     final String ms = now.millisecond.toString().padLeft(3, '0');
 
     return [
@@ -162,12 +171,13 @@ class Logger {
 
   static String getStamp(Level level) {
     final String name = level.name.toUpperCase().padRight(instance.TAG_WIDTH);
-    final String tag = Logger.getVerbosityColour(level, '$name |');
+    final String tag = Logger.instance.getVerbosityColour(level, '$name |');
 
     return '$tag';
   }
 
-  static String getVerbosityColour(Level level, String data) {
+  /// Get the styling for a log message
+  String getVerbosityColour(Level level, String data) {
     switch (level) {
       case Level.trace:
         return data.foreground(AsciiPalette.orchid).bold;
@@ -201,7 +211,7 @@ class Logger {
     int frame = 0;
     void draw() {
       final String text = '${kSPINNER_FRAMES[frame]} $label';
-      stdout.write('${CLEAR_LINE}${instance.getString(text, level)}');
+      stdout.write('${CLEAR_LINE}${getString(text, level)}');
       frame = (frame + 1) % kSPINNER_FRAMES.length;
     }
 
@@ -238,13 +248,14 @@ class Logger {
     }
   }
 
+  /// Outputs a log message using [Logger]
   static void print(String message, Level verbosity) {
     final DateTime now = DateTime.now();
-    final String ascii = Logger.instance.getString(message, verbosity);
+    final String ascii = Logger.getString(message, verbosity);
     final Logger inst = Logger.instance;
     final bool isDetail = verbosity == Level.dev || verbosity == Level.debug;
     if (inst.verbose || !isDetail) stdout.writeln(ascii);
-    inst.add(now, verbosity.name.toUpperCase(), message);
+    inst._add(now, verbosity.name.toUpperCase(), message);
     final onLog = inst.onLog;
     if (onLog == null) return;
     try {
@@ -288,8 +299,8 @@ class _LogFile {
   }) async {
     final File file = File(path);
     await file.parent.create(recursive: true);
-    if (!append && await file.exists()) await file.delete();
-    final int written = await file.exists() ? await file.length() : 0;
+    if (!append && await file.existsSync()) await file.delete();
+    final int written = await file.existsSync() ? await file.length() : 0;
 
     // ignore: close_sinks
     final IOSink sink = file.openWrite(mode: FileMode.writeOnlyAppend);
@@ -381,14 +392,14 @@ class _LogFile {
       await _sink.flush();
       await _sink.close();
       final File previous = File('${file.path}.1');
-      if (await previous.exists()) await previous.delete();
+      if (await previous.existsSync()) await previous.delete();
       await file.rename(previous.path);
     } catch (_) {}
 
     try {
       _sink = file.openWrite(mode: FileMode.writeOnlyAppend);
       unawaited(_sink.done.catchError((Object _) {}));
-      _written = await file.exists() ? await file.length() : 0;
+      _written = await file.existsSync() ? await file.length() : 0;
     } catch (_) {
       _written = 0;
     }

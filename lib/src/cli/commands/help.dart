@@ -40,11 +40,13 @@ class HelpPrinter {
     lines.add(title);
     if (command.help.isNotEmpty) lines.add(command.help.italic.dim);
 
+    final StringBuffer buf = StringBuffer(path);
+
     // Usage line.
     var usage = path;
-    if (_visibleCommands(command).isNotEmpty) usage += ' <command>';
+    if (_visibleCommands(command).isNotEmpty) buf.write(' <command>');
     for (final argument in command.arguments) {
-      usage += ' ${_argumentLabel(argument)}';
+      buf.write(' ${_argumentLabel(argument)}');
     }
     usage += ' [options]';
     lines.add('');

@@ -108,8 +108,9 @@ CLI cli = CLI(
       run: (input) {
         final paths = {'c': r'C:\', 'home': CMD.fs.homeDirectory};
         final path = paths[input.argument('key')];
-        if (path == null)
+        if (path == null) {
           return fail('No path saved as "${input.argument('key')}".');
+        }
 
         final sub = input.argument('sub');
         log(sub == null ? path : CMD.fs.join(path, sub));

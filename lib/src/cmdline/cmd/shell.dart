@@ -1,7 +1,7 @@
 part of '../cmd.dart';
 
-class Shell {
-  const Shell._();
+class _Shell {
+  const _Shell._();
 
   /// Whether your app is running as administrator (Windows) or root (Mac and
   /// Linux).

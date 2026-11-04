@@ -1,37 +1,62 @@
-include: package:dart_code_linter/presets/recommended.yaml
+# Core Dart lints. Needs `lints` in dev_dependencies (already in your pubspec).
 
+
+analyzer:
+  language:
+    strict-casts: true       # no silent casts from dynamic
+    strict-inference: true   # no types quietly inferred as dynamic
+    strict-raw-types: true   # no raw generics like List instead of List<int>
+  exclude:
+    - build/**
+    - "**/*.g.dart"
+  errors:
+    unawaited_futures: warning
+    discarded_futures: warning
+
+# ---------------------------------------------------------------------------
+# IDE: which dart_code_linter rules show in the editor, and at what severity.
+# Values here must be true / false / info / warning / error (no maps).
+# ---------------------------------------------------------------------------
 plugins:
   dart_code_linter:
     diagnostics:
-      avoid-unused-parameters: true
-      avoid-nested-conditional-expressions: false
+      # Performance and async
+      avoid-redundant-async: warning
+      avoid-passing-async-when-sync-expected: warning
+      avoid-collection-methods-with-unrelated-types: warning
+      prefer-moving-to-variable: true
       avoid-unnecessary-type-casts: true
+      avoid-unnecessary-type-assertions: true
+      avoid-unrelated-type-assertions: warning
+      # Correctness
+      avoid-dynamic: true
+      avoid-unused-parameters: true
       avoid-unnecessary-conditionals: true
+      avoid-throw-in-catch-block: warning
+      avoid-missing-enum-constant-in-map: warning
+      no-equal-then-else: warning
+      no-equal-arguments: warning
+      no-empty-block: true
+      no-magic-number: warning
+      # Style and readability
       newline-before-return: true
       no-boolean-literal-compare: true
-      no-empty-block: false
-      no-equal-then-else: warning
-      no-magic-number: warning
       prefer-conditional-expressions: true
       prefer-immediate-return: true
-      prefer-moving-to-variable: true
-      member-ordering: true
-      format-comment: true
       prefer-trailing-comma: true
-      avoid-dynamic: false
+      prefer-match-file-name: true
+      prefer-commenting-analyzer-ignores: true
+      double-literal-format: true
+      format-comment: true
 
-linter:
-  rules:
-    prefer_final_in_for_each: true
-    constant_identifier_names: false
-    prefer_final_fields: true
-    prefer_const_constructors: true
-    use_named_constants: true
-    avoid_empty_else: true
-    close_sinks: true
-    library_names: true
-    avoid_print: true
+      # Tests
+      missing-test-assertion: true
 
+# ---------------------------------------------------------------------------
+# CLI: the rules `dart run dart_code_linter:metrics analyze lib` runs, plus
+# per-rule settings (the IDE plugin also reads the settings from here).
+# To turn a rule off everywhere, remove it from BOTH lists.
+# ---------------------------------------------------------------------------
 dart_code_linter:
   metrics:
     cyclomatic-complexity: 20
@@ -39,3 +64,73 @@ dart_code_linter:
     maximum-nesting-level: 5
   metrics-exclude:
     - test/**
+  anti-patterns:
+    - long-method
+    - long-parameter-list
+  rules:
+    # Performance and async
+    - avoid-redundant-async
+    - avoid-passing-async-when-sync-expected
+    - avoid-collection-methods-with-unrelated-types
+    - prefer-moving-to-variable
+    - avoid-unnecessary-type-casts
+    - avoid-unnecessary-type-assertions
+    - avoid-unrelated-type-assertions
+    # Correctness
+    - avoid-dynamic
+    - avoid-unused-parameters
+    - avoid-unnecessary-conditionals
+    - avoid-throw-in-catch-block
+    - avoid-missing-enum-constant-in-map
+    - no-equal-then-else
+    - no-equal-arguments
+    - no-empty-block
+    - no-magic-number:
+        severity: warning
+        allowed: [ -1, 0, 1, 2 ]
+    # Style and readability
+    - newline-before-return
+    - no-boolean-literal-compare
+    - prefer-conditional-expressions
+    - prefer-immediate-return
+    - prefer-trailing-comma
+    - prefer-match-file-name
+    - prefer-commenting-analyzer-ignores
+    - double-literal-format
+    - format-comment:
+        only-doc-comments: true
+    # Tests
+    - missing-test-assertion
+
+# ---------------------------------------------------------------------------
+# Built-in Dart lints (IDE and `dart analyze`), on top of lints/recommended.
+# ---------------------------------------------------------------------------
+linter:
+  rules:
+    # Performance
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    prefer_final_in_for_each: true
+    use_string_buffers: true
+    avoid_slow_async_io: true
+    prefer_collection_literals: true
+    prefer_iterable_whereType: true
+    avoid_function_literals_in_foreach_calls: true
+    unnecessary_lambdas: true
+    # Async and resource safety
+    unawaited_futures: true
+    discarded_futures: true
+    cancel_subscriptions: true
+    close_sinks: true
+    # Correctness and style
+    use_named_constants: true
+    avoid_empty_else: true
+    library_names: true
+    avoid_print: true
+    always_declare_return_types: true
+    type_annotate_public_apis: true
+    public_member_api_docs: true
+    constant_identifier_names: false

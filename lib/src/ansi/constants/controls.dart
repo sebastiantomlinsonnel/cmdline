@@ -51,4 +51,5 @@ const String SGR = 'm';
 /// the end so a style never leaks into the next line.
 const String RESET = '${CSI}0$SGR';
 
+/// Clears line
 const String CLEAR_LINE = '\r\x1B[2K';

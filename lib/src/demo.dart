@@ -18,15 +18,15 @@ class CommandLineDemo {
       printMessages();
       await logFile();
     });
-    await _section('Progress bar', () => progressBar());
-    await _section('Theme', () => theme());
-    await _section('Boxes and tables', () => format());
-    await _section('Paths', () => paths());
-    await _section('Files', () => files());
-    await _section('Shell commands', () => shell());
-    await _section('Terminal folder', () => terminalFolder());
-    await _section('Processes', () => processes());
-    await _section('Download', () => download());
+    await _section('Progress bar', progressBar);
+    await _section('Theme', theme);
+    await _section('Boxes and tables', format);
+    await _section('Paths', paths);
+    await _section('Files', files);
+    await _section('Shell commands', shell);
+    await _section('Terminal folder', terminalFolder);
+    await _section('Processes', processes);
+    await _section('Download', download);
   }
 
   /// Runs every demo that asks you things or hands over the keyboard.
@@ -34,9 +34,9 @@ class CommandLineDemo {
   /// Needs a real terminal for the arrow-key menu, hidden typing and the
   /// interactive command.
   static Future<void> demoAll() async {
-    await _section('Prompts', () => prompts());
-    await _section('Interactive command', () => interactiveCommand());
-    await _section('Default app', () => openApp());
+    await _section('Prompts', prompts);
+    await _section('Interactive command', interactiveCommand);
+    await _section('Default app', openApp);
   }
 
   /// Prints a heading for one part of the demo, then runs it.
@@ -69,7 +69,7 @@ class CommandLineDemo {
     );
     log('dart --version gave exit code ${result.exitCode}');
 
-    return Logger.instance.getString('Built, not logged', Level.debug);
+    return Logger.getString('Built, not logged', Level.debug);
   }
 
   /// Prints one message of each log level.

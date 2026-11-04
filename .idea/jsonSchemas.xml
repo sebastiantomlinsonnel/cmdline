@@ -8,7 +8,7 @@
             <SchemaInfo>
               <option name="generatedName" value="New Schema" />
               <option name="name" value="dart_code_linter" />
-              <option name="relativePathToSchema" value="dcl.schema.json" />
+              <option name="relativePathToSchema" value="$USER_HOME$/OneDrive/Desktop/dcl.schema.json" />
               <option name="patterns">
                 <list>
                   <Item>
