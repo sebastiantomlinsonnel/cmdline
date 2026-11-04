@@ -51,17 +51,12 @@ class Logger {
   Logger._();
 
   /// Outputs a log message using [Logger]
-  static void print(String message, Level verbosity) {
-    final bool isDetail = verbosity == Level.dev || verbosity == Level.debug;
-    if (Logger.instance.verbose || !isDetail) writeln(message);
-
+  static void print(String message) {
+    if (Logger.instance.verbose) writeln(message);
     Logger.instance.._saveLog(message);
-    final onLog = Logger.instance.onLog;
-
-    if (onLog == null) return;
 
     try {
-      onLog(message);
+      Logger.instance.onLog?.call(message);
     } catch (e) {
       fail(e);
     }
@@ -339,4 +334,58 @@ class _LogFile {
     _rotating = false;
     _drain();
   }
+}
+
+String write(dynamic data) {
+  final String _data = data.toString();
+  stdout.write(_data);
+  return _data;
+}
+
+String writeln(dynamic data) {
+  final String _data = data.toString();
+  stdout.writeln(_data);
+  return _data;
+}
+
+String dev(dynamic message) {
+  final String _message = Logger.getString(message, Level.dev);
+  Logger.print('$_message');
+  return _message;
+}
+
+String trace(dynamic message) {
+  final String _message = Logger.getString(message, Level.trace);
+  Logger.print('$_message');
+  return _message;
+}
+
+String debug(dynamic message) {
+  final String _message = Logger.getString(message, Level.debug);
+  Logger.print('$_message');
+  return _message;
+}
+
+String fail(dynamic message) {
+  final String _message = Logger.getString(message, Level.fail);
+  Logger.print('$_message');
+  return _message;
+}
+
+String pass(dynamic message) {
+  final String _message = Logger.getString(message, Level.pass);
+  Logger.print('$_message');
+  return _message;
+}
+
+String warn(dynamic message) {
+  final String _message = Logger.getString(message, Level.warn);
+  Logger.print('$_message');
+  return _message;
+}
+
+String log(dynamic message) {
+  final String _message = Logger.getString(message, Level.log);
+  Logger.print('$_message');
+  return _message;
 }
