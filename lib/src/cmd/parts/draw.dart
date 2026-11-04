@@ -1,4 +1,4 @@
-part of '../cmd.dart';
+part of '../../../cmd.dart';
 
 class _Draw {
   const _Draw._();

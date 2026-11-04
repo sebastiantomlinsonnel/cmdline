@@ -56,7 +56,7 @@
 <section class="desc markdown">
   <p>Reads the user's arguments one word at a time.</p>
 <p>Make a new <a href="../cmdline/Parser-class.html">Parser</a> for each list of arguments and call <a href="../cmdline/Parser/parse.html">parse</a>. Most code
-never uses this directly, because <a href="../cmdline/CLI/start.html">CLI.start</a> does it for you.</p>
+never uses this directly, because <a href="../cli/CLI/start.html">CLI.start</a> does it for you.</p>
 <p>It understands:</p>
 <ul>
 <li>flags: <code>--urgent</code>, <code>-u</code> (one lowercase letter), and <code>--no-urgent</code> for
@@ -75,7 +75,7 @@ negatable flags</li>
     <h2>Constructors</h2>
     <dl class="constructor-summary-list">
         <dt id="Parser.new" class="callable">
-          <span class="name"><a href="../cmdline/Parser/Parser.html">Parser</a></span><span class="signature">(<span class="parameter" id="param-cli"><span class="type-annotation"><a href="../cmdline/CLI-class.html">CLI</a></span> <span class="parameter-name">cli</span>, </span><span class="parameter" id="param-arguments"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">arguments</span></span>)</span>
+          <span class="name"><a href="../cmdline/Parser/Parser.html">Parser</a></span><span class="signature">(<span class="parameter" id="param-cli"><span class="type-annotation"><a href="../cli/CLI-class.html">CLI</a></span> <span class="parameter-name">cli</span>, </span><span class="parameter" id="param-arguments"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">arguments</span></span>)</span>
         </dt>
         <dd>
           Prepares to read <code>arguments</code> for <code>cli</code>.
@@ -102,7 +102,7 @@ negatable flags</li>
 
         <dt id="cli" class="property">
   <span class="name"><a href="../cmdline/Parser/cli.html">cli</a></span>
-  <span class="signature">&#8594; <a href="../cmdline/CLI-class.html">CLI</a></span>
+  <span class="signature">&#8594; <a href="../cli/CLI-class.html">CLI</a></span>
   
 
 </dt>

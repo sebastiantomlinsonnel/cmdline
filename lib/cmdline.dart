@@ -1,14 +1,18 @@
-/// CORE library
-export 'core/core.dart';
-
+/// Extensions
+export '../src/extensions/ansi.dart';
+export '../src/extensions/double.dart';
+export '../src/extensions/int.dart';
+export '../src/extensions/list.dart';
+export '../src/extensions/num.dart';
+export '../src/extensions/process.dart';
+export '../src/extensions/process_result.dart';
+export '../src/extensions/stream.dart';
+export '../src/extensions/string.dart';
 ///  ANSI lib
-export 'src/ansi/ansi.dart';
-
+export 'ansi.dart';
 ///  CLI lib
-export 'src/cli/cli.dart';
-
+export 'cli.dart';
 ///  CMD lib
-export 'src/cmd/cmd.dart';
-
+export 'cmd.dart';
 ///  LOGGING lib
-export 'src/logging/logging.dart';
+export 'logging.dart';
