@@ -5,7 +5,7 @@ const String LOG_FILE = r'X:\Flutter\cmdline\log';
 Future<void> main() async {
   await openLogFile();
   printAllNames();
-  stressTest(true);
+  stressTest(false);
 }
 
 void stressTest(bool clear) {
@@ -14,10 +14,10 @@ void stressTest(bool clear) {
     printAllNames();
   }
   _clock.stop();
-  // if (clear) write('$CLEAR_SCREEN$CLEAR_LINE${cursorTo(0, 0)}');
+
   if (clear) write('$CLEAR');
   trace(
-    'Stress test took ${_clock.elapsedMicroseconds}μs|${_clock.elapsedMilliseconds}ms',
+    'Stress test.bat took ${_clock.elapsedMicroseconds}μs|${_clock.elapsedMilliseconds}ms',
   );
 }
 

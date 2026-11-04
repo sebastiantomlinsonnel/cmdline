@@ -31,7 +31,7 @@ class AnsiPrinter {
   /// Joins [tokens] with [separator] and adds [RESET], without printing.
   ///
   /// Static so it can be used without creating an [AnsiPrinter], e.g. to
-  /// build a string for a log or a test.
+  /// build a string for a log or a test.bat.
   static String value(List<Object?> tokens, {String separator = ''}) =>
       '${tokens.join(separator)}$RESET';
 

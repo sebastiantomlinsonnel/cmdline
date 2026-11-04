@@ -1,5 +1,7 @@
 library ansi;
 
+import 'dart:convert';
+
 import 'package:cmdline/cmdline.dart';
 
 export 'constants/characters.dart';
@@ -26,7 +28,10 @@ export 'utils/ansi_printer.dart';
 /// ```dart
 /// Ansi('${CYAN_FG}${BOLD}ready').output();
 /// ```
-class Ansi implements Comparable<Ansi> {
+class Ansi {
+  @override
+  String toString() => '$string';
+
   /// The text and codes to print, exactly as given.
   ///
   /// [RESET] is not stored here; it is added when the string is produced by
@@ -36,63 +41,68 @@ class Ansi implements Comparable<Ansi> {
   /// Wraps a string that already carries its escape codes.
   const Ansi(this.string);
 
-  /// Removes every ANSI escape sequence from [string], leaving plain text.
-  String text() {
-    return string
-        .replaceAll(styleCodeRegExp, '')
-        .replaceAll(controlCodeRegExp, '');
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is Ansi &&
-        other.runtimeType == runtimeType &&
-        other.string == string) {
-      return true;
-    } else {
-      return false;
+  /// Shows the code names
+  String get printCharcodes {
+    final List<int> codeUnits = string.codeUnits.toList();
+    // fail(utf8.decode(codeUnits));
+    for (final int byte in codeUnits) {
+      debug(utf8.decode([byte], allowMalformed: true));
     }
+    return string.replaceAll(ESC, '\\${ESC.codeUnits}');
   }
 
-  @override
-  int compareTo(Ansi other) => text().compareTo(other.text());
+  /// Show escape codes
+  ///
+  /// Handy for checking which codes a string really holds. Each escape
+  /// character is shown as `ESC` and each bell as `BELL`.
+  ///
+  /// ```dart
+  /// print('Hi'.bold.escaped); // ESC[1mHiESC[0m
+  /// ```
+  String get visible => string.replaceAll(CSI, 'ESC[').replaceAll(OSC, 'ESC]');
 
-  @override
-  String toString() => string;
+  /// The text with every escape code removed, just as you see it.
+  ///
+  /// Use it to save styled text to a file, measure its real length, or
+  /// compare it with other text.
+  ///
+  /// ```dart
+  /// 'Done'.bold.foreground(const AnsiColour(10)).plain; // 'Done'
+  /// ```
+  String get plain {
+    final result = StringBuffer();
+    int at = 0;
+
+    while (at < string.length) {
+      // Normal text is kept as it is.
+      if (!string.startsWith(ESC, at)) {
+        result.write(string[at]);
+        at++;
+        continue;
+      }
+
+      if (string.startsWith(CSI, at)) {
+        // Styles, cursor moves and so on: ESC [ ... then one letter.
+        at += CSI.length;
+        while (at < string.length) {
+          at++;
+        }
+        at++; // Skip the final letter too.
+      } else if (string.startsWith(OSC, at)) {
+        // Links, window titles and so on: ESC ] ... then BELL or ST.
+        at += OSC.length;
+        while (at < string.length &&
+            !string.startsWith(BELL, at) &&
+            !string.startsWith(ST, at)) {
+          at++;
+        }
+        at += string.startsWith(ST, at) ? ST.length : BELL.length;
+      } else {
+        // Any other code: ESC and the one character after it.
+        at += 2;
+      }
+    }
+
+    return result.toString();
+  }
 }
-
-// String toPrintable(String string) {
-//   if (string.isEmpty) {
-//     return '';
-//   }
-//   final characters = string.toList();
-//
-//   for (final s in characters) {
-//     final runes = s.runes;
-//     if (runes.length == 1) {
-//       final c = runes.first;
-//       if (c >= c0Start && c <= c0End) {
-//         switch (c) {
-//           case 9:
-//             sb.write(r'\t');
-//           case 10:
-//             sb.write(r'\n');
-//           case 13:
-//             sb.write(r'\r');
-//           default:
-//             sb.write(Strings.toUnicode(c));
-//         }
-//       } else if (isPrintable(c)) {
-//         sb.write(s);
-//       } else {
-//         sb.write(Strings.toUnicode(c));
-//       }
-//     } else {
-//       // Experimental: Assumes that all clusters can be printed
-//       sb.write(s);
-//     }
-//   }
-//
-//   return sb.toString();
-// }

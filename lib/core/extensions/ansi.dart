@@ -1,5 +1,7 @@
 import 'package:cmdline/cmdline.dart';
 
+const int UNICODE_END = 0x10ffff;
+
 /// Adds colours and text styles to any [String], and chains them together.
 ///
 /// Every getter and method returns a new string with the style code at the
@@ -72,50 +74,7 @@ extension AnsiStyledString on String {
   /// ```dart
   /// 'Done'.bold.foreground(const AnsiColour(10)).plain; // 'Done'
   /// ```
-  String get plain {
-    final result = StringBuffer();
-    int at = 0;
-
-    while (at < length) {
-      // Normal text is kept as it is.
-      if (!startsWith(ESC, at)) {
-        result.write(this[at]);
-        at++;
-        continue;
-      }
-
-      if (startsWith(CSI, at)) {
-        // Styles, cursor moves and so on: ESC [ ... then one letter.
-        at += CSI.length;
-        while (at < length && !_isFinalByte(codeUnitAt(at))) {
-          at++;
-        }
-        at++; // Skip the final letter too.
-      } else if (startsWith(OSC, at)) {
-        // Links, window titles and so on: ESC ] ... then BELL or ST.
-        at += OSC.length;
-        while (at < length && !startsWith(BELL, at) && !startsWith(ST, at)) {
-          at++;
-        }
-        at += startsWith(ST, at) ? ST.length : BELL.length;
-      } else {
-        // Any other code: ESC and the one character after it.
-        at += 2;
-      }
-    }
-
-    return result.toString();
-  }
-
-  /// The text with its escape codes shown as readable text.
-  ///
-  /// Handy for checking which codes a string really holds. Each escape
-  /// character is shown as `ESC` and each bell as `BELL`.
-  ///
-  /// ```dart
-  /// print('Hi'.bold.visible); // ESC[1mHiESC[0m
-  /// ```
-  String get visible => replaceAll(ESC, 'ESC').replaceAll(BELL, 'BELL');
+  String get plain => Ansi(this).plain;
 
   /// Makes the text bold (or brighter, depending on the terminal).
   ///
@@ -316,8 +275,3 @@ int _openingCodesLength(String text) {
 /// used between [CSI] and [SGR] in this library's codes.
 bool _isParameterByte(int unit) =>
     (unit >= 0x30 && unit <= 0x39) || unit == 0x3A || unit == 0x3B;
-
-/// Whether [unit] is the letter that ends a [CSI] code, like `m` or `H`.
-///
-/// True for the characters from `@` to `~`.
-bool _isFinalByte(int unit) => unit >= 0x40 && unit <= 0x7E;

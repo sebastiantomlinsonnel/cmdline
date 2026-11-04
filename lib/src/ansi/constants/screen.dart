@@ -3,7 +3,7 @@ import 'package:cmdline/cmdline.dart';
 /// *Native only* Same function as running `clear` in pwsh
 ///
 /// Does not work in most IDE terminals like Intellij
-const String CLEAR = '$CLEAR_SCREEN${CSI}0;${0}H';
+const String CLEAR = '$CLEAR_SCREEN$CURSOR_HOME';
 
 /// Clears everything on the screen.
 ///

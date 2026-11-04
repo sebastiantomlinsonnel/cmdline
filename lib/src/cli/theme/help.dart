@@ -16,7 +16,7 @@ const AnsiColour _errorColour = AnsiColour(9);
 ///
 /// Give it the picked commands from the top down (like `[todo, add]`) and
 /// call [build]. It returns the text instead of printing it, so it is easy to
-/// test. [CLI.start] prints it for you on `--help`.
+/// test.bat. [CLI.start] prints it for you on `--help`.
 class HelpPrinter {
   /// The picked commands from the top down. The last one gets the help.
   final List<Command> commands;

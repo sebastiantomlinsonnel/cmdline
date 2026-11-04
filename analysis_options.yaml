@@ -63,7 +63,7 @@ dart_code_linter:
     number-of-parameters: 4
     maximum-nesting-level: 5
   metrics-exclude:
-    - test/**
+    - test.bat/**
   anti-patterns:
     - long-method
     - long-parameter-list
@@ -100,7 +100,7 @@ dart_code_linter:
     - format-comment:
         only-doc-comments: true
     # Tests
-    - missing-test-assertion
+    - missing-test.bat-assertion
 
 # ---------------------------------------------------------------------------
 # Built-in Dart lints (IDE and `dart analyze`), on top of lints/recommended.
