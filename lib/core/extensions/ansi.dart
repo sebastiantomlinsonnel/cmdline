@@ -1,7 +1,5 @@
 import 'package:cmdline/cmdline.dart';
 
-const int UNICODE_END = 0x10ffff;
-
 /// Adds colours and text styles to any [String], and chains them together.
 ///
 /// Every getter and method returns a new string with the style code at the
