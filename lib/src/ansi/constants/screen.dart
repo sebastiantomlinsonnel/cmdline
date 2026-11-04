@@ -1,5 +1,10 @@
 import 'package:cmdline/cmdline.dart';
 
+/// *Native only* Same function as running `clear` in pwsh
+///
+/// Does not work in most IDE terminals like Intellij
+const String CLEAR = '$CLEAR_SCREEN${CSI}0;${0}H';
+
 /// Clears everything on the screen.
 ///
 /// `CSI 2J`. The cursor doesn't move, so add [CURSOR_HOME] to start again

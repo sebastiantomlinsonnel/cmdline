@@ -5,16 +5,17 @@ const String LOG_FILE = r'X:\Flutter\cmdline\log';
 Future<void> main() async {
   await openLogFile();
   printAllNames();
-  stressTest();
+  stressTest(true);
 }
 
-void stressTest() {
+void stressTest(bool clear) {
   final Stopwatch _clock = Stopwatch()..start();
   for (var i = 0; i < 1000; ++i) {
     printAllNames();
   }
   _clock.stop();
-  write('$CLEAR_SCREEN$CLEAR_LINE${cursorTo(0, 0)}');
+  // if (clear) write('$CLEAR_SCREEN$CLEAR_LINE${cursorTo(0, 0)}');
+  if (clear) write('$CLEAR');
   trace(
     'Stress test took ${_clock.elapsedMicroseconds}μs|${_clock.elapsedMilliseconds}ms',
   );

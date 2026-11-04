@@ -1,6 +1,12 @@
-## 1.1.1 (NEXT VERSION)
+## 1.1.1
 
 - Refactored for `dart doc`
+- Optimized Logger
+- Made top level Logger functions return what they print
+- Removed _LogFile
+- Log file now uses a Random Access File
+- Can display the μs, ms and s since last log
+- New [resetTerminal()] helper for 
 
 ## 1.1.0
 
