@@ -200,21 +200,106 @@
 
 </dd>
 
-        <dt id="shell" class="property">
-  <span class="name"><a href="../cmdline/CMD/shell.html">shell</a></span>
-  <span class="signature">&#8594; _Shell</span>
+    </dl>
+  </section>
+    
+  <section class="summary offset-anchor" id="static-methods">
+    <h2>Static Methods</h2>
+    <dl class="callables">
+        <dt id="findProgram" class="callable">
+  <span class="name"><a href="../cmdline/CMD/findProgram.html">findProgram</a></span><span class="signature">(<wbr><span class="parameter" id="findProgram-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span>
+  </span>
   
 
 </dt>
 <dd>
-  Shell helpers
-  <div class="features"><span class="feature">no setter</span></div>
+  The full path of a program on your PATH, or null if it can't be found.
+  
+
+</dd>
+
+        <dt id="isPrivilegedUser" class="callable">
+  <span class="name"><a href="../cmdline/CMD/isPrivilegedUser.html">isPrivilegedUser</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether your app is running as administrator (Windows) or root (Mac and
+Linux).
+  
+
+</dd>
+
+        <dt id="nextToScript" class="callable">
+  <span class="name"><a href="../cmdline/CMD/nextToScript.html">nextToScript</a></span><span class="signature">(<wbr><span class="parameter" id="nextToScript-param-fileName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">fileName</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  The path of a file in the same folder as the running script.
+  
+
+</dd>
+
+        <dt id="openInNewWindow" class="callable">
+  <span class="name"><a href="../cmdline/CMD/openInNewWindow.html">openInNewWindow</a></span><span class="signature">(<wbr><span class="parameter" id="openInNewWindow-param-program"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">program</span>, {</span><span class="parameter" id="openInNewWindow-param-args"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">args</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="openInNewWindow-param-workingDirectory"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">workingDirectory</span>, </span><span class="parameter" id="openInNewWindow-param-asAdmin"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">asAdmin</span> = <span class="default-value">false</span>, </span><span class="parameter" id="openInNewWindow-param-wait"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">wait</span> = <span class="default-value">false</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Opens <code>program</code> in its own new window, like double-clicking it.
+  
+
+</dd>
+
+        <dt id="openWithDefaultApp" class="callable">
+  <span class="name"><a href="../cmdline/CMD/openWithDefaultApp.html">openWithDefaultApp</a></span><span class="signature">(<wbr><span class="parameter" id="openWithDefaultApp-param-target"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">target</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Opens a file, folder or web address with its usual app.
+  
+
+</dd>
+
+        <dt id="quoteWrap" class="callable">
+  <span class="name"><a href="../cmdline/CMD/quoteWrap.html">quoteWrap</a></span><span class="signature">(<wbr><span class="parameter" id="quoteWrap-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Wraps <code>text</code> in single quotes for PowerShell.
+  
+
+</dd>
+
+        <dt id="withPrivileges" class="callable">
+  <span class="name"><a href="../cmdline/CMD/withPrivileges.html">withPrivileges</a></span><span class="signature">(<wbr><span class="parameter" id="withPrivileges-param-arguments"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">arguments</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Runs your app again as administrator or root, with the same arguments.
+  
 
 </dd>
 
     </dl>
   </section>
-    
     
 
   </div> <!-- /.main-content -->

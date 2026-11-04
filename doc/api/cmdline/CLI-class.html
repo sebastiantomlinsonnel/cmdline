@@ -55,10 +55,10 @@
     
 <section class="desc markdown">
   <p>The whole program: the top command plus a version and a <a href="../cmdline/CLI/start.html">start</a> method.</p>
-<p>A <code>Cli</code> is a <a href="../cmdline/Command-class.html">Command</a>, so it takes the same <code>flags</code>, <code>options</code>,
+<p>A <a href="../cmdline/CLI-class.html">CLI</a> is a <a href="../cmdline/Command-class.html">Command</a>, so it takes the same <code>flags</code>, <code>options</code>,
 <code>commands</code> and <code>run</code>. Flags and options given here work in every
 sub-command as well.</p>
-<pre class="language-dart"><code class="language-dart">final cli = Cli(
+<pre class="language-dart"><code class="language-dart">final cli = CLI(
   name: 'todo',
   about: 'A tiny todo app',
   version: '1.0.0',
@@ -405,7 +405,7 @@ void main(List&lt;String&gt; arguments) =&gt; cli.start(arguments);
 
 </dt>
 <dd>
-  The <code>--verbose</code> / <code>-v</code> flag every <code>Cli</code> gets for free.
+  The <code>--verbose</code> / <code>-v</code> flag every <a href="../cmdline/CLI-class.html">CLI</a> gets for free.
   
 
 </dd>

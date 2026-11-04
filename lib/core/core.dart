@@ -1,3 +1,7 @@
+/// Extension methods on Dart's built-in types.
+///
+/// Adds helpers to `String`, `num`, `int`, `double`, lists, processes and
+/// streams, including ANSI styling for strings.
 library core;
 
 export 'extensions/ansi.dart';

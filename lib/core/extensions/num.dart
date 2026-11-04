@@ -51,7 +51,7 @@ extension Num on num? {
   /// Returns the absolute value of the validated number.
   num abs() => validate().abs();
 
-  /// Clamps the validated number to be within the range [lowerLimit, upperLimit].
+  /// Clamps the validated number to between [lowerLimit] and [upperLimit].
   num clamp(num lowerLimit, num upperLimit) {
     return validate().clamp(lowerLimit, upperLimit);
   }

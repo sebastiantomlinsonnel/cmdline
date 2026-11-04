@@ -21,7 +21,8 @@
         <li><a href="cmdline/ParseResult-class.html">ParseResult</a></li>
         <li><a href="cmdline/ProgressBar-class.html">ProgressBar</a></li>
         <li><a href="cmdline/PromptLine-class.html">PromptLine</a></li>
-        <li><a href="cmdline/TerminalCommand-class.html">TerminalCommand</a></li>
+        <li><a href="cmdline/ShellCommand-class.html">ShellCommand</a></li>
+        <li><a href="core_extensions_int/SystemFonts-class.html">SystemFonts</a></li>
 
       <li class="section-title"><a href="cmdline/#enums">Enums</a></li>
         <li><a href="cmdline/Level.html">Level</a></li>
@@ -350,6 +351,7 @@
         <li><a href="cmdline/CLEAR_TO_LINE_START-constant.html">CLEAR_TO_LINE_START</a></li>
         <li><a href="cmdline/CLEAR_TO_SCREEN_END-constant.html">CLEAR_TO_SCREEN_END</a></li>
         <li><a href="cmdline/CLEAR_TO_SCREEN_START-constant.html">CLEAR_TO_SCREEN_START</a></li>
+        <li><a href="cmdline/CONTROL_CODE_REGEX-constant.html">CONTROL_CODE_REGEX</a></li>
         <li><a href="cmdline/CROSS-constant.html">CROSS</a></li>
         <li><a href="cmdline/CSI-constant.html">CSI</a></li>
         <li><a href="cmdline/CURLY_UNDERLINE-constant.html">CURLY_UNDERLINE</a></li>
@@ -1176,6 +1178,7 @@
         <li><a href="cmdline/SHOW_CURSOR-constant.html">SHOW_CURSOR</a></li>
         <li><a href="cmdline/ST-constant.html">ST</a></li>
         <li><a href="cmdline/STRIKETHROUGH-constant.html">STRIKETHROUGH</a></li>
+        <li><a href="cmdline/STYLE_CODE_REGEX-constant.html">STYLE_CODE_REGEX</a></li>
         <li><a href="cmdline/SUBSCRIPT-constant.html">SUBSCRIPT</a></li>
         <li><a href="cmdline/SUPERSCRIPT-constant.html">SUPERSCRIPT</a></li>
         <li><a href="cmdline/SYNC_END-constant.html">SYNC_END</a></li>
@@ -1193,6 +1196,9 @@
         <li><a href="cmdline/YELLOW_BG-constant.html">YELLOW_BG</a></li>
         <li><a href="cmdline/YELLOW_FG-constant.html">YELLOW_FG</a></li>
 
+      <li class="section-title"><a href="cmdline/#properties">Properties</a></li>
+        <li><a href="cmdline/controlCodeRegExp.html">controlCodeRegExp</a></li>
+        <li><a href="cmdline/styleCodeRegExp.html">styleCodeRegExp</a></li>
 
       <li class="section-title"><a href="cmdline/#functions">Functions</a></li>
         <li><a href="cmdline/copyToClipboard.html">copyToClipboard</a></li>
@@ -1208,18 +1214,13 @@
         <li><a href="cmdline/delay.html">delay</a></li>
         <li><a href="cmdline/dev.html">dev</a></li>
         <li><a href="cmdline/fail.html">fail</a></li>
-        <li><a href="cmdline/findProgram.html">findProgram</a></li>
         <li><a href="cmdline/hyperlink.html">hyperlink</a></li>
         <li><a href="cmdline/log.html">log</a></li>
-        <li><a href="cmdline/nextToScript.html">nextToScript</a></li>
         <li><a href="cmdline/notify.html">notify</a></li>
-        <li><a href="cmdline/openInNewWindow.html">openInNewWindow</a></li>
-        <li><a href="cmdline/openWithDefaultApp.html">openWithDefaultApp</a></li>
         <li><a href="cmdline/pass.html">pass</a></li>
         <li><a href="cmdline/scrollDown.html">scrollDown</a></li>
         <li><a href="cmdline/scrollRegion.html">scrollRegion</a></li>
         <li><a href="cmdline/scrollUp.html">scrollUp</a></li>
-        <li><a href="cmdline/spinWhile.html">spinWhile</a></li>
         <li><a href="cmdline/taskbarError.html">taskbarError</a></li>
         <li><a href="cmdline/taskbarPaused.html">taskbarPaused</a></li>
         <li><a href="cmdline/taskbarProgress.html">taskbarProgress</a></li>
@@ -1233,6 +1234,7 @@
         <li><a href="cmdline/AnsiColorRgb.html">AnsiColorRgb</a></li>
         <li><a href="cmdline/Color256.html">Color256</a></li>
         <li><a href="cmdline/ColorRgb.html">ColorRgb</a></li>
+        <li><a href="core_extensions_int/Font.html">Font</a></li>
         <li><a href="cmdline/PromptCheck.html">PromptCheck</a></li>
         <li><a href="cmdline/RunCommand.html">RunCommand</a></li>
 
@@ -1242,10 +1244,13 @@
         <li><a href="cmdline/ProcessFailed-class.html">ProcessFailed</a></li>
 
       <li class="section-title"><a href="cmdline/#extensions">Extensions</a></li>
-        <li><a href="cmdline/AnsiStyledString.html">AnsiStyledString</a></li>
-        <li><a href="cmdline/ProcessHelpers.html">ProcessHelpers</a></li>
-        <li><a href="cmdline/ProcessOutputHelpers.html">ProcessOutputHelpers</a></li>
-        <li><a href="cmdline/ProcessResultHelpers.html">ProcessResultHelpers</a></li>
-        <li><a href="cmdline/StringFile.html">StringFile</a></li>
-        <li><a href="cmdline/StringRun.html">StringRun</a></li>
+        <li><a href="core_extensions_ansi/AnsiStyledString.html">AnsiStyledString</a></li>
+        <li><a href="core_extensions_double/Double.html">Double</a></li>
+        <li><a href="core_extensions_int/Int.html">Int</a></li>
+        <li><a href="core_extensions_list/ListExtensions.html">ListExtensions</a></li>
+        <li><a href="core_extensions_num/Num.html">Num</a></li>
+        <li><a href="core_extensions_process/ProcessHelpers.html">ProcessHelpers</a></li>
+        <li><a href="core_extensions_stream/ProcessOutputHelpers.html">ProcessOutputHelpers</a></li>
+        <li><a href="core_extensions_process_result/ProcessResultHelpers.html">ProcessResultHelpers</a></li>
+        <li><a href="core_extensions_string/StringExt.html">StringExt</a></li>
 </ol>

@@ -16,12 +16,12 @@ export 'theme/help.dart';
 
 /// The whole program: the top command plus a version and a [start] method.
 ///
-/// A [Cli] is a [Command], so it takes the same `flags`, `options`,
+/// A [CLI] is a [Command], so it takes the same `flags`, `options`,
 /// `commands` and `run`. Flags and options given here work in every
 /// sub-command as well.
 ///
 /// ```dart
-/// final cli = Cli(
+/// final cli = CLI(
 ///   name: 'todo',
 ///   about: 'A tiny todo app',
 ///   version: '1.0.0',
@@ -36,7 +36,7 @@ class CLI extends Command {
   /// When left out, `--version` isn't available.
   final String? version;
 
-  /// The `--verbose` / `-v` flag every [Cli] gets for free.
+  /// The `--verbose` / `-v` flag every [CLI] gets for free.
   ///
   /// Read it with `input.verbose`. When the user types it, dev and debug
   /// log messages are shown. Declare your own `verbose` flag to replace it.

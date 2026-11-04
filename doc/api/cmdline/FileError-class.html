@@ -54,11 +54,12 @@
 
     
 <section class="desc markdown">
-  <p>Thrown when a file helper like <code>copy</code> or <code>move</code> can't do its job.</p>
+  <p>Thrown when a file helper like <code>copy</code> or <code>move</code> from <a href="../cmdline/CMD/fs.html">CMD.fs</a> can't do
+its job.</p>
 <p><a href="../cmdline/FileError/toString.html">toString</a> gives plain text for logs. <a href="../cmdline/FileError/styled.html">styled</a> gives the same message as
 a coloured error line from <a href="../cmdline/CliTheme/current.html">CliTheme.current</a>, with the path in bold.</p>
 <pre class="language-dart"><code class="language-dart">try {
-  copy('a.txt', 'b.txt');
+  CMD.fs.copy('a.txt', 'b.txt');
 } on FileError catch (error) {
   CliTheme.say(error.styled);
 }

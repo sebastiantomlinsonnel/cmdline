@@ -311,15 +311,15 @@ enum _Key { up, down, enter, cancel, number, other }
 
 /// What a prompt's check makes of the typed text.
 ///
-/// Either a [value] to give back, or a [problem] to show before asking again.
+/// Either a `value` to give back, or a `problem` to show before asking again.
 typedef PromptCheck<T> = ({T? value, String? problem}) Function(String typed);
 
 /// Asks one question on one line until the answer passes a check.
 ///
-/// Used by [ask], [confirm] and the plain [menu]. With colour on, a wrong
-/// answer shows a themed error line under the question, and the question is
-/// redrawn in place. Once answered, the line is redrawn with a tick and the
-/// answer in the theme's answer colour.
+/// Used by `ask`, `confirm` and the plain `menu` from [CMD.prompt]. With
+/// colour on, a wrong answer shows a themed error line under the question,
+/// and the question is redrawn in place. Once answered, the line is redrawn
+/// with a tick and the answer in the theme's answer colour.
 class PromptLine {
   const PromptLine._();
 

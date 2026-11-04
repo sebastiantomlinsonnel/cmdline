@@ -135,7 +135,7 @@ class ShellCommand {
 
   /// The shell used when [run] isn't given one.
   ///
-  /// Starts as [TerminalShell.platformDefault].
+  /// Starts as [TerminalShell.powershell].
   static TerminalShell defaultShell = TerminalShell.powershell;
 
   static String _directory = Directory.current.path;

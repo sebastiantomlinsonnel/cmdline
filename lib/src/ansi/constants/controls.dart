@@ -8,7 +8,7 @@ const String ESC = '\x1B';
 /// A line break.
 ///
 /// Plain `\n`. Kept as a constant so multi-line output built from codes reads
-/// the same way as the rest of the sequences, e.g. in [multisty].
+/// the same way as the rest of the sequences.
 const String NEWLINE = '\n';
 
 /// The Control Sequence Introducer that starts most escape codes.

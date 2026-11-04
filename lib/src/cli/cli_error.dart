@@ -1,7 +1,7 @@
 /// A mistake the user made when typing the command.
 ///
 /// Thrown by [Parser] for things like an unknown option, a missing value or a
-/// missing required option. [Cli.start] catches it and prints it nicely, so
+/// missing required option. [CLI.start] catches it and prints it nicely, so
 /// you normally never see it yourself.
 class CLIError implements Exception {
   /// What went wrong, written for the user.

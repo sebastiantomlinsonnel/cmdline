@@ -1,11 +1,15 @@
 import 'package:cmdline/cmdline.dart';
 
 const String LOG_FILE = r'X:\Flutter\cmdline\log';
+const String STRING = 'Hello World!';
+const String STYLED = '$BOLD$UNDERLINE$ENCIRCLE' + STRING + RESET;
 
 Future<void> main() async {
+  writeln('$STYLED : ${const Ansi(STYLED).visible}');
+
   await openLogFile();
   printAllNames();
-  stressTest(false);
+  // stressTest(false);
 }
 
 void stressTest(bool clear) {

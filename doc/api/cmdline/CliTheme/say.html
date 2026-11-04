@@ -64,7 +64,7 @@
     
 <section class="desc markdown">
   <p>Prints <code>text</code> on its own line, dropping the colour if it is turned off.</p>
-<p>With colour on it goes through <a href="../../cmdline/Ansi/write.html">Ansi.write</a>, so a <a href="../../cmdline/RESET-constant.html">RESET</a> always
+<p>With colour on it goes through <a href="../../cmdline/write.html">Ansi.write</a>, so a <a href="../../cmdline/RESET-constant.html">RESET</a> always
 closes the line.</p>
 </section>
 
@@ -74,7 +74,7 @@ closes the line.</p>
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static void say(String text) {
   if (useColour) {
-    Ansi(text).write();
+    write(&#39;${Ansi(text)}$RESET&#39;);
   } else {
     stdout.writeln(text.plain);
   }

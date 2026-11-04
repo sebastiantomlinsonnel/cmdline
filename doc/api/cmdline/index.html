@@ -60,7 +60,7 @@
 
     
 <section class="desc markdown">
-  <p>ANSI lib</p>
+  <p>CORE library</p>
 </section>
 
 
@@ -236,12 +236,20 @@ A complex yet intuitive logger
   Asks one question on one line until the answer passes a check.
 </dd>
 
-          <dt id="TerminalCommand">
-  <span class="name "><a href="../cmdline/TerminalCommand-class.html">TerminalCommand</a></span> 
+          <dt id="ShellCommand">
+  <span class="name "><a href="../cmdline/ShellCommand-class.html">ShellCommand</a></span> 
 
 </dt>
 <dd>
   Runs commands as if you typed them into a terminal.
+</dd>
+
+          <dt id="SystemFonts">
+  <span class="name "><a href="../core_extensions_int/SystemFonts-class.html">SystemFonts</a></span> 
+
+</dt>
+<dd>
+  Singleton that discovers and indexes system fonts at runtime.
 </dd>
 
       </dl>
@@ -263,7 +271,7 @@ A complex yet intuitive logger
 
 </dt>
 <dd>
-  The shells <a href="../cmdline/TerminalCommand-class.html">TerminalCommand</a> can run commands in.
+  The shells <a href="../cmdline/ShellCommand-class.html">ShellCommand</a> can run commands in.
 </dd>
 
       </dl>
@@ -275,7 +283,7 @@ A complex yet intuitive logger
       <h2>Extensions</h2>
       <dl>
           <dt id="AnsiStyledString">
-  <span class="name "><a href="../cmdline/AnsiStyledString.html">AnsiStyledString</a></span>
+  <span class="name "><a href="../core_extensions_ansi/AnsiStyledString.html">AnsiStyledString</a></span>
   on <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>
   
 
@@ -284,8 +292,50 @@ A complex yet intuitive logger
   Adds colours and text styles to any <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>, and chains them together.
 </dd>
 
+          <dt id="Double">
+  <span class="name "><a href="../core_extensions_double/Double.html">Double</a></span>
+  on <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?
+  
+
+</dt>
+<dd>
+  Helpful extensions on nullable <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a> values.
+</dd>
+
+          <dt id="Int">
+  <span class="name "><a href="../core_extensions_int/Int.html">Int</a></span>
+  on <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?
+  
+
+</dt>
+<dd>
+  Quick base-conversion getters on non-nullable <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>.
+</dd>
+
+          <dt id="ListExtensions">
+  <span class="name "><a href="../core_extensions_list/ListExtensions.html">ListExtensions</a></span>
+  on <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>?
+  
+
+</dt>
+<dd>
+  Extensions on nullable <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a> for safe access, indexed iteration,
+and aggregate calculations.
+</dd>
+
+          <dt id="Num">
+  <span class="name "><a href="../core_extensions_num/Num.html">Num</a></span>
+  on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?
+  
+
+</dt>
+<dd>
+  Extensions on nullable <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a> for validation, range checks, formatting,
+and mathematical helpers.
+</dd>
+
           <dt id="ProcessHelpers">
-  <span class="name "><a href="../cmdline/ProcessHelpers.html">ProcessHelpers</a></span>
+  <span class="name "><a href="../core_extensions_process/ProcessHelpers.html">ProcessHelpers</a></span>
   on <a href="https://api.flutter.dev/flutter/dart-io/Process-class.html">Process</a>
   
 
@@ -295,7 +345,7 @@ A complex yet intuitive logger
 </dd>
 
           <dt id="ProcessOutputHelpers">
-  <span class="name "><a href="../cmdline/ProcessOutputHelpers.html">ProcessOutputHelpers</a></span>
+  <span class="name "><a href="../core_extensions_stream/ProcessOutputHelpers.html">ProcessOutputHelpers</a></span>
   on <a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>&gt;</span>
   
 
@@ -305,7 +355,7 @@ A complex yet intuitive logger
 </dd>
 
           <dt id="ProcessResultHelpers">
-  <span class="name "><a href="../cmdline/ProcessResultHelpers.html">ProcessResultHelpers</a></span>
+  <span class="name "><a href="../core_extensions_process_result/ProcessResultHelpers.html">ProcessResultHelpers</a></span>
   on <a href="https://api.flutter.dev/flutter/dart-io/ProcessResult-class.html">ProcessResult</a>
   
 
@@ -314,24 +364,14 @@ A complex yet intuitive logger
   Makes the result of <code>Process.run</code> easier to read.
 </dd>
 
-          <dt id="StringFile">
-  <span class="name "><a href="../cmdline/StringFile.html">StringFile</a></span>
+          <dt id="StringExt">
+  <span class="name "><a href="../core_extensions_string/StringExt.html">StringExt</a></span>
   on <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>
   
 
 </dt>
 <dd>
-  Reads and writes the file whose path is this string.
-</dd>
-
-          <dt id="StringRun">
-  <span class="name "><a href="../cmdline/StringRun.html">StringRun</a></span>
-  on <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>
-  
-
-</dt>
-<dd>
-  Runs this string as a terminal command, through <a href="../cmdline/TerminalCommand-class.html">TerminalCommand</a>.
+  Extensions for working with Strings
 </dd>
 
       </dl>
@@ -4176,6 +4216,18 @@ A complex yet intuitive logger
 </dt>
 <dd>
   Clears from the start of the screen to the cursor.
+  
+
+</dd>
+
+          <dt id="CONTROL_CODE_REGEX" class="constant">
+    <span class="name "><a href="../cmdline/CONTROL_CODE_REGEX-constant.html">CONTROL_CODE_REGEX</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The string used for <a href="../cmdline/controlCodeRegExp.html">controlCodeRegExp</a>
   
 
 </dd>
@@ -14224,6 +14276,18 @@ A complex yet intuitive logger
 
 </dd>
 
+          <dt id="STYLE_CODE_REGEX" class="constant">
+    <span class="name "><a href="../cmdline/STYLE_CODE_REGEX-constant.html">STYLE_CODE_REGEX</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The string used for <a href="../cmdline/styleCodeRegExp.html">styleCodeRegExp</a>
+  
+
+</dd>
+
           <dt id="SUBSCRIPT" class="constant">
     <span class="name "><a href="../cmdline/SUBSCRIPT-constant.html">SUBSCRIPT</a></span>
   <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -14419,6 +14483,35 @@ A complex yet intuitive logger
       </dl>
     </section>
 
+    <section class="summary offset-anchor" id="properties">
+      <h2>Properties</h2>
+      <dl class="properties">
+          <dt id="controlCodeRegExp" class="property">
+  <span class="name"><a href="../cmdline/controlCodeRegExp.html">controlCodeRegExp</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/RegExp-class.html">RegExp</a></span>
+  
+
+</dt>
+<dd>
+  Matches any ANSI escape code that isn't a style code.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+          <dt id="styleCodeRegExp" class="property">
+  <span class="name"><a href="../cmdline/styleCodeRegExp.html">styleCodeRegExp</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/RegExp-class.html">RegExp</a></span>
+  
+
+</dt>
+<dd>
+  Matches an ANSI style code, like <code>\x1B[31m</code> or <code>\x1B[1;38;5;196m</code>.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+      </dl>
+    </section>
 
     <section class="summary offset-anchor" id="functions">
       <h2>Functions</h2>
@@ -14592,19 +14685,6 @@ A complex yet intuitive logger
 
 </dd>
 
-          <dt id="findProgram" class="callable">
-  <span class="name"><a href="../cmdline/findProgram.html">findProgram</a></span><span class="signature">(<wbr><span class="parameter" id="findProgram-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  The full path of a program on your PATH, or null if it can't be found.
-  
-
-</dd>
-
           <dt id="hyperlink" class="callable">
   <span class="name"><a href="../cmdline/hyperlink.html">hyperlink</a></span><span class="signature">(<wbr><span class="parameter" id="hyperlink-param-url"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, </span><span class="parameter" id="hyperlink-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -14631,19 +14711,6 @@ A complex yet intuitive logger
 
 </dd>
 
-          <dt id="nextToScript" class="callable">
-  <span class="name"><a href="../cmdline/nextToScript.html">nextToScript</a></span><span class="signature">(<wbr><span class="parameter" id="nextToScript-param-fileName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">fileName</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  The path of a file in the same folder as the running script.
-  
-
-</dd>
-
           <dt id="notify" class="callable">
   <span class="name"><a href="../cmdline/notify.html">notify</a></span><span class="signature">(<wbr><span class="parameter" id="notify-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -14653,32 +14720,6 @@ A complex yet intuitive logger
 </dt>
 <dd>
   Pops up a desktop notification with <code>message</code>.
-  
-
-</dd>
-
-          <dt id="openInNewWindow" class="callable">
-  <span class="name"><a href="../cmdline/openInNewWindow.html">openInNewWindow</a></span><span class="signature">(<wbr><span class="parameter" id="openInNewWindow-param-program"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">program</span>, {</span><span class="parameter" id="openInNewWindow-param-args"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">args</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="openInNewWindow-param-workingDirectory"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">workingDirectory</span>, </span><span class="parameter" id="openInNewWindow-param-asAdmin"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">asAdmin</span> = <span class="default-value">false</span>, </span><span class="parameter" id="openInNewWindow-param-wait"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">wait</span> = <span class="default-value">false</span></span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Opens <code>program</code> in its own new window, like double-clicking it.
-  
-
-</dd>
-
-          <dt id="openWithDefaultApp" class="callable">
-  <span class="name"><a href="../cmdline/openWithDefaultApp.html">openWithDefaultApp</a></span><span class="signature">(<wbr><span class="parameter" id="openWithDefaultApp-param-target"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">target</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Opens a file, folder or web address with its usual app.
   
 
 </dd>
@@ -14731,19 +14772,6 @@ A complex yet intuitive logger
 </dt>
 <dd>
   Scrolls the screen content up by <code>lines</code>, adding blank lines at the bottom.
-  
-
-</dd>
-
-          <dt id="spinWhile" class="callable">
-  <span class="name"><a href="../cmdline/spinWhile.html">spinWhile</a></span><span class="signature">(<wbr><span class="parameter" id="spinWhile-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span>, </span><span class="parameter" id="spinWhile-param-running"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-io/ProcessResult-class.html">ProcessResult</a></span>&gt;</span></span> <span class="parameter-name">running</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-io/ProcessResult-class.html">ProcessResult</a></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Shows a spinner with <code>message</code> until <code>running</code> finishes.
   
 
 </dd>
@@ -14904,6 +14932,21 @@ A complex yet intuitive logger
 
 
           
+  <dt id="Font" class="">
+  <span class="name"><a href="../core_extensions_int/Font.html">Font</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>
+  </span>
+  
+
+</dt>
+<dd>
+  A type alias that makes font-family parameters self-documenting.
+  
+
+</dd>
+
+
+          
   <dt id="PromptCheck" class="callable">
     <span class="name"><a href="../cmdline/PromptCheck.html">PromptCheck</a></span>&lt;<wbr><span class="type-parameter">T</span>&gt;<span class="signature">
       <span class="returntype parameter">= (<span class="field">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="field-name">problem</span>, </span><span class="field"><span class="type-annotation">T?</span> <span class="field-name">value</span>}</span>) Function<span class="signature">(<span class="parameter" id="param-typed"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">typed</span></span>)</span></span>
@@ -14950,7 +14993,8 @@ A complex yet intuitive logger
 
 </dt>
 <dd>
-  Thrown when a file helper like <code>copy</code> or <code>move</code> can't do its job.
+  Thrown when a file helper like <code>copy</code> or <code>move</code> from <a href="../cmdline/CMD/fs.html">CMD.fs</a> can't do
+its job.
 </dd>
 
           <dt id="ProcessFailed">
@@ -14958,7 +15002,7 @@ A complex yet intuitive logger
 
 </dt>
 <dd>
-  Thrown by <a href="../cmdline/ProcessResultHelpers/throwIfFailed.html">ProcessResultHelpers.throwIfFailed</a> when a program didn't work.
+  Thrown by <a href="../core_extensions_process_result/ProcessResultHelpers/throwIfFailed.html">ProcessResultHelpers.throwIfFailed</a> when a program didn't work.
 </dd>
 
       </dl>
@@ -14980,6 +15024,16 @@ A complex yet intuitive logger
     <ol>
       <li class="section-title">Libraries</li>
       <li><a href="../cmdline/">cmdline</a></li>
+      <li><a href="../core/">core\core</a></li>
+      <li><a href="../core_extensions_ansi/">core\extensions\ansi</a></li>
+      <li><a href="../core_extensions_double/">core\extensions\double</a></li>
+      <li><a href="../core_extensions_int/">core\extensions\int</a></li>
+      <li><a href="../core_extensions_list/">core\extensions\list</a></li>
+      <li><a href="../core_extensions_num/">core\extensions\num</a></li>
+      <li><a href="../core_extensions_process/">core\extensions\process</a></li>
+      <li><a href="../core_extensions_process_result/">core\extensions\process_result</a></li>
+      <li><a href="../core_extensions_stream/">core\extensions\stream</a></li>
+      <li><a href="../core_extensions_string/">core\extensions\string</a></li>
 </ol>
 
   </div>

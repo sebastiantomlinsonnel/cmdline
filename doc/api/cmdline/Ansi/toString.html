@@ -67,9 +67,16 @@
     </section>
     
 <section class="desc markdown">
-  <p><a href="../../cmdline/Ansi/string.html">string</a> with <a href="../../cmdline/RESET-constant.html">RESET</a> appended, so the style stops at the end of it.</p>
-<p>This is what <a href="../../cmdline/Ansi/write.html">write</a> prints, so <code>'$ansi'</code> in an interpolation gives the
-same safe, closed-off text.</p>
+  <p>A string representation of this object.</p>
+<p>Some classes have a default textual representation,
+often paired with a static <code>parse</code> function (like <a href="https://api.flutter.dev/flutter/dart-core/int/parse.html">int.parse</a>).
+These classes will provide the textual representation as
+their string representation.</p>
+<p>Other classes have no meaningful textual representation
+that a program will care about.
+Such classes will typically override <code>toString</code> to provide
+useful information when inspecting the object,
+mainly for debugging or logging.</p>
 </section>
 
 
@@ -77,7 +84,7 @@ same safe, closed-off text.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-String toString() =&gt; &#39;$string$RESET&#39;;</code></pre>
+String toString() =&gt; &#39;$string&#39;;</code></pre>
 </section>
 
 

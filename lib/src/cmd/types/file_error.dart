@@ -1,13 +1,14 @@
 import 'package:cmdline/cmdline.dart';
 
-/// Thrown when a file helper like [copy] or [move] can't do its job.
+/// Thrown when a file helper like `copy` or `move` from [CMD.fs] can't do
+/// its job.
 ///
 /// [toString] gives plain text for logs. [styled] gives the same message as
 /// a coloured error line from [CliTheme.current], with the path in bold.
 ///
 /// ```dart
 /// try {
-///   copy('a.txt', 'b.txt');
+///   CMD.fs.copy('a.txt', 'b.txt');
 /// } on FileError catch (error) {
 ///   CliTheme.say(error.styled);
 /// }

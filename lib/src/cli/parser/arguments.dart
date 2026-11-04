@@ -28,7 +28,7 @@ class Argument {
 
 /// An on/off switch, like `--verbose` or `-v`.
 ///
-/// A flag is `false` unless the user types it. Give it to a [Command] or [Cli]
+/// A flag is `false` unless the user types it. Give it to a [Command] or [CLI]
 /// in their `flags` list, then read it in `run` with `input.flag('verbose')`.
 ///
 /// ```dart
@@ -74,7 +74,7 @@ class Flag {
 
 /// A named setting that takes a value, like `--name Sam` or `-n Sam`.
 ///
-/// Give it to a [Command] or [Cli] in their `options` list, then read it in
+/// Give it to a [Command] or [CLI] in their `options` list, then read it in
 /// `run` with `input.option('name')`, or `input.options('name')` when
 /// [multiple] is on.
 ///
