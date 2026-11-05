@@ -13,6 +13,7 @@ export 'src/ansi/constants/cursor.dart';
 export 'src/ansi/constants/regular_expressions.dart';
 export 'src/ansi/constants/screen.dart';
 export 'src/ansi/constants/styling.dart';
+export 'src/ansi/constants/table.dart';
 export 'src/ansi/constants/terminal.dart';
 export 'src/ansi/palettes/ansi_colour.dart';
 export 'src/ansi/palettes/ansi_colour_rgb.dart';
