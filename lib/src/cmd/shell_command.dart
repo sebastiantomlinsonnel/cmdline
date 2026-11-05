@@ -61,6 +61,15 @@ class ShellCommand {
     this.interactive = false,
   });
 
+  Future<ProcessResult> start() async {
+    return await run(
+      command,
+      show: show,
+      interactive: interactive,
+      shell: shell,
+    );
+  }
+
   /// Runs [command] in a shell and gives back what happened.
   ///
   /// * [shell]: the shell to use. Defaults to [defaultShell].

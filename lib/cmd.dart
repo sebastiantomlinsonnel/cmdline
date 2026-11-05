@@ -9,7 +9,7 @@ import 'package:cmdline/cmdline.dart';
 import 'package:http/http.dart' as http;
 
 export 'src/cmd/helpers/process_failed.dart';
-export 'src/cmd/terminal_command.dart';
+export 'src/cmd/shell_command.dart';
 export 'src/cmd/types/file_error.dart';
 
 part 'src/cmd/parts/draw.dart';

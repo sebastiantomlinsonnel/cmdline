@@ -92,7 +92,10 @@ compare it with other text.</p>
     if (string.startsWith(CSI, at)) {
       &#47;&#47; Styles, cursor moves and so on: ESC [ ... then one letter.
       at += CSI.length;
+      &#47;&#47; Number and separator bytes run until the final letter (@ to ~).
       while (at &lt; string.length) {
+        final int unit = string.codeUnitAt(at);
+        if (unit &gt;= 0x40 &amp;&amp; unit &lt;= 0x7E) break;
         at++;
       }
       at++; &#47;&#47; Skip the final letter too.
@@ -142,7 +145,7 @@ compare it with other text.</p>
 <footer>
   <span class="no-break">
     cmdline
-      2.0.0
+      2.0.1
   </span>
   
 </footer>
