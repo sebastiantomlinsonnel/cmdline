@@ -1,3 +1,5 @@
+import 'package:cmdline/cmdline.dart';
+
 /// Quick base-conversion getters on non-nullable [int].
 ///
 /// These turn any integer into its string representation in common numeral
@@ -180,5 +182,52 @@ extension Int on int? {
       return true;
     }
     return false;
+  }
+}
+
+/// Quick base-conversion getters on non-nullable [int].
+///
+/// These turn any integer into its string representation in common numeral
+/// bases — perfect for debugging, encoding, or display purposes.
+///
+/// ```dart
+/// 255.hex  // 'FF'
+/// 42.bin   // '101010'
+/// 255.oct  // '377'
+/// 255.b256 // base-256 encoded string
+/// ```
+extension Ba on int {
+  /// Converts this integer to its **octal** (base-8) string representation.
+  String get oct {
+    return Radix.getBase(this, 8);
+  }
+
+  /// Converts this integer to its **binary** (base-2) string representation,
+  /// in uppercase.
+  String get bin {
+    return Radix.getBase(this, 2).toUpperCase();
+  }
+
+  /// Converts this integer to its **hexadecimal** (base-16) string
+  /// representation, in uppercase.
+  ///
+  /// ```dart
+  /// 255.hex // 'FF'
+  /// ```
+  String get hex {
+    return Radix.getBase(this, 16).toUpperCase();
+  }
+
+  /// Converts this integer to its **decimal** (base-10) string representation.
+  String get dec {
+    return Radix.getBase(this, 10);
+  }
+
+  /// Converts this integer to its **base-256** encoded string.
+  ///
+  /// Base-256 treats each byte as a single "digit," which is useful for
+  /// compact binary encoding.
+  String get b256 {
+    return Radix.getBase(this, 256);
   }
 }

@@ -9,6 +9,9 @@ export '../src/extensions/process_result.dart';
 export '../src/extensions/stream.dart';
 export '../src/extensions/string.dart';
 export '../src/utils/strings.dart';
+export '../src/utils/graphemes.dart';
+export '../src/utils/printable_table.dart';
+export '../src/utils/radix.dart';
 ///  ANSI lib
 export 'ansi.dart';
 ///  CLI lib

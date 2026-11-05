@@ -1,8 +1,5 @@
 import 'package:cmdline/cmdline.dart';
 
-import 'graphemes.dart';
-import 'printable_table.dart';
-
 /// Where to add padding when a result is shorter than requested.
 ///
 /// Used by functions such as [Strings.left] and [Strings.right].
@@ -23,20 +20,20 @@ const int _c0End = 0x1F;
 /// The highest valid Unicode code point.
 const int _unicodeEnd = 0x10FFFF;
 
-const int _digitMask = 0x1;
 const int _lowerMask = 0x2;
 const int _underscoreMask = 0x4;
-const int _upperMask = 0x8;
-const int _alphaMask = _lowerMask | _upperMask;
+const int _digitMask = 0x1;
+const int UPPER_MASK = 0x8;
+const int _alphaMask = _lowerMask | UPPER_MASK;
 const int _alphaNumMask = _alphaMask | _digitMask;
 
 /// Classification flags for an ASCII code point.
 ///
 /// Returns 0 for anything that is not an ASCII digit, letter or underscore.
-int _asciiFlags(int c) {
+int asciiFlags(int c) {
   if (c >= 0x30 && c <= 0x39) return _digitMask;
   if (c >= 0x61 && c <= 0x7A) return _lowerMask;
-  if (c >= 0x41 && c <= 0x5A) return _upperMask;
+  if (c >= 0x41 && c <= 0x5A) return UPPER_MASK;
   if (c == 0x5F) return _underscoreMask;
   return 0;
 }
@@ -44,11 +41,11 @@ int _asciiFlags(int c) {
 /// Classification flags for a grapheme.
 ///
 /// Only single code point ASCII graphemes get flags; everything else is 0.
-int _graphemeFlags(String grapheme) {
+int graphemeFlags(String grapheme) {
   final runes = grapheme.runes;
   if (runes.length != 1) return 0;
   final c = runes.first;
-  return c <= DEL ? _asciiFlags(c) : 0;
+  return c <= DEL ? asciiFlags(c) : 0;
 }
 
 /// Null-safe String utilities that extend the core [String] API.
@@ -130,7 +127,7 @@ class Strings {
       if (runes.length == 1) {
         final c = runes.first;
         if (c <= DEL) {
-          if (_asciiFlags(c) & _upperMask != 0) {
+          if (asciiFlags(c) & UPPER_MASK != 0) {
             return false;
           }
         } else if (s == s.toUpperCase()) {
@@ -207,7 +204,7 @@ class Strings {
       if (runes.length == 1) {
         final c = runes.first;
         if (c <= DEL) {
-          if (_asciiFlags(c) & _lowerMask != 0) {
+          if (asciiFlags(c) & _lowerMask != 0) {
             return false;
           }
         } else if (s == s.toLowerCase()) {
@@ -239,7 +236,7 @@ class Strings {
     if (runes.length == 1) {
       final c = runes.first;
       if (c <= DEL) {
-        return _asciiFlags(c) & _lowerMask != 0;
+        return asciiFlags(c) & _lowerMask != 0;
       }
       return s == s.toLowerCase();
     }
@@ -267,7 +264,7 @@ class Strings {
     if (runes.length == 1) {
       final c = runes.first;
       if (c <= DEL) {
-        return _asciiFlags(c) & _upperMask != 0;
+        return asciiFlags(c) & UPPER_MASK != 0;
       }
       return s == s.toUpperCase();
     }
@@ -297,7 +294,7 @@ class Strings {
     var remove = false;
     final sb = StringBuffer();
     for (final s in graphemes(string.toLowerCase())) {
-      final flag = _graphemeFlags(s);
+      final flag = graphemeFlags(s);
 
       if (capitalize && flag & _alphaMask != 0) {
         if (lower && position == 0) {
@@ -390,9 +387,9 @@ class Strings {
     final sb = StringBuffer();
     var separate = false;
     for (final s in graphemes(string)) {
-      final flag = _graphemeFlags(s);
+      final flag = graphemeFlags(s);
 
-      if (separate && flag & _upperMask != 0) {
+      if (separate && flag & UPPER_MASK != 0) {
         sb
           ..write('_')
           ..write(s.toLowerCase());
