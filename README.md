@@ -2,7 +2,7 @@
 
 An SDK for console development
 
-*This demo is just a fraction of what's available because GIFS have to be under 30 seconds and theres a size limit on dart packages*
+*This demo is just a fraction of what's available because generating these GIFs is an absolute nightmare*
 
 --- 
 
