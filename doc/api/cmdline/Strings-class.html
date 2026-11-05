@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Strings class from the cmdline library, for the Dart programming language.">
+  <title>Strings class - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline.dart</a></li>
+    <li class="self-crumb">Strings class</li>
+  </ol>
+  <div class="self-name">Strings</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="cmdline&#47;cmdline-library-sidebar.html"
+    data-below-sidebar="cmdline&#47;Strings-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">Strings</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Null-safe String utilities that extend the core <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> API.</p>
+<p>A <a href="../cmdline/Strings-class.html">Strings</a> method never throws on a null argument. A null String is
+treated as an empty String, or as a space-filled String where a range is
+requested, so the caller gets a result of the expected length.</p>
+<pre class="language-dart"><code class="language-dart">Strings.substring(null, 2, 3);
+// -&gt; ' '
+</code></pre>
+</section>
+
+
+
+    
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+  <section class="summary offset-anchor" id="static-methods">
+    <h2>Static Methods</h2>
+    <dl class="callables">
+        <dt id="abbreviate" class="callable">
+  <span class="name"><a href="../cmdline/Strings/abbreviate.html">abbreviate</a></span><span class="signature">(<wbr><span class="parameter" id="abbreviate-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="abbreviate-param-maxWidth"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">maxWidth</span>, {</span><span class="parameter" id="abbreviate-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Shortens <code>string</code> to <code>maxWidth</code> characters, ending it with '...'.
+  
+
+</dd>
+
+        <dt id="allMatches" class="callable">
+  <span class="name"><a href="../cmdline/Strings/allMatches.html">allMatches</a></span><span class="signature">(<wbr><span class="parameter" id="allMatches-param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">pattern</span>, </span><span class="parameter" id="allMatches-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">string</span>, [</span><span class="parameter" id="allMatches-param-start"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Match-class.html">Match</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/Pattern/allMatches.html">Pattern.allMatches</a> on a String <code>pattern</code>.
+  
+
+</dd>
+
+        <dt id="codeUnitAt" class="callable">
+  <span class="name"><a href="../cmdline/Strings/codeUnitAt.html">codeUnitAt</a></span><span class="signature">(<wbr><span class="parameter" id="codeUnitAt-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="codeUnitAt-param-index"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">index</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/codeUnitAt.html">String.codeUnitAt</a>.
+  
+
+</dd>
+
+        <dt id="codeUnits" class="callable">
+  <span class="name"><a href="../cmdline/Strings/codeUnits.html">codeUnits</a></span><span class="signature">(<wbr><span class="parameter" id="codeUnits-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/codeUnits.html">String.codeUnits</a>.
+  
+
+</dd>
+
+        <dt id="compareTo" class="callable">
+  <span class="name"><a href="../cmdline/Strings/compareTo.html">compareTo</a></span><span class="signature">(<wbr><span class="parameter" id="compareTo-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="compareTo-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">other</span>, {</span><span class="parameter" id="compareTo-param-nullIsLessThan"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">nullIsLessThan</span> = <span class="default-value">true</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/compareTo.html">String.compareTo</a>.
+  
+
+</dd>
+
+        <dt id="conjuctionJoin" class="callable">
+  <span class="name"><a href="../cmdline/Strings/conjuctionJoin.html">conjuctionJoin</a></span><span class="signature">(<wbr><span class="parameter" id="conjuctionJoin-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">list</span>, {</span><span class="parameter" id="conjuctionJoin-param-separator"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">separator</span> = <span class="default-value">&#39;, &#39;</span>, </span><span class="parameter" id="conjuctionJoin-param-last"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">last</span> = <span class="default-value">&#39; or &#39;</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Joins <code>list</code> with <code>separator</code>, using <code>last</code> before the final item.
+  
+
+</dd>
+
+        <dt id="contains" class="callable">
+  <span class="name"><a href="../cmdline/Strings/contains.html">contains</a></span><span class="signature">(<wbr><span class="parameter" id="contains-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="contains-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">other</span>, [</span><span class="parameter" id="contains-param-startIndex"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">startIndex</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/contains.html">String.contains</a>.
+  
+
+</dd>
+
+        <dt id="endsWith" class="callable">
+  <span class="name"><a href="../cmdline/Strings/endsWith.html">endsWith</a></span><span class="signature">(<wbr><span class="parameter" id="endsWith-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="endsWith-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/endsWith.html">String.endsWith</a>.
+  
+
+</dd>
+
+        <dt id="equals" class="callable">
+  <span class="name"><a href="../cmdline/Strings/equals.html">equals</a></span><span class="signature">(<wbr><span class="parameter" id="equals-param-lhs"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">lhs</span>, </span><span class="parameter" id="equals-param-rhs"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">rhs</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether two nullable strings are equal.
+  
+
+</dd>
+
+        <dt id="equalsIgnoreCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/equalsIgnoreCase.html">equalsIgnoreCase</a></span><span class="signature">(<wbr><span class="parameter" id="equalsIgnoreCase-param-lhs"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">lhs</span>, </span><span class="parameter" id="equalsIgnoreCase-param-rhs"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">rhs</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether two nullable strings are equal, ignoring case.
+  
+
+</dd>
+
+        <dt id="hidePart" class="callable">
+  <span class="name"><a href="../cmdline/Strings/hidePart.html">hidePart</a></span><span class="signature">(<wbr><span class="parameter" id="hidePart-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, {</span><span class="parameter" id="hidePart-param-start"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span> = <span class="default-value">0</span>, </span><span class="parameter" id="hidePart-param-end"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">end</span>, </span><span class="parameter" id="hidePart-param-replaceWith"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">replaceWith</span> = <span class="default-value">&#39;*&#39;</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Masks the characters of <code>string</code> from <code>start</code> up to, not including, <code>end</code>.
+  
+
+</dd>
+
+        <dt id="indexOf" class="callable">
+  <span class="name"><a href="../cmdline/Strings/indexOf.html">indexOf</a></span><span class="signature">(<wbr><span class="parameter" id="indexOf-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="indexOf-param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">pattern</span>, [</span><span class="parameter" id="indexOf-param-start"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/indexOf.html">String.indexOf</a>.
+  
+
+</dd>
+
+        <dt id="isAscii" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isAscii.html">isAscii</a></span><span class="signature">(<wbr><span class="parameter" id="isAscii-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> only contains ASCII characters.
+  
+
+</dd>
+
+        <dt id="isBlank" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isBlank.html">isBlank</a></span><span class="signature">(<wbr><span class="parameter" id="isBlank-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> is null or contains only whitespace.
+  
+
+</dd>
+
+        <dt id="isDigits" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isDigits.html">isDigits</a></span><span class="signature">(<wbr><span class="parameter" id="isDigits-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> only contains the digits 0-9.
+  
+
+</dd>
+
+        <dt id="isEmpty" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isEmpty.html">isEmpty</a></span><span class="signature">(<wbr><span class="parameter" id="isEmpty-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> is null or has zero length.
+  
+
+</dd>
+
+        <dt id="isLowerCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isLowerCase.html">isLowerCase</a></span><span class="signature">(<wbr><span class="parameter" id="isLowerCase-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> contains no upper case letters.
+  
+
+</dd>
+
+        <dt id="isNotBlank" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isNotBlank.html">isNotBlank</a></span><span class="signature">(<wbr><span class="parameter" id="isNotBlank-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> is not null and contains a non-whitespace character.
+  
+
+</dd>
+
+        <dt id="isNotEmpty" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isNotEmpty.html">isNotEmpty</a></span><span class="signature">(<wbr><span class="parameter" id="isNotEmpty-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> is not null and has a non-zero length.
+  
+
+</dd>
+
+        <dt id="isNumeric" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isNumeric.html">isNumeric</a></span><span class="signature">(<wbr><span class="parameter" id="isNumeric-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> parses as a number.
+  
+
+</dd>
+
+        <dt id="isPrintable" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isPrintable.html">isPrintable</a></span><span class="signature">(<wbr><span class="parameter" id="isPrintable-param-character"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">character</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>character</code> is visible when printed to the console.
+  
+
+</dd>
+
+        <dt id="isUpperCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isUpperCase.html">isUpperCase</a></span><span class="signature">(<wbr><span class="parameter" id="isUpperCase-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> contains no lower case letters.
+  
+
+</dd>
+
+        <dt id="isWhitespace" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isWhitespace.html">isWhitespace</a></span><span class="signature">(<wbr><span class="parameter" id="isWhitespace-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether every character in <code>string</code> is whitespace.
+  
+
+</dd>
+
+        <dt id="isWhitespaceRune" class="callable">
+  <span class="name"><a href="../cmdline/Strings/isWhitespaceRune.html">isWhitespaceRune</a></span><span class="signature">(<wbr><span class="parameter" id="isWhitespaceRune-param-rune"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">rune</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>rune</code> is a whitespace character.
+  
+
+</dd>
+
+        <dt id="join" class="callable">
+  <span class="name"><a href="../cmdline/Strings/join.html">join</a></span><span class="signature">(<wbr><span class="parameter" id="join-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span>&gt;</span>?</span> <span class="parameter-name">list</span>, {</span><span class="parameter" id="join-param-separator"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">separator</span> = <span class="default-value">&#39;&#39;</span>, </span><span class="parameter" id="join-param-excludeEmpty"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">excludeEmpty</span> = <span class="default-value">false</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Joins the elements of <code>list</code> with <code>separator</code>.
+  
+
+</dd>
+
+        <dt id="lastIndexOf" class="callable">
+  <span class="name"><a href="../cmdline/Strings/lastIndexOf.html">lastIndexOf</a></span><span class="signature">(<wbr><span class="parameter" id="lastIndexOf-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="lastIndexOf-param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">pattern</span>, [</span><span class="parameter" id="lastIndexOf-param-start"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">start</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/lastIndexOf.html">String.lastIndexOf</a>.
+  
+
+</dd>
+
+        <dt id="left" class="callable">
+  <span class="name"><a href="../cmdline/Strings/left.html">left</a></span><span class="signature">(<wbr><span class="parameter" id="left-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="left-param-take"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">take</span>, {</span><span class="parameter" id="left-param-pad"><span class="type-annotation"><a href="../cmdline/Pad.html">Pad</a></span> <span class="parameter-name">pad</span> = <span class="default-value">Pad.none</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the first <code>take</code> characters of <code>string</code>.
+  
+
+</dd>
+
+        <dt id="length" class="callable">
+  <span class="name"><a href="../cmdline/Strings/length.html">length</a></span><span class="signature">(<wbr><span class="parameter" id="length-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/length.html">String.length</a>.
+  
+
+</dd>
+
+        <dt id="matchAsPrefix" class="callable">
+  <span class="name"><a href="../cmdline/Strings/matchAsPrefix.html">matchAsPrefix</a></span><span class="signature">(<wbr><span class="parameter" id="matchAsPrefix-param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">pattern</span>, </span><span class="parameter" id="matchAsPrefix-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">string</span>, [</span><span class="parameter" id="matchAsPrefix-param-start"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Match-class.html">Match</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/Pattern/matchAsPrefix.html">Pattern.matchAsPrefix</a> on a String <code>pattern</code>.
+  
+
+</dd>
+
+        <dt id="orElse" class="callable">
+  <span class="name"><a href="../cmdline/Strings/orElse.html">orElse</a></span><span class="signature">(<wbr><span class="parameter" id="orElse-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="orElse-param-elseString"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">elseString</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>string</code> unless it is blank, otherwise <code>elseString</code>.
+  
+
+</dd>
+
+        <dt id="orElseCall" class="callable">
+  <span class="name"><a href="../cmdline/Strings/orElseCall.html">orElseCall</a></span><span class="signature">(<wbr><span class="parameter" id="orElseCall-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="orElseCall-param-elseValue"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">elseValue</span>()</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>string</code>, or the result of <code>elseValue</code> if it is null.
+  
+
+</dd>
+
+        <dt id="orElseOnBlank" class="callable">
+  <span class="name"><a href="../cmdline/Strings/orElseOnBlank.html">orElseOnBlank</a></span><span class="signature">(<wbr><span class="parameter" id="orElseOnBlank-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="orElseOnBlank-param-elseString"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">elseString</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>string</code> unless it is blank, otherwise <code>elseString</code>.
+  
+
+</dd>
+
+        <dt id="padLeft" class="callable">
+  <span class="name"><a href="../cmdline/Strings/padLeft.html">padLeft</a></span><span class="signature">(<wbr><span class="parameter" id="padLeft-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="padLeft-param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">width</span>, [</span><span class="parameter" id="padLeft-param-padding"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">padding</span> = <span class="default-value">&#39; &#39;</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/padLeft.html">String.padLeft</a>.
+  
+
+</dd>
+
+        <dt id="padRight" class="callable">
+  <span class="name"><a href="../cmdline/Strings/padRight.html">padRight</a></span><span class="signature">(<wbr><span class="parameter" id="padRight-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="padRight-param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">width</span>, [</span><span class="parameter" id="padRight-param-padding"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">padding</span> = <span class="default-value">&#39; &#39;</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/padRight.html">String.padRight</a>.
+  
+
+</dd>
+
+        <dt id="replaceAll" class="callable">
+  <span class="name"><a href="../cmdline/Strings/replaceAll.html">replaceAll</a></span><span class="signature">(<wbr><span class="parameter" id="replaceAll-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="replaceAll-param-from"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">from</span>, </span><span class="parameter" id="replaceAll-param-replace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">replace</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/replaceAll.html">String.replaceAll</a>.
+  
+
+</dd>
+
+        <dt id="replaceAllMapped" class="callable">
+  <span class="name"><a href="../cmdline/Strings/replaceAllMapped.html">replaceAllMapped</a></span><span class="signature">(<wbr><span class="parameter" id="replaceAllMapped-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="replaceAllMapped-param-from"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">from</span>, </span><span class="parameter" id="replaceAllMapped-param-replace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">replace</span>(<span class="parameter" id="param-match"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Match-class.html">Match</a></span> <span class="parameter-name">match</span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/replaceAllMapped.html">String.replaceAllMapped</a>.
+  
+
+</dd>
+
+        <dt id="replaceFirst" class="callable">
+  <span class="name"><a href="../cmdline/Strings/replaceFirst.html">replaceFirst</a></span><span class="signature">(<wbr><span class="parameter" id="replaceFirst-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="replaceFirst-param-from"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">from</span>, </span><span class="parameter" id="replaceFirst-param-to"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">to</span>, [</span><span class="parameter" id="replaceFirst-param-startIndex"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">startIndex</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/replaceFirst.html">String.replaceFirst</a>.
+  
+
+</dd>
+
+        <dt id="replaceFirstMapped" class="callable">
+  <span class="name"><a href="../cmdline/Strings/replaceFirstMapped.html">replaceFirstMapped</a></span><span class="signature">(<wbr><span class="parameter" id="replaceFirstMapped-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="replaceFirstMapped-param-from"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">from</span>, </span><span class="parameter" id="replaceFirstMapped-param-replace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">replace</span>(<span class="parameter" id="param-match"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Match-class.html">Match</a></span> <span class="parameter-name">match</span></span>), [</span><span class="parameter" id="replaceFirstMapped-param-startIndex"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">startIndex</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/replaceFirstMapped.html">String.replaceFirstMapped</a>.
+  
+
+</dd>
+
+        <dt id="replaceRange" class="callable">
+  <span class="name"><a href="../cmdline/Strings/replaceRange.html">replaceRange</a></span><span class="signature">(<wbr><span class="parameter" id="replaceRange-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="replaceRange-param-start"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>, </span><span class="parameter" id="replaceRange-param-end"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">end</span>, </span><span class="parameter" id="replaceRange-param-replacement"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">replacement</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/replaceRange.html">String.replaceRange</a>.
+  
+
+</dd>
+
+        <dt id="reverse" class="callable">
+  <span class="name"><a href="../cmdline/Strings/reverse.html">reverse</a></span><span class="signature">(<wbr><span class="parameter" id="reverse-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Reverses <code>string</code> by user-perceived characters.
+  
+
+</dd>
+
+        <dt id="right" class="callable">
+  <span class="name"><a href="../cmdline/Strings/right.html">right</a></span><span class="signature">(<wbr><span class="parameter" id="right-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="right-param-take"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">take</span>, {</span><span class="parameter" id="right-param-pad"><span class="type-annotation"><a href="../cmdline/Pad.html">Pad</a></span> <span class="parameter-name">pad</span> = <span class="default-value">Pad.none</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the last <code>take</code> characters of <code>string</code>.
+  
+
+</dd>
+
+        <dt id="runes" class="callable">
+  <span class="name"><a href="../cmdline/Strings/runes.html">runes</a></span><span class="signature">(<wbr><span class="parameter" id="runes-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Runes-class.html">Runes</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/runes.html">String.runes</a>.
+  
+
+</dd>
+
+        <dt id="split" class="callable">
+  <span class="name"><a href="../cmdline/Strings/split.html">split</a></span><span class="signature">(<wbr><span class="parameter" id="split-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="split-param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">pattern</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/split.html">String.split</a>.
+  
+
+</dd>
+
+        <dt id="splitMapJoin" class="callable">
+  <span class="name"><a href="../cmdline/Strings/splitMapJoin.html">splitMapJoin</a></span><span class="signature">(<wbr><span class="parameter" id="splitMapJoin-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="splitMapJoin-param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">pattern</span>, {</span><span class="parameter" id="splitMapJoin-param-onMatch"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">onMatch</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Match-class.html">Match</a></span></span>)?, </span><span class="parameter" id="splitMapJoin-param-onNonMatch"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">onNonMatch</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/splitMapJoin.html">String.splitMapJoin</a>.
+  
+
+</dd>
+
+        <dt id="startsWith" class="callable">
+  <span class="name"><a href="../cmdline/Strings/startsWith.html">startsWith</a></span><span class="signature">(<wbr><span class="parameter" id="startsWith-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="startsWith-param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span> <span class="parameter-name">pattern</span>, [</span><span class="parameter" id="startsWith-param-index"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">index</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/startsWith.html">String.startsWith</a>.
+  
+
+</dd>
+
+        <dt id="startsWithLowerCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/startsWithLowerCase.html">startsWithLowerCase</a></span><span class="signature">(<wbr><span class="parameter" id="startsWithLowerCase-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> starts with a lower case character.
+  
+
+</dd>
+
+        <dt id="startsWithUpperCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/startsWithUpperCase.html">startsWithUpperCase</a></span><span class="signature">(<wbr><span class="parameter" id="startsWithUpperCase-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>string</code> starts with an upper case character.
+  
+
+</dd>
+
+        <dt id="substring" class="callable">
+  <span class="name"><a href="../cmdline/Strings/substring.html">substring</a></span><span class="signature">(<wbr><span class="parameter" id="substring-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, </span><span class="parameter" id="substring-param-start"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>, [</span><span class="parameter" id="substring-param-end"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">end</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/substring.html">String.substring</a>.
+  
+
+</dd>
+
+        <dt id="toCamelCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toCamelCase.html">toCamelCase</a></span><span class="signature">(<wbr><span class="parameter" id="toCamelCase-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, {</span><span class="parameter" id="toCamelCase-param-lower"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">lower</span> = <span class="default-value">false</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Converts snake_case <code>string</code> to UpperCamelCase.
+  
+
+</dd>
+
+        <dt id="toCapitalised" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toCapitalised.html">toCapitalised</a></span><span class="signature">(<wbr><span class="parameter" id="toCapitalised-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Upper cases the first character of <code>string</code>.
+  
+
+</dd>
+
+        <dt id="toEmpty" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toEmpty.html">toEmpty</a></span><span class="signature">(<wbr><span class="parameter" id="toEmpty-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>string</code>, or an empty String if it is null.
+  
+
+</dd>
+
+        <dt id="toEscape" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toEscape.html">toEscape</a></span><span class="signature">(<wbr><span class="parameter" id="toEscape-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, {</span><span class="parameter" id="toEscape-param-encode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">encode</span>(<span class="parameter" id="param-charCode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">charCode</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Escapes <code>string</code> so it can be pasted into Dart source.
+  
+
+</dd>
+
+        <dt id="toLowerCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toLowerCase.html">toLowerCase</a></span><span class="signature">(<wbr><span class="parameter" id="toLowerCase-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/toLowerCase.html">String.toLowerCase</a>.
+  
+
+</dd>
+
+        <dt id="toPrintable" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toPrintable.html">toPrintable</a></span><span class="signature">(<wbr><span class="parameter" id="toPrintable-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Makes control and non-printable characters in <code>string</code> visible.
+  
+
+</dd>
+
+        <dt id="toProperCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toProperCase.html">toProperCase</a></span><span class="signature">(<wbr><span class="parameter" id="toProperCase-param-sentence"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">sentence</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Converts every space-separated word in <code>sentence</code> to Proper Case.
+  
+
+</dd>
+
+        <dt id="toSnakeCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toSnakeCase.html">toSnakeCase</a></span><span class="signature">(<wbr><span class="parameter" id="toSnakeCase-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Converts camelCase <code>string</code> to snake_case.
+  
+
+</dd>
+
+        <dt id="toUnicode" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toUnicode.html">toUnicode</a></span><span class="signature">(<wbr><span class="parameter" id="toUnicode-param-charCode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">charCode</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Formats <code>charCode</code> as a Dart unicode escape such as <code>\u000a</code>.
+  
+
+</dd>
+
+        <dt id="toUpperCase" class="callable">
+  <span class="name"><a href="../cmdline/Strings/toUpperCase.html">toUpperCase</a></span><span class="signature">(<wbr><span class="parameter" id="toUpperCase-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/toUpperCase.html">String.toUpperCase</a>.
+  
+
+</dd>
+
+        <dt id="trim" class="callable">
+  <span class="name"><a href="../cmdline/Strings/trim.html">trim</a></span><span class="signature">(<wbr><span class="parameter" id="trim-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/trim.html">String.trim</a>.
+  
+
+</dd>
+
+        <dt id="trimLeft" class="callable">
+  <span class="name"><a href="../cmdline/Strings/trimLeft.html">trimLeft</a></span><span class="signature">(<wbr><span class="parameter" id="trimLeft-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/trimLeft.html">String.trimLeft</a>.
+  
+
+</dd>
+
+        <dt id="trimRight" class="callable">
+  <span class="name"><a href="../cmdline/Strings/trimRight.html">trimRight</a></span><span class="signature">(<wbr><span class="parameter" id="trimRight-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Null-safe <a href="https://api.flutter.dev/flutter/dart-core/String/trimRight.html">String.trimRight</a>.
+  
+
+</dd>
+
+        <dt id="upTo" class="callable">
+  <span class="name"><a href="../cmdline/Strings/upTo.html">upTo</a></span><span class="signature">(<wbr><span class="parameter" id="upTo-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">string</span>, </span><span class="parameter" id="upTo-param-delimiter"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">delimiter</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>string</code> up to, but not including, the first <code>delimiter</code>.
+  
+
+</dd>
+
+        <dt id="within" class="callable">
+  <span class="name"><a href="../cmdline/Strings/within.html">within</a></span><span class="signature">(<wbr><span class="parameter" id="within-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">string</span>, </span><span class="parameter" id="within-param-left"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">left</span>, </span><span class="parameter" id="within-param-right"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">right</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the text between the first <code>left</code> and the last <code>right</code>.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline</a></li>
+    <li class="self-crumb">Strings class</li>
+</ol>
+
+    <h5>cmdline library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

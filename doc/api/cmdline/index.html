@@ -60,7 +60,7 @@
 
     
 <section class="desc markdown">
-  <p>Extensions</p>
+  <p>Core CMDLine library. Exports all sub modules</p>
 </section>
 
 
@@ -236,6 +236,15 @@ A complex yet intuitive logger
   Asks one question on one line until the answer passes a check.
 </dd>
 
+          <dt id="Radix">
+  <span class="name "><a href="../cmdline/Radix-class.html">Radix</a></span> 
+
+</dt>
+<dd>
+  Converts integers between numeral bases — from binary (base-2) all the
+way up to base-256.
+</dd>
+
           <dt id="ShellCommand">
   <span class="name "><a href="../cmdline/ShellCommand-class.html">ShellCommand</a></span> 
 
@@ -244,12 +253,12 @@ A complex yet intuitive logger
   Runs commands as if you typed them into a terminal.
 </dd>
 
-          <dt id="SystemFonts">
-  <span class="name "><a href="../cmdline/SystemFonts-class.html">SystemFonts</a></span> 
+          <dt id="Strings">
+  <span class="name "><a href="../cmdline/Strings-class.html">Strings</a></span> 
 
 </dt>
 <dd>
-  Singleton that discovers and indexes system fonts at runtime.
+  Null-safe String utilities that extend the core <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> API.
 </dd>
 
       </dl>
@@ -258,12 +267,28 @@ A complex yet intuitive logger
     <section class="summary offset-anchor" id="enums">
       <h2>Enums</h2>
       <dl>
+          <dt id="Bases">
+  <span class="name "><a href="../cmdline/Bases.html">Bases</a></span> 
+
+</dt>
+<dd>
+  All supported numeral bases for radix conversion, from base-2 up to base-256.
+</dd>
+
           <dt id="Level">
   <span class="name "><a href="../cmdline/Level.html">Level</a></span> 
 
 </dt>
 <dd>
   Logger verbosity levels
+</dd>
+
+          <dt id="Pad">
+  <span class="name "><a href="../cmdline/Pad.html">Pad</a></span> 
+
+</dt>
+<dd>
+  Where to add padding when a result is shorter than requested.
 </dd>
 
           <dt id="TerminalShell">
@@ -290,6 +315,16 @@ A complex yet intuitive logger
 </dt>
 <dd>
   Adds colours and text styles to any <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>, and chains them together.
+</dd>
+
+          <dt id="Ba">
+  <span class="name "><a href="../cmdline/Ba.html">Ba</a></span>
+  on <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  
+
+</dt>
+<dd>
+  Quick base-conversion getters on non-nullable <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>.
 </dd>
 
           <dt id="Double">
@@ -4420,6 +4455,18 @@ and mathematical helpers.
 </dt>
 <dd>
   Underlines text with a dashed line.
+  
+
+</dd>
+
+          <dt id="DEL" class="constant">
+    <span class="name "><a href="../cmdline/DEL-constant.html">DEL</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The code point of the last ASCII character (DEL).
   
 
 </dd>
@@ -14396,6 +14443,18 @@ and mathematical helpers.
 
 </dd>
 
+          <dt id="UPPER_MASK" class="constant">
+    <span class="name "><a href="../cmdline/UPPER_MASK-constant.html">UPPER_MASK</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
           <dt id="WARNING" class="constant">
     <span class="name "><a href="../cmdline/WARNING-constant.html">WARNING</a></span>
   <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -14516,6 +14575,19 @@ and mathematical helpers.
     <section class="summary offset-anchor" id="functions">
       <h2>Functions</h2>
       <dl class="callables">
+          <dt id="asciiFlags" class="callable">
+  <span class="name"><a href="../cmdline/asciiFlags.html">asciiFlags</a></span><span class="signature">(<wbr><span class="parameter" id="asciiFlags-param-c"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">c</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Classification flags for an ASCII code point.
+  
+
+</dd>
+
           <dt id="copyToClipboard" class="callable">
   <span class="name"><a href="../cmdline/copyToClipboard.html">copyToClipboard</a></span><span class="signature">(<wbr><span class="parameter" id="copyToClipboard-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -14685,6 +14757,45 @@ and mathematical helpers.
 
 </dd>
 
+          <dt id="graphemeFlags" class="callable">
+  <span class="name"><a href="../cmdline/graphemeFlags.html">graphemeFlags</a></span><span class="signature">(<wbr><span class="parameter" id="graphemeFlags-param-grapheme"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">grapheme</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Classification flags for a grapheme.
+  
+
+</dd>
+
+          <dt id="graphemes" class="callable">
+  <span class="name"><a href="../cmdline/graphemes.html">graphemes</a></span><span class="signature">(<wbr><span class="parameter" id="graphemes-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">string</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Splits <code>string</code> into user-perceived characters (grapheme clusters).
+  
+
+</dd>
+
+          <dt id="high" class="callable">
+  <span class="name"><a href="../cmdline/high.html">high</a></span><span class="signature">(<wbr><span class="parameter" id="high-param-lead"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">lead</span>, </span><span class="parameter" id="high-param-tail"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">tail</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
           <dt id="hyperlink" class="callable">
   <span class="name"><a href="../cmdline/hyperlink.html">hyperlink</a></span><span class="signature">(<wbr><span class="parameter" id="hyperlink-param-url"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, </span><span class="parameter" id="hyperlink-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -14698,6 +14809,19 @@ and mathematical helpers.
 
 </dd>
 
+          <dt id="isNonPrintable" class="callable">
+  <span class="name"><a href="../cmdline/isNonPrintable.html">isNonPrintable</a></span><span class="signature">(<wbr><span class="parameter" id="isNonPrintable-param-rune"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">rune</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether <code>rune</code> is a code point that is not visible when printed.
+  
+
+</dd>
+
           <dt id="log" class="callable">
   <span class="name"><a href="../logging/log.html">log</a></span><span class="signature">(<wbr><span class="parameter" id="log-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">message</span>, {</span><span class="parameter" id="log-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span>, </span><span class="parameter" id="log-param-showTimestamp"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">showTimestamp</span></span>})
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -14707,6 +14831,45 @@ and mathematical helpers.
 </dt>
 <dd>
   Prints a log message to stdout and saves it to the log file if one is open
+  
+
+</dd>
+
+          <dt id="low" class="callable">
+  <span class="name"><a href="../cmdline/low.html">low</a></span><span class="signature">(<wbr><span class="parameter" id="low-param-codeUnit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">codeUnit</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+          <dt id="move" class="callable">
+  <span class="name"><a href="../cmdline/move.html">move</a></span><span class="signature">(<wbr><span class="parameter" id="move-param-state"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">state</span>, </span><span class="parameter" id="move-param-inputCategory"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">inputCategory</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+          <dt id="moveBack" class="callable">
+  <span class="name"><a href="../cmdline/moveBack.html">moveBack</a></span><span class="signature">(<wbr><span class="parameter" id="moveBack-param-state"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">state</span>, </span><span class="parameter" id="moveBack-param-inputCategory"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">inputCategory</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
   
 
 </dd>
@@ -14902,6 +15065,21 @@ and mathematical helpers.
 
 
           
+  <dt id="Base" class="">
+  <span class="name"><a href="../cmdline/Base.html">Base</a></span>
+    = <a href="../cmdline/Bases.html">Bases</a>
+  </span>
+  
+
+</dt>
+<dd>
+  A convenient shorthand alias for <a href="../cmdline/Bases.html">Bases</a>.
+  
+
+</dd>
+
+
+          
   <dt id="Color256" class="">
   <span class="name"><a href="../cmdline/Color256.html">Color256</a></span>
     = <a href="../cmdline/AnsiColour-class.html">AnsiColour</a>
@@ -14926,21 +15104,6 @@ and mathematical helpers.
 </dt>
 <dd>
   Short alias for <a href="../cmdline/AnsiColourRgb-class.html">AnsiColourRgb</a>, the 24-bit true colour.
-  
-
-</dd>
-
-
-          
-  <dt id="Font" class="">
-  <span class="name"><a href="../cmdline/Font.html">Font</a></span>
-    = <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>
-  </span>
-  
-
-</dt>
-<dd>
-  A type alias that makes font-family parameters self-documenting.
   
 
 </dd>

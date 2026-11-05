@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Radix class from the cmdline library, for the Dart programming language.">
+  <title>Radix class - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline.dart</a></li>
+    <li class="self-crumb">Radix class</li>
+  </ol>
+  <div class="self-name">Radix</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="cmdline&#47;cmdline-library-sidebar.html"
+    data-below-sidebar="cmdline&#47;Radix-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">Radix</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Converts integers between numeral bases — from binary (base-2) all the
+way up to base-256.</p>
+<p>Under the hood, the conversion works by treating each base as a custom
+alphabet. The <code>_alphabet</code> string defines 256+ unique symbols (digits, letters,
+punctuation, Greek, and Cyrillic characters) and the algorithm maps
+between source and destination alphabets using long division.</p>
+<h2 id="common-conversions">Common Conversions</h2>
+<pre class="language-dart"><code class="language-dart">Radix.hex(255);         // 'FF'
+Radix.bin(42);          // '101010'
+Radix.oct(8);           // '10'
+Radix.base(100, Base.b36); // base-36 representation
+</code></pre>
+<h2 id="colour-helpers">Colour Helpers</h2>
+<p><a href="../cmdline/Radix-class.html">Radix</a> also includes a few helpers for clamping values into the 0-255
+colour range:</p>
+<pre class="language-dart"><code class="language-dart">Radix.colourValue(128.7);            // 129
+Radix.fractionToColourValue(0.5);    // 128
+Radix.percentToColourValue(50.0);    // 128
+</code></pre>
+</section>
+
+
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="Radix.new" class="callable">
+          <span class="name"><a href="../cmdline/Radix/Radix.html">Radix</a></span><span class="signature">(<span class="parameter" id="param-_value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">_value</span>, </span><span class="parameter" id="param-_base"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">_base</span></span>)</span>
+        </dt>
+        <dd>
+          
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="b256" class="property">
+  <span class="name"><a href="../cmdline/Radix/b256.html">b256</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="base" class="property">
+  <span class="name"><a href="../cmdline/Radix/base.html">base</a></span>
+  <span class="signature">&#8592; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">no getter</span></div>
+
+</dd>
+
+        <dt id="decimal" class="property">
+  <span class="name"><a href="../cmdline/Radix/decimal.html">decimal</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="value" class="property">
+  <span class="name"><a href="../cmdline/Radix/value.html">value</a></span>
+  <span class="signature">&#8592; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">no getter</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="add" class="callable">
+  <span class="name"><a href="../cmdline/Radix/add.html">add</a></span><span class="signature">(<wbr><span class="parameter" id="add-param-other"><span class="type-annotation"><a href="../cmdline/Radix-class.html">Radix</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Radix-class.html">Radix</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+  <section class="summary offset-anchor" id="static-methods">
+    <h2>Static Methods</h2>
+    <dl class="callables">
+        <dt id="baseN" class="callable">
+  <span class="name"><a href="../cmdline/Radix/baseN.html">baseN</a></span><span class="signature">(<wbr><span class="parameter" id="baseN-param-data"><span class="type-annotation">dynamic</span> <span class="parameter-name">data</span>, </span><span class="parameter" id="baseN-param-currentRadix"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">currentRadix</span>, </span><span class="parameter" id="baseN-param-toRadix"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">toRadix</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="colourValue" class="callable">
+  <span class="name"><a href="../cmdline/Radix/colourValue.html">colourValue</a></span><span class="signature">(<wbr><span class="parameter" id="colourValue-param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span> <span class="parameter-name">data</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Clamps <code>data</code> to the 0-255 range and rounds to the nearest integer.
+  
+
+</dd>
+
+        <dt id="fractionToColourValue" class="callable">
+  <span class="name"><a href="../cmdline/Radix/fractionToColourValue.html">fractionToColourValue</a></span><span class="signature">(<wbr><span class="parameter" id="fractionToColourValue-param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span> <span class="parameter-name">data</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Converts a 0.0-1.0 fraction to a 0-255 colour value.
+  
+
+</dd>
+
+        <dt id="getBase" class="callable">
+  <span class="name"><a href="../cmdline/Radix/getBase.html">getBase</a></span><span class="signature">(<wbr><span class="parameter" id="getBase-param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">data</span>, </span><span class="parameter" id="getBase-param-radix"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">radix</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Converts an integer <code>data</code> to its string representation in the given
+<code>radix</code> base.
+  
+
+</dd>
+
+        <dt id="getDecimal" class="callable">
+  <span class="name"><a href="../cmdline/Radix/getDecimal.html">getDecimal</a></span><span class="signature">(<wbr><span class="parameter" id="getDecimal-param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">data</span>, </span><span class="parameter" id="getDecimal-param-currentRadix"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">currentRadix</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Converts a string <code>data</code> from <code>currentRadix</code> back to its decimal
+(base-10) string representation.
+  
+
+</dd>
+
+        <dt id="hex" class="callable">
+  <span class="name"><a href="../cmdline/Radix/hex.html">hex</a></span><span class="signature">(<wbr><span class="parameter" id="hex-param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">data</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Shorthand for hexadecimal (base-16) conversion, uppercase.
+  
+
+</dd>
+
+        <dt id="percentToColourValue" class="callable">
+  <span class="name"><a href="../cmdline/Radix/percentToColourValue.html">percentToColourValue</a></span><span class="signature">(<wbr><span class="parameter" id="percentToColourValue-param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span> <span class="parameter-name">data</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Converts a 0-100 percentage to a 0-255 colour value.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline</a></li>
+    <li class="self-crumb">Radix class</li>
+</ol>
+
+    <h5>cmdline library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
