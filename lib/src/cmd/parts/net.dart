@@ -103,14 +103,4 @@ class _Net {
       Logger.instance.stopSpinner(null, Level.log);
     }
   }
-
-  /// Download over the internet
-  Future<File> download(Uri link, File file) async {
-    if (file.existsSync()) file.createSync(recursive: true);
-
-    return await file.writeAsBytes(
-      await http.readBytes(link),
-      mode: FileMode.write,
-    );
-  }
 }
