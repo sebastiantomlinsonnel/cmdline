@@ -6,7 +6,7 @@ analyzer:
     strict-inference: true   # no types quietly inferred as dynamic
     strict-raw-types: true   # no raw generics like List instead of List<int>
   exclude:
-    - example/main.dart
+    - example/**
     - build/**
     - "**/*.g.dart"
   errors:
@@ -99,8 +99,6 @@ dart_code_linter:
     - double-literal-format
     - format-comment:
         only-doc-comments: true
-    # Tests
-    - missing-test.bat-assertion
 
 # ---------------------------------------------------------------------------
 # Built-in Dart lints (IDE and `dart analyze`), on top of lints/recommended.

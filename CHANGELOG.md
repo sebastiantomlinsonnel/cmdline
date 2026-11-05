@@ -1,3 +1,7 @@
+## 2.0.1
+
+- Literally just trying to do everything pub.dev is complaining about
+
 ## 2.0.0
 
 - Refactored for `dart doc`

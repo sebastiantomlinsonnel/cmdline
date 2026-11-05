@@ -159,7 +159,7 @@ class Logger {
   }) {
     _spinnerTimer?.cancel();
     _spinnerTimer = null;
-    _spinnerLabel = '\rlabel';
+    _spinnerLabel = label;
     stdout.write(HIDE_CURSOR);
 
     int frame = 0;

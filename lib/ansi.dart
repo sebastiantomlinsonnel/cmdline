@@ -86,7 +86,10 @@ class Ansi {
       if (string.startsWith(CSI, at)) {
         // Styles, cursor moves and so on: ESC [ ... then one letter.
         at += CSI.length;
+        // Number and separator bytes run until the final letter (@ to ~).
         while (at < string.length) {
+          final int unit = string.codeUnitAt(at);
+          if (unit >= 0x40 && unit <= 0x7E) break;
           at++;
         }
         at++; // Skip the final letter too.

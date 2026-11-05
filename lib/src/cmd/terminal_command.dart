@@ -102,8 +102,6 @@ class ShellCommand {
         program,
         args,
         workingDirectory: _startFolder(),
-        // Use the app's own copy, so changes made through `env` carry over.
-        includeParentEnvironment: false,
         mode: interactive
             ? ProcessStartMode.inheritStdio
             : ProcessStartMode.normal,

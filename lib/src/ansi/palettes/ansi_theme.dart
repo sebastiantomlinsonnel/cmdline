@@ -84,11 +84,10 @@ class CliTheme {
 
   /// Prints [text] on its own line, dropping the colour if it is turned off.
   ///
-  /// With colour on it goes through [Ansi.write], so a [RESET] always
-  /// closes the line.
+  /// With colour on, a [RESET] always closes the line.
   static void say(String text) {
     if (useColour) {
-      write('${Ansi(text)}$RESET');
+      stdout.writeln('${Ansi(text)}$RESET');
     } else {
       stdout.writeln(text.plain);
     }
