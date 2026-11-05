@@ -31,18 +31,18 @@ class AnsiColourRgb extends AnsiInk {
   ///
   /// Each value must be 0 to 255; anything else fails an assert.
   const AnsiColourRgb(this.red, this.green, this.blue)
-    : assert(red >= 0 && red <= 255, 'red must be 0-255'),
-      assert(green >= 0 && green <= 255, 'green must be 0-255'),
-      assert(blue >= 0 && blue <= 255, 'blue must be 0-255');
+      : assert(red >= 0 && red <= 255, 'red must be 0-255'),
+        assert(green >= 0 && green <= 255, 'green must be 0-255'),
+        assert(blue >= 0 && blue <= 255, 'blue must be 0-255');
 
   /// A colour from a hex number such as `0xFF8800`.
   ///
   /// Reads [value] as `0xRRGGBB`. Anything above the lowest 24 bits is
   /// ignored, so an alpha byte in `0xAARRGGBB` is simply dropped.
   const AnsiColourRgb.hex(int value)
-    : red = (value >> 16) & 0xFF,
-      green = (value >> 8) & 0xFF,
-      blue = value & 0xFF;
+      : red = (value >> 16) & 0xFF,
+        green = (value >> 8) & 0xFF,
+        blue = value & 0xFF;
 
   /// `2;<red>;<green>;<blue>`, the true-colour form of the SGR parameters.
   ///
@@ -63,9 +63,9 @@ class AnsiColourRgb extends AnsiInk {
   @override
   bool operator ==(Object other) =>
       other is AnsiColourRgb &&
-      other.red == red &&
-      other.green == green &&
-      other.blue == blue;
+          other.red == red &&
+          other.green == green &&
+          other.blue == blue;
 
   /// Hash of the three channels.
   ///

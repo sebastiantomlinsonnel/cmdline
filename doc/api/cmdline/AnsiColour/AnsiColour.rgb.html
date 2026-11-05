@@ -72,10 +72,10 @@ else fails an assert. The steps are not even: 0, 95, 135, 175, 215 and
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">const AnsiColour.rgb(int red, int green, int blue)
-  : assert(red &gt;= 0 &amp;&amp; red &lt;= 5, &#39;red must be 0-5&#39;),
-    assert(green &gt;= 0 &amp;&amp; green &lt;= 5, &#39;green must be 0-5&#39;),
-    assert(blue &gt;= 0 &amp;&amp; blue &lt;= 5, &#39;blue must be 0-5&#39;),
-    index = 16 + (36 * red) + (6 * green) + blue;</code></pre>
+    : assert(red &gt;= 0 &amp;&amp; red &lt;= 5, &#39;red must be 0-5&#39;),
+      assert(green &gt;= 0 &amp;&amp; green &lt;= 5, &#39;green must be 0-5&#39;),
+      assert(blue &gt;= 0 &amp;&amp; blue &lt;= 5, &#39;blue must be 0-5&#39;),
+      index = 16 + (36 * red) + (6 * green) + blue;</code></pre>
 </section>
 
 
@@ -103,7 +103,7 @@ else fails an assert. The steps are not even: 0, 95, 135, 175, 215 and
 <footer>
   <span class="no-break">
     cmdline
-      2.0.1
+      2.0.2
   </span>
   
 </footer>

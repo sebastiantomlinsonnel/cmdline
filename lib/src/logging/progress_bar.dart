@@ -37,8 +37,7 @@ class ProgressBar {
   String _lastDrawn = '';
 
   /// Creates the bar and shows it straight away, empty.
-  ProgressBar(
-    this.label, {
+  ProgressBar(this.label, {
     required this.total,
     this.width = 30,
     this.colour = const AnsiColour(10),
@@ -83,8 +82,7 @@ class ProgressBar {
   ///
   /// Use it to put a bar in your own text, like
   /// `print('Disk ${ProgressBar.bar(0.7)} 70%')`.
-  static String bar(
-    double fraction, {
+  static String bar(double fraction, {
     int width = 30,
     AnsiInk colour = const AnsiColour(10),
   }) {

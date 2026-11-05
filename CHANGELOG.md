@@ -1,3 +1,7 @@
+## 2.0.2
+
+- Bug fixes
+
 ## 2.0.1
 
 - Literally just trying to do everything pub.dev is complaining about

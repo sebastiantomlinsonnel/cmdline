@@ -29,7 +29,7 @@ class CliDemo {
     heading('Colour can be turned off');
     log(
       'CliTheme.useColour is ${CliTheme.useColour} here. '
-      'Set NO_COLOR or pipe the output to turn it off.',
+          'Set NO_COLOR or pipe the output to turn it off.',
     );
   }
 

@@ -330,11 +330,9 @@ Future<void> _showcase({int? only}) async {
 Future<void> _beat() => delay(0.25);
 
 /// Clears the screen, prints the scene's title, then plays it.
-Future<void> _scene(
-  int number,
-  String title,
-  Future<void> Function() body,
-) async {
+Future<void> _scene(int number,
+    String title,
+    Future<void> Function() body,) async {
   final theme = CliTheme.current;
   _clear();
   CliTheme.say('');
@@ -509,7 +507,7 @@ Future<void> _tables() async {
   CliTheme.say(
     CMD.draw.box(
       '${'2'.bold} packages can be updated.\n'
-      'Run ${'dart pub upgrade'.foreground(AnsiPalette.sky)} to get them.',
+          'Run ${'dart pub upgrade'.foreground(AnsiPalette.sky)} to get them.',
       title: 'Summary',
     ),
   );

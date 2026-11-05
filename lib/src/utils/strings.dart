@@ -173,18 +173,18 @@ class Strings {
   /// Unicode spaces as well as space, tab and newline.
   static bool isWhitespaceRune(int rune) =>
       (rune >= 0x0009 && rune <= 0x000D) ||
-      rune == 0x0020 ||
-      rune == 0x0085 ||
-      rune == 0x00A0 ||
-      rune == 0x1680 ||
-      rune == 0x180E ||
-      (rune >= 0x2000 && rune <= 0x200A) ||
-      rune == 0x2028 ||
-      rune == 0x2029 ||
-      rune == 0x202F ||
-      rune == 0x205F ||
-      rune == 0x3000 ||
-      rune == 0xFEFF;
+          rune == 0x0020 ||
+          rune == 0x0085 ||
+          rune == 0x00A0 ||
+          rune == 0x1680 ||
+          rune == 0x180E ||
+          (rune >= 0x2000 && rune <= 0x200A) ||
+          rune == 0x2028 ||
+          rune == 0x2029 ||
+          rune == 0x202F ||
+          rune == 0x205F ||
+          rune == 0x3000 ||
+          rune == 0xFEFF;
 
   /// Whether [string] contains no lower case letters.
   ///
@@ -392,13 +392,11 @@ class Strings {
       final flag = graphemeFlags(s);
 
       if (separate && flag & UPPER_MASK != 0) {
-        sb
-          ..write('_')
-          ..write(s.toLowerCase());
+        sb..write('_')..write(s.toLowerCase());
       } else {
         separate =
             flag & _alphaNumMask != 0 ||
-            (flag & _underscoreMask != 0 && separate);
+                (flag & _underscoreMask != 0 && separate);
         sb.write(s.toLowerCase());
       }
     }
@@ -418,7 +416,10 @@ class Strings {
       return string;
     }
 
-    return graphemes(string).toList().reversed.join();
+    return graphemes(string)
+        .toList()
+        .reversed
+        .join();
   }
 
   /// Escapes [string] so it can be pasted into Dart source.
@@ -427,8 +428,7 @@ class Strings {
   /// `$` and `\` are backslash escaped. Other control and non-printable
   /// characters are passed to [encode], which defaults to [toUnicode].
   /// Returns an empty string for null or empty input.
-  static String toEscape(
-    String? string, {
+  static String toEscape(String? string, {
     String Function(int charCode)? encode,
   }) {
     if (string == null || string.isEmpty) {
@@ -544,8 +544,7 @@ class Strings {
   /// ```dart
   /// Strings.conjuctionJoin(['a', 'b', 'c']); // 'a, b or c'
   /// ```
-  static String conjuctionJoin(
-    List<String> list, {
+  static String conjuctionJoin(List<String> list, {
     String separator = ', ',
     String last = ' or ',
   }) {
@@ -578,11 +577,10 @@ class Strings {
   /// Null-safe [Pattern.allMatches] on a String [pattern].
   ///
   /// A null [pattern] is treated as an empty String.
-  static Iterable<Match> allMatches(
-    String? pattern,
-    String string, [
-    int start = 0,
-  ]) => (pattern ?? '').allMatches(string, start);
+  static Iterable<Match> allMatches(String? pattern,
+      String string, [
+        int start = 0,
+      ]) => (pattern ?? '').allMatches(string, start);
 
   /// Null-safe [String.codeUnitAt].
   ///
@@ -596,11 +594,10 @@ class Strings {
   /// Returns 0 when [string] and [other] are equal, including both null.
   /// When only one is null, [nullIsLessThan] decides whether null sorts
   /// before (-1) or after (1) the other value.
-  static int compareTo(
-    String? string,
-    String? other, {
-    bool nullIsLessThan = true,
-  }) {
+  static int compareTo(String? string,
+      String? other, {
+        bool nullIsLessThan = true,
+      }) {
     if (string == other) {
       return 0;
     }
@@ -645,11 +642,10 @@ class Strings {
   /// Null-safe [Pattern.matchAsPrefix] on a String [pattern].
   ///
   /// A null [pattern] is treated as an empty String.
-  static Match? matchAsPrefix(
-    String? pattern,
-    String string, [
-    int start = 0,
-  ]) => (pattern ?? '').matchAsPrefix(string, start);
+  static Match? matchAsPrefix(String? pattern,
+      String string, [
+        int start = 0,
+      ]) => (pattern ?? '').matchAsPrefix(string, start);
 
   /// Null-safe [String.padLeft].
   ///
@@ -672,41 +668,37 @@ class Strings {
   /// Null-safe [String.replaceAllMapped].
   ///
   /// A null [string] is treated as an empty String.
-  static String replaceAllMapped(
-    String? string,
-    Pattern from,
-    String Function(Match match) replace,
-  ) => (string ?? '').replaceAllMapped(from, replace);
+  static String replaceAllMapped(String? string,
+      Pattern from,
+      String Function(Match match) replace,) =>
+      (string ?? '').replaceAllMapped(from, replace);
 
   /// Null-safe [String.replaceFirst].
   ///
   /// A null [string] is treated as an empty String.
-  static String replaceFirst(
-    String? string,
-    Pattern from,
-    String to, [
-    int startIndex = 0,
-  ]) => (string ?? '').replaceFirst(from, to, startIndex);
+  static String replaceFirst(String? string,
+      Pattern from,
+      String to, [
+        int startIndex = 0,
+      ]) => (string ?? '').replaceFirst(from, to, startIndex);
 
   /// Null-safe [String.replaceFirstMapped].
   ///
   /// A null [string] is treated as an empty String.
-  static String replaceFirstMapped(
-    String? string,
-    Pattern from,
-    String Function(Match match) replace, [
-    int startIndex = 0,
-  ]) => (string ?? '').replaceFirstMapped(from, replace, startIndex);
+  static String replaceFirstMapped(String? string,
+      Pattern from,
+      String Function(Match match) replace, [
+        int startIndex = 0,
+      ]) => (string ?? '').replaceFirstMapped(from, replace, startIndex);
 
   /// Null-safe [String.replaceRange].
   ///
   /// A null [string] is treated as an empty String.
-  static String replaceRange(
-    String? string,
-    int start,
-    int? end,
-    String replacement,
-  ) => (string ?? '').replaceRange(start, end, replacement);
+  static String replaceRange(String? string,
+      int start,
+      int? end,
+      String replacement,) =>
+      (string ?? '').replaceRange(start, end, replacement);
 
   /// Null-safe [String.split].
   ///
@@ -717,16 +709,16 @@ class Strings {
   /// Null-safe [String.splitMapJoin].
   ///
   /// A null [string] is treated as an empty String.
-  static String splitMapJoin(
-    String? string,
-    Pattern pattern, {
-    String Function(Match)? onMatch,
-    String Function(String)? onNonMatch,
-  }) => (string ?? '').splitMapJoin(
-    pattern,
-    onMatch: onMatch,
-    onNonMatch: onNonMatch,
-  );
+  static String splitMapJoin(String? string,
+      Pattern pattern, {
+        String Function(Match)? onMatch,
+        String Function(String)? onNonMatch,
+      }) =>
+      (string ?? '').splitMapJoin(
+        pattern,
+        onMatch: onMatch,
+        onNonMatch: onNonMatch,
+      );
 
   /// Null-safe [String.startsWith].
   ///
@@ -775,7 +767,9 @@ class Strings {
   ///
   /// See [isEmpty] to check for a null or zero length string.
   static bool isBlank(String? string) =>
-      string == null || string.trim().isEmpty;
+      string == null || string
+          .trim()
+          .isEmpty;
 
   /// Whether [string] is not null and contains a non-whitespace character.
   ///
@@ -825,8 +819,7 @@ class Strings {
   /// [start] defaults to 0 and [end] to the end of the string. Positions
   /// count user-perceived characters. Each hidden character is replaced with
   /// [replaceWith], which defaults to '*'. Returns an empty string for null.
-  static String hidePart(
-    String? string, {
+  static String hidePart(String? string, {
     int start = 0,
     int? end,
     String replaceWith = '*',
@@ -856,8 +849,7 @@ class Strings {
   /// Strings.join([1, 2]);                // '12'
   /// Strings.join([1, 2], separator: ','); // '1,2'
   /// ```
-  static String join(
-    List<Object?>? list, {
+  static String join(List<Object?>? list, {
     String separator = '',
     bool excludeEmpty = false,
   }) {
@@ -869,9 +861,9 @@ class Strings {
       return list
           .where(
             (element) =>
-                element != null &&
-                (element is! String || Strings.isNotBlank(element)),
-          )
+        element != null &&
+            (element is! String || Strings.isNotBlank(element)),
+      )
           .join(separator);
     }
     return list.map((element) => element ?? '').join(separator);

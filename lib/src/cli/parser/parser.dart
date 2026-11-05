@@ -223,7 +223,7 @@ class Parser {
     if (option.allowed.isNotEmpty && !option.allowed.contains(value)) {
       _fail(
         '"$value" is not allowed for -${option.name}. '
-        'Pick one of: ${option.allowed.join(', ')}.',
+            'Pick one of: ${option.allowed.join(', ')}.',
       );
     }
 

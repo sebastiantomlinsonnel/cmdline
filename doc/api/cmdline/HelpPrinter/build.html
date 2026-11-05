@@ -73,7 +73,7 @@
   final command = commands.last;
   final path = [for (final c in commands) c.name].join(&#39; &#39;);
   final lines = &lt;String&gt;[];
-  lines.add(&#39;\n&#39;);
+  &#47;&#47; lines.add(&#39;\n&#39;);
 
   &#47;&#47; Title, e.g. &quot;todo add&quot; or &quot;todo 1.0.0&quot;.
   var title = path.bold.foreground(_titleColour);
@@ -164,7 +164,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.1
+      2.0.2
   </span>
   
 </footer>

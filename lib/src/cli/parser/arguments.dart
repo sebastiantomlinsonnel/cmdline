@@ -62,8 +62,7 @@ class Flag {
   final bool hidden;
 
   /// Creates a flag called [name].
-  const Flag(
-    this.name, {
+  const Flag(this.name, {
     this.short,
     this.help = '',
     this.defaultValue = false,
@@ -128,8 +127,7 @@ class Option {
   final bool hidden;
 
   /// Creates an option called [name].
-  const Option(
-    this.name, {
+  const Option(this.name, {
     this.short,
     this.help = '',
     this.valueName,

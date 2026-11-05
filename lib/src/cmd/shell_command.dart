@@ -54,8 +54,7 @@ class ShellCommand {
   final bool interactive;
 
   /// [command]
-  const ShellCommand(
-    this.command, {
+  const ShellCommand(this.command, {
     this.shell,
     this.show = true,
     this.interactive = false,
@@ -86,8 +85,7 @@ class ShellCommand {
   ///
   /// The result works with the `ok`, `output`, `lines` and `throwIfFailed`
   /// helpers.
-  static Future<ProcessResult> run(
-    String command, {
+  static Future<ProcessResult> run(String command, {
     TerminalShell? shell,
     bool show = true,
     bool interactive = false,
@@ -166,13 +164,11 @@ class ShellCommand {
   static String? _powershell;
 
   /// The program and arguments that run [command] in [shell].
-  static Future<(String, List<String>)> _startArgs(
-    TerminalShell shell,
-    String command,
-    String folderFile,
-    String tempFolder,
-    bool interactive,
-  ) async {
+  static Future<(String, List<String>)> _startArgs(TerminalShell shell,
+      String command,
+      String folderFile,
+      String tempFolder,
+      bool interactive,) async {
     switch (shell) {
       case TerminalShell.powershell:
         final script = _powershellScript(command, folderFile);
@@ -181,26 +177,26 @@ class ShellCommand {
         final encoded = base64.encode(_utf16le(script));
 
         return (
-          await _findPowershell(),
-          [
-            '-NoProfile',
-            '-NoLogo',
-            if (!interactive) '-NonInteractive',
-            '-ExecutionPolicy',
-            'Bypass',
-            '-EncodedCommand',
-            encoded,
-          ],
+        await _findPowershell(),
+        [
+          '-NoProfile',
+          '-NoLogo',
+          if (!interactive) '-NonInteractive',
+          '-ExecutionPolicy',
+          'Bypass',
+          '-EncodedCommand',
+          encoded,
+        ],
         );
 
       case TerminalShell.cmd:
-        // A batch file dodges cmd's quoting rules for "cmd /c".
+      // A batch file dodges cmd's quoting rules for "cmd /c".
         final batch = File('$tempFolder${Platform.pathSeparator}command.bat');
         batch.writeAsStringSync(_cmdScript(command, folderFile));
 
         return (
-          Platform.environment['ComSpec'] ?? 'cmd.exe',
-          ['/d', '/c', batch.path],
+        Platform.environment['ComSpec'] ?? 'cmd.exe',
+        ['/d', '/c', batch.path],
         );
 
       case TerminalShell.bash:
@@ -315,9 +311,7 @@ try {
   static List<int> _utf16le(String text) {
     final bytes = <int>[];
     for (final unit in text.codeUnits) {
-      bytes
-        ..add(unit & 0xFF)
-        ..add(unit >> 8);
+      bytes..add(unit & 0xFF)..add(unit >> 8);
     }
 
     return bytes;

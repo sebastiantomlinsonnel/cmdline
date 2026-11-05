@@ -57,7 +57,8 @@ class CmdDemo {
       'sky'.foreground(AnsiPalette.sky),
     ]) {
       CliTheme.say(
-        '[${CMD.draw.padPlain(word, 8)}] [${CMD.draw.padPlain(word, 8, right: true)}]',
+        '[${CMD.draw.padPlain(word, 8)}] [${CMD.draw.padPlain(
+            word, 8, right: true)}]',
       );
     }
   }
@@ -86,7 +87,10 @@ class CmdDemo {
       ['absolute', CMD.fs.absolute('lib')],
       ['homeDirectory', CMD.fs.homeDirectory],
       ['pwd', CMD.fs.pwd],
-      ['globToRegExp', CMD.fs.globToRegExp('**/*.dart').pattern],
+      ['globToRegExp', CMD.fs
+          .globToRegExp('**/*.dart')
+          .pattern
+      ],
     ]);
   }
 
@@ -176,7 +180,7 @@ class CmdDemo {
     final failing = await ShellCommand.run('exit 3', show: false);
     log(
       'The failing command gave exit code ${failing.exitCode} '
-      '(ok: ${failing.ok}, failed: ${failing.failed})',
+          '(ok: ${failing.ok}, failed: ${failing.failed})',
     );
 
     try {
@@ -211,8 +215,8 @@ class CmdDemo {
     final dart = await Process.start('dart', ['--version'], runInShell: true);
     await dart.closeInput();
     final (lines, errors) = await (
-      dart.stdout.lines.toList(),
-      dart.stderr.text,
+    dart.stdout.lines.toList(),
+    dart.stderr.text,
     ).wait;
     final said = [...lines, errors.trim()].where((line) => line.isNotEmpty);
     log('dart said: ${said.join(' ')}');
@@ -258,7 +262,7 @@ class CmdDemo {
       'Port',
       defaultValue: '8080',
       validator: (answer) =>
-          int.tryParse(answer) == null ? 'Type a number' : null,
+      int.tryParse(answer) == null ? 'Type a number' : null,
     );
     final secret = CMD.prompt.ask('Password', hidden: true, required: false);
     final colour = CMD.prompt.menu('Favourite colour', [
@@ -311,7 +315,8 @@ class CmdDemo {
   }
 
   /// Quotes [path] for the default shell.
-  static String _quoted(String path) => Platform.isWindows
-      ? CMD.quoteWrap(path)
-      : "'${path.replaceAll("'", r"'\''")}'";
+  static String _quoted(String path) =>
+      Platform.isWindows
+          ? CMD.quoteWrap(path)
+          : "'${path.replaceAll("'", r"'\''")}'";
 }

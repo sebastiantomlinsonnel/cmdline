@@ -118,8 +118,8 @@ class Radix {
       if (index == -1) {
         throw FormatException(
           'Source "$source" contains character '
-          '"${source[i]}" which is outside of the defined source alphabet '
-          '"$from"',
+              '"${source[i]}" which is outside of the defined source alphabet '
+              '"$from"',
         );
       }
       numberMap[i] = index;

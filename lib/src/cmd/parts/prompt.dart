@@ -20,8 +20,7 @@ class _Prompt {
   ///     int.tryParse(a) == null ? 'Type a number' : null);
   /// final secret = ask('Password', hidden: true);
   /// ```
-  String ask(
-    String prompt, {
+  String ask(String prompt, {
     String? defaultValue,
     bool hidden = false,
     bool required = true,
@@ -73,8 +72,8 @@ class _Prompt {
         };
 
         return (
-          value: answer,
-          problem: answer == null ? 'Please type y or n' : null,
+        value: answer,
+        problem: answer == null ? 'Please type y or n' : null,
         );
       },
     );
@@ -95,12 +94,11 @@ class _Prompt {
   /// final colour = menu('Pick a colour', ['Red', 'Green', 'Blue']);
   /// final file = menu('Open which file?', files, format: basename);
   /// ```
-  T menu<T>(
-    String prompt,
-    List<T> options, {
-    String Function(T option)? format,
-    T? defaultOption,
-  }) {
+  T menu<T>(String prompt,
+      List<T> options, {
+        String Function(T option)? format,
+        T? defaultOption,
+      }) {
     if (options.isEmpty) throw ArgumentError.value(options, 'options', 'Empty');
 
     final labels = [
@@ -125,7 +123,7 @@ class _Prompt {
     final theme = CliTheme.current;
     CliTheme.say(
       '${'?'.foreground(theme.hint)} '
-      '${prompt.bold.foreground(theme.question)}',
+          '${prompt.bold.foreground(theme.question)}',
     );
     for (var i = 0; i < labels.length; i++) {
       CliTheme.say('  ${'${i + 1})'.foreground(theme.hint)} ${labels[i]}');
@@ -141,8 +139,8 @@ class _Prompt {
         final ok = index >= 0 && index < labels.length;
 
         return (
-          value: ok ? index : null,
-          problem: ok ? null : 'Type a number from 1 to ${labels.length}',
+        value: ok ? index : null,
+        problem: ok ? null : 'Type a number from 1 to ${labels.length}',
         );
       },
     );
@@ -181,7 +179,7 @@ class _MenuScreen {
     final question = prompt.bold.foreground(theme.question);
     stdout.write(
       '${'?'.foreground(theme.hint)} $question '
-      '${'(↑/↓ and Enter)'.dim.foreground(theme.hint)}\n$HIDE_CURSOR',
+          '${'(↑/↓ and Enter)'.dim.foreground(theme.hint)}\n$HIDE_CURSOR',
     );
 
     final echo = stdin.echoMode;
@@ -269,24 +267,24 @@ class _MenuScreen {
     final byte = stdin.readByteSync();
     switch (byte) {
       case -1 || 3:
-        // Input closed, or Ctrl+C.
+      // Input closed, or Ctrl+C.
         return _Key.cancel;
       case 10 || 13:
         return _Key.enter;
       case 27:
-        // ESC [ A is up and ESC [ B is down (ESC O A/B on some terminals).
+      // ESC [ A is up and ESC [ B is down (ESC O A/B on some terminals).
         final second = stdin.readByteSync();
         if (second != 0x5B && second != 0x4F) return _Key.other;
 
         return _arrow(stdin.readByteSync(), up: 0x41, down: 0x42);
       case 0 || 0xE0:
-        // Older Windows consoles send 0xE0 then H for up or P for down.
+      // Older Windows consoles send 0xE0 then H for up or P for down.
         return _arrow(stdin.readByteSync(), up: 0x48, down: 0x50);
       case 0x6B || 0x77:
-        // k or w
+      // k or w
         return _Key.up;
       case 0x6A || 0x73:
-        // j or s
+      // j or s
         return _Key.down;
       case final digit when digit >= 0x31 && digit <= 0x39:
         _number = digit - 0x31;
@@ -312,7 +310,9 @@ enum _Key { up, down, enter, cancel, number, other }
 /// What a prompt's check makes of the typed text.
 ///
 /// Either a `value` to give back, or a `problem` to show before asking again.
-typedef PromptCheck<T> = ({T? value, String? problem}) Function(String typed);
+typedef PromptCheck<T> = ({T? value, String? problem})
+
+Function(String typed);
 
 /// Asks one question on one line until the answer passes a check.
 ///
@@ -329,8 +329,7 @@ class PromptLine {
   /// question. With [hidden], typing isn't shown on screen. If input ends
   /// (stdin is closed), [check] gets an empty string, and if that isn't
   /// accepted a [StdinException] is thrown.
-  static T run<T>(
-    String question, {
+  static T run<T>(String question, {
     required PromptCheck<T> check,
     required String Function(T value) shown,
     String hint = '',

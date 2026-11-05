@@ -138,7 +138,7 @@ class Command {
         if (!_isLetter(short) || short != short.toLowerCase()) {
           throw ArgumentError(
             'The flag "${flag.name}" needs one lowercase letter as its short '
-            'name, like "u".',
+                'name, like "u".',
           );
         }
         _claim(seen, '-$short');
@@ -154,7 +154,7 @@ class Command {
         if (!_isLetter(short) || short != short.toUpperCase()) {
           throw ArgumentError(
             'The option "${option.name}" needs one capital letter as its '
-            'short name, like "T".',
+                'short name, like "T".',
           );
         }
         _claim(seen, '-$short');
@@ -170,7 +170,7 @@ class Command {
       } else if (sawOptional) {
         throw ArgumentError(
           'The argument "${argument.name}" in "$name" is required, so it must '
-          'come before the optional ones.',
+              'come before the optional ones.',
         );
       }
     }
@@ -191,7 +191,7 @@ class Command {
     if (longName.length < 2 || longName != longName.toLowerCase()) {
       throw ArgumentError(
         '"$longName" in "$name" must be lowercase and at least two '
-        'characters long.',
+            'characters long.',
       );
     }
   }

@@ -84,13 +84,11 @@
     final flag = graphemeFlags(s);
 
     if (separate &amp;&amp; flag &amp; UPPER_MASK != 0) {
-      sb
-        ..write(&#39;_&#39;)
-        ..write(s.toLowerCase());
+      sb..write(&#39;_&#39;)..write(s.toLowerCase());
     } else {
       separate =
           flag &amp; _alphaNumMask != 0 ||
-          (flag &amp; _underscoreMask != 0 &amp;&amp; separate);
+              (flag &amp; _underscoreMask != 0 &amp;&amp; separate);
       sb.write(s.toLowerCase());
     }
   }
@@ -124,7 +122,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.1
+      2.0.2
   </span>
   
 </footer>

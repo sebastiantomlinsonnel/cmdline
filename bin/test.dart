@@ -4,7 +4,10 @@ const String LOG_FILE = r'X:\Flutter\cmdline\log';
 const String STRING = 'Hello World!';
 const String STYLED = '$BOLD$UNDERLINE$ENCIRCLE' + STRING + RESET;
 
-Future<void> main() async {
+CLI cli = CLI(name: 't');
+
+Future<void> main(List<String> args) async {
+  await cli.start(args);
   stressTest(true);
 
   trace('$STYLED\n\n${const Ansi(STYLED).visible}$NEWLINE');
@@ -13,7 +16,8 @@ Future<void> main() async {
 }
 
 void stressTest(bool clear) {
-  final Stopwatch _clock = Stopwatch()..start();
+  final Stopwatch _clock = Stopwatch()
+    ..start();
   for (var i = 0; i < 1000; ++i) {
     printAllNames();
   }
@@ -21,7 +25,8 @@ void stressTest(bool clear) {
 
   if (clear) write('$CLEAR');
   trace(
-    'Stress test.bat took ${_clock.elapsedMicroseconds}μs|${_clock.elapsedMilliseconds}ms',
+    'Stress test.bat took ${_clock.elapsedMicroseconds}μs|${_clock
+        .elapsedMilliseconds}ms',
   );
 }
 

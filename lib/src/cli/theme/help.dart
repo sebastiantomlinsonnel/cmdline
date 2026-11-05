@@ -29,7 +29,7 @@ class HelpPrinter {
     final command = commands.last;
     final path = [for (final c in commands) c.name].join(' ');
     final lines = <String>[];
-    lines.add('\n');
+    // lines.add('\n');
 
     // Title, e.g. "todo add" or "todo 1.0.0".
     var title = path.bold.foreground(_titleColour);
@@ -181,20 +181,19 @@ class HelpPrinter {
       short == null ? '    $long' : '-$short, $long';
 
   /// The sub-commands of [command] that aren't hidden.
-  List<Command> _visibleCommands(Command command) => [
-    for (final sub in command.commands)
-      if (!sub.hidden) sub,
-  ];
+  List<Command> _visibleCommands(Command command) =>
+      [
+        for (final sub in command.commands)
+          if (!sub.hidden) sub,
+      ];
 
   /// A section heading, like "Usage".
   String _heading(String text) => text.bold.foreground(_headingColour);
 
   /// Adds a heading and lined-up rows to [lines]. Skips empty sections.
-  void _addSection(
-    List<String> lines,
-    String heading,
-    List<List<String>> rows,
-  ) {
+  void _addSection(List<String> lines,
+      String heading,
+      List<List<String>> rows,) {
     if (rows.isEmpty) return;
 
     // Find the longest label so the help texts line up in one column.

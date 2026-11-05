@@ -31,7 +31,8 @@ class Logger {
 
   Timer? _spinnerTimer;
   String? _spinnerLabel;
-  final Stopwatch _clock = Stopwatch()..start();
+  final Stopwatch _clock = Stopwatch()
+    ..start();
   int _lastLog = 0;
 
   /// Singleton pattern
@@ -49,12 +50,11 @@ class Logger {
   }
 
   /// Get the log for printing
-  static String getString(
-    dynamic message,
-    Level level, {
-    bool? showTimestamp,
-    String? tag,
-  }) {
+  static String getString(dynamic message,
+      Level level, {
+        bool? showTimestamp,
+        String? tag,
+      }) {
     final StringBuffer _message = StringBuffer();
     if (showTimestamp ?? Logger.instance.showTimestampInOutput) {
       _message.writeAll([instance._getTimestamp()]);
@@ -135,25 +135,38 @@ class Logger {
   String getVerbosityColour(Level level, String data) {
     switch (level) {
       case Level.trace:
-        return data.foreground(AnsiPalette.orchid).bold;
+        return data
+            .foreground(AnsiPalette.orchid)
+            .bold;
       case Level.debug:
-        return data.foreground(AnsiPalette.mint).bold;
+        return data
+            .foreground(AnsiPalette.mint)
+            .bold;
       case Level.fail:
-        return data.foreground(AnsiPalette.brick).bold;
+        return data
+            .foreground(AnsiPalette.brick)
+            .bold;
       case Level.pass:
-        return data.foreground(AnsiPalette.leaf).bold;
+        return data
+            .foreground(AnsiPalette.leaf)
+            .bold;
       case Level.warn:
-        return data.foreground(AnsiPalette.amber).bold;
+        return data
+            .foreground(AnsiPalette.amber)
+            .bold;
       case Level.log:
-        return data.foreground(AnsiPalette.snow).bold;
+        return data
+            .foreground(AnsiPalette.snow)
+            .bold;
       case Level.dev:
-        return data.foreground(AnsiPalette.rose).bold;
+        return data
+            .foreground(AnsiPalette.rose)
+            .bold;
     }
   }
 
   /// Shows an animated spinner on the current line until [stopSpinner]
-  void startSpinner(
-    String label, {
+  void startSpinner(String label, {
     Level level = Level.log,
     Duration interval = const Duration(milliseconds: 300),
   }) {

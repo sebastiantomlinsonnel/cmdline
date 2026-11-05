@@ -43,4 +43,6 @@ void writeFile(String path, String text) {
 ///
 /// Every demo that touches files works in one of these and deletes it after.
 String tempFolder(String prefix) =>
-    Directory.systemTemp.createTempSync(prefix).path;
+    Directory.systemTemp
+        .createTempSync(prefix)
+        .path;

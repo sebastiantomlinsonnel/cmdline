@@ -29,12 +29,14 @@ class _Draw {
 
     final top = title == null
         ? edge(
-            '${chars.topLeft}${chars.horizontal * (width + 2)}${chars.topRight}',
-          )
+      '${chars.topLeft}${chars.horizontal * (width + 2)}${chars.topRight}',
+    )
         : '${edge('${chars.topLeft}${chars.horizontal} ')}${title.bold}'
-              '${edge(' ${chars.horizontal * (width - titleWidth + 2)}${chars.topRight}')}';
+        '${edge(
+        ' ${chars.horizontal * (width - titleWidth + 2)}${chars.topRight}')}';
     final bottom = edge(
-      '${chars.bottomLeft}${chars.horizontal * (width + 2)}${chars.bottomRight}',
+      '${chars.bottomLeft}${chars.horizontal * (width + 2)}${chars
+          .bottomRight}',
     );
 
     return [
@@ -70,8 +72,7 @@ class _Draw {
   ///   rightAligned: {1},
   /// ));
   /// ```
-  String table(
-    List<List<Object?>> rows, {
+  String table(List<List<Object?>> rows, {
     List<Object?>? header,
     Set<int> rightAligned = const {},
   }) {
@@ -89,9 +90,11 @@ class _Draw {
     }
 
     String edge(String text) => text.foreground(theme.border);
-    String line(String left, String middle, String right) => edge(
-      '$left${widths.map((w) => chars.horizontal * (w + 2)).join(middle)}$right',
-    );
+    String line(String left, String middle, String right) =>
+        edge(
+          '$left${widths.map((w) => chars.horizontal * (w + 2)).join(
+              middle)}$right',
+        );
     String cells(List<Object?> row, {bool bold = false}) {
       final parts = [
         for (var i = 0; i < columns; i++)

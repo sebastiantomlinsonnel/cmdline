@@ -3,10 +3,13 @@ library cmdline;
 
 ///  ANSI lib
 export 'ansi.dart';
+
 ///  CLI lib
 export 'cli.dart';
+
 ///  CMD lib
 export 'cmd.dart';
+
 ///  LOGGING lib
 export 'logging.dart';
 export 'src/extensions/ansi.dart';

@@ -34,10 +34,10 @@ class AnsiColour extends AnsiInk {
   /// else fails an assert. The steps are not even: 0, 95, 135, 175, 215 and
   /// 255 out of 255.
   const AnsiColour.rgb(int red, int green, int blue)
-    : assert(red >= 0 && red <= 5, 'red must be 0-5'),
-      assert(green >= 0 && green <= 5, 'green must be 0-5'),
-      assert(blue >= 0 && blue <= 5, 'blue must be 0-5'),
-      index = 16 + (36 * red) + (6 * green) + blue;
+      : assert(red >= 0 && red <= 5, 'red must be 0-5'),
+        assert(green >= 0 && green <= 5, 'green must be 0-5'),
+        assert(blue >= 0 && blue <= 5, 'blue must be 0-5'),
+        index = 16 + (36 * red) + (6 * green) + blue;
 
   /// A grey from the 24-step grey ramp (indexes 232 to 255).
   ///
@@ -45,8 +45,8 @@ class AnsiColour extends AnsiInk {
   /// #EEEEEE); anything else fails an assert. For pure black or white use
   /// `AnsiColour(16)` or `AnsiColour(231)`.
   const AnsiColour.gray(int step)
-    : assert(step >= 0 && step <= 23, 'step must be 0-23'),
-      index = 232 + step;
+      : assert(step >= 0 && step <= 23, 'step must be 0-23'),
+        index = 232 + step;
 
   /// British spelling of [AnsiColour.gray].
   ///

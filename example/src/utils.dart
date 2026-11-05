@@ -168,7 +168,9 @@ class UtilsDemo {
       ['Radix("777", 8).decimal', Radix('777', 8).decimal],
       [
         'Radix("FF", 16).add(Radix("1", 10)).decimal',
-        Radix('FF', 16).add(Radix('1', 10)).decimal,
+        Radix('FF', 16)
+            .add(Radix('1', 10))
+            .decimal,
       ],
       ['Radix.percentToColourValue(50)', Radix.percentToColourValue(50)],
     ]);

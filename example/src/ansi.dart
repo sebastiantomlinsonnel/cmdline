@@ -134,8 +134,10 @@ class AnsiDemo {
 
     heading('True colour: AnsiColourRgb and AnsiColourRgb.hex');
     CliTheme.say(
-      '${'AnsiColourRgb(255, 128, 0)'.foreground(const AnsiColourRgb(255, 128, 0))}  '
-      '${'AnsiColourRgb.hex(0x4FC3F7)'.foreground(const AnsiColourRgb.hex(0x4FC3F7))}',
+      '${'AnsiColourRgb(255, 128, 0)'.foreground(
+          const AnsiColourRgb(255, 128, 0))}  '
+          '${'AnsiColourRgb.hex(0x4FC3F7)'.foreground(
+          const AnsiColourRgb.hex(0x4FC3F7))}',
     );
 
     heading('Blending: sky.opacity(amount, over: rose)');

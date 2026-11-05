@@ -85,7 +85,9 @@ file exists.</p>
 
   final found = &lt;String&gt;[];
   for (final line in LineSplitter.split(result.stdout.toString())) {
-    if (line.trim().isNotEmpty) found.add(line.trim());
+    if (line
+        .trim()
+        .isNotEmpty) found.add(line.trim());
   }
   if (found.isEmpty) return null;
 
@@ -133,7 +135,7 @@ file exists.</p>
 <footer>
   <span class="no-break">
     cmdline
-      2.0.1
+      2.0.2
   </span>
   
 </footer>

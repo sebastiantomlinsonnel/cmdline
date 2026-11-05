@@ -20,12 +20,11 @@ class _Net {
   ///   join(pwd, 'build', 'VERSION.json'),
   /// );
   /// ```
-  Future<void> fetch(
-    String url,
-    String saveTo, {
-    bool showProgress = true,
-    bool overwrite = false,
-  }) async {
+  Future<void> fetch(String url,
+      String saveTo, {
+        bool showProgress = true,
+        bool overwrite = false,
+      }) async {
     if (!overwrite && CMD.fs.exists(saveTo))
       throw FileError('Already exists', saveTo);
 

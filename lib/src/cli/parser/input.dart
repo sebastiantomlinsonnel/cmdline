@@ -35,11 +35,12 @@ class Input {
     required List<Command> commands,
     required this.rest,
     required this.commandPath,
-  }) : _flags = flags,
-       _options = options,
-       _given = given,
-       _arguments = arguments,
-       _commands = commands;
+  })
+      : _flags = flags,
+        _options = options,
+        _given = given,
+        _arguments = arguments,
+        _commands = commands;
 
   /// Prints the help screen of the command that is running.
   ///

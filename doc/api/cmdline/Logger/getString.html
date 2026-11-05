@@ -73,12 +73,11 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static String getString(
-  dynamic message,
-  Level level, {
-  bool? showTimestamp,
-  String? tag,
-}) {
+  <pre class="language-dart"><code class="language-dart">static String getString(dynamic message,
+    Level level, {
+      bool? showTimestamp,
+      String? tag,
+    }) {
   final StringBuffer _message = StringBuffer();
   if (showTimestamp ?? Logger.instance.showTimestampInOutput) {
     _message.writeAll([instance._getTimestamp()]);
@@ -123,7 +122,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.1
+      2.0.2
   </span>
   
 </footer>

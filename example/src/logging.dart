@@ -136,7 +136,7 @@ class LoggingDemo {
     for (final fraction in [0.0, 0.33, 0.5, 0.875, 1.0]) {
       CliTheme.say(
         '${ProgressBar.bar(fraction, width: 20, colour: AnsiPalette.lavender)} '
-        '$fraction',
+            '$fraction',
       );
     }
   }

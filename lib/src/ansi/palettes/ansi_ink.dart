@@ -58,8 +58,7 @@ abstract class AnsiInk {
   ///   over: const AnsiColourRgb(255, 255, 255),
   /// );
   /// ```
-  AnsiColourRgb opacity(
-    double amount, {
+  AnsiColourRgb opacity(double amount, {
     AnsiInk over = const AnsiColourRgb(0, 0, 0),
   }) {
     assert(amount >= 0 && amount <= 1, 'amount must be 0-1');

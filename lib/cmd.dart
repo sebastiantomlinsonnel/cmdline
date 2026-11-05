@@ -12,8 +12,11 @@ export 'src/cmd/shell_command.dart';
 export 'src/cmd/types/file_error.dart';
 
 part 'src/cmd/parts/draw.dart';
+
 part 'src/cmd/parts/fs.dart';
+
 part 'src/cmd/parts/net.dart';
+
 part 'src/cmd/parts/prompt.dart';
 
 /// CMDLine helpers
@@ -117,7 +120,9 @@ class CMD {
 
     final found = <String>[];
     for (final line in LineSplitter.split(result.stdout.toString())) {
-      if (line.trim().isNotEmpty) found.add(line.trim());
+      if (line
+          .trim()
+          .isNotEmpty) found.add(line.trim());
     }
     if (found.isEmpty) return null;
 
@@ -166,8 +171,7 @@ class CMD {
   ///
   /// Returns the program's exit code when [wait] is true, and otherwise 0 if
   /// it opened.
-  static Future<int> openInNewWindow(
-    String program, {
+  static Future<int> openInNewWindow(String program, {
     List<String> args = const [],
     String? workingDirectory,
     bool asAdmin = false,

@@ -6,7 +6,7 @@ class _FS {
   /// Whether anything (a file, folder or link) is at [path].
   bool exists(String path) =>
       FileSystemEntity.typeSync(path, followLinks: false) !=
-      FileSystemEntityType.notFound;
+          FileSystemEntityType.notFound;
 
   /// Whether [path] is a file.
   bool isFile(String path) => FileSystemEntity.isFileSync(path);
@@ -113,12 +113,11 @@ class _FS {
   /// [to] is created if it is missing. Files already in [to] cause a
   /// [FileError], unless [overwrite] is true. Give [filter] to copy only some
   /// files; it gets each file's path.
-  void copyTree(
-    String from,
-    String to, {
-    bool overwrite = false,
-    bool Function(String path)? filter,
-  }) {
+  void copyTree(String from,
+      String to, {
+        bool overwrite = false,
+        bool Function(String path)? filter,
+      }) {
     if (!isDirectory(from)) throw FileError('No folder to copy', from);
     final source = absolute(from);
     createDir(to);
@@ -152,7 +151,9 @@ class _FS {
 
     final file = File(path);
     final text = file.readAsStringSync();
-    final count = existing.allMatches(text).length;
+    final count = existing
+        .allMatches(text)
+        .length;
     if (count > 0)
       file.writeAsStringSync(text.replaceAll(existing, replacement));
 
@@ -163,7 +164,10 @@ class _FS {
   int fileLength(String path) => File(path).lengthSync();
 
   /// When the file or folder at [path] was last changed.
-  DateTime lastModified(String path) => FileStat.statSync(path).modified;
+  DateTime lastModified(String path) =>
+      FileStat
+          .statSync(path)
+          .modified;
 
   /// Prints the folder at [path] as a tree, with lines from [CliTheme].
   ///
@@ -186,12 +190,10 @@ class _FS {
   }
 
   /// The tree lines for everything inside [path], each starting with [indent].
-  List<String> _treeLines(
-    String path,
-    String indent,
-    int depthLeft,
-    bool showHidden,
-  ) {
+  List<String> _treeLines(String path,
+      String indent,
+      int depthLeft,
+      bool showHidden,) {
     if (depthLeft <= 0) return const [];
 
     final theme = CliTheme.current;
@@ -251,8 +253,7 @@ class _FS {
   /// }
   /// final logs = await find('*.log').toList();
   /// ```
-  Stream<String> find(
-    String pattern, {
+  Stream<String> find(String pattern, {
     String? workingDirectory,
     bool recursive = true,
     Set<FileSystemEntityType> types = const {FileSystemEntityType.file},
@@ -391,8 +392,8 @@ class _FS {
     // A UNC root like \\server\share needs a separator before the rest.
     final needsSeparator =
         body.isNotEmpty &&
-        !_isSeparator(root[root.length - 1]) &&
-        !_isDrive(root);
+            !_isSeparator(root[root.length - 1]) &&
+            !_isDrive(root);
 
     return needsSeparator ? '$root$separator$body' : '$root$body';
   }
@@ -492,9 +493,9 @@ class _FS {
   /// Whether [text] is a bare drive like `C:`.
   bool _isDrive(String text) =>
       Platform.isWindows &&
-      text.length == 2 &&
-      text[1] == ':' &&
-      RegExp('[a-zA-Z]').hasMatch(text[0]);
+          text.length == 2 &&
+          text[1] == ':' &&
+          RegExp('[a-zA-Z]').hasMatch(text[0]);
 
   /// Where the last separator in [path] is, or -1 if there is none.
   int _lastSeparator(String path) {
