@@ -59,4 +59,7 @@ extension ProcessHelpers on Process {
       return null;
     }
   }
+
+  /// Whether the [Process] completed successfully or not
+  Future<bool> get ok async => await exitCode == 0;
 }
