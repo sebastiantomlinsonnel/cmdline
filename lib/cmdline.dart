@@ -8,6 +8,7 @@ export '../src/extensions/process.dart';
 export '../src/extensions/process_result.dart';
 export '../src/extensions/stream.dart';
 export '../src/extensions/string.dart';
+export '../src/utils/strings.dart';
 ///  ANSI lib
 export 'ansi.dart';
 ///  CLI lib

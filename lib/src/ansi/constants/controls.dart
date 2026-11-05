@@ -11,6 +11,9 @@ const String ESC = '\x1B';
 /// the same way as the rest of the sequences.
 const String NEWLINE = '\n';
 
+/// The code point of the last ASCII character (DEL).
+const int DEL = 0x7F;
+
 /// The Control Sequence Introducer that starts most escape codes.
 ///
 /// [ESC] followed by `[`. A full style code is `CSI`, then the parameters,

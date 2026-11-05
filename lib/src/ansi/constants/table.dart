@@ -10,6 +10,8 @@
 // Licensed under the Unicode Inc. License Agreement
 // (https://www.unicode.org/license.txt, ../../third_party/third_party/Unicode_Consortium/UNICODE_LICENSE.txt)
 
+// ignore_for_file: public_member_api_docs, prefer_final_locals
+
 const String _data =
     '\x10\x10\b\x04\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02'
     '\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02\x02'

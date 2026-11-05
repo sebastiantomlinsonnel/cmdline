@@ -6,6 +6,7 @@ import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:cmdline/cmdline.dart';
+import 'package:http/http.dart' as http;
 
 export 'src/cmd/helpers/process_failed.dart';
 export 'src/cmd/terminal_command.dart';
