@@ -42,9 +42,12 @@ class AnsiDemo {
       'subscript': 'sub'.subscript,
     };
     CliTheme.say(
-      CMD.draw.table([
-        for (final entry in getters.entries) ['.${entry.key}', entry.value],
-      ], header: ['Getter', 'Looks like']),
+      CMD.draw.table(
+        [
+          for (final entry in getters.entries) ['.${entry.key}', entry.value],
+        ],
+        header: ['Getter', 'Looks like'],
+      ),
     );
     CliTheme.say('Not every terminal shows every style.'.dim);
 
@@ -56,8 +59,12 @@ class AnsiDemo {
     CliTheme.say('a link to dart.dev'.underline.link('https://dart.dev'));
 
     heading('Raw code constants');
-    CliTheme.say('$BOLD${UNDERLINE}BOLD + UNDERLINE$RESET  $ITALIC${DIM}ITALIC + DIM$RESET');
-    CliTheme.say('${ANSI_HIGH_GREEN_FG}ANSI_HIGH_GREEN_FG$RESET  ${RGB_045_FG}RGB_045_FG$RESET');
+    CliTheme.say(
+      '$BOLD${UNDERLINE}BOLD + UNDERLINE$RESET  $ITALIC${DIM}ITALIC + DIM$RESET',
+    );
+    CliTheme.say(
+      '${ANSI_HIGH_GREEN_FG}ANSI_HIGH_GREEN_FG$RESET  ${RGB_045_FG}RGB_045_FG$RESET',
+    );
 
     heading('AnsiPrinter');
     AnsiPrinter([BOLD, 'Total: ', RESET, 42, ' items'.dim]).output();
@@ -76,9 +83,9 @@ class AnsiDemo {
   /// Shows the 256-colour table, greys, the palette, RGB and blending.
   static void colours() {
     heading('The 16 basic colours: AnsiColour(0..15)');
-    CliTheme.say([
-      for (var i = 0; i < 16; i++) '  '.background(AnsiColour(i)),
-    ].join());
+    CliTheme.say(
+      [for (var i = 0; i < 16; i++) '  '.background(AnsiColour(i))].join(),
+    );
 
     heading('The 6x6x6 cube: AnsiColour.rgb(r, g, b)');
     for (var green = 0; green < 6; green++) {
@@ -93,9 +100,9 @@ class AnsiDemo {
     }
 
     heading('Greys: AnsiColour.grey(0..23)');
-    CliTheme.say([
-      for (var i = 0; i < 24; i++) ' '.background(AnsiColour.grey(i)),
-    ].join());
+    CliTheme.say(
+      [for (var i = 0; i < 24; i++) ' '.background(AnsiColour.grey(i))].join(),
+    );
 
     heading('AnsiPalette');
     final palette = <String, AnsiInk>{
@@ -117,10 +124,12 @@ class AnsiDemo {
     };
     final names = palette.keys.toList();
     for (var row = 0; row < names.length; row += 5) {
-      CliTheme.say([
-        for (final name in names.skip(row).take(5))
-          '${'██'.foreground(palette[name]!)} ${name.padRight(9)}',
-      ].join(' '));
+      CliTheme.say(
+        [
+          for (final name in names.skip(row).take(5))
+            '${'██'.foreground(palette[name]!)} ${name.padRight(9)}',
+        ].join(' '),
+      );
     }
 
     heading('True colour: AnsiColourRgb and AnsiColourRgb.hex');
@@ -131,19 +140,26 @@ class AnsiDemo {
 
     heading('Blending: sky.opacity(amount, over: rose)');
     const width = 48;
-    CliTheme.say([
-      for (var i = 0; i < width; i++)
-        ' '.background(
-          AnsiPalette.sky.opacity(1 - i / (width - 1), over: AnsiPalette.rose),
-        ),
-    ].join());
+    CliTheme.say(
+      [
+        for (var i = 0; i < width; i++)
+          ' '.background(
+            AnsiPalette.sky.opacity(
+              1 - i / (width - 1),
+              over: AnsiPalette.rose,
+            ),
+          ),
+      ].join(),
+    );
   }
 
   /// Shows links, the window title, taskbar progress, cursor moves and the
   /// box character sets.
   static Future<void> escapes() async {
     heading('Hyperlinks');
-    CliTheme.say(hyperlink('https://pub.dev/packages/cmdline', 'cmdline on pub.dev'));
+    CliTheme.say(
+      hyperlink('https://pub.dev/packages/cmdline', 'cmdline on pub.dev'),
+    );
 
     heading('Window title and taskbar');
     stdout.write(windowTitle('cmdline demo'));
@@ -164,7 +180,9 @@ class AnsiDemo {
     stdout.writeln();
     stdout.writeln('first line');
     stdout.writeln('second line');
-    stdout.write('${cursorUp(2)}${cursorToColumn(14)}${'<- written later'.dim}');
+    stdout.write(
+      '${cursorUp(2)}${cursorToColumn(14)}${'<- written later'.dim}',
+    );
     stdout.write(cursorDown(2));
     stdout.write(cursorToColumn(1));
 
@@ -188,8 +206,19 @@ class AnsiDemo {
 
     heading('Symbols');
     CliTheme.say(
-      [TICK, CROSS, WARNING, INFO, ARROW, BULLET, ELLIPSIS, FULL_BLOCK,
-          DARK_SHADE, MEDIUM_SHADE, LIGHT_SHADE].join('  '),
+      [
+        TICK,
+        CROSS,
+        WARNING,
+        INFO,
+        ARROW,
+        BULLET,
+        ELLIPSIS,
+        FULL_BLOCK,
+        DARK_SHADE,
+        MEDIUM_SHADE,
+        LIGHT_SHADE,
+      ].join('  '),
     );
   }
 }

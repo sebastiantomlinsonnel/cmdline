@@ -23,6 +23,8 @@ const int _unicodeEnd = 0x10FFFF;
 const int _lowerMask = 0x2;
 const int _underscoreMask = 0x4;
 const int _digitMask = 0x1;
+
+/// Upper mask???? What am i meant to say here the name says it all
 const int UPPER_MASK = 0x8;
 const int _alphaMask = _lowerMask | UPPER_MASK;
 const int _alphaNumMask = _alphaMask | _digitMask;

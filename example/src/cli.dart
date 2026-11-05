@@ -27,8 +27,10 @@ class CliDemo {
     }
 
     heading('Colour can be turned off');
-    log('CliTheme.useColour is ${CliTheme.useColour} here. '
-        'Set NO_COLOR or pipe the output to turn it off.');
+    log(
+      'CliTheme.useColour is ${CliTheme.useColour} here. '
+      'Set NO_COLOR or pipe the output to turn it off.',
+    );
   }
 
   /// Shows what users see when they type something wrong.
@@ -56,6 +58,8 @@ class CliDemo {
     heading(title);
     CliTheme.say(theme.successLine('A success line'));
     CliTheme.say(theme.errorLine('An error line'));
-    CliTheme.say(CMD.draw.box('Boxes and tables follow the theme', title: title));
+    CliTheme.say(
+      CMD.draw.box('Boxes and tables follow the theme', title: title),
+    );
   }
 }

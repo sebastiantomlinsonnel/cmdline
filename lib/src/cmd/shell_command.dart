@@ -61,6 +61,7 @@ class ShellCommand {
     this.interactive = false,
   });
 
+  /// Start a saved const ShellCommand
   Future<ProcessResult> start() async {
     return await run(
       command,

@@ -62,13 +62,16 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Add one radix to another</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Radix add(Radix other) {
-  int dec = decimal + other.decimal;
+  final int dec = decimal + other.decimal;
   value = Radix.baseN(dec, 10, _base);
   return this;
 }</code></pre>

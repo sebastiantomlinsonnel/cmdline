@@ -17,24 +17,54 @@ class UtilsDemo {
   static void strings() {
     heading('Changing case');
     showCalls([
-      ['Strings.toCamelCase("hello_big_world")', Strings.toCamelCase('hello_big_world')],
-      ['Strings.toCamelCase(..., lower: true)', Strings.toCamelCase('hello_big_world', lower: true)],
-      ['Strings.toSnakeCase("helloBigWorld")', Strings.toSnakeCase('helloBigWorld')],
-      ['Strings.toCapitalised("hello world")', Strings.toCapitalised('hello world')],
-      ['Strings.toProperCase("hello big world")', Strings.toProperCase('hello big world')],
+      [
+        'Strings.toCamelCase("hello_big_world")',
+        Strings.toCamelCase('hello_big_world'),
+      ],
+      [
+        'Strings.toCamelCase(..., lower: true)',
+        Strings.toCamelCase('hello_big_world', lower: true),
+      ],
+      [
+        'Strings.toSnakeCase("helloBigWorld")',
+        Strings.toSnakeCase('helloBigWorld'),
+      ],
+      [
+        'Strings.toCapitalised("hello world")',
+        Strings.toCapitalised('hello world'),
+      ],
+      [
+        'Strings.toProperCase("hello big world")',
+        Strings.toProperCase('hello big world'),
+      ],
       ['Strings.reverse("stressed")', Strings.reverse('stressed')],
     ]);
 
     heading('Cutting and joining');
     showCalls([
-      ['Strings.abbreviate("A long sentence here", 12)', Strings.abbreviate('A long sentence here', 12)],
-      ['Strings.hidePart("4111222233334444", start: 4, end: 12)', Strings.hidePart('4111222233334444', start: 4, end: 12)],
+      [
+        'Strings.abbreviate("A long sentence here", 12)',
+        Strings.abbreviate('A long sentence here', 12),
+      ],
+      [
+        'Strings.hidePart("4111222233334444", start: 4, end: 12)',
+        Strings.hidePart('4111222233334444', start: 4, end: 12),
+      ],
       ['Strings.left("cmdline", 3)', Strings.left('cmdline', 3)],
       ['Strings.right("cmdline", 4)', Strings.right('cmdline', 4)],
-      ['Strings.within("max(a, b)", "(", ")")', Strings.within('max(a, b)', '(', ')')],
+      [
+        'Strings.within("max(a, b)", "(", ")")',
+        Strings.within('max(a, b)', '(', ')'),
+      ],
       ['Strings.upTo("key=value", "=")', Strings.upTo('key=value', '=')],
-      ['Strings.conjuctionJoin(["red", "green", "blue"])', Strings.conjuctionJoin(['red', 'green', 'blue'])],
-      ['Strings.join(["a", "", "b"], separator: "-", excludeEmpty: true)', Strings.join(['a', '', 'b'], separator: '-', excludeEmpty: true)],
+      [
+        'Strings.conjuctionJoin(["red", "green", "blue"])',
+        Strings.conjuctionJoin(['red', 'green', 'blue']),
+      ],
+      [
+        'Strings.join(["a", "", "b"], separator: "-", excludeEmpty: true)',
+        Strings.join(['a', '', 'b'], separator: '-', excludeEmpty: true),
+      ],
     ]);
 
     heading('Checks and null safety');
@@ -43,10 +73,16 @@ class UtilsDemo {
       ['Strings.isDigits("2026")', Strings.isDigits('2026')],
       ['Strings.isAscii("café")', Strings.isAscii('café')],
       ['Strings.isUpperCase("LOUD")', Strings.isUpperCase('LOUD')],
-      ['Strings.startsWithUpperCase("Dart")', Strings.startsWithUpperCase('Dart')],
+      [
+        'Strings.startsWithUpperCase("Dart")',
+        Strings.startsWithUpperCase('Dart'),
+      ],
       ['Strings.isBlank("   ")', Strings.isBlank('   ')],
       ['Strings.orElse(null, "fallback")', Strings.orElse(null, 'fallback')],
-      ['Strings.equalsIgnoreCase("Dart", "DART")', Strings.equalsIgnoreCase('Dart', 'DART')],
+      [
+        'Strings.equalsIgnoreCase("Dart", "DART")',
+        Strings.equalsIgnoreCase('Dart', 'DART'),
+      ],
       ['Strings.length(null)', Strings.length(null)],
       ['Strings.toEscape("tab\\there")', Strings.toEscape('tab\there')],
     ]);
@@ -105,12 +141,17 @@ class UtilsDemo {
       ['prices', prices],
       ['prices.sumByDouble((p) => p)', prices.sumByDouble((price) => price)],
       ['prices.averageBy((p) => p)', prices.averageBy((price) => price)],
-      ['["a", "bb", "ccc"].sumBy((s) => s.length)', ['a', 'bb', 'ccc'].sumBy((text) => text.length)],
+      [
+        '["a", "bb", "ccc"].sumBy((s) => s.length)',
+        ['a', 'bb', 'ccc'].sumBy((text) => text.length),
+      ],
       ['none.validate()', none.validate()],
     ]);
-    ['first', 'second', 'third'].forEachIndexed(
-      (item, index) => log('forEachIndexed: $index = $item'),
-    );
+    [
+      'first',
+      'second',
+      'third',
+    ].forEachIndexed((item, index) => log('forEachIndexed: $index = $item'));
   }
 
   /// Shows base conversion with the int extension and [Radix].
@@ -125,7 +166,10 @@ class UtilsDemo {
       ['Radix.hex(255)', Radix.hex(255)],
       ['Radix.baseN("FF", 16, 2)', Radix.baseN('FF', 16, 2)],
       ['Radix("777", 8).decimal', Radix('777', 8).decimal],
-      ['Radix("FF", 16).add(Radix("1", 10)).decimal', Radix('FF', 16).add(Radix('1', 10)).decimal],
+      [
+        'Radix("FF", 16).add(Radix("1", 10)).decimal',
+        Radix('FF', 16).add(Radix('1', 10)).decimal,
+      ],
       ['Radix.percentToColourValue(50)', Radix.percentToColourValue(50)],
     ]);
   }

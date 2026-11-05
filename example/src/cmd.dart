@@ -51,7 +51,11 @@ class CmdDemo {
     );
 
     heading('padPlain pads by what you see, not by escape codes');
-    for (final word in ['plain', 'bold'.bold, 'sky'.foreground(AnsiPalette.sky)]) {
+    for (final word in [
+      'plain',
+      'bold'.bold,
+      'sky'.foreground(AnsiPalette.sky),
+    ]) {
       CliTheme.say(
         '[${CMD.draw.padPlain(word, 8)}] [${CMD.draw.padPlain(word, 8, right: true)}]',
       );
@@ -74,7 +78,10 @@ class CmdDemo {
       ['basenameWithoutExtension', CMD.fs.basenameWithoutExtension(file)],
       ['fileExtension', CMD.fs.fileExtension(file)],
       ['dirname', CMD.fs.dirname(file)],
-      ['normalize', CMD.fs.normalize(CMD.fs.joinAll(['a', '..', 'b', '.', 'c']))],
+      [
+        'normalize',
+        CMD.fs.normalize(CMD.fs.joinAll(['a', '..', 'b', '.', 'c'])),
+      ],
       ['isAbsolute', CMD.fs.isAbsolute(file)],
       ['absolute', CMD.fs.absolute('lib')],
       ['homeDirectory', CMD.fs.homeDirectory],
@@ -103,7 +110,9 @@ class CmdDemo {
       final found = await CMD.fs.find('*.dart', workingDirectory: dir).toList();
       log('find("*.dart") found ${found.length} files:');
       for (final file in found) {
-        CliTheme.say('  ${CliTheme.current.pointer} ${CMD.fs.basename(file)}'.dim);
+        CliTheme.say(
+          '  ${CliTheme.current.pointer} ${CMD.fs.basename(file)}'.dim,
+        );
       }
 
       final changed = CMD.fs.replace(at('README.md'), 'Demo', 'Demo project');
@@ -113,7 +122,10 @@ class CmdDemo {
         ['isFile(lib)', CMD.fs.isFile(at('lib'))],
         ['isDirectory(lib)', CMD.fs.isDirectory(at('lib'))],
         ['isLink(lib)', CMD.fs.isLink(at('lib'))],
-        ['fileLength(README.md)', '${CMD.fs.fileLength(at('README.md'))} bytes'],
+        [
+          'fileLength(README.md)',
+          '${CMD.fs.fileLength(at('README.md'))} bytes',
+        ],
         ['lastModified(README.md)', CMD.fs.lastModified(at('README.md'))],
       ]);
 
@@ -135,7 +147,10 @@ class CmdDemo {
     showCalls([
       ['findProgram("dart")', await CMD.findProgram('dart') ?? 'not found'],
       ['findProgram("git")', await CMD.findProgram('git') ?? 'not found'],
-      ['findProgram("no-such-tool")', await CMD.findProgram('no-such-tool') ?? 'not found'],
+      [
+        'findProgram("no-such-tool")',
+        await CMD.findProgram('no-such-tool') ?? 'not found',
+      ],
       ['nextToScript("tool.exe")', CMD.nextToScript('tool.exe')],
       ['isPrivilegedUser()', await CMD.isPrivilegedUser()],
       ['quoteWrap("it\'s")', CMD.quoteWrap("it's")],
@@ -159,8 +174,10 @@ class CmdDemo {
     log('This folder has ${listing.lines.length} entries');
 
     final failing = await ShellCommand.run('exit 3', show: false);
-    log('The failing command gave exit code ${failing.exitCode} '
-        '(ok: ${failing.ok}, failed: ${failing.failed})');
+    log(
+      'The failing command gave exit code ${failing.exitCode} '
+      '(ok: ${failing.ok}, failed: ${failing.failed})',
+    );
 
     try {
       failing.throwIfFailed();
@@ -222,7 +239,10 @@ class CmdDemo {
         saveTo,
       );
       CliTheme.say(
-        CMD.draw.box(File(saveTo).readAsStringSync().trim(), title: 'Latest Dart'),
+        CMD.draw.box(
+          File(saveTo).readAsStringSync().trim(),
+          title: 'Latest Dart',
+        ),
       );
     } finally {
       CMD.fs.deleteDir(dir);

@@ -72,11 +72,8 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static String getDecimal(String data, int currentRadix) =&gt; _crypt(
-  data: data,
-  from: _alpha(currentRadix),
-  to: _alpha(Bases.decimal.value),
-);</code></pre>
+  <pre class="language-dart"><code class="language-dart">static String getDecimal(String data, int currentRadix) =&gt;
+    _crypt(data: data, from: _alpha(currentRadix), to: _alpha());</code></pre>
 </section>
 
 

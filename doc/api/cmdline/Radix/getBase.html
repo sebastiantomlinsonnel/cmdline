@@ -77,11 +77,7 @@ Radix.base(42, Base.binary);       // '101010'
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static String getBase(int data, int radix) {
   radix = radix.clamp(0, 256);
-  return _crypt(
-    data: data,
-    from: _alpha(Bases.decimal.value),
-    to: _alpha(radix),
-  );
+  return _crypt(data: data, from: _alpha(), to: _alpha(radix));
 }</code></pre>
 </section>
 

@@ -91,9 +91,12 @@ class LoggingDemo {
       'kSPINNER_BOUNCE': kSPINNER_BOUNCE,
     };
     CliTheme.say(
-      CMD.draw.table([
-        for (final entry in sets.entries) [entry.key, entry.value.join(' ')],
-      ], header: ['Name', 'Frames']),
+      CMD.draw.table(
+        [
+          for (final entry in sets.entries) [entry.key, entry.value.join(' ')],
+        ],
+        header: ['Name', 'Frames'],
+      ),
     );
   }
 
