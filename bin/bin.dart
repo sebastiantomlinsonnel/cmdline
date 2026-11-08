@@ -8,12 +8,10 @@ void main() {
   trace(TimeFormat.time12.format(time), tag: 'time12');
   trace(TimeFormat.isoDate.format(time), tag: 'isoDate');
   trace(TimeFormat.isoDateTime.format(time), tag: 'isoDateTime');
-  trace(TimeFormat.dateUk.format(time), tag: 'dateUk');
-  trace(TimeFormat.dateUs.format(time), tag: 'dateUs');
+  trace(TimeFormat.date.format(time), tag: 'dateUk');
   trace(TimeFormat.shortDate.format(time), tag: 'shortDate');
   trace(TimeFormat.longDate.format(time), tag: 'longDate');
   trace(TimeFormat.fullDate.format(time), tag: 'fullDate');
-  trace(TimeFormat.fullDateUs.format(time), tag: 'fullDateUs');
   trace(TimeFormat.dayMonth.format(time), tag: 'dayMonth');
   trace(TimeFormat.monthYear.format(time), tag: 'monthYear');
   trace(TimeFormat.spokenDate.format(time), tag: 'spokenDate');

@@ -29,10 +29,7 @@ class TimeFormat {
   static const TimeFormat isoDateTime = TimeFormat('yyyy-MM-DD[T]HH:mm:ss');
 
   /// The day-first numeric date, like `08/11/2026`.
-  static const TimeFormat dateUk = TimeFormat('DD/MM/yyyy');
-
-  /// The month-first numeric date, like `11/08/2026`.
-  static const TimeFormat dateUs = TimeFormat('MM/DD/yyyy');
+  static const TimeFormat date = TimeFormat('DD/MM/yyyy');
 
   /// A short date with the month abbreviated, like `8 Nov 2026`.
   static const TimeFormat shortDate = TimeFormat('D MMM yyyy');
@@ -42,9 +39,6 @@ class TimeFormat {
 
   /// The full date with the weekday, like `Sunday, 8 November 2026`.
   static const TimeFormat fullDate = TimeFormat('dddd, D MMMM yyyy');
-
-  /// The full date in US order, like `Sunday, November 8, 2026`.
-  static const TimeFormat fullDateUs = TimeFormat('dddd, MMMM D, yyyy');
 
   /// A compact day and month, like `Sun 8 Nov`.
   static const TimeFormat dayMonth = TimeFormat('ddd D MMM');

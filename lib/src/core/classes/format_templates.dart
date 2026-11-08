@@ -1,5 +1,63 @@
 part of 'moment.dart';
 
+/// The default format, like `The 8th of November 2026 at 14:35:09`.
+const String WORDED = 'The Do of MMMM yyyy at HH:mm:ss';
+
+/// The 24-hour time, like `14:05:09`.
+const String TIME_24 = t;
+
+/// The 12-hour time with AM/PM, like `2:05:09 PM`.
+const String TIME_12 = T;
+
+/// The ISO 8601 date, like `2026-11-08`.
+const String ISO_DATE = 'yyyy-MM-DD';
+
+/// The ISO 8601 date and time, like `2026-11-08T14:05:09`.
+const String ISO_DATE_TIME = 'yyyy-MM-DD[T]HH:mm:ss';
+
+/// The day-first numeric date, like `08/11/2026`.
+const String DATE = 'DD/MM/yyyy';
+
+/// A short date with the month abbreviated, like `8 Nov 2026`.
+const String SHORT_DATE = 'D MMM yyyy';
+
+/// A long date with the full month name, like `8 November 2026`.
+const String LONG_DATE = 'D MMMM yyyy';
+
+/// The full date with the weekday, like `Sunday, 8 November 2026`.
+const String FULL_DATE = 'dddd, D MMMM yyyy';
+
+/// The full date in US order, like `Sunday, November 8, 2026`.
+const String FULL_DATE_US = 'dddd, MMMM D, yyyy';
+
+/// A compact day and month, like `Sun 8 Nov`.
+const String DAY_MONTH = 'ddd D MMM';
+
+/// The month and year, like `November 2026`.
+const String MONTH_YEAR = 'MMMM yyyy';
+
+/// A spoken-style date, like `Sunday the 8th of November 2026`.
+const String SPOKEN_DATE = 'dddd the Do of MMMM yyyy';
+
+/// The 24-hour time without seconds, like `14:05`.
+const String SHORT_TIME_24 = 'HH:mm';
+
+/// The 12-hour time without seconds, like `2:05 PM`.
+const String SHORT_TIME_12 = 'h:mm A';
+
+/// The numeric date and short time, like `08/11/2026 14:05`.
+const String DATE_TIME = 'DD/MM/yyyy HH:mm';
+
+/// A sortable timestamp for logs, like `2026-11-08 14:05:09`.
+const String LOG = 'yyyy-MM-DD HH:mm:ss';
+
+/// A timestamp that's safe in file names, like `2026-11-08_14-05-09`.
+const String FILE_SAFE = 'yyyy-MM-DD_HH-mm-ss';
+
+/// A friendly date and 12-hour time, like `Sun 8 Nov, 2:05 PM`.
+const String FRIENDLY = 'ddd D MMM, h:mm A';
+
+
 const Map<int, String> _WEEK_DAY_NAMES = {
   1: 'Monday',
   2: 'Tuesday',
