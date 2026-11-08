@@ -1,6 +1,7 @@
 ## 2.0.5
 
 - Bug fixes
+- Updated API docs
 
 ## 2.0.4
 
