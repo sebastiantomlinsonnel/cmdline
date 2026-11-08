@@ -57,7 +57,6 @@ const String FILE_SAFE = 'yyyy-MM-DD_HH-mm-ss';
 /// A friendly date and 12-hour time, like `Sun 8 Nov, 2:05 PM`.
 const String FRIENDLY = 'ddd D MMM, h:mm A';
 
-
 const Map<int, String> _WEEK_DAY_NAMES = {
   1: 'Monday',
   2: 'Tuesday',
@@ -105,6 +104,28 @@ const String s = 's';
 /// It ensures that the "seconds" column remains consistent as the
 /// time increments.
 const String ss = 'ss';
+
+// -----------------------------------FRACTIONS OF A SECOND----------------------------------- \\
+
+/// # [Millisecond]
+/// ---
+/// **Format:** `000 001 ... 998 999`
+///
+/// > **Summary:** The milliseconds of the second, padded to three digits.
+///
+/// **Details:** Usually written after the seconds, like `HH:mm:ss.SSS`, for
+/// logs and timings that need more precision than whole seconds.
+const String SSS = 'SSS';
+
+/// # [Microsecond]
+/// ---
+/// **Format:** `000000 000001 ... 999998 999999`
+///
+/// > **Summary:** The microseconds of the second, padded to six digits.
+///
+/// **Details:** The full fraction of the second, like `HH:mm:ss.SSSSSS`.
+/// Use it for benchmarks and high-precision timestamps.
+const String SSSSSS = 'SSSSSS';
 
 // --------------------------------------MINUTES------------------------------------ \\
 /// # [Minute]

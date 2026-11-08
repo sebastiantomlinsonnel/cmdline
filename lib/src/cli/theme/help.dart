@@ -81,6 +81,7 @@ class HelpPrinter {
 
     // Flags and options from parent commands still work here.
     final globalRows = <List<String>>[];
+
     for (var i = 0; i < commands.length - 1; i++) {
       globalRows.addAll(_optionRows(commands[i]));
     }

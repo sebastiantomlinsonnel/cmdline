@@ -33,12 +33,12 @@ class CmdDemo {
 
   /// Shows a box and a table, with styled cells that still line up.
   static void draw() {
-    final theme = CliTheme.current;
-    CliTheme.say(
+    final theme = AnsiTheme.current;
+    AnsiTheme.say(
       CMD.draw.box('Boxes fit their text,\neven ${'styled'.bold.italic} text.'),
     );
-    CliTheme.say(CMD.draw.box('With a title', title: 'Title'));
-    CliTheme.say(
+    AnsiTheme.say(CMD.draw.box('With a title', title: 'Title'));
+    AnsiTheme.say(
       CMD.draw.table(
         [
           ['fs.dart', 'Files and paths', 489],
@@ -56,7 +56,7 @@ class CmdDemo {
       'bold'.bold,
       'sky'.foreground(AnsiPalette.sky),
     ]) {
-      CliTheme.say(
+      AnsiTheme.say(
         '[${CMD.draw.padPlain(word, 8)}] [${CMD.draw.padPlain(
             word, 8, right: true)}]',
       );
@@ -114,8 +114,8 @@ class CmdDemo {
       final found = await CMD.fs.find('*.dart', workingDirectory: dir).toList();
       log('find("*.dart") found ${found.length} files:');
       for (final file in found) {
-        CliTheme.say(
-          '  ${CliTheme.current.pointer} ${CMD.fs.basename(file)}'.dim,
+        AnsiTheme.say(
+          '  ${AnsiTheme.current.pointer} ${CMD.fs.basename(file)}'.dim,
         );
       }
 
@@ -137,7 +137,7 @@ class CmdDemo {
       try {
         CMD.fs.copy(at('README.md'), at('docs', 'README.md'));
       } on FileError catch (error) {
-        CliTheme.say(error.styled);
+        AnsiTheme.say(error.styled);
       }
       CMD.fs.tryDeleteFile(at('not-there.txt'));
       log('tryDeleteFile and tryDeleteDir never throw');
@@ -242,7 +242,7 @@ class CmdDemo {
         'https://storage.googleapis.com/dart-archive/channels/stable/release/latest/VERSION',
         saveTo,
       );
-      CliTheme.say(
+      AnsiTheme.say(
         CMD.draw.box(
           File(saveTo).readAsStringSync().trim(),
           title: 'Latest Dart',
@@ -278,7 +278,7 @@ class CmdDemo {
     ], format: CMD.fs.basename);
     final save = CMD.prompt.confirm('Save these settings?', defaultValue: true);
 
-    CliTheme.say(
+    AnsiTheme.say(
       CMD.draw.box(
         [
           'Name:     ${name.bold}',

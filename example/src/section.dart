@@ -8,8 +8,8 @@ import 'package:cmdline/cmdline.dart';
 /// If the part throws, the error is shown and the demo moves on, so one
 /// broken part (no network, no git, ...) never stops the rest.
 Future<void> section(String title, FutureOr<void> Function() body) async {
-  CliTheme.say('');
-  CliTheme.say(' $title '.bold.inverse.foreground(CliTheme.current.highlight));
+  AnsiTheme.say('');
+  AnsiTheme.say(' $title '.bold.inverse.foreground(AnsiTheme.current.highlight));
   try {
     await body();
   } catch (error) {
@@ -19,15 +19,15 @@ Future<void> section(String title, FutureOr<void> Function() body) async {
 
 /// Prints a small heading inside a section.
 void heading(String text) {
-  CliTheme.say('');
-  CliTheme.say(text.bold.underline);
+  AnsiTheme.say('');
+  AnsiTheme.say(text.bold.underline);
 }
 
 /// Shows rows of "call | result" as a table.
 ///
 /// Used by the demos that are mostly about what a function gives back.
 void showCalls(List<List<Object?>> rows) {
-  CliTheme.say(CMD.draw.table(rows, header: ['Call', 'Result']));
+  AnsiTheme.say(CMD.draw.table(rows, header: ['Call', 'Result']));
 }
 
 /// Writes [text] to [path], making any missing folders first.

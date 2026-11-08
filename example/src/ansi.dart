@@ -41,7 +41,7 @@ class AnsiDemo {
       'superscript': 'super'.superscript,
       'subscript': 'sub'.subscript,
     };
-    CliTheme.say(
+    AnsiTheme.say(
       CMD.draw.table(
         [
           for (final entry in getters.entries) ['.${entry.key}', entry.value],
@@ -49,20 +49,20 @@ class AnsiDemo {
         header: ['Getter', 'Looks like'],
       ),
     );
-    CliTheme.say('Not every terminal shows every style.'.dim);
+    AnsiTheme.say('Not every terminal shows every style.'.dim);
 
     heading('Mixing styles');
-    CliTheme.say(
+    AnsiTheme.say(
       'bold, italic and sky blue'.bold.italic.foreground(AnsiPalette.sky),
     );
-    CliTheme.say(' on a background '.background(AnsiPalette.lavender));
-    CliTheme.say('a link to dart.dev'.underline.link('https://dart.dev'));
+    AnsiTheme.say(' on a background '.background(AnsiPalette.lavender));
+    AnsiTheme.say('a link to dart.dev'.underline.link('https://dart.dev'));
 
     heading('Raw code constants');
-    CliTheme.say(
+    AnsiTheme.say(
       '$BOLD${UNDERLINE}BOLD + UNDERLINE$RESET  $ITALIC${DIM}ITALIC + DIM$RESET',
     );
-    CliTheme.say(
+    AnsiTheme.say(
       '${ANSI_HIGH_GREEN_FG}ANSI_HIGH_GREEN_FG$RESET  ${RGB_045_FG}RGB_045_FG$RESET',
     );
 
@@ -83,7 +83,7 @@ class AnsiDemo {
   /// Shows the 256-colour table, greys, the palette, RGB and blending.
   static void colours() {
     heading('The 16 basic colours: AnsiColour(0..15)');
-    CliTheme.say(
+    AnsiTheme.say(
       [for (var i = 0; i < 16; i++) '  '.background(AnsiColour(i))].join(),
     );
 
@@ -96,11 +96,11 @@ class AnsiDemo {
         }
         row.write(' ');
       }
-      CliTheme.say(row.toString());
+      AnsiTheme.say(row.toString());
     }
 
     heading('Greys: AnsiColour.grey(0..23)');
-    CliTheme.say(
+    AnsiTheme.say(
       [for (var i = 0; i < 24; i++) ' '.background(AnsiColour.grey(i))].join(),
     );
 
@@ -124,7 +124,7 @@ class AnsiDemo {
     };
     final names = palette.keys.toList();
     for (var row = 0; row < names.length; row += 5) {
-      CliTheme.say(
+      AnsiTheme.say(
         [
           for (final name in names.skip(row).take(5))
             '${'██'.foreground(palette[name]!)} ${name.padRight(9)}',
@@ -133,7 +133,7 @@ class AnsiDemo {
     }
 
     heading('True colour: AnsiColourRgb and AnsiColourRgb.hex');
-    CliTheme.say(
+    AnsiTheme.say(
       '${'AnsiColourRgb(255, 128, 0)'.foreground(
           const AnsiColourRgb(255, 128, 0))}  '
           '${'AnsiColourRgb.hex(0x4FC3F7)'.foreground(
@@ -142,7 +142,7 @@ class AnsiDemo {
 
     heading('Blending: sky.opacity(amount, over: rose)');
     const width = 48;
-    CliTheme.say(
+    AnsiTheme.say(
       [
         for (var i = 0; i < width; i++)
           ' '.background(
@@ -159,7 +159,7 @@ class AnsiDemo {
   /// box character sets.
   static Future<void> escapes() async {
     heading('Hyperlinks');
-    CliTheme.say(
+    AnsiTheme.say(
       hyperlink('https://pub.dev/packages/cmdline', 'cmdline on pub.dev'),
     );
 
@@ -196,18 +196,18 @@ class AnsiDemo {
       'rounded': BoxChars.rounded,
       'ansi': BoxChars.ansi,
     };
-    final start = CliTheme.current;
+    final start = AnsiTheme.current;
     try {
       for (final entry in presets.entries) {
-        CliTheme.current = CliTheme(box: entry.value);
-        CliTheme.say(CMD.draw.box('BoxChars.${entry.key}'));
+        AnsiTheme.current = AnsiTheme(box: entry.value);
+        AnsiTheme.say(CMD.draw.box('BoxChars.${entry.key}'));
       }
     } finally {
-      CliTheme.current = start;
+      AnsiTheme.current = start;
     }
 
     heading('Symbols');
-    CliTheme.say(
+    AnsiTheme.say(
       [
         TICK,
         CROSS,

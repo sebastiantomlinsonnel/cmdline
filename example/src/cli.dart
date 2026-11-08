@@ -8,11 +8,11 @@ class CliDemo {
 
   /// Shows the default theme, then the same lines with a custom theme.
   static void theme() {
-    final start = CliTheme.current;
+    final start = AnsiTheme.current;
     try {
       _sample('The default theme');
 
-      CliTheme.current = const CliTheme(
+      AnsiTheme.current = const AnsiTheme(
         question: AnsiColour(13),
         success: AnsiPalette.mint,
         error: AnsiPalette.brick,
@@ -23,12 +23,12 @@ class CliDemo {
       );
       _sample('A custom theme');
     } finally {
-      CliTheme.current = start;
+      AnsiTheme.current = start;
     }
 
     heading('Colour can be turned off');
     log(
-      'CliTheme.useColour is ${CliTheme.useColour} here. '
+      'AnsiTheme.useColour is ${AnsiTheme.useColour} here. '
           'Set NO_COLOR or pipe the output to turn it off.',
     );
   }
@@ -47,18 +47,18 @@ class CliDemo {
         Parser(cli, typed).parse();
         log('No error');
       } on CLIError catch (error) {
-        CliTheme.say(HelpPrinter.error(error));
+        AnsiTheme.say(HelpPrinter.error(error));
       }
     }
   }
 
   /// Prints a success line, an error line and a box in the current theme.
   static void _sample(String title) {
-    final theme = CliTheme.current;
+    final theme = AnsiTheme.current;
     heading(title);
-    CliTheme.say(theme.successLine('A success line'));
-    CliTheme.say(theme.errorLine('An error line'));
-    CliTheme.say(
+    AnsiTheme.say(theme.successLine('A success line'));
+    AnsiTheme.say(theme.errorLine('An error line'));
+    AnsiTheme.say(
       CMD.draw.box('Boxes and tables follow the theme', title: title),
     );
   }

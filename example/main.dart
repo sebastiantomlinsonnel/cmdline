@@ -333,14 +333,14 @@ Future<void> _beat() => delay(0.25);
 Future<void> _scene(int number,
     String title,
     Future<void> Function() body,) async {
-  final theme = CliTheme.current;
+  final theme = AnsiTheme.current;
   _clear();
-  CliTheme.say('');
-  CliTheme.say(
+  AnsiTheme.say('');
+  AnsiTheme.say(
     ' $number/${_scenes.length} '.dim + title.bold.foreground(theme.highlight),
   );
-  CliTheme.say(' ${'─' * 40}'.dim.foreground(theme.border));
-  CliTheme.say('');
+  AnsiTheme.say(' ${'─' * 40}'.dim.foreground(theme.border));
+  AnsiTheme.say('');
   await delay(0.2);
   await body();
   await delay(1.6);
@@ -349,8 +349,8 @@ Future<void> _scene(int number,
 /// The title card.
 Future<void> _intro() async {
   _clear();
-  CliTheme.say('');
-  CliTheme.say(
+  AnsiTheme.say('');
+  AnsiTheme.say(
     CMD.draw.box(
       [
         'cmdline'.bold.foreground(AnsiPalette.sky),
@@ -364,8 +364,8 @@ Future<void> _intro() async {
 /// The closing card.
 Future<void> _outro() async {
   _clear();
-  CliTheme.say('');
-  CliTheme.say(
+  AnsiTheme.say('');
+  AnsiTheme.say(
     CMD.draw.box(
       [
         'dart pub add cmdline'.bold.foreground(AnsiPalette.mint),
@@ -374,7 +374,7 @@ Future<void> _outro() async {
       title: 'Get started',
     ),
   );
-  CliTheme.say('');
+  AnsiTheme.say('');
   await delay(2);
 }
 
@@ -400,7 +400,7 @@ Future<void> _logging() async {
 
 /// Scene 2: text styles, the palette and a colour blend.
 Future<void> _styling() async {
-  CliTheme.say(
+  AnsiTheme.say(
     [
       'bold'.bold,
       'dim'.dim,
@@ -412,7 +412,7 @@ Future<void> _styling() async {
     ].join('  '),
   );
   await delay(0.5);
-  CliTheme.say('');
+  AnsiTheme.say('');
 
   final palette = {
     'orchid': AnsiPalette.orchid,
@@ -430,10 +430,10 @@ Future<void> _styling() async {
       for (final name in names.skip(row).take(4))
         '${'██'.foreground(palette[name]!)} ${name.padRight(9)}',
     ];
-    CliTheme.say(cells.join(' '));
+    AnsiTheme.say(cells.join(' '));
     await _beat();
   }
-  CliTheme.say('');
+  AnsiTheme.say('');
 
   const width = 48;
   const chunk = 6;
@@ -491,7 +491,7 @@ Future<void> _progress() async {
 Future<void> _tables() async {
   final ok = 'up to date'.foreground(AnsiPalette.mint);
   final old = 'update'.foreground(AnsiPalette.butter);
-  CliTheme.say(
+  AnsiTheme.say(
     CMD.draw.table(
       [
         ['args', '2.7.0', ok],
@@ -504,7 +504,7 @@ Future<void> _tables() async {
     ),
   );
   await delay(0.6);
-  CliTheme.say(
+  AnsiTheme.say(
     CMD.draw.box(
       '${'2'.bold} packages can be updated.\n'
           'Run ${'dart pub upgrade'.foreground(AnsiPalette.sky)} to get them.',
@@ -526,14 +526,14 @@ Future<void> _files() async {
 
     CMD.fs.showTree(app);
     await delay(0.6);
-    CliTheme.say('');
+    AnsiTheme.say('');
 
     final found = await CMD.fs.find('*.dart', workingDirectory: app).toList();
     pass('Found ${found.length} Dart files');
     await _beat();
     for (final file in found) {
-      CliTheme.say(
-        '  ${CliTheme.current.pointer} ${CMD.fs.basename(file)}'.dim,
+      AnsiTheme.say(
+        '  ${AnsiTheme.current.pointer} ${CMD.fs.basename(file)}'.dim,
       );
       await _beat();
     }

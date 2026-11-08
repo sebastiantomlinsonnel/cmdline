@@ -217,6 +217,8 @@ class Period {
       hour: hr,
       minute: min,
       second: sec,
+      millisecond: totalMilliseconds % millisecondsPerSecond,
+      microsecond: totalMicroseconds % microsecondsPerMillisecond,
     );
   }
 }

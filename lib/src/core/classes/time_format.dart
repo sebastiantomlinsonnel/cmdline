@@ -144,6 +144,10 @@ class TimeFormat {
         return '$second';
       case ss:
         return _pad(second);
+      case SSS:
+        return '${moment.millisecond ?? 0}'.padLeft(3, '0');
+      case SSSSSS:
+        return '${moment._subSecondMicroseconds}'.padLeft(6, '0');
       case A:
         return moment.clockPhase;
       case a:

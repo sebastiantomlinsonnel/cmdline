@@ -21,8 +21,9 @@ part 'time_format.dart';
 /// // From an existing DateTime
 /// final converted = Moment.fromDateTime(DateTime.utc(2025, 1, 1));
 ///
-/// // By parsing a string (format: "yyyy/MM/dd-HH:mm:ss")
-/// final parsed = Moment.parse(string: '2025/06/15-14:30:00');
+/// // By parsing a string (format: "yyyy/MM/dd HH:mm:ss", with optional
+/// // fractional seconds like "14:30:00.250")
+/// final parsed = Moment.parse(string: '2025/06/15 14:30:00');
 /// ```
 ///
 /// ## Formatting
@@ -36,7 +37,8 @@ part 'time_format.dart';
 /// ```
 ///
 /// See the token constants ([D], [Do], [DD], [M], [MM], [MMM], [mmmm],
-/// [yy], [yyyy], [h], [hh], [H], [HH], [m], [mm], [s], [ss], [A], [a])
+/// [yy], [yyyy], [h], [hh], [H], [HH], [m], [mm], [s], [ss], [SSS],
+/// [SSSSSS], [A], [a])
 /// for a full list of available format tokens.
 ///
 /// ## Relative Time
@@ -66,6 +68,15 @@ part 'time_format.dart';
 ///
 /// {@category core}
 final class Moment implements Comparable<Moment> {
+  /// The microsecond component (0-999), or `null` if not specified.
+  ///
+  /// Like [DateTime.microsecond], this is the microseconds within the
+  /// current [millisecond], not the whole second.
+  int? microsecond;
+
+  /// The millisecond component (0-999), or `null` if not specified.
+  int? millisecond;
+
   /// The second component (0-59), or `null` if not specified.
   int? second;
 
@@ -95,6 +106,8 @@ final class Moment implements Comparable<Moment> {
   /// Any component you omit stays `null` and will be treated as its
   /// zero/default value when used in calculations.
   Moment({
+    this.microsecond,
+    this.millisecond,
     this.second,
     this.minute,
     this.hour,
@@ -107,6 +120,8 @@ final class Moment implements Comparable<Moment> {
   /// Creates a [Moment] from an existing [DateTime] instance.
   Moment.fromDateTime(DateTime dateTime)
     : year = dateTime.year,
+      microsecond = dateTime.microsecond,
+      millisecond = dateTime.millisecond,
       second = dateTime.second,
       minute = dateTime.minute,
       hour = dateTime.hour,
@@ -114,25 +129,33 @@ final class Moment implements Comparable<Moment> {
       month = dateTime.month,
       formatStyle = TimeFormat.worded;
 
-  /// Parses a [Moment] from a string in the format `"yyyy/MM/dd-HH:mm:ss"`.
+  /// Parses a [Moment] from a string in the format `"yyyy/MM/dd HH:mm:ss"`.
   ///
-  /// Throws if the string doesn't match the expected pattern. For a
-  /// non-throwing alternative, see [tryParse].
+  /// The seconds can have a fraction of up to 6 digits, like `14:30:00.250`
+  /// or `14:30:00.250125`. Extra digits are ignored. Throws if the string
+  /// doesn't match the expected pattern. For a non-throwing alternative,
+  /// see [tryParse].
   ///
   /// ```dart
-  /// final m = Moment.parse(string: '2025/06/15-14:30:00');
+  /// final m = Moment.parse(string: '2025/06/15 14:30:00.250');
   /// ```
   static Moment parse({required String string}) {
     final split1 = string.split(' ');
     final dates = split1[0].split('/');
     final times = split1[1].split(':');
+    final seconds = times[2].split('.');
+    final int fraction = seconds.length > 1
+        ? int.parse(seconds[1].padRight(6, '0').substring(0, 6))
+        : 0;
     return Moment(
       year: int.parse(dates[0]),
       month: int.parse(dates[1]),
       date: int.parse(dates[2]),
       hour: int.parse(times[0]),
       minute: int.parse(times[1]),
-      second: int.parse(times[2]),
+      second: int.parse(seconds[0]),
+      millisecond: fraction ~/ Period.microsecondsPerMillisecond,
+      microsecond: fraction % Period.microsecondsPerMillisecond,
     );
   }
 
@@ -174,6 +197,8 @@ final class Moment implements Comparable<Moment> {
     hour ?? 0,
     minute ?? 0,
     second ?? 0,
+    millisecond ?? 0,
+    microsecond ?? 0,
   );
 
   /// Returns a new [Moment] advanced forward by [period].
@@ -202,49 +227,70 @@ final class Moment implements Comparable<Moment> {
   Moment addPeriod(Period period) => this + period;
 
   /// Returns `true` if this moment comes before [other] chronologically.
-  bool operator <(Moment other) => totalSeconds < other.totalSeconds;
+  bool operator <(Moment other) =>
+      microsecondsSinceEpoch < other.microsecondsSinceEpoch;
 
   /// Returns `true` if this moment is at or before [other].
-  bool operator <=(Moment other) => totalSeconds <= other.totalSeconds;
+  bool operator <=(Moment other) =>
+      microsecondsSinceEpoch <= other.microsecondsSinceEpoch;
 
   /// Returns `true` if this moment comes after [other] chronologically.
-  bool operator >(Moment other) => totalSeconds > other.totalSeconds;
+  bool operator >(Moment other) =>
+      microsecondsSinceEpoch > other.microsecondsSinceEpoch;
 
   /// Returns `true` if this moment is at or after [other].
-  bool operator >=(Moment other) => totalSeconds >= other.totalSeconds;
+  bool operator >=(Moment other) =>
+      microsecondsSinceEpoch >= other.microsecondsSinceEpoch;
 
-  /// Returns the components as a list: `[second, minute, hour, date, month, year]`.
-  List<int?> toList() => [second, minute, hour, date, month, year];
+  /// Returns the components as a list, smallest unit first.
+  ///
+  /// The order is `[microsecond, millisecond, second, minute, hour, date, month, year]`.
+  List<int?> toList() => [
+    microsecond,
+    millisecond,
+    second,
+    minute,
+    hour,
+    date,
+    month,
+    year,
+  ];
 
-  /// Constructs a [Moment] from a map with string keys.
+  /// Constructs a [Moment] from a map like the one [asMap] returns.
   Moment fromMap(Map<String, int?> map) {
     return Moment(
-      second: map[second],
-      minute: map[minute],
-      hour: map[hour],
-      date: map[date],
-      month: map[month],
-      year: map[year],
+      microsecond: map['microsecond'],
+      millisecond: map['millisecond'],
+      second: map['second'],
+      minute: map['minute'],
+      hour: map['hour'],
+      date: map['date'],
+      month: map['month'],
+      year: map['year'],
       formatStyle: TimeFormat.worded,
     );
   }
 
-  /// Serializes this [Moment] to a `Map<String, dynamic>`.
+  /// Serializes this [Moment] to a map keyed by component name.
   Map<String, dynamic> get asMap => {
-    second.toString(): second ?? 0.0,
-    minute.toString(): minute ?? 0.0,
-    hour.toString(): hour ?? 0.0,
-    date.toString(): date ?? 0.0,
-    month.toString(): month ?? 0.0,
-    year.toString(): year ?? 0.0,
+    'microsecond': microsecond ?? 0,
+    'millisecond': millisecond ?? 0,
+    'second': second ?? 0,
+    'minute': minute ?? 0,
+    'hour': hour ?? 0,
+    'date': date ?? 0,
+    'month': month ?? 0,
+    'year': year ?? 0,
   };
 
   /// Converts the time portion of this [Moment] into a [Period].
   ///
-  /// Only the hour, minute, and second values are included — date components
-  /// are zeroed out. Useful when you just care about "how much time" this
-  /// represents, not "which date."
+  /// Only the time values (hour down to microsecond) are included — date
+  /// components are zeroed out. Useful when you just care about "how much
+  /// time" this represents, not "which date."
   Period get period => Period(
+    microseconds: microsecond ?? 0,
+    milliseconds: millisecond ?? 0,
     seconds: second ?? 0,
     minutes: minute ?? 0,
     hours: hour ?? 0,
@@ -256,8 +302,8 @@ final class Moment implements Comparable<Moment> {
   /// The total number of seconds from the Unix epoch (1970-01-01) to this
   /// [Moment].
   ///
-  /// Negative values represent dates before the epoch. This is the primary
-  /// value used for all comparisons and ordering.
+  /// Negative values represent dates before the epoch. Fractions of a second
+  /// are dropped; see [microsecondsSinceEpoch] for the exact value.
   int get totalSeconds {
     final int y = year ?? 1970;
     final int m = month ?? 1;
@@ -289,6 +335,17 @@ final class Moment implements Comparable<Moment> {
     return totalSeconds;
   }
 
+  /// The fraction of the current second, in microseconds (0-999,999).
+  int get _subSecondMicroseconds =>
+      (millisecond ?? 0) * Period.microsecondsPerMillisecond +
+      (microsecond ?? 0);
+
+  /// Microseconds since the Unix epoch (1970-01-01 00:00:00).
+  ///
+  /// This is the exact value used for all comparisons and ordering.
+  int get microsecondsSinceEpoch =>
+      totalSeconds * Period.microsecondsPerSecond + _subSecondMicroseconds;
+
   bool _isLeapYear(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
   }
@@ -308,31 +365,9 @@ final class Moment implements Comparable<Moment> {
   /// final gap = Moment.now().difference(birthday);
   /// print(gap); // e.g. "26 years, 2 months, ..."
   /// ```
-  Period difference(Moment other) {
-    int totalSecs = totalSeconds - other.totalSeconds;
-    totalSecs = totalSecs.abs();
-
-    final int secs = totalSecs % 60;
-    final int totalMins = totalSecs ~/ 60;
-    final int mins = totalMins % 60;
-    final int totalHrs = totalMins ~/ 60;
-    final int hrs = totalHrs % 24;
-    final int days = totalHrs ~/ 24;
-
-    final int yrs = days ~/ 365;
-    int remainingDays = days % 365;
-    final int months = remainingDays ~/ 30;
-    remainingDays = remainingDays % 30;
-
-    return Period(
-      years: yrs,
-      months: months,
-      days: remainingDays,
-      hours: hrs,
-      minutes: mins,
-      seconds: secs,
-    );
-  }
+  Period difference(Moment other) => Period._microseconds(
+    (microsecondsSinceEpoch - other.microsecondsSinceEpoch).abs(),
+  );
 
   /// Returns a human-readable string describing how long ago (or from now)
   /// this [Moment] is relative to [from] (defaults to [Moment.now]).
@@ -484,57 +519,35 @@ final class Moment implements Comparable<Moment> {
   ///
   /// Useful for interop with APIs that expect epoch timestamps.
   int get millisecondsSinceEpoch {
-    final int y = year ?? 1970;
-    final int m = month ?? 1;
-    final int d = date ?? 1;
-
-    int totalDays = 0;
-
-    if (y >= 1970) {
-      for (int i = 1970; i < y; i++) {
-        totalDays += _isLeapYear(i) ? 366 : 365;
-      }
-    } else {
-      for (int i = 1969; i >= y; i--) {
-        totalDays -= _isLeapYear(i) ? 366 : 365;
-      }
-    }
-
-    for (int i = 1; i < m; i++) {
-      totalDays += _daysInMonth(i, y);
-    }
-
-    totalDays += d - 1;
-
-    int totalSeconds = totalDays * 86400;
-    totalSeconds += (hour ?? 0) * 3600;
-    totalSeconds += (minute ?? 0) * 60;
-    totalSeconds += (second ?? 0);
-
-    return totalSeconds * 1000;
+    final int micros = microsecondsSinceEpoch;
+    // Round down, so times before the epoch don't round toward zero.
+    return (micros - micros % Period.microsecondsPerMillisecond) ~/
+        Period.microsecondsPerMillisecond;
   }
 
   @override
-  int compareTo(Moment other) {
-    if (totalSeconds < other.totalSeconds) return -1;
-    if (totalSeconds > other.totalSeconds) return 1;
-    return 0;
-  }
+  int compareTo(Moment other) =>
+      microsecondsSinceEpoch.compareTo(other.microsecondsSinceEpoch);
 
   @override
-  int get hashCode => millisecondsSinceEpoch;
+  int get hashCode => microsecondsSinceEpoch.hashCode;
 
   @override
   bool operator ==(Object other) {
     if (other is! Moment) return false;
-    return totalSeconds == other.totalSeconds;
+    return microsecondsSinceEpoch == other.microsecondsSinceEpoch;
   }
 
   @override
   Type get runtimeType => Moment;
 
   @override
-  String toString() => '$year/$month/$date $hour:$minute:$second';
+  String toString() {
+    final String whole = '$year/$month/$date $hour:$minute:$second';
+    final int fraction = _subSecondMicroseconds;
+    if (fraction == 0) return whole;
+    return '$whole.${'$fraction'.padLeft(6, '0')}';
+  }
 
   @override
   dynamic noSuchMethod(Invocation invocation) =>
