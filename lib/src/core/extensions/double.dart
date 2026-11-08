@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:cmdline/cmdline.dart';
+import '../../../cmdline.dart';
 
 /// Helpful extensions on nullable [double] values.
 ///

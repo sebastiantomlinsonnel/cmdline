@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Moment class from the cmdline library, for the Dart programming language.">
+  <title>Moment class - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline.dart</a></li>
+    <li class="self-crumb">Moment class</li>
+  </ol>
+  <div class="self-name">Moment</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="cmdline&#47;cmdline-library-sidebar.html"
+    data-below-sidebar="cmdline&#47;Moment-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">Moment</span> class 
+    <a href="https://dart.dev/language/class-modifiers#final" class="feature feature-final" title="This class can neither be extended, implemented, nor mixed in.">final</a>
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>A rich, human-friendly wrapper around date and time values.</p>
+<p><a href="../cmdline/Moment-class.html">Moment</a> gives you everything Dart's <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a> does — and then some.
+It supports flexible formatting with token-based patterns, relative time
+strings ("3 hours ago"), arithmetic with <a href="../cmdline/Period-class.html">Period</a> objects, and convenient
+accessors for common display formats.</p>
+<h2 id="creating-a-moment">Creating a Moment</h2>
+<pre class="language-dart"><code class="language-dart">// From right now
+final now = Moment.now();
+
+// From individual components
+final birthday = Moment(year: 1999, month: 12, date: 25, hour: 8);
+
+// From an existing DateTime
+final converted = Moment.fromDateTime(DateTime.utc(2025, 1, 1));
+
+// By parsing a string (format: "yyyy/MM/dd-HH:mm:ss")
+final parsed = Moment.parse(string: '2025/06/15-14:30:00');
+</code></pre>
+<h2 id="formatting">Formatting</h2>
+<p>Build any date/time string you need using format tokens:</p>
+<pre class="language-dart"><code class="language-dart">final m = Moment.now();
+m.format(formatStyle: [dddd, comma, space, mmmm, space, D, comma, space, yyyy]);
+// → "Wednesday, February 19, 2026"
+</code></pre>
+<p>See the token constants (<a href="../cmdline/D-constant.html">D</a>, <a href="../cmdline/Do-constant.html">Do</a>, <a href="../cmdline/DD-constant.html">DD</a>, <a href="../cmdline/M-constant.html">M</a>, <a href="../cmdline/MM-constant.html">MM</a>, <a href="../cmdline/MMM-constant.html">MMM</a>, <a href="../cmdline/mmmm-constant.html">mmmm</a>,
+<a href="../cmdline/yy-constant.html">yy</a>, <a href="../cmdline/yyyy-constant.html">yyyy</a>, <a href="../cmdline/h-constant.html">h</a>, <a href="../cmdline/hh-constant.html">hh</a>, <a href="../cmdline/H-constant.html">H</a>, <a href="../cmdline/HH-constant.html">HH</a>, <a href="../cmdline/m-constant.html">m</a>, <a href="../cmdline/mm-constant.html">mm</a>, <a href="../cmdline/s-constant.html">s</a>, <a href="../cmdline/ss-constant.html">ss</a>, <a href="../cmdline/A-constant.html">A</a>, <a href="../cmdline/a-constant.html">a</a>)
+for a full list of available format tokens.</p>
+<h2 id="relative-time">Relative Time</h2>
+<pre class="language-dart"><code class="language-dart">final posted = Moment(year: 2026, month: 2, date: 19, hour: 10);
+print(posted.timeAgo());       // "3 hours ago"
+print(posted.timeAgo(short: true)); // "3h"
+</code></pre>
+<h2 id="arithmetic">Arithmetic</h2>
+<p>Add or subtract <a href="../cmdline/Period-class.html">Period</a> values to move through time:</p>
+<pre class="language-dart"><code class="language-dart">final nextWeek = Moment.now() + Period(days: 7);
+final lastMonth = Moment.now() - Period(months: 1);
+</code></pre>
+<h2 id="comparison">Comparison</h2>
+<p><a href="../cmdline/Moment-class.html">Moment</a> implements <a href="https://api.flutter.dev/flutter/dart-core/Comparable-class.html">Comparable</a> and supports all comparison operators:</p>
+<pre class="language-dart"><code class="language-dart">if (deadline &gt; Moment.now()) print('Still time!');
+</code></pre>
+</section>
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+
+        
+  <dt>Implemented types</dt>
+  <dd>
+    <ul class="comma-separated clazz-relationships">
+        <li><a href="https://api.flutter.dev/flutter/dart-core/Comparable-class.html">Comparable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/Moment-class.html">Moment</a></span>&gt;</span></li>
+    </ul>
+  </dd>
+        
+
+
+        
+        
+
+
+      </dl>
+    </section>
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="Moment.new" class="callable">
+          <span class="name"><a href="../cmdline/Moment/Moment.html">Moment</a></span><span class="signature">({<span class="parameter" id="param-second"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">second</span>, </span><span class="parameter" id="param-minute"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">minute</span>, </span><span class="parameter" id="param-hour"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">hour</span>, </span><span class="parameter" id="param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">date</span>, </span><span class="parameter" id="param-month"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">month</span>, </span><span class="parameter" id="param-year"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span><span class="parameter" id="param-formatStyle"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">formatStyle</span> = <span class="default-value">defaultFormatStyle</span></span>})</span>
+        </dt>
+        <dd>
+          Creates a <a href="../cmdline/Moment-class.html">Moment</a> from individual date/time components.
+        </dd>
+        <dt id="Moment.fromDateTime" class="callable">
+          <span class="name"><a href="../cmdline/Moment/Moment.fromDateTime.html">Moment.fromDateTime</a></span><span class="signature">(<span class="parameter" id="fromDateTime-param-dateTime"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">dateTime</span></span>)</span>
+        </dt>
+        <dd>
+          Creates a <a href="../cmdline/Moment-class.html">Moment</a> from an existing <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a> instance.
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="asMap" class="property">
+  <span class="name"><a href="../cmdline/Moment/asMap.html">asMap</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  Serializes this <a href="../cmdline/Moment-class.html">Moment</a> to a <code>Map&lt;String, dynamic&gt;</code>.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="clock" class="property">
+  <span class="name"><a href="../cmdline/Moment/clock.html">clock</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The time as a 12-hour clock string with AM/PM: <code>"2:05:09 PM"</code>.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="clockPhase" class="property">
+  <span class="name"><a href="../cmdline/Moment/clockPhase.html">clockPhase</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  <code>"AM"</code> or <code>"PM"</code> based on the <a href="../cmdline/Moment/hour.html">hour</a> value.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="date" class="property">
+  <span class="name"><a href="../cmdline/Moment/date.html">date</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd>
+  The day-of-month component (1-31), or <code>null</code> if not specified.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="dateTime" class="property">
+  <span class="name"><a href="../cmdline/Moment/dateTime.html">dateTime</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  
+
+</dt>
+<dd>
+  Converts this <a href="../cmdline/Moment-class.html">Moment</a> to a standard Dart <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a>.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="era" class="property">
+  <span class="name"><a href="../cmdline/Moment/era.html">era</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  The historical era — <code>"AD"</code> for years &gt;= 1, <code>"BC"</code> for years &lt;= -1,
+or <code>null</code> for year 0.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="formatStyle" class="property">
+  <span class="name"><a href="../cmdline/Moment/formatStyle.html">formatStyle</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  The token sequence used by <a href="../cmdline/Moment/format.html">format</a> to produce a formatted string.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="hashCode" class="property">
+  <span class="name"><a href="../cmdline/Moment/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="hour" class="property">
+  <span class="name"><a href="../cmdline/Moment/hour.html">hour</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd>
+  The hour component (0-23), or <code>null</code> if not specified.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="millisecondsSinceEpoch" class="property">
+  <span class="name"><a href="../cmdline/Moment/millisecondsSinceEpoch.html">millisecondsSinceEpoch</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  Milliseconds since the Unix epoch (1970-01-01 00:00:00 UTC).
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="minute" class="property">
+  <span class="name"><a href="../cmdline/Moment/minute.html">minute</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd>
+  The minute component (0-59), or <code>null</code> if not specified.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="month" class="property">
+  <span class="name"><a href="../cmdline/Moment/month.html">month</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd>
+  The month component (1-12), or <code>null</code> if not specified.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="period" class="property">
+  <span class="name"><a href="../cmdline/Moment/period.html">period</a></span>
+  <span class="signature">&#8594; <a href="../cmdline/Period-class.html">Period</a></span>
+  
+
+</dt>
+<dd>
+  Converts the time portion of this <a href="../cmdline/Moment-class.html">Moment</a> into a <a href="../cmdline/Period-class.html">Period</a>.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property">
+  <span class="name"><a href="../cmdline/Moment/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd>
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="second" class="property">
+  <span class="name"><a href="../cmdline/Moment/second.html">second</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd>
+  The second component (0-59), or <code>null</code> if not specified.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="shortClock" class="property">
+  <span class="name"><a href="../cmdline/Moment/shortClock.html">shortClock</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The time as a short 12-hour string without seconds: <code>"2:05 PM"</code>.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="shortTime" class="property">
+  <span class="name"><a href="../cmdline/Moment/shortTime.html">shortTime</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The time as a short 24-hour string without seconds: <code>"HH:mm"</code>.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="time" class="property">
+  <span class="name"><a href="../cmdline/Moment/time.html">time</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The time as a 24-hour string: <code>"HH:mm:ss"</code> (e.g. <code>"14:05:09"</code>).
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="totalSeconds" class="property">
+  <span class="name"><a href="../cmdline/Moment/totalSeconds.html">totalSeconds</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The total number of seconds from the Unix epoch (1970-01-01) to this
+<a href="../cmdline/Moment-class.html">Moment</a>.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="weekday" class="property">
+  <span class="name"><a href="../cmdline/Moment/weekday.html">weekday</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd>
+  The ISO day of the week (1 = Monday, 7 = Sunday), or <code>null</code> if the
+date components are incomplete.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="year" class="property">
+  <span class="name"><a href="../cmdline/Moment/year.html">year</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd>
+  The year component (e.g. <code>2026</code>), or <code>null</code> if not specified.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="addPeriod" class="callable">
+  <span class="name"><a href="../cmdline/Moment/addPeriod.html">addPeriod</a></span><span class="signature">(<wbr><span class="parameter" id="addPeriod-param-period"><span class="type-annotation"><a href="../cmdline/Period-class.html">Period</a></span> <span class="parameter-name">period</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Alias for the <code>+</code> operator. Returns a new <a href="../cmdline/Moment-class.html">Moment</a> shifted by <code>period</code>.
+  
+
+</dd>
+
+        <dt id="compareTo" class="callable">
+  <span class="name"><a href="../cmdline/Moment/compareTo.html">compareTo</a></span><span class="signature">(<wbr><span class="parameter" id="compareTo-param-other"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Compares this object to another object.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="difference" class="callable">
+  <span class="name"><a href="../cmdline/Moment/difference.html">difference</a></span><span class="signature">(<wbr><span class="parameter" id="difference-param-other"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Period-class.html">Period</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the absolute difference between this <a href="../cmdline/Moment-class.html">Moment</a> and <code>other</code> as a
+<a href="../cmdline/Period-class.html">Period</a>.
+  
+
+</dd>
+
+        <dt id="format" class="callable">
+  <span class="name"><a href="../cmdline/Moment/format.html">format</a></span><span class="signature">(<wbr>{<span class="parameter" id="format-param-formatStyle"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">formatStyle</span> = <span class="default-value">defaultFormatStyle</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Builds a formatted date/time string by evaluating each token in
+<code>formatStyle</code> against this <a href="../cmdline/Moment-class.html">Moment</a>'s values.
+  
+
+</dd>
+
+        <dt id="formatToken" class="callable">
+  <span class="name"><a href="../cmdline/Moment/formatToken.html">formatToken</a></span><span class="signature">(<wbr><span class="parameter" id="formatToken-param-moment"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">moment</span>, </span><span class="parameter" id="formatToken-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Resolves a single format <code>token</code> into its string value for the
+given <code>moment</code>.
+  
+
+</dd>
+
+        <dt id="fromMap" class="callable">
+  <span class="name"><a href="../cmdline/Moment/fromMap.html">fromMap</a></span><span class="signature">(<wbr><span class="parameter" id="fromMap-param-map"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>&gt;</span></span> <span class="parameter-name">map</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Constructs a <a href="../cmdline/Moment-class.html">Moment</a> from a map with string keys.
+  
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable">
+  <span class="name"><a href="../cmdline/Moment/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="timeAgo" class="callable">
+  <span class="name"><a href="../cmdline/Moment/timeAgo.html">timeAgo</a></span><span class="signature">(<wbr>{<span class="parameter" id="timeAgo-param-from"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a>?</span> <span class="parameter-name">from</span>, </span><span class="parameter" id="timeAgo-param-short"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">short</span> = <span class="default-value">false</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a human-readable string describing how long ago (or from now)
+this <a href="../cmdline/Moment-class.html">Moment</a> is relative to <code>from</code> (defaults to <a href="../cmdline/Moment/now.html">Moment.now</a>).
+  
+
+</dd>
+
+        <dt id="toList" class="callable">
+  <span class="name"><a href="../cmdline/Moment/toList.html">toList</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the components as a list: <code>[second, minute, hour, date, month, year]</code>.
+  
+
+</dd>
+
+        <dt id="toString" class="callable">
+  <span class="name"><a href="../cmdline/Moment/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A string representation of this object.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator +" class="callable">
+  <span class="name"><a href="../cmdline/Moment/operator_plus.html">operator +</a></span><span class="signature">(<wbr><span class="parameter" id="+-param-period"><span class="type-annotation"><a href="../cmdline/Period-class.html">Period</a></span> <span class="parameter-name">period</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a new <a href="../cmdline/Moment-class.html">Moment</a> advanced forward by <code>period</code>.
+  
+
+</dd>
+
+        <dt id="operator -" class="callable">
+  <span class="name"><a href="../cmdline/Moment/operator_minus.html">operator -</a></span><span class="signature">(<wbr><span class="parameter" id="--param-period"><span class="type-annotation"><a href="../cmdline/Period-class.html">Period</a></span> <span class="parameter-name">period</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a new <a href="../cmdline/Moment-class.html">Moment</a> moved backward by <code>period</code>.
+  
+
+</dd>
+
+        <dt id="operator &lt;" class="callable">
+  <span class="name"><a href="../cmdline/Moment/operator_less.html">operator <</a></span><span class="signature">(<wbr><span class="parameter" id="<-param-other"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>true</code> if this moment comes before <code>other</code> chronologically.
+  
+
+</dd>
+
+        <dt id="operator &lt;=" class="callable">
+  <span class="name"><a href="../cmdline/Moment/operator_less_equal.html">operator <=</a></span><span class="signature">(<wbr><span class="parameter" id="<=-param-other"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>true</code> if this moment is at or before <code>other</code>.
+  
+
+</dd>
+
+        <dt id="operator ==" class="callable">
+  <span class="name"><a href="../cmdline/Moment/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  The equality operator.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="operator &gt;" class="callable">
+  <span class="name"><a href="../cmdline/Moment/operator_greater.html">operator ></a></span><span class="signature">(<wbr><span class="parameter" id=">-param-other"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>true</code> if this moment comes after <code>other</code> chronologically.
+  
+
+</dd>
+
+        <dt id="operator &gt;=" class="callable">
+  <span class="name"><a href="../cmdline/Moment/operator_greater_equal.html">operator >=</a></span><span class="signature">(<wbr><span class="parameter" id=">=-param-other"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>true</code> if this moment is at or after <code>other</code>.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+  <section class="summary offset-anchor" id="static-methods">
+    <h2>Static Methods</h2>
+    <dl class="callables">
+        <dt id="now" class="callable">
+  <span class="name"><a href="../cmdline/Moment/now.html">now</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Creates a <a href="../cmdline/Moment-class.html">Moment</a> representing the current date and time.
+  
+
+</dd>
+
+        <dt id="parse" class="callable">
+  <span class="name"><a href="../cmdline/Moment/parse.html">parse</a></span><span class="signature">(<wbr>{<span class="parameter" id="parse-param-string"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">string</span></span>})
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Parses a <a href="../cmdline/Moment-class.html">Moment</a> from a string in the format <code>"yyyy/MM/dd-HH:mm:ss"</code>.
+  
+
+</dd>
+
+        <dt id="tomorrow" class="callable">
+  <span class="name"><a href="../cmdline/Moment/tomorrow.html">tomorrow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a <a href="../cmdline/Moment-class.html">Moment</a> representing tomorrow at the current time.
+  
+
+</dd>
+
+        <dt id="tryParse" class="callable">
+  <span class="name"><a href="../cmdline/Moment/tryParse.html">tryParse</a></span><span class="signature">(<wbr><span class="parameter" id="tryParse-param-string"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">string</span>, {</span><span class="parameter" id="tryParse-param-onException"><span class="type-annotation">void</span> <span class="parameter-name">onException</span>(<span class="parameter" id="param-e"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">e</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Attempts to parse a <a href="../cmdline/Moment-class.html">Moment</a> from <code>string</code>, returning <code>null</code> on failure.
+  
+
+</dd>
+
+        <dt id="yesterday" class="callable">
+  <span class="name"><a href="../cmdline/Moment/yesterday.html">yesterday</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a <a href="../cmdline/Moment-class.html">Moment</a> representing yesterday at the current time.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline</a></li>
+    <li class="self-crumb">Moment class</li>
+</ol>
+
+    <h5>cmdline library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.2
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

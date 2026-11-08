@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="ansi library API docs, for the Dart programming language.">
+  <title>ansi library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">cmdline</a></li>
+    <li class="self-crumb">ansi.dart</li>
+  </ol>
+  <div class="self-name">ansi</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar=""
+    data-below-sidebar="ansi&#47;ansi-library-sidebar.html">
+  
+    <div>
+      
+
+      <h1>
+        <span class="kind-library">ansi</span>
+        library 
+ 
+
+      </h1>
+    </div>
+
+    
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+      <dl>
+          <dt id="Ansi">
+  <span class="name "><a href="../cmdline/Ansi-class.html">Ansi</a></span> 
+
+</dt>
+<dd>
+  A string with escape codes already in it, waiting to be printed.
+</dd>
+
+          <dt id="AnsiColour">
+  <span class="name "><a href="../cmdline/AnsiColour-class.html">AnsiColour</a></span> 
+
+</dt>
+<dd>
+  A colour from the terminal's 256-colour palette.
+</dd>
+
+          <dt id="AnsiColourRgb">
+  <span class="name "><a href="../cmdline/AnsiColourRgb-class.html">AnsiColourRgb</a></span> 
+
+</dt>
+<dd>
+  An exact 24-bit ("true colour") colour.
+</dd>
+
+          <dt id="AnsiInk">
+  <span class="name "><a href="../cmdline/AnsiInk-class.html">AnsiInk</a></span> 
+
+</dt>
+<dd>
+  A colour that can be turned into terminal escape codes.
+</dd>
+
+          <dt id="AnsiPalette">
+  <span class="name "><a href="../cmdline/AnsiPalette-class.html">AnsiPalette</a></span> 
+
+</dt>
+<dd>
+  The shared colours for the package's look.
+</dd>
+
+          <dt id="AnsiPrinter">
+  <span class="name "><a href="../cmdline/AnsiPrinter-class.html">AnsiPrinter</a></span> 
+
+</dt>
+<dd>
+  Builds one line from codes and values, and prints it with a final <a href="../cmdline/RESET-constant.html">RESET</a>.
+</dd>
+
+          <dt id="AnsiTheme">
+  <span class="name "><a href="../cmdline/AnsiTheme-class.html">AnsiTheme</a></span> 
+
+</dt>
+<dd>
+  The colours and symbols shared by prompts, menus, tables and file helpers.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+
+
+
+
+    <section class="summary offset-anchor" id="functions">
+      <h2>Functions</h2>
+      <dl class="callables">
+          <dt id="copyToClipboard" class="callable">
+  <span class="name"><a href="../cmdline/copyToClipboard.html">copyToClipboard</a></span><span class="signature">(<wbr><span class="parameter" id="copyToClipboard-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Copies <code>text</code> to the user's clipboard.
+  
+
+</dd>
+
+          <dt id="cursorDown" class="callable">
+  <span class="name"><a href="../cmdline/cursorDown.html">cursorDown</a></span><span class="signature">(<wbr>[<span class="parameter" id="cursorDown-param-lines"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">lines</span> = <span class="default-value">1</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Moves the cursor down by <code>lines</code> rows.
+  
+
+</dd>
+
+          <dt id="cursorLeft" class="callable">
+  <span class="name"><a href="../cmdline/cursorLeft.html">cursorLeft</a></span><span class="signature">(<wbr>[<span class="parameter" id="cursorLeft-param-columns"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">columns</span> = <span class="default-value">1</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Moves the cursor left by <code>columns</code>.
+  
+
+</dd>
+
+          <dt id="cursorRight" class="callable">
+  <span class="name"><a href="../cmdline/cursorRight.html">cursorRight</a></span><span class="signature">(<wbr>[<span class="parameter" id="cursorRight-param-columns"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">columns</span> = <span class="default-value">1</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Moves the cursor right by <code>columns</code>.
+  
+
+</dd>
+
+          <dt id="cursorTo" class="callable">
+  <span class="name"><a href="../cmdline/cursorTo.html">cursorTo</a></span><span class="signature">(<wbr><span class="parameter" id="cursorTo-param-row"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">row</span>, </span><span class="parameter" id="cursorTo-param-column"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">column</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Moves the cursor to <code>row</code> and <code>column</code> on the screen.
+  
+
+</dd>
+
+          <dt id="cursorToColumn" class="callable">
+  <span class="name"><a href="../cmdline/cursorToColumn.html">cursorToColumn</a></span><span class="signature">(<wbr><span class="parameter" id="cursorToColumn-param-column"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">column</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Moves the cursor to <code>column</code> on the current line.
+  
+
+</dd>
+
+          <dt id="cursorToLineAbove" class="callable">
+  <span class="name"><a href="../cmdline/cursorToLineAbove.html">cursorToLineAbove</a></span><span class="signature">(<wbr>[<span class="parameter" id="cursorToLineAbove-param-lines"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">lines</span> = <span class="default-value">1</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Moves the cursor to the start of a line <code>lines</code> rows above.
+  
+
+</dd>
+
+          <dt id="cursorToLineBelow" class="callable">
+  <span class="name"><a href="../cmdline/cursorToLineBelow.html">cursorToLineBelow</a></span><span class="signature">(<wbr>[<span class="parameter" id="cursorToLineBelow-param-lines"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">lines</span> = <span class="default-value">1</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Moves the cursor to the start of a line <code>lines</code> rows below.
+  
+
+</dd>
+
+          <dt id="cursorUp" class="callable">
+  <span class="name"><a href="../cmdline/cursorUp.html">cursorUp</a></span><span class="signature">(<wbr>[<span class="parameter" id="cursorUp-param-lines"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">lines</span> = <span class="default-value">1</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Moves the cursor up by <code>lines</code> rows.
+  
+
+</dd>
+
+          <dt id="hyperlink" class="callable">
+  <span class="name"><a href="../cmdline/hyperlink.html">hyperlink</a></span><span class="signature">(<wbr><span class="parameter" id="hyperlink-param-url"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, </span><span class="parameter" id="hyperlink-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Makes <code>text</code> a clickable link that opens <code>url</code>.
+  
+
+</dd>
+
+          <dt id="notify" class="callable">
+  <span class="name"><a href="../cmdline/notify.html">notify</a></span><span class="signature">(<wbr><span class="parameter" id="notify-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Pops up a desktop notification with <code>message</code>.
+  
+
+</dd>
+
+          <dt id="scrollDown" class="callable">
+  <span class="name"><a href="../cmdline/scrollDown.html">scrollDown</a></span><span class="signature">(<wbr>[<span class="parameter" id="scrollDown-param-lines"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">lines</span> = <span class="default-value">1</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Scrolls the screen content down by <code>lines</code>, adding blank lines at the top.
+  
+
+</dd>
+
+          <dt id="scrollRegion" class="callable">
+  <span class="name"><a href="../cmdline/scrollRegion.html">scrollRegion</a></span><span class="signature">(<wbr><span class="parameter" id="scrollRegion-param-top"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">top</span>, </span><span class="parameter" id="scrollRegion-param-bottom"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">bottom</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Limits scrolling to the rows from <code>top</code> to <code>bottom</code>.
+  
+
+</dd>
+
+          <dt id="scrollUp" class="callable">
+  <span class="name"><a href="../cmdline/scrollUp.html">scrollUp</a></span><span class="signature">(<wbr>[<span class="parameter" id="scrollUp-param-lines"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">lines</span> = <span class="default-value">1</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Scrolls the screen content up by <code>lines</code>, adding blank lines at the bottom.
+  
+
+</dd>
+
+          <dt id="taskbarError" class="callable">
+  <span class="name"><a href="../cmdline/taskbarError.html">taskbarError</a></span><span class="signature">(<wbr><span class="parameter" id="taskbarError-param-percent"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">percent</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Like <a href="../cmdline/taskbarProgress.html">taskbarProgress</a>, but shown in red to say something failed.
+  
+
+</dd>
+
+          <dt id="taskbarPaused" class="callable">
+  <span class="name"><a href="../cmdline/taskbarPaused.html">taskbarPaused</a></span><span class="signature">(<wbr><span class="parameter" id="taskbarPaused-param-percent"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">percent</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Like <a href="../cmdline/taskbarProgress.html">taskbarProgress</a>, but shown in yellow to say it is paused.
+  
+
+</dd>
+
+          <dt id="taskbarProgress" class="callable">
+  <span class="name"><a href="../cmdline/taskbarProgress.html">taskbarProgress</a></span><span class="signature">(<wbr><span class="parameter" id="taskbarProgress-param-percent"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">percent</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Shows <code>percent</code> (0 to 100) as progress on the terminal tab and taskbar.
+  
+
+</dd>
+
+          <dt id="windowTitle" class="callable">
+  <span class="name"><a href="../cmdline/windowTitle.html">windowTitle</a></span><span class="signature">(<wbr><span class="parameter" id="windowTitle-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">title</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Sets the title of the terminal window or tab.
+  
+
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="typedefs">
+      <h2>Typedefs</h2>
+      <dl>
+          
+  <dt id="AnsiColorRgb" class="">
+  <span class="name"><a href="../cmdline/AnsiColorRgb.html">AnsiColorRgb</a></span>
+    = <a href="../cmdline/AnsiColourRgb-class.html">AnsiColourRgb</a>
+  </span>
+  
+
+</dt>
+<dd>
+  American spelling of <a href="../cmdline/AnsiColourRgb-class.html">AnsiColourRgb</a>.
+  
+
+</dd>
+
+
+          
+  <dt id="Color256" class="">
+  <span class="name"><a href="../cmdline/Color256.html">Color256</a></span>
+    = <a href="../cmdline/AnsiColour-class.html">AnsiColour</a>
+  </span>
+  
+
+</dt>
+<dd>
+  American-style alias for <a href="../cmdline/AnsiColour-class.html">AnsiColour</a>, the 256-colour palette.
+  
+
+</dd>
+
+
+          
+  <dt id="ColorRgb" class="">
+  <span class="name"><a href="../cmdline/ColorRgb.html">ColorRgb</a></span>
+    = <a href="../cmdline/AnsiColourRgb-class.html">AnsiColourRgb</a>
+  </span>
+  
+
+</dt>
+<dd>
+  Short alias for <a href="../cmdline/AnsiColourRgb-class.html">AnsiColourRgb</a>, the 24-bit true colour.
+  
+
+</dd>
+
+
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">cmdline</a></li>
+    <li class="self-crumb">ansi.dart</li>
+</ol>
+
+    <h5><span class="package-name">cmdline</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="../cmdline/">cmdline</a></li>
+      <li class="section-subtitle">ansi</li>
+        <li class="section-subitem"><a href="../ansi/">ansi</a></li>
+      <li class="section-subtitle">cli</li>
+        <li class="section-subitem"><a href="../cli/">cli</a></li>
+      <li class="section-subtitle">cmd</li>
+        <li class="section-subitem"><a href="../cmd/">cmd</a></li>
+      <li class="section-subtitle">core</li>
+        <li class="section-subitem"><a href="../core/">core</a></li>
+      <li class="section-subtitle">logging</li>
+        <li class="section-subitem"><a href="../logging/">logging</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <h5>ansi library</h5>
+  </div><!--/sidebar-offcanvas-right-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.2
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

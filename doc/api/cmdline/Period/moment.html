@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the moment property from the Period class, for the Dart programming language.">
+  <title>moment property - Period class - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">cmdline</a></li>
+    <li><a href="../../cmdline/">cmdline.dart</a></li>
+    <li><a href="../../cmdline/Period-class.html">Period</a></li>
+    <li class="self-crumb">moment property</li>
+  </ol>
+  <div class="self-name">moment</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="cmdline&#47;Period-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-property">moment</span> property 
+</h1></div>
+
+    
+
+    
+        
+  <section id="getter">
+    <section class="multi-line-signature">
+      
+      <span class="returntype"><a href="../../cmdline/Moment-class.html">Moment</a></span>
+      get
+      <span class="name ">moment</span>
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Converts this period into a <a href="../../cmdline/Moment-class.html">Moment</a> anchored at the Unix epoch
+(1970-01-01), effectively treating the stored microseconds as an
+absolute timestamp.</p>
+<p>This is most useful when you have a raw duration and want to decompose
+it into year/month/day/hour/minute/second components.</p>
+</section>
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Moment get moment {
+  final int totalMicroseconds = _period;
+  final int totalMilliseconds =
+      totalMicroseconds ~&#47; microsecondsPerMillisecond;
+  final int totalSeconds = totalMilliseconds ~&#47; millisecondsPerSecond;
+  final int totalMinutes = totalSeconds ~&#47; secondsPerMinute;
+  final int totalHours = totalMinutes ~&#47; minutesPerHour;
+  final int totalDays = totalHours ~&#47; hoursPerDay;
+
+  final int sec = totalSeconds % secondsPerMinute;
+  final int min = totalMinutes % minutesPerHour;
+  final int hr = totalHours % hoursPerDay;
+
+  final int yr = 1970 + (totalDays ~&#47; 365);
+  final int remainingDays = totalDays % 365;
+  final int month = 1 + (remainingDays ~&#47; 30);
+  final int day = 1 + (remainingDays % 30);
+
+  return Moment(
+    year: yr,
+    month: month,
+    date: day,
+    hour: hr,
+    minute: min,
+    second: sec,
+  );
+}</code></pre>
+</section>
+
+  </section>
+
+
+</div> <!-- /.main-content -->
+<div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+  <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">cmdline</a></li>
+    <li><a href="../../cmdline/">cmdline</a></li>
+    <li><a href="../../cmdline/Period-class.html">Period</a></li>
+    <li class="self-crumb">moment property</li>
+</ol>
+
+  <h5>Period class</h5>
+  <div id="dartdoc-sidebar-left-content"></div>
+</div><!--/.sidebar-offcanvas-->
+<div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.2
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

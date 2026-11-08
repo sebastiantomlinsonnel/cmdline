@@ -360,6 +360,7 @@ extension StringsExtension on String {
       rune == 0x3000 ||
       rune == 0xFEFF;
 }
+
 /// Counts how many characters at the start of [text] are style codes.
 ///
 /// Skips over each leading `CSI <digits, ':' or ';'> m` sequence and stops at

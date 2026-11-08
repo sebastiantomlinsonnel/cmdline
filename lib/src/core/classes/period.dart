@@ -37,6 +37,8 @@ part of 'moment.dart';
 /// final nextMonth = Moment.now() + Period(months: 1);
 /// final lastYear = Moment.now() - Period(years: 1);
 /// ```
+///
+/// {@category core}
 class Period {
   @override
   String toString() => '$_period microseconds';
@@ -114,15 +116,15 @@ class Period {
     int milliseconds = 0,
     int microseconds = 0,
   }) : this._microseconds(
-    microseconds +
-        microsecondsPerMillisecond * milliseconds +
-        microsecondsPerSecond * seconds +
-        microsecondsPerMinute * minutes +
-        microsecondsPerHour * hours +
-        microsecondsPerDay * days +
-        microsecondsPerDay * 30 * months +
-        microsecondsPerDay * 365 * years,
-  );
+         microseconds +
+             microsecondsPerMillisecond * milliseconds +
+             microsecondsPerSecond * seconds +
+             microsecondsPerMinute * minutes +
+             microsecondsPerHour * hours +
+             microsecondsPerDay * days +
+             microsecondsPerDay * 30 * months +
+             microsecondsPerDay * 365 * years,
+       );
 
   // ---------------------------------------------------------------------------
   // Time Unit Conversion Constants
@@ -192,7 +194,8 @@ class Period {
   /// it into year/month/day/hour/minute/second components.
   Moment get moment {
     final int totalMicroseconds = _period;
-    final int totalMilliseconds = totalMicroseconds ~/ microsecondsPerMillisecond;
+    final int totalMilliseconds =
+        totalMicroseconds ~/ microsecondsPerMillisecond;
     final int totalSeconds = totalMilliseconds ~/ millisecondsPerSecond;
     final int totalMinutes = totalSeconds ~/ secondsPerMinute;
     final int totalHours = totalMinutes ~/ minutesPerHour;

@@ -1,5 +1,4 @@
-
-import 'package:cmdline/cmdline.dart';
+import '../../../cmdline.dart';
 
 /// Grapheme break category of an unpaired surrogate.
 const int _categoryControl = 1;

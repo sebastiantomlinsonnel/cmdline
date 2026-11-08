@@ -1,4 +1,4 @@
-import 'package:cmdline/cmdline.dart';
+import '../../../cmdline.dart';
 
 part 'period.dart';
 
@@ -63,6 +63,8 @@ part 'period.dart';
 /// ```dart
 /// if (deadline > Moment.now()) print('Still time!');
 /// ```
+///
+/// {@category core}
 final class Moment implements Comparable<Moment> {
   /// The second component (0-59), or `null` if not specified.
   int? second;
@@ -190,7 +192,9 @@ final class Moment implements Comparable<Moment> {
   /// final lastMonth = Moment.now() - Period(months: 1);
   /// ```
   Moment operator -(Period period) {
-    final DateTime dt = dateTime.subtract(Duration(microseconds: period._period));
+    final DateTime dt = dateTime.subtract(
+      Duration(microseconds: period._period),
+    );
     return Moment.fromDateTime(dt);
   }
 
@@ -504,7 +508,9 @@ final class Moment implements Comparable<Moment> {
         return 'th';
       }
     }
-    final int trailing = int.parse(value.toString()[value.toString().length - 1]);
+    final int trailing = int.parse(
+      value.toString()[value.toString().length - 1],
+    );
     switch (trailing) {
       case 1:
         return 'st';

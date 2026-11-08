@@ -40,6 +40,8 @@ enum TerminalShell {
 ///
 /// Variables you set (like `$env:NAME = 'x'`) only last for that one
 /// command, since each command gets a fresh shell.
+///
+/// {@category core}
 class ShellCommand {
   /// The shell command
   final String command;

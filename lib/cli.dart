@@ -1,0 +1,13 @@
+/// Complete versatile CLI builder
+///
+/// {@category cli}
+library cli;
+
+export 'src/cli/cli.dart';
+export 'src/cli/parser/input.dart';
+export 'src/cli/parser/parser.dart';
+export 'src/cli/parser/parser_result.dart';
+export 'src/cli/theme/help.dart';
+export 'src/cli/types/arguments.dart';
+export 'src/cli/types/cli_error.dart';
+export 'src/cli/types/command.dart';
