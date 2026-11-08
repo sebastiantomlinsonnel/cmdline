@@ -1,48 +1,44 @@
 part of 'moment.dart';
 
-/// Turns a Moment in a new format
+/// A reusable pattern that turns a [Moment] into text.
+///
+/// Letter runs that match a token (like `Do`, `MMMM`, `HH`) are replaced with
+/// the moment's value. Everything else is kept exactly as written. Wrap text
+/// in `[brackets]` to stop it being read as a token, e.g. `'[a] h:mm'`.
+///
+/// ```dart
+/// final f = TimeFormat('The $Do of $mmmm $yyyy at $HH:$mm:$ss');
+/// f.format(Moment.now()); // → "The 8th of November 2026 at 14:35:09"
+/// ```
 class TimeFormat {
-  static const TimeFormat worded = const TimeFormat([
-    'The',
-    Do,
-    'of',
-    mmmm,
-    yyyy,
-    'at',
-    hh,
-    ':',
-    mm,
-    ":",
-    ss,
-  ]);
+  /// The default format, like `The 8th of November 2026 at 14:35:09`.
+  static const TimeFormat worded = TimeFormat(
+    'The Do of MMMM yyyy at HH:mm:ss',
+  );
+  static const TimeFormat time12Hour = TimeFormat('$T');
+  static const TimeFormat time24Hour = TimeFormat('$t');
 
-  /// A list of words and keys that specify the format
-  final List<String> tokens;
+  /// The pattern string this format was created from.
+  final String pattern;
 
-  /// Default constructor
-  const TimeFormat(this.tokens);
+  /// Creates a format from a [pattern] string.
+  const TimeFormat(this.pattern);
 
-  /// Constructs a TimeFormat from a list of tokens separated by spaces in a string
-  TimeFormat.fromString(String string) : this.tokens = string.split(' ');
+  /// Matches `[escaped text]`, a run of letters, or any single other character.
+  static final RegExp _splitter = RegExp(r'\[[^\]]*\]|[A-Za-z]+|[^A-Za-z]');
 
-  /// Builds a formatted date/time string by evaluating each token in
-  /// [formatStyle] against this [Moment]'s values.
-  ///
-  /// Tokens that don't match a known format specifier are passed through
-  /// as literal strings, so you can mix separators and text freely.
-  ///
-  /// ```dart
-  /// final m = Moment.now();
-  /// m.format(formatStyle: [dddd, comma, space, mmmm, space, D, comma, space, yyyy]);
-  /// // → "Wednesday, February 19, 2026"
-  /// ```
+  /// Patterns already split into tokens, so each one is only parsed once.
+  static final Map<String, List<String>> _cache = {};
+
+  /// The tokens and literal pieces that make up [pattern].
+  List<String> get tokens => _cache.putIfAbsent(
+    pattern,
+    () => _splitter.allMatches(pattern).map((match) => match[0]!).toList(),
+  );
+
+  /// Builds the formatted string for [moment].
   String format(Moment moment) {
-    StringBuffer val = StringBuffer();
-    for (int i = 0; i < tokens.length; i++) {
-      final String _token = '${formatToken(moment, tokens[i])}';
-      val.write(_token);
-    }
-    return val.toString();
+    return tokens.map((token) => formatToken(moment, token)).join().trim();
   }
 
   /// Resolves a single format [token] into its string value for the
@@ -100,6 +96,8 @@ class TimeFormat {
         return moment.clockPhase.toLowerCase();
       case t:
         return '${moment.hour}:${moment.minute}:${moment.second}';
+      case T:
+        return '${moment.clock}';
       case dateNumeric:
         return '${moment.date.toString().padLeft(2, '0')}/${moment.month.toString().padLeft(2, '0')}/${moment.year}';
       default:

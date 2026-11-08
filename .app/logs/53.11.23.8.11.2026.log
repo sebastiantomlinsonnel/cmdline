@@ -1,0 +1,48 @@
+2026-11-08 23:11:53.990[LOG] [Main] Started with file: prompt.xtx
+2026-11-08 23:11:54.001[PASS] Spell checker initialized
+2026-11-08 23:11:54.002[PASS] XTX initialized
+2026-11-08 23:11:54.322[TRACE] [NotificationHost] initState, registering the overlay resolver
+2026-11-08 23:11:54.322[DEBUG] [NotificationHost] Binding overlay to window 1 (was none)
+2026-11-08 23:11:54.323[TRACE] [AppCaption] initState (aotCapable: true)
+2026-11-08 23:11:54.323[TRACE] [FileEditor] initState for prompt.xtx
+2026-11-08 23:11:54.323[LOG] [FileEditor] Opening prompt.xtx from disk
+2026-11-08 23:11:54.326[TRACE] [NotificationHost] 1 overlays registered
+2026-11-08 23:11:54.327[DEBUG] [FileEditor] prompt.xtx opened with 1 sheets, starting on 0
+2026-11-08 23:11:54.327[DEBUG] [FileEditor] Loading sheet 0 of prompt.xtx
+2026-11-08 23:11:54.327[TRACE] [TableEditorState] reset, disposing 0 controllers and 0 focus nodes
+2026-11-08 23:11:54.327[DEBUG] [FileEditor] Sheet 0 is a rich text document
+2026-11-08 23:11:54.327[DEBUG] [XTXDocument] Opening sheet 0 of prompt.xtx
+2026-11-08 23:11:54.327[TRACE] [NodeCodec] Decoded 1 editor nodes from 1 stored nodes (0 skipped)
+2026-11-08 23:11:54.327[DEBUG] [XTXDocument] Sheet 0 decoded into 1 editor nodes
+2026-11-08 23:11:54.327[PASS] [XTXDocument] Editor ready for sheet 0 of prompt.xtx
+2026-11-08 23:11:54.327[TRACE] ParagraphNode
+2026-11-08 23:11:54.328[TRACE] TASK NODES : 0
+2026-11-08 23:11:54.328[DEBUG] [FileEditor] Opening the media server for prompt.xtx
+2026-11-08 23:11:54.328[PASS] [FileEditor] Sheet 0 loaded in 1ms
+2026-11-08 23:11:54.328[TRACE] [DocState] setDocument: XTXDocument
+2026-11-08 23:11:54.328[TRACE] [FileEditor] prompt.xtx is 296 bytes on disk
+2026-11-08 23:11:54.328[DEBUG] [AppCaption] Window title resolved to "willow"
+2026-11-08 23:11:54.331[LOG] [AssetStreamServer] Listening on 127.0.0.1:63927
+2026-11-08 23:11:54.331[TRACE] [AssetStreamServer] Attached key 0 to prompt.xtx (1 attached)
+2026-11-08 23:11:54.331[DEBUG] [DocumentMedia] Attached prompt.xtx to the media server as key 0
+2026-11-08 23:11:54.341[DEBUG] [FileEditor] Rebuilding the stylesheet for dark mode
+2026-11-08 23:11:54.341[DEBUG] [EditorStylesheet] Building the editor stylesheet (font: default)
+2026-11-08 23:11:54.341[DEBUG] [FileEditor] Rebuilding keyboard actions and component builders for a new editor
+2026-11-08 23:11:54.342[TRACE] [DocumentToolbar] initState
+2026-11-08 23:11:54.381[TRACE] [FileEditor] Editor focus gained
+2026-11-08 23:11:54.382[TRACE] [Spellcheck] ensureInitialized for root .
+2026-11-08 23:11:54.382[DEBUG] [Spellcheck] Initialising, dictionary at .\.app\dictionary.json
+2026-11-08 23:11:54.382[TRACE] [Spellcheck] No dictionary.json yet, starting with an empty user dictionary
+2026-11-08 23:11:55.122[PASS] [Spellcheck] Ready with 0 user words
+2026-11-08 23:11:55.122[TRACE] [DocumentSpellchecker] Attaching to a document of 1 nodes
+2026-11-08 23:11:55.122[TRACE] [Spellcheck] batched() entering, depth 1
+2026-11-08 23:11:55.122[DEBUG] [DocumentSpellchecker] Checking 1 text nodes
+2026-11-08 23:11:55.122[TRACE] [Spellcheck] Immediate check for node 1 (133 chars)
+2026-11-08 23:11:55.122[DEBUG] [FileEditor] Spellchecker attached to sheet 0
+2026-11-08 23:11:55.143[DEBUG] [Spellcheck] Node 1 produced 0 issues
+2026-11-08 23:11:55.143[DEBUG] [DocumentSpellchecker] Whole document checked in 21ms
+2026-11-08 23:11:57.178[TRACE] [NotificationHost] Window 1 focused, notifications will land here
+2026-11-08 23:11:57.178[TRACE] [AppCaption] Window focused
+2026-11-08 23:11:57.504[TRACE] [NotificationHost] Window 1 focused, notifications will land here
+2026-11-08 23:11:57.504[TRACE] [AppCaption] Window focused
+2026-11-08 23:11:57.956[TRACE] [WordSnap] Drag armed (from an expanded selection: false)

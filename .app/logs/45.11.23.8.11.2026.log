@@ -1,0 +1,74 @@
+2026-11-08 23:11:45.543[LOG] [Main] Started with file: prompt.xtx
+2026-11-08 23:11:45.553[PASS] Spell checker initialized
+2026-11-08 23:11:45.553[PASS] XTX initialized
+2026-11-08 23:11:45.797[TRACE] [NotificationHost] initState, registering the overlay resolver
+2026-11-08 23:11:45.797[DEBUG] [NotificationHost] Binding overlay to window 1 (was none)
+2026-11-08 23:11:45.797[TRACE] [AppCaption] initState (aotCapable: true)
+2026-11-08 23:11:45.797[TRACE] [FileEditor] initState for prompt.xtx
+2026-11-08 23:11:45.797[LOG] [FileEditor] Opening prompt.xtx from disk
+2026-11-08 23:11:45.800[TRACE] [NotificationHost] 1 overlays registered
+2026-11-08 23:11:45.800[DEBUG] [FileEditor] prompt.xtx opened with 1 sheets, starting on 0
+2026-11-08 23:11:45.800[DEBUG] [FileEditor] Loading sheet 0 of prompt.xtx
+2026-11-08 23:11:45.802[TRACE] [TableEditorState] reset, disposing 0 controllers and 0 focus nodes
+2026-11-08 23:11:45.802[DEBUG] [FileEditor] Sheet 0 is a rich text document
+2026-11-08 23:11:45.802[DEBUG] [XTXDocument] Opening sheet 0 of prompt.xtx
+2026-11-08 23:11:45.802[TRACE] [NodeCodec] Decoded 1 editor nodes from 1 stored nodes (0 skipped)
+2026-11-08 23:11:45.802[DEBUG] [XTXDocument] Sheet 0 decoded into 1 editor nodes
+2026-11-08 23:11:45.802[PASS] [XTXDocument] Editor ready for sheet 0 of prompt.xtx
+2026-11-08 23:11:45.802[TRACE] ParagraphNode
+2026-11-08 23:11:45.802[TRACE] TASK NODES : 0
+2026-11-08 23:11:45.802[DEBUG] [FileEditor] Opening the media server for prompt.xtx
+2026-11-08 23:11:45.802[PASS] [FileEditor] Sheet 0 loaded in 0ms
+2026-11-08 23:11:45.802[TRACE] [DocState] setDocument: XTXDocument
+2026-11-08 23:11:45.802[TRACE] [FileEditor] prompt.xtx is 149 bytes on disk
+2026-11-08 23:11:45.802[DEBUG] [AppCaption] Window title resolved to "willow"
+2026-11-08 23:11:45.804[LOG] [AssetStreamServer] Listening on 127.0.0.1:63874
+2026-11-08 23:11:45.804[TRACE] [AssetStreamServer] Attached key 0 to prompt.xtx (1 attached)
+2026-11-08 23:11:45.804[DEBUG] [DocumentMedia] Attached prompt.xtx to the media server as key 0
+2026-11-08 23:11:45.808[DEBUG] [FileEditor] Rebuilding the stylesheet for dark mode
+2026-11-08 23:11:45.808[DEBUG] [EditorStylesheet] Building the editor stylesheet (font: default)
+2026-11-08 23:11:45.808[DEBUG] [FileEditor] Rebuilding keyboard actions and component builders for a new editor
+2026-11-08 23:11:45.808[TRACE] [DocumentToolbar] initState
+2026-11-08 23:11:45.828[TRACE] [FileEditor] Editor focus gained
+2026-11-08 23:11:45.828[TRACE] [Spellcheck] ensureInitialized for root .
+2026-11-08 23:11:45.828[DEBUG] [Spellcheck] Initialising, dictionary at .\.app\dictionary.json
+2026-11-08 23:11:45.828[TRACE] [Spellcheck] No dictionary.json yet, starting with an empty user dictionary
+2026-11-08 23:11:46.327[PASS] [Spellcheck] Ready with 0 user words
+2026-11-08 23:11:46.327[TRACE] [DocumentSpellchecker] Attaching to a document of 1 nodes
+2026-11-08 23:11:46.327[TRACE] [Spellcheck] batched() entering, depth 1
+2026-11-08 23:11:46.327[DEBUG] [DocumentSpellchecker] Checking 1 text nodes
+2026-11-08 23:11:46.327[TRACE] [Spellcheck] Immediate check for node 1 (0 chars)
+2026-11-08 23:11:46.327[DEBUG] [FileEditor] Spellchecker attached to sheet 0
+2026-11-08 23:11:46.336[DEBUG] [Spellcheck] Node 1 produced 0 issues
+2026-11-08 23:11:46.336[DEBUG] [DocumentSpellchecker] Whole document checked in 8ms
+2026-11-08 23:11:46.636[DEBUG] [FileEditor] Paste requested
+2026-11-08 23:11:46.639[DEBUG] [FileEditor] Pasting 133 chars of plain text
+2026-11-08 23:11:46.639[DEBUG] [XTXDocument] Sheet 0 of prompt.xtx is now dirty
+2026-11-08 23:11:46.639[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:46.639[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:46.639[TRACE] [Spellcheck] Debouncing check for node 1 (133 chars)
+2026-11-08 23:11:47.002[DEBUG] [Spellcheck] Node 1 produced 14 issues
+2026-11-08 23:11:47.122[DEBUG] [FileEditor] Ctrl+S pressed
+2026-11-08 23:11:47.122[TRACE] [DocumentMedia] Releasing the file handle for prompt.xtx while it is written
+2026-11-08 23:11:47.122[TRACE] [AssetStreamServer] Key 0 now points at nothing
+2026-11-08 23:11:47.122[LOG] [XTXDocument] Saving sheet 0 of prompt.xtx
+2026-11-08 23:11:47.122[TRACE] [NodeCodec] Encoded 1 stored nodes from 1 editor nodes (0 skipped)
+2026-11-08 23:11:47.122[DEBUG] [XTXDocument] Encoded 1 nodes (assets dirty: false)
+2026-11-08 23:11:47.122[TRACE] [XtxSheets] Replacing sheet 0 (Document) in prompt.xtx
+2026-11-08 23:11:47.122[TRACE] [XtxSheets] Skipping asset prune for prompt.xtx (custom sheet: false, assets: 0)
+2026-11-08 23:11:47.124[TRACE] [FileEditor] Adopting saved document prompt.xtx
+2026-11-08 23:11:47.124[TRACE] [FileEditor] Resuming the media server against prompt.xtx
+2026-11-08 23:11:47.124[TRACE] [FileEditor] prompt.xtx is 282 bytes on disk
+2026-11-08 23:11:47.124[PASS] [XTXDocument] Saved prompt.xtx in 1ms (dropped 0 unreferenced assets)
+2026-11-08 23:11:47.124[DEBUG] [DocumentMedia] Resuming on prompt.xtx (generation 1, readable: true)
+2026-11-08 23:11:47.124[TRACE] [AssetStreamServer] Key 0 now points at prompt.xtx
+2026-11-08 23:11:48.431[TRACE] [WordSnap] Drag armed (from an expanded selection: false)
+2026-11-08 23:11:48.794[DEBUG] [XTXDocument] Sheet 0 of prompt.xtx is now dirty
+2026-11-08 23:11:48.794[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:48.794[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:48.794[TRACE] [Spellcheck] Debouncing check for node 1 (134 chars)
+2026-11-08 23:11:49.046[TRACE] [WordSnap] Drag armed (from an expanded selection: false)
+2026-11-08 23:11:49.153[DEBUG] [Spellcheck] Node 1 produced 13 issues
+2026-11-08 23:11:49.206[TRACE] [XTXDocument] 3 document changes applied
+2026-11-08 23:11:49.206[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:49.206[TRACE] [Spellcheck] Debouncing check for node 1 (133 chars)

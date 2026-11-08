@@ -1,0 +1,565 @@
+2026-11-08 23:10:32.991[LOG] [Main] Started with file: X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:10:33.405[PASS] Spell checker initialized
+2026-11-08 23:10:33.405[PASS] XTX initialized
+2026-11-08 23:10:33.671[TRACE] [NotificationHost] initState, registering the overlay resolver
+2026-11-08 23:10:33.671[DEBUG] [NotificationHost] Binding overlay to window 1 (was none)
+2026-11-08 23:10:33.672[TRACE] [AppCaption] initState (aotCapable: true)
+2026-11-08 23:10:33.672[TRACE] [FileEditor] initState for X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:10:33.672[LOG] [FileEditor] Opening X:\Flutter\cmdline\prompt.xtx from disk
+2026-11-08 23:10:33.675[TRACE] [NotificationHost] 1 overlays registered
+2026-11-08 23:10:33.675[DEBUG] [FileEditor] X:\Flutter\cmdline\prompt.xtx opened with 1 sheets, starting on 0
+2026-11-08 23:10:33.675[DEBUG] [FileEditor] Loading sheet 0 of X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:10:33.675[TRACE] [TableEditorState] reset, disposing 0 controllers and 0 focus nodes
+2026-11-08 23:10:33.675[DEBUG] [FileEditor] Sheet 0 is a rich text document
+2026-11-08 23:10:33.675[DEBUG] [XTXDocument] Opening sheet 0 of X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:10:33.675[TRACE] [NodeCodec] Decoded 1 editor nodes from 0 stored nodes (0 skipped)
+2026-11-08 23:10:33.675[DEBUG] [XTXDocument] Sheet 0 decoded into 1 editor nodes
+2026-11-08 23:10:33.675[PASS] [XTXDocument] Editor ready for sheet 0 of X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:10:33.675[TRACE] ParagraphNode
+2026-11-08 23:10:33.675[TRACE] TASK NODES : 0
+2026-11-08 23:10:33.675[DEBUG] [FileEditor] Opening the media server for X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:10:33.676[PASS] [FileEditor] Sheet 0 loaded in 0ms
+2026-11-08 23:10:33.676[TRACE] [DocState] setDocument: XTXDocument
+2026-11-08 23:10:33.676[TRACE] [FileEditor] X:\Flutter\cmdline\prompt.xtx is 99 bytes on disk
+2026-11-08 23:10:33.676[DEBUG] [AppCaption] Window title resolved to "willow"
+2026-11-08 23:10:33.679[LOG] [AssetStreamServer] Listening on 127.0.0.1:63021
+2026-11-08 23:10:33.679[TRACE] [AssetStreamServer] Attached key 0 to X:\Flutter\cmdline\prompt.xtx (1 attached)
+2026-11-08 23:10:33.679[DEBUG] [DocumentMedia] Attached X:\Flutter\cmdline\prompt.xtx to the media server as key 0
+2026-11-08 23:10:33.679[DEBUG] [FileEditor] Rebuilding the stylesheet for dark mode
+2026-11-08 23:10:33.679[DEBUG] [EditorStylesheet] Building the editor stylesheet (font: default)
+2026-11-08 23:10:33.679[DEBUG] [FileEditor] Rebuilding keyboard actions and component builders for a new editor
+2026-11-08 23:10:33.679[TRACE] [DocumentToolbar] initState
+2026-11-08 23:10:33.769[TRACE] [FileEditor] Editor focus gained
+2026-11-08 23:10:33.769[TRACE] [Spellcheck] ensureInitialized for root X:\Flutter\cmdline
+2026-11-08 23:10:33.769[DEBUG] [Spellcheck] Initialising, dictionary at X:\Flutter\cmdline\.app\dictionary.json
+2026-11-08 23:10:33.770[TRACE] [Spellcheck] No dictionary.json yet, starting with an empty user dictionary
+2026-11-08 23:10:34.511[PASS] [Spellcheck] Ready with 0 user words
+2026-11-08 23:10:34.511[TRACE] [DocumentSpellchecker] Attaching to a document of 1 nodes
+2026-11-08 23:10:34.512[TRACE] [Spellcheck] batched() entering, depth 1
+2026-11-08 23:10:34.512[DEBUG] [DocumentSpellchecker] Checking 1 text nodes
+2026-11-08 23:10:34.512[TRACE] [Spellcheck] Immediate check for node 040a8060-857c-474f-8f79-769843f0bcda (0 chars)
+2026-11-08 23:10:34.512[DEBUG] [FileEditor] Spellchecker attached to sheet 0
+2026-11-08 23:10:34.526[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 0 issues
+2026-11-08 23:10:34.526[DEBUG] [DocumentSpellchecker] Whole document checked in 13ms
+2026-11-08 23:10:36.611[TRACE] [NotificationHost] Window 1 focused, notifications will land here
+2026-11-08 23:10:36.611[TRACE] [AppCaption] Window focused
+2026-11-08 23:10:36.858[TRACE] [NotificationHost] Window 1 focused, notifications will land here
+2026-11-08 23:10:36.858[TRACE] [AppCaption] Window focused
+2026-11-08 23:10:37.200[TRACE] [WordSnap] Drag armed (from an expanded selection: false)
+2026-11-08 23:10:37.275[TRACE] [WordSnap] Drag ended
+2026-11-08 23:10:37.401[TRACE] [WordSnap] Drag armed (from an expanded selection: false)
+2026-11-08 23:10:37.485[TRACE] [WordSnap] Drag ended
+2026-11-08 23:10:37.690[TRACE] [WordSnap] Drag armed (from an expanded selection: false)
+2026-11-08 23:10:37.771[TRACE] [WordSnap] Drag ended
+2026-11-08 23:10:38.590[DEBUG] [XTXDocument] Sheet 0 of X:\Flutter\cmdline\prompt.xtx is now dirty
+2026-11-08 23:10:38.590[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:38.590[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:38.590[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (1 chars)
+2026-11-08 23:10:38.766[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:38.766[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:38.766[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (2 chars)
+2026-11-08 23:10:38.872[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:38.873[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:38.873[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (3 chars)
+2026-11-08 23:10:38.996[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:38.996[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:38.996[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (4 chars)
+2026-11-08 23:10:39.095[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:39.096[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:39.096[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (5 chars)
+2026-11-08 23:10:39.168[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:39.168[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:39.168[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (6 chars)
+2026-11-08 23:10:39.310[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:39.310[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:39.310[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (7 chars)
+2026-11-08 23:10:39.437[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:39.437[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:39.437[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (8 chars)
+2026-11-08 23:10:39.576[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:39.576[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:39.576[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (9 chars)
+2026-11-08 23:10:39.736[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:39.736[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:39.736[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (10 chars)
+2026-11-08 23:10:39.797[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:39.797[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:39.797[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (11 chars)
+2026-11-08 23:10:39.908[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:39.908[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:39.908[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (12 chars)
+2026-11-08 23:10:39.999[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:40.000[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:40.000[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (13 chars)
+2026-11-08 23:10:40.063[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:40.063[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:40.063[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (14 chars)
+2026-11-08 23:10:40.214[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:40.214[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:40.214[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (15 chars)
+2026-11-08 23:10:40.298[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:40.298[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:40.298[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (16 chars)
+2026-11-08 23:10:40.358[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:40.359[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:40.359[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (17 chars)
+2026-11-08 23:10:40.564[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:40.564[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:40.564[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (18 chars)
+2026-11-08 23:10:40.710[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:40.710[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:40.710[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (19 chars)
+2026-11-08 23:10:40.864[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:40.864[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:40.864[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (20 chars)
+2026-11-08 23:10:40.969[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:40.970[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:40.970[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (21 chars)
+2026-11-08 23:10:41.006[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:41.006[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:41.006[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (22 chars)
+2026-11-08 23:10:41.363[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 2 issues
+2026-11-08 23:10:41.367[DEBUG] [FileEditor] Paste requested
+2026-11-08 23:10:41.374[DEBUG] [FileEditor] Pasting 41 chars of plain text
+2026-11-08 23:10:41.374[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:41.374[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:41.374[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (63 chars)
+2026-11-08 23:10:41.733[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 10 issues
+2026-11-08 23:10:42.273[TRACE] [XTXDocument] 22 document changes applied
+2026-11-08 23:10:42.273[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:42.273[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (22 chars)
+2026-11-08 23:10:42.630[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 2 issues
+2026-11-08 23:10:43.212[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:43.212[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:43.212[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (23 chars)
+2026-11-08 23:10:43.349[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:43.349[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:43.349[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (24 chars)
+2026-11-08 23:10:43.453[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:43.453[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:43.454[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (25 chars)
+2026-11-08 23:10:43.540[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:43.540[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:43.540[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (26 chars)
+2026-11-08 23:10:43.672[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:43.672[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:43.672[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (27 chars)
+2026-11-08 23:10:43.844[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:43.844[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:43.844[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (28 chars)
+2026-11-08 23:10:44.203[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 2 issues
+2026-11-08 23:10:44.468[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:44.468[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:44.468[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (29 chars)
+2026-11-08 23:10:44.658[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:44.658[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:44.658[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (30 chars)
+2026-11-08 23:10:45.015[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 3 issues
+2026-11-08 23:10:46.662[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:46.662[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:46.662[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (22 chars)
+2026-11-08 23:10:46.995[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:46.995[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:46.995[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (23 chars)
+2026-11-08 23:10:47.105[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:47.105[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:47.105[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (24 chars)
+2026-11-08 23:10:47.340[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:47.340[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:47.340[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (25 chars)
+2026-11-08 23:10:47.445[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:47.445[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:47.445[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (26 chars)
+2026-11-08 23:10:47.703[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:47.703[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:47.703[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (25 chars)
+2026-11-08 23:10:47.845[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:47.846[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:47.846[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (24 chars)
+2026-11-08 23:10:47.982[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:47.983[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:47.983[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (23 chars)
+2026-11-08 23:10:48.220[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:48.220[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:48.220[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (24 chars)
+2026-11-08 23:10:48.335[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:48.335[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:48.336[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (25 chars)
+2026-11-08 23:10:48.446[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:48.446[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:48.446[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (26 chars)
+2026-11-08 23:10:48.806[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 2 issues
+2026-11-08 23:10:48.820[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:48.820[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:48.820[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (27 chars)
+2026-11-08 23:10:48.968[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:48.968[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:48.968[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (28 chars)
+2026-11-08 23:10:49.046[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:49.047[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:49.047[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (29 chars)
+2026-11-08 23:10:49.126[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:49.127[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:49.127[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (30 chars)
+2026-11-08 23:10:49.214[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:49.214[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:49.214[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (31 chars)
+2026-11-08 23:10:49.350[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:49.350[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:49.350[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (32 chars)
+2026-11-08 23:10:49.614[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:49.614[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:49.614[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (33 chars)
+2026-11-08 23:10:49.972[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 3 issues
+2026-11-08 23:10:50.198[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:50.200[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:50.200[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (34 chars)
+2026-11-08 23:10:50.418[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:50.418[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:50.418[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (35 chars)
+2026-11-08 23:10:50.496[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:50.496[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:50.496[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (36 chars)
+2026-11-08 23:10:50.534[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:50.534[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:50.534[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (37 chars)
+2026-11-08 23:10:50.609[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:50.609[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:50.609[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (38 chars)
+2026-11-08 23:10:50.721[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:50.723[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:50.723[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (39 chars)
+2026-11-08 23:10:50.970[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:50.970[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:50.970[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (40 chars)
+2026-11-08 23:10:51.327[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 3 issues
+2026-11-08 23:10:52.820[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:52.820[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:52.820[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (41 chars)
+2026-11-08 23:10:53.008[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:53.008[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:53.008[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (42 chars)
+2026-11-08 23:10:53.156[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:53.156[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:53.156[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (43 chars)
+2026-11-08 23:10:53.225[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:53.225[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:53.225[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (44 chars)
+2026-11-08 23:10:53.533[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:53.533[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:53.533[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (45 chars)
+2026-11-08 23:10:53.761[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:53.761[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:53.761[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (44 chars)
+2026-11-08 23:10:53.799[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:53.800[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:53.800[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (45 chars)
+2026-11-08 23:10:53.965[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:53.966[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:53.966[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (46 chars)
+2026-11-08 23:10:54.326[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 3 issues
+2026-11-08 23:10:54.569[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:54.569[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:54.569[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (47 chars)
+2026-11-08 23:10:54.772[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:54.772[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:54.772[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (48 chars)
+2026-11-08 23:10:54.823[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:54.823[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:54.823[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (49 chars)
+2026-11-08 23:10:54.921[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:54.921[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:54.921[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (50 chars)
+2026-11-08 23:10:54.971[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:54.971[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:54.971[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (51 chars)
+2026-11-08 23:10:55.048[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:55.048[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:55.048[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (52 chars)
+2026-11-08 23:10:55.271[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:55.271[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:55.271[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (53 chars)
+2026-11-08 23:10:55.630[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 5 issues
+2026-11-08 23:10:55.676[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:55.676[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:55.676[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (54 chars)
+2026-11-08 23:10:56.034[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 5 issues
+2026-11-08 23:10:56.214[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:56.214[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:56.214[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (55 chars)
+2026-11-08 23:10:56.463[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:56.463[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:56.463[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (56 chars)
+2026-11-08 23:10:56.594[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:56.594[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:56.594[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (57 chars)
+2026-11-08 23:10:56.782[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:56.782[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:56.782[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (58 chars)
+2026-11-08 23:10:56.909[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:56.909[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:56.909[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (59 chars)
+2026-11-08 23:10:57.059[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:57.059[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:57.059[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (60 chars)
+2026-11-08 23:10:57.201[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:57.201[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:57.201[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (61 chars)
+2026-11-08 23:10:57.560[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 6 issues
+2026-11-08 23:10:57.711[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:57.711[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:57.711[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (62 chars)
+2026-11-08 23:10:57.920[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:57.920[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:57.920[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (63 chars)
+2026-11-08 23:10:58.031[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:58.031[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:58.031[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (64 chars)
+2026-11-08 23:10:58.197[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:58.197[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:58.197[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (65 chars)
+2026-11-08 23:10:58.554[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 6 issues
+2026-11-08 23:10:58.682[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:58.682[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:58.682[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (61 chars)
+2026-11-08 23:10:59.039[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 6 issues
+2026-11-08 23:10:59.864[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:10:59.864[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:10:59.864[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (62 chars)
+2026-11-08 23:11:00.186[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:00.186[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:00.186[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (61 chars)
+2026-11-08 23:11:00.479[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:00.479[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:00.479[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (62 chars)
+2026-11-08 23:11:00.629[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:00.629[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:00.629[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (63 chars)
+2026-11-08 23:11:00.687[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:00.687[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:00.687[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (64 chars)
+2026-11-08 23:11:00.841[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:00.841[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:00.841[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (65 chars)
+2026-11-08 23:11:00.921[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:00.921[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:00.921[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (66 chars)
+2026-11-08 23:11:01.140[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:01.140[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:01.140[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (65 chars)
+2026-11-08 23:11:01.237[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:01.238[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:01.238[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (66 chars)
+2026-11-08 23:11:01.413[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:01.413[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:01.413[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (67 chars)
+2026-11-08 23:11:01.483[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:01.483[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:01.483[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (68 chars)
+2026-11-08 23:11:01.632[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:01.632[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:01.632[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (69 chars)
+2026-11-08 23:11:01.801[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:01.801[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:01.801[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (70 chars)
+2026-11-08 23:11:01.924[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:01.924[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:01.924[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (71 chars)
+2026-11-08 23:11:02.027[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:02.027[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:02.027[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (72 chars)
+2026-11-08 23:11:02.169[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:02.169[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:02.169[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (73 chars)
+2026-11-08 23:11:02.324[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:02.324[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:02.324[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (74 chars)
+2026-11-08 23:11:02.395[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:02.395[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:02.395[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (75 chars)
+2026-11-08 23:11:02.456[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:02.456[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:02.456[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (76 chars)
+2026-11-08 23:11:02.646[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:02.646[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:02.646[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (77 chars)
+2026-11-08 23:11:02.824[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:02.824[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:02.824[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (78 chars)
+2026-11-08 23:11:02.987[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:02.987[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:02.987[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (79 chars)
+2026-11-08 23:11:03.110[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:03.110[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:03.110[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (80 chars)
+2026-11-08 23:11:03.153[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:03.153[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:03.153[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (81 chars)
+2026-11-08 23:11:03.510[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 6 issues
+2026-11-08 23:11:04.425[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:04.425[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:04.425[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (82 chars)
+2026-11-08 23:11:04.538[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:04.538[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:04.538[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (83 chars)
+2026-11-08 23:11:04.666[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:04.666[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:04.666[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (84 chars)
+2026-11-08 23:11:04.722[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:04.722[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:04.722[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (85 chars)
+2026-11-08 23:11:05.080[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 6 issues
+2026-11-08 23:11:05.181[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:05.181[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:05.181[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (86 chars)
+2026-11-08 23:11:05.434[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:05.434[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:05.434[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (85 chars)
+2026-11-08 23:11:05.459[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:05.459[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:05.459[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (86 chars)
+2026-11-08 23:11:05.659[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:05.659[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:05.659[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (87 chars)
+2026-11-08 23:11:05.783[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:05.783[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:05.783[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (88 chars)
+2026-11-08 23:11:05.841[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:05.841[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:05.841[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (89 chars)
+2026-11-08 23:11:05.994[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:05.994[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:05.994[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (90 chars)
+2026-11-08 23:11:06.179[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:06.179[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:06.179[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (91 chars)
+2026-11-08 23:11:06.492[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:06.493[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:06.493[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (92 chars)
+2026-11-08 23:11:06.851[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 7 issues
+2026-11-08 23:11:07.468[DEBUG] [FileEditor] Paste requested
+2026-11-08 23:11:07.469[DEBUG] [FileEditor] Pasting 41 chars of plain text
+2026-11-08 23:11:07.469[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:07.469[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:07.469[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (133 chars)
+2026-11-08 23:11:07.828[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 14 issues
+2026-11-08 23:11:09.314[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:09.314[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:09.314[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (134 chars)
+2026-11-08 23:11:09.675[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 14 issues
+2026-11-08 23:11:10.004[TRACE] [FileEditor] Editor focus lost
+2026-11-08 23:11:12.880[TRACE] [WordSnap] Drag armed (from an expanded selection: false)
+2026-11-08 23:11:12.963[TRACE] [WordSnap] Drag ended
+2026-11-08 23:11:12.963[TRACE] [FileEditor] Editor focus gained
+2026-11-08 23:11:13.158[TRACE] [WordTap] Double tap selected the word at 0-4 in 040a8060-857c-474f-8f79-769843f0bcda
+2026-11-08 23:11:13.158[TRACE] [WordSnap] Drag armed (from an expanded selection: true)
+2026-11-08 23:11:13.249[TRACE] [WordSnap] Drag ended
+2026-11-08 23:11:13.645[DEBUG] [FileEditor] Ctrl+S pressed
+2026-11-08 23:11:13.645[TRACE] [DocumentMedia] Releasing the file handle for X:\Flutter\cmdline\prompt.xtx while it is written
+2026-11-08 23:11:13.645[TRACE] [AssetStreamServer] Key 0 now points at nothing
+2026-11-08 23:11:13.645[LOG] [XTXDocument] Saving sheet 0 of X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:13.645[TRACE] [NodeCodec] Encoded 1 stored nodes from 1 editor nodes (0 skipped)
+2026-11-08 23:11:13.645[DEBUG] [XTXDocument] Encoded 1 nodes (assets dirty: false)
+2026-11-08 23:11:13.645[TRACE] [XtxSheets] Replacing sheet 0 (Document) in X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:13.645[TRACE] [XtxSheets] Skipping asset prune for X:\Flutter\cmdline\prompt.xtx (custom sheet: false, assets: 0)
+2026-11-08 23:11:13.647[TRACE] [FileEditor] Adopting saved document X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:13.647[TRACE] [FileEditor] Resuming the media server against X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:13.647[TRACE] [FileEditor] X:\Flutter\cmdline\prompt.xtx is 283 bytes on disk
+2026-11-08 23:11:13.647[PASS] [XTXDocument] Saved X:\Flutter\cmdline\prompt.xtx in 1ms (dropped 0 unreferenced assets)
+2026-11-08 23:11:13.647[DEBUG] [DocumentMedia] Resuming on X:\Flutter\cmdline\prompt.xtx (generation 1, readable: true)
+2026-11-08 23:11:13.647[TRACE] [AssetStreamServer] Key 0 now points at X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:13.856[DEBUG] [FileEditor] Ctrl+S pressed
+2026-11-08 23:11:13.856[TRACE] [FileEditor] Saving sheet 0 with no pending changes
+2026-11-08 23:11:13.856[TRACE] [DocumentMedia] Releasing the file handle for X:\Flutter\cmdline\prompt.xtx while it is written
+2026-11-08 23:11:13.856[TRACE] [AssetStreamServer] Key 0 now points at nothing
+2026-11-08 23:11:13.856[LOG] [XTXDocument] Saving sheet 0 of X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:13.856[TRACE] [NodeCodec] Encoded 1 stored nodes from 1 editor nodes (0 skipped)
+2026-11-08 23:11:13.857[DEBUG] [XTXDocument] Encoded 1 nodes (assets dirty: false)
+2026-11-08 23:11:13.857[TRACE] [XtxSheets] Replacing sheet 0 (Document) in X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:13.857[TRACE] [XtxSheets] Skipping asset prune for X:\Flutter\cmdline\prompt.xtx (custom sheet: false, assets: 0)
+2026-11-08 23:11:13.858[TRACE] [FileEditor] Adopting saved document X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:13.858[TRACE] [FileEditor] Resuming the media server against X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:13.858[TRACE] [FileEditor] X:\Flutter\cmdline\prompt.xtx is 283 bytes on disk
+2026-11-08 23:11:13.858[PASS] [XTXDocument] Saved X:\Flutter\cmdline\prompt.xtx in 1ms (dropped 0 unreferenced assets)
+2026-11-08 23:11:13.858[DEBUG] [DocumentMedia] Resuming on X:\Flutter\cmdline\prompt.xtx (generation 2, readable: true)
+2026-11-08 23:11:13.858[TRACE] [AssetStreamServer] Key 0 now points at X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:14.034[TRACE] [WordSnap] Drag armed (from an expanded selection: true)
+2026-11-08 23:11:14.118[TRACE] [WordSnap] Drag ended
+2026-11-08 23:11:14.602[DEBUG] [XTXDocument] Sheet 0 of X:\Flutter\cmdline\prompt.xtx is now dirty
+2026-11-08 23:11:14.602[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:14.602[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:14.602[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (133 chars)
+2026-11-08 23:11:14.769[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:14.769[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:14.769[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (134 chars)
+2026-11-08 23:11:15.125[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 14 issues
+2026-11-08 23:11:20.047[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:20.047[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:20.047[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (133 chars)
+2026-11-08 23:11:20.402[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 14 issues
+2026-11-08 23:11:22.453[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:22.453[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:22.453[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (0 chars)
+2026-11-08 23:11:22.453[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:22.453[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:22.453[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (1 chars)
+2026-11-08 23:11:22.806[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 0 issues
+2026-11-08 23:11:23.097[TRACE] [XTXDocument] 126 document changes applied
+2026-11-08 23:11:23.097[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:23.097[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (0 chars)
+2026-11-08 23:11:23.449[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 0 issues
+2026-11-08 23:11:23.497[TRACE] [XTXDocument] 125 document changes applied
+2026-11-08 23:11:23.497[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:23.497[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (133 chars)
+2026-11-08 23:11:23.851[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 14 issues
+2026-11-08 23:11:24.494[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:24.494[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:24.494[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (134 chars)
+2026-11-08 23:11:24.848[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 13 issues
+2026-11-08 23:11:25.628[TRACE] [XTXDocument] 3 document changes applied
+2026-11-08 23:11:25.628[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:25.628[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (133 chars)
+2026-11-08 23:11:25.983[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 0 issues
+2026-11-08 23:11:30.336[DEBUG] [WillowClipboard] Serialised 1 nodes (328 bytes) from X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:30.336[DEBUG] [FileEditor] Copied 133 chars to the clipboard
+2026-11-08 23:11:30.336[TRACE] [WillowClipboard] Writing 328 bytes plus 133 chars of plain text
+2026-11-08 23:11:30.337[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:30.337[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:30.337[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (0 chars)
+2026-11-08 23:11:30.668[TRACE] [XTXDocument] 129 document changes applied
+2026-11-08 23:11:30.668[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:30.669[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (133 chars)
+2026-11-08 23:11:31.022[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 0 issues
+2026-11-08 23:11:31.218[TRACE] [NotificationHost] Window 1 blurred
+2026-11-08 23:11:31.221[TRACE] [FileEditor] Editor focus lost
+2026-11-08 23:11:37.731[TRACE] [NotificationHost] Window 1 focused, notifications will land here
+2026-11-08 23:11:37.731[TRACE] [AppCaption] Window focused
+2026-11-08 23:11:37.732[TRACE] [FileEditor] Editor focus gained
+2026-11-08 23:11:37.732[TRACE] [WordSnap] Drag armed (from an expanded selection: true)
+2026-11-08 23:11:37.776[TRACE] [WordSnap] Drag ended
+2026-11-08 23:11:38.065[TRACE] [WordSnap] Drag armed (from an expanded selection: true)
+2026-11-08 23:11:38.103[TRACE] [WordSnap] Drag ended
+2026-11-08 23:11:38.700[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:38.700[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:38.700[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (130 chars)
+2026-11-08 23:11:39.054[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 0 issues
+2026-11-08 23:11:39.295[TRACE] [XTXDocument] 1 document changes applied
+2026-11-08 23:11:39.295[TRACE] [DocumentSpellchecker] Rechecking 1 changed nodes
+2026-11-08 23:11:39.295[TRACE] [Spellcheck] Debouncing check for node 040a8060-857c-474f-8f79-769843f0bcda (0 chars)
+2026-11-08 23:11:39.646[DEBUG] [Spellcheck] Node 040a8060-857c-474f-8f79-769843f0bcda produced 0 issues
+2026-11-08 23:11:40.683[TRACE] [WordSnap] Drag armed (from an expanded selection: false)
+2026-11-08 23:11:40.758[TRACE] [WordSnap] Drag ended
+2026-11-08 23:11:40.961[DEBUG] [FileEditor] Ctrl+S pressed
+2026-11-08 23:11:40.962[TRACE] [DocumentMedia] Releasing the file handle for X:\Flutter\cmdline\prompt.xtx while it is written
+2026-11-08 23:11:40.962[TRACE] [AssetStreamServer] Key 0 now points at nothing
+2026-11-08 23:11:40.962[LOG] [XTXDocument] Saving sheet 0 of X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:40.962[TRACE] [NodeCodec] Encoded 1 stored nodes from 1 editor nodes (0 skipped)
+2026-11-08 23:11:40.962[DEBUG] [XTXDocument] Encoded 1 nodes (assets dirty: false)
+2026-11-08 23:11:40.962[TRACE] [XtxSheets] Replacing sheet 0 (Document) in X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:40.962[TRACE] [XtxSheets] Skipping asset prune for X:\Flutter\cmdline\prompt.xtx (custom sheet: false, assets: 0)
+2026-11-08 23:11:40.963[TRACE] [FileEditor] Adopting saved document X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:40.963[TRACE] [FileEditor] Resuming the media server against X:\Flutter\cmdline\prompt.xtx
+2026-11-08 23:11:40.963[TRACE] [FileEditor] X:\Flutter\cmdline\prompt.xtx is 149 bytes on disk
+2026-11-08 23:11:40.963[PASS] [XTXDocument] Saved X:\Flutter\cmdline\prompt.xtx in 1ms (dropped 0 unreferenced assets)
+2026-11-08 23:11:40.963[DEBUG] [DocumentMedia] Resuming on X:\Flutter\cmdline\prompt.xtx (generation 3, readable: true)
+2026-11-08 23:11:40.963[TRACE] [AssetStreamServer] Key 0 now points at X:\Flutter\cmdline\prompt.xtx
