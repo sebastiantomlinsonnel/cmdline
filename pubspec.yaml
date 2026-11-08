@@ -1,6 +1,6 @@
 name: cmdline
 description: An SDK for console development, PowerShell, pwsh, sh, cmd all function correctly, logging to the μs with ANSI styling and performance tracking
-version: 2.0.3
+version: 2.0.4
 homepage: https://pub.dev/packages/cmdline
 topics:
   - logging
