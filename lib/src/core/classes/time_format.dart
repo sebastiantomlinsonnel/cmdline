@@ -15,8 +15,12 @@ class TimeFormat {
   static const TimeFormat worded = TimeFormat(
     'The Do of MMMM yyyy at HH:mm:ss',
   );
-  static const TimeFormat time12Hour = TimeFormat('$T');
-  static const TimeFormat time24Hour = TimeFormat('$t');
+
+  /// 24 hour
+  static const TimeFormat time = TimeFormat('$t');
+
+  /// 12 hour
+  static const TimeFormat shortTime = TimeFormat('$T');
 
   /// The pattern string this format was created from.
   final String pattern;
