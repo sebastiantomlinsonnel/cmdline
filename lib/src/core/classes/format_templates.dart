@@ -249,7 +249,7 @@ const String MMM = 'MMM';
 /// **Details:** Provides the complete string for the month. This is the
 /// most formal way to represent the month and is the foundation for
 /// long-form date formatting.
-const String mmmm = 'MMMM';
+const String MMMM = 'MMMM';
 // --------------------------------------YEARS------------------------------------ \\
 
 /// # [Year (Short)]

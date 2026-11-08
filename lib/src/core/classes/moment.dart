@@ -27,11 +27,11 @@ part 'time_format.dart';
 ///
 /// ## Formatting
 ///
-/// Build any date/time string you need using format tokens:
+/// Build any date/time string you need with a [TimeFormat] pattern:
 ///
 /// ```dart
 /// final m = Moment.now();
-/// m.format(formatStyle: [dddd, comma, space, mmmm, space, D, comma, space, yyyy]);
+/// TimeFormat('$dddd, $mmmm $D, $yyyy').format(m);
 /// // → "Wednesday, February 19, 2026"
 /// ```
 ///
@@ -84,9 +84,9 @@ final class Moment implements Comparable<Moment> {
   /// The year component (e.g. `2026`), or `null` if not specified.
   int? year;
 
-  /// The token sequence used by [format] to produce a formatted string.
+  /// The [TimeFormat] this moment is meant to be displayed with.
   ///
-  /// Defaults to [defaultFormatStyle], which produces output like:
+  /// Defaults to [TimeFormat.worded], which produces output like:
   /// `"The 19th of February 2026 at 14:35:00"`
   TimeFormat formatStyle;
 
@@ -123,7 +123,7 @@ final class Moment implements Comparable<Moment> {
   /// final m = Moment.parse(string: '2025/06/15-14:30:00');
   /// ```
   static Moment parse({required String string}) {
-    final split1 = string.split('-');
+    final split1 = string.split(' ');
     final dates = split1[0].split('/');
     final times = split1[1].split(':');
     return Moment(
@@ -464,7 +464,7 @@ final class Moment implements Comparable<Moment> {
   }
 
   /// `"AM"` or `"PM"` based on the [hour] value.
-  String get clockPhase => (hour ?? 0) < 12 ? 'AM ' : 'PM ';
+  String get clockPhase => (hour ?? 0) < 12 ? 'AM' : 'PM';
 
   /// The historical era — `"AD"` for years >= 1, `"BC"` for years <= -1,
   /// or `null` for year 0.
@@ -534,7 +534,7 @@ final class Moment implements Comparable<Moment> {
   Type get runtimeType => Moment;
 
   @override
-  String toString() => '$year/$month/$date-$hour:$minute:$second';
+  String toString() => '$year/$month/$date $hour:$minute:$second';
 
   @override
   dynamic noSuchMethod(Invocation invocation) =>

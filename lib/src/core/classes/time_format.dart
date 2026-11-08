@@ -16,11 +16,62 @@ class TimeFormat {
     'The Do of MMMM yyyy at HH:mm:ss',
   );
 
-  /// 24 hour
-  static const TimeFormat time = TimeFormat('$t');
+  /// The 24-hour time, like `14:05:09`.
+  static const TimeFormat time24 = TimeFormat(t);
 
-  /// 12 hour
-  static const TimeFormat shortTime = TimeFormat('$T');
+  /// The 12-hour time with AM/PM, like `2:05:09 PM`.
+  static const TimeFormat time12 = TimeFormat(T);
+
+  /// The ISO 8601 date, like `2026-11-08`.
+  static const TimeFormat isoDate = TimeFormat('yyyy-MM-DD');
+
+  /// The ISO 8601 date and time, like `2026-11-08T14:05:09`.
+  static const TimeFormat isoDateTime = TimeFormat('yyyy-MM-DD[T]HH:mm:ss');
+
+  /// The day-first numeric date, like `08/11/2026`.
+  static const TimeFormat dateUk = TimeFormat('DD/MM/yyyy');
+
+  /// The month-first numeric date, like `11/08/2026`.
+  static const TimeFormat dateUs = TimeFormat('MM/DD/yyyy');
+
+  /// A short date with the month abbreviated, like `8 Nov 2026`.
+  static const TimeFormat shortDate = TimeFormat('D MMM yyyy');
+
+  /// A long date with the full month name, like `8 November 2026`.
+  static const TimeFormat longDate = TimeFormat('D MMMM yyyy');
+
+  /// The full date with the weekday, like `Sunday, 8 November 2026`.
+  static const TimeFormat fullDate = TimeFormat('dddd, D MMMM yyyy');
+
+  /// The full date in US order, like `Sunday, November 8, 2026`.
+  static const TimeFormat fullDateUs = TimeFormat('dddd, MMMM D, yyyy');
+
+  /// A compact day and month, like `Sun 8 Nov`.
+  static const TimeFormat dayMonth = TimeFormat('ddd D MMM');
+
+  /// The month and year, like `November 2026`.
+  static const TimeFormat monthYear = TimeFormat('MMMM yyyy');
+
+  /// A spoken-style date, like `Sunday the 8th of November 2026`.
+  static const TimeFormat spokenDate = TimeFormat('dddd the Do of MMMM yyyy');
+
+  /// The 24-hour time without seconds, like `14:05`.
+  static const TimeFormat shortTime24 = TimeFormat('HH:mm');
+
+  /// The 12-hour time without seconds, like `2:05 PM`.
+  static const TimeFormat shortTime12 = TimeFormat('h:mm A');
+
+  /// The numeric date and short time, like `08/11/2026 14:05`.
+  static const TimeFormat dateTime = TimeFormat('DD/MM/yyyy HH:mm');
+
+  /// A sortable timestamp for logs, like `2026-11-08 14:05:09`.
+  static const TimeFormat log = TimeFormat('yyyy-MM-DD HH:mm:ss');
+
+  /// A timestamp that's safe in file names, like `2026-11-08_14-05-09`.
+  static const TimeFormat fileSafe = TimeFormat('yyyy-MM-DD_HH-mm-ss');
+
+  /// A friendly date and 12-hour time, like `Sun 8 Nov, 2:05 PM`.
+  static const TimeFormat friendly = TimeFormat('ddd D MMM, h:mm A');
 
   /// The pattern string this format was created from.
   final String pattern;
@@ -41,102 +92,94 @@ class TimeFormat {
   );
 
   /// Builds the formatted string for [moment].
-  String format(Moment moment) {
-    return tokens.map((token) => formatToken(moment, token)).join().trim();
-  }
+  String format(Moment moment) =>
+      tokens.map((token) => formatToken(moment, token)).join();
 
-  /// Resolves a single format [token] into its string value for the
-  /// given [moment].
+  /// Turns one [token] into its value for [moment], or returns it as literal text.
   ///
-  /// This powers the [format] method. You generally won't call it directly,
-  /// but it's public so you can extend or override token behaviour.
-  String? formatToken(Moment moment, String token) {
+  /// This powers [format]. You generally won't call it directly, but it's
+  /// public so you can extend or override token behaviour. Missing values
+  /// on [moment] are treated as 0 (or 1 for the date and month).
+  String formatToken(Moment moment, String token) {
+    final int second = moment.second ?? 0;
+    final int minute = moment.minute ?? 0;
+    final int hour = moment.hour ?? 0;
+    final int date = moment.date ?? 1;
+    final int month = moment.month ?? 1;
+    final int year = moment.year ?? 0;
+    final int hour12 = hour % 12 == 0 ? 12 : hour % 12;
+
     switch (token) {
       case ddd:
-        return '${_WEEK_DAY_NAMES[moment.weekday]!.substring(0, 3)} ';
+        return (_WEEK_DAY_NAMES[moment.weekday] ?? '   ').substring(0, 3);
       case dddd:
-        return '${_WEEK_DAY_NAMES[moment.weekday]} ';
+        return _WEEK_DAY_NAMES[moment.weekday] ?? '';
       case D:
-        return moment.date.toString();
+        return '$date';
       case Do:
-        return '${moment.date}${_getOrdinal(moment.date!)}';
+        return '$date${_getOrdinal(date)}';
       case DD:
-        return moment.date.toString().padLeft(2, '0');
+        return _pad(date);
       case M:
-        return moment.month.toString();
+        return '$month';
       case Mo:
-        return '${moment.month}${_getOrdinal(moment.month)}';
+        return '$month${_getOrdinal(month)}';
       case MM:
-        return moment.month.toString().padLeft(2, '0');
+        return _pad(month);
       case MMM:
-        return '${_MONTH_NAMES[moment.month]!.substring(0, 3)} ';
-      case mmmm:
-        return '${_MONTH_NAMES[moment.month]} ';
+        return _MONTH_NAMES[month]!.substring(0, 3);
+      case MMMM:
+        return _MONTH_NAMES[month]!;
       case yy:
-        return moment.year.toString().substring(2);
+        return _pad(year % 100);
       case yyyy:
-        return moment.year.toString();
+        return '$year';
       case h:
-        final int hour12 = moment.hour! % 12;
-        return hour12 == 0 ? '12' : hour12.toString();
+        return '$hour12';
       case hh:
-        final int hour12 = moment.hour! % 12;
-        return (hour12 == 0 ? 12 : hour12).toString().padLeft(2, '0');
+        return _pad(hour12);
       case H:
-        return moment.hour.toString();
+        return '$hour';
       case HH:
-        return moment.hour.toString().padLeft(2, '0');
+        return _pad(hour);
       case m:
-        return moment.minute.toString();
+        return '$minute';
       case mm:
-        return moment.minute.toString().padLeft(2, '0');
+        return _pad(minute);
       case s:
-        return moment.second.toString();
+        return '$second';
       case ss:
-        return moment.second.toString().padLeft(2, '0');
+        return _pad(second);
       case A:
         return moment.clockPhase;
       case a:
         return moment.clockPhase.toLowerCase();
       case t:
-        return '${moment.hour}:${moment.minute}:${moment.second}';
+        return moment.time;
       case T:
-        return '${moment.clock}';
+        return moment.clock;
       case dateNumeric:
-        return '${moment.date.toString().padLeft(2, '0')}/${moment.month.toString().padLeft(2, '0')}/${moment.year}';
+        return '${_pad(date)}/${_pad(month)}/$year';
       default:
-        if (token == ':' || token == '-') {
-          return token;
+        if (token.length >= 2 && token.startsWith('[') && token.endsWith(']')) {
+          return token.substring(1, token.length - 1);
         }
-        if (token != ' ') {
-          return ' $token ';
-        }
-        return '';
+        return token;
     }
   }
 
-  String _getOrdinal(int? value) {
-    final String valString = value.toString();
-    if (valString.length >= 2) {
-      final int trailingTwo = int.parse(
-        value.toString().substring(valString.length - 2, valString.length),
-      );
-      if (trailingTwo == 11 || trailingTwo == 12 || trailingTwo == 13) {
-        return 'th';
-      }
-    }
-    final int trailing = int.parse(
-      value.toString()[value.toString().length - 1],
-    );
-    switch (trailing) {
-      case 1:
-        return 'st';
-      case 2:
-        return 'nd';
-      case 3:
-        return 'rd';
-      default:
-        return 'th';
-    }
+  /// Pads [value] to at least two digits, like `5` → `05`.
+  String _pad(int value) => value.toString().padLeft(2, '0');
+
+  /// The English ordinal suffix for [value], like `st` for 1 or `th` for 11.
+  String _getOrdinal(int value) {
+    final int lastTwo = value.abs() % 100;
+    if (lastTwo >= 11 && lastTwo <= 13) return 'th';
+    return switch (lastTwo % 10) {
+      1 => 'st',
+      2 => 'nd',
+      3 => 'rd',
+      _ => 'th',
+    };
   }
 }
