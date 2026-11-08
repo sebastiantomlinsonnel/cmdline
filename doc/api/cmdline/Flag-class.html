@@ -50,12 +50,13 @@
     <div>
 <h1><span class="kind-class">Flag</span> class 
  
+    <span class="category cli cp-0 linked" title="This is part of the cli topic."><a href="../topics/cli-topic.html">cli</a></span>
 </h1></div>
 
     
 <section class="desc markdown">
   <p>An on/off switch, like <code>--verbose</code> or <code>-v</code>.</p>
-<p>A flag is <code>false</code> unless the user types it. Give it to a <a href="../cmdline/Command-class.html">Command</a> or <a href="../cli/CLI-class.html">CLI</a>
+<p>A flag is <code>false</code> unless the user types it. Give it to a <a href="../cmdline/Command-class.html">Command</a> or <a href="../cmdline/CLI-class.html">CLI</a>
 in their <code>flags</code> list, then read it in <code>run</code> with <code>input.flag('verbose')</code>.</p>
 <pre class="language-dart"><code class="language-dart">Flag('verbose', short: 'v', help: 'Print extra detail')
 </code></pre>

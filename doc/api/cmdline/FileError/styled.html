@@ -74,7 +74,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">String get styled {
-  final theme = CliTheme.current;
+  final theme = AnsiTheme.current;
   final text = &#39;${theme.cross} $message: &#39;.foreground(theme.error);
 
   return &#39;$text${path.bold.foreground(theme.error)}&#39;;

@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org",
+  "title": "Dartdoc Options Configuration Schema",
+  "type": "object",
+  "properties": {
+    "dartdoc": {
+      "type": "object",
+      "description": "Configuration options for the dartdoc API documentation generator.",
+      "properties": {
+        "categories": {
+          "type": "object",
+          "description": "A map from category names to category definitions.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "markdown": {
+                "type": "string",
+                "description": "Path to a markdown file to be rendered on the category page."
+              },
+              "displayName": {
+                "type": "string",
+                "description": "The alternative name to use in the rendered HTML instead of the map key."
+              }
+            },
+            "required": ["markdown"]
+          }
+        },
+        "categoryOrder": {
+          "type": "array",
+          "description": "An ordered list of categories to prioritize in the sidebar layout.",
+          "items": { "type": "string" }
+        },
+        "examplePathPrefix": {
+          "type": "string",
+          "description": "Prefix path for locating files referenced via @example tags."
+        },
+        "includeExternal": {
+          "type": "array",
+          "description": "Additional external Dart files to include in the generation process.",
+          "items": { "type": "string" }
+        },
+        "nodoc": {
+          "type": "array",
+          "description": "File patterns or library names that should be excluded from documentation.",
+          "items": { "type": "string" }
+        },
+        "showUndocumentedCategories": {
+          "type": "boolean",
+          "description": "Whether categories without explicit matching tags should be rendered."
+        },
+        "linkTo": {
+          "type": "object",
+          "description": "External documentation linking targets.",
+          "properties": {
+            "url": { "type": "string" }
+          }
+        },
+        "linkToSource": {
+          "type": "object",
+          "description": "Configuration to link symbols back to their source repository hosts.",
+          "properties": {
+            "root": { "type": "string" },
+            "uriTemplate": { "type": "string" }
+          }
+        },
+        "ignore": {
+          "type": "array",
+          "description": "Issues or warnings to completely suppress during validation.",
+          "items": { "type": "string" }
+        },
+        "warnings": {
+          "type": "array",
+          "description": "Validation issues to treat as warnings.",
+          "items": { "type": "string" }
+        },
+        "errors": {
+          "type": "array",
+          "description": "Validation issues to treat as hard build errors.",
+          "items": { "type": "string" }
+        },
+        "tools": {
+          "type": "object",
+          "description": "Custom commands or compilation macros invoked via @tool directives.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "command": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "setup_command": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "description": { "type": "string" },
+              "compile_args": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "macos": { "type": "array", "items": { "type": "string" } },
+              "linux": { "type": "array", "items": { "type": "string" } },
+              "windows": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

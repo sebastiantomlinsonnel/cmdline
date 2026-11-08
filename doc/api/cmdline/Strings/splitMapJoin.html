@@ -76,16 +76,16 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static String splitMapJoin(String? string,
-    Pattern pattern, {
-      String Function(Match)? onMatch,
-      String Function(String)? onNonMatch,
-    }) =&gt;
-    (string ?? &#39;&#39;).splitMapJoin(
-      pattern,
-      onMatch: onMatch,
-      onNonMatch: onNonMatch,
-    );</code></pre>
+  <pre class="language-dart"><code class="language-dart">static String splitMapJoin(
+  String? string,
+  Pattern pattern, {
+  String Function(Match)? onMatch,
+  String Function(String)? onNonMatch,
+}) =&gt; (string ?? &#39;&#39;).splitMapJoin(
+  pattern,
+  onMatch: onMatch,
+  onNonMatch: onNonMatch,
+);</code></pre>
 </section>
 
 

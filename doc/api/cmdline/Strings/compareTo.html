@@ -75,10 +75,11 @@ before (-1) or after (1) the other value.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static int compareTo(String? string,
-    String? other, {
-      bool nullIsLessThan = true,
-    }) {
+  <pre class="language-dart"><code class="language-dart">static int compareTo(
+  String? string,
+  String? other, {
+  bool nullIsLessThan = true,
+}) {
   if (string == other) {
     return 0;
   }

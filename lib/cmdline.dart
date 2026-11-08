@@ -1,27 +1,106 @@
-/// Core CMDLine library. Exports all sub modules
 library cmdline;
 
-///  ANSI lib
-export 'ansi.dart';
+import 'dart:io';
 
-///  CLI lib
-export 'cli.dart';
+import 'package:cmdline/cmdline.dart';
 
-///  CMD lib
-export 'cmd.dart';
+export 'src/core/extensions/ansi.dart';
+export 'src/core/extensions/double.dart';
+export 'src/core/extensions/int.dart';
+export 'src/core/extensions/list.dart';
+export 'src/core/extensions/num.dart';
+export 'src/core/extensions/process.dart';
+export 'src/core/extensions/process_result.dart';
+export 'src/core/extensions/stream.dart';
+export 'src/core/extensions/string.dart';
+export 'src/core/utils/graphemes.dart';
+export 'src/core/utils/printable_table.dart';
+export 'src/core/utils/radix.dart';
+export 'src/core/utils/strings.dart';
+export 'src/modules/ansi/ansi.dart';
+export 'src/modules/ansi/constants/characters.dart';
+export 'src/modules/ansi/constants/colours.dart';
+export 'src/modules/ansi/constants/colours_16.dart';
+export 'src/modules/ansi/constants/controls.dart';
+export 'src/modules/ansi/constants/cursor.dart';
+export 'src/modules/ansi/constants/regular_expressions.dart';
+export 'src/modules/ansi/constants/screen.dart';
+export 'src/modules/ansi/constants/styling.dart';
+export 'src/modules/ansi/constants/table.dart';
+export 'src/modules/ansi/constants/terminal.dart';
+export 'src/modules/ansi/palettes/ansi_colour.dart';
+export 'src/modules/ansi/palettes/ansi_colour_rgb.dart';
+export 'src/modules/ansi/palettes/ansi_ink.dart';
+export 'src/modules/ansi/palettes/ansi_palette.dart';
+export 'src/modules/ansi/palettes/ansi_theme.dart';
+export 'src/modules/ansi/utils/ansi_printer.dart';
+export 'src/modules/cli/cli.dart';
+export 'src/modules/cli/cli_error.dart';
+export 'src/modules/cli/command.dart';
+export 'src/modules/cli/parser/arguments.dart';
+export 'src/modules/cli/parser/input.dart';
+export 'src/modules/cli/parser/parser.dart';
+export 'src/modules/cli/parser/parser_result.dart';
+export 'src/modules/cli/theme/help.dart';
+export 'src/modules/cmd/cmd.dart';
+export 'src/modules/cmd/helpers/process_failed.dart';
+export 'src/modules/cmd/shell_command.dart';
+export 'src/modules/cmd/types/file_error.dart';
+export 'src/modules/logging/frames.dart';
+export 'src/modules/logging/level.dart';
+export 'src/modules/logging/logger.dart';
+export 'src/modules/logging/progress_bar.dart';
 
-///  LOGGING lib
-export 'logging.dart';
-export 'src/extensions/ansi.dart';
-export 'src/extensions/double.dart';
-export 'src/extensions/int.dart';
-export 'src/extensions/list.dart';
-export 'src/extensions/num.dart';
-export 'src/extensions/process.dart';
-export 'src/extensions/process_result.dart';
-export 'src/extensions/stream.dart';
-export 'src/extensions/string.dart';
-export 'src/utils/graphemes.dart';
-export 'src/utils/printable_table.dart';
-export 'src/utils/radix.dart';
-export 'src/utils/strings.dart';
+/// {@category logging}
+String write(Object? data) {
+  final String _data = data.toString();
+  stdout.write(_data);
+  return _data;
+}
+
+/// {@category logging}
+String writeln(Object? data) {
+  final String _data = data.toString();
+  stdout.writeln(_data);
+  return _data;
+}
+
+/// {@category logging}
+String dev(Object? message, {String? tag, bool? showTimestamp}) =>
+    _print(message, Level.dev, tag, showTimestamp);
+
+/// {@category logging}
+String trace(Object? message, {String? tag, bool? showTimestamp}) =>
+    _print(message, Level.trace, tag, showTimestamp);
+
+/// {@category logging}
+String debug(Object? message, {String? tag, bool? showTimestamp}) =>
+    _print(message, Level.debug, tag, showTimestamp);
+
+/// {@category logging}
+String fail(Object? message, {String? tag, bool? showTimestamp}) =>
+    _print(message, Level.fail, tag, showTimestamp);
+
+/// {@category logging}
+String pass(Object? message, {String? tag, bool? showTimestamp}) =>
+    _print(message, Level.pass, tag, showTimestamp);
+
+/// {@category logging}
+String warn(Object? message, {String? tag, bool? showTimestamp}) =>
+    _print(message, Level.warn, tag, showTimestamp);
+
+/// {@category logging}
+String log(Object? message, {String? tag, bool? showTimestamp}) =>
+    _print(message, Level.log, tag, showTimestamp);
+
+/// {@category logging}
+String _print(Object? message, Level level, String? tag, bool? showTimestamp) {
+  final String _message = Logger.getString(
+    message,
+    level,
+    showTimestamp: showTimestamp,
+    tag: tag,
+  );
+  Logger.print('$_message');
+  return _message;
+}

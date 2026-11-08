@@ -1,0 +1,10 @@
+dartdoc:
+  categoryOrder: [ "cli",  "logging" , "ansi" ]
+  showUndocumentedCategories: true
+  categories:
+    logging:
+      markdown: doc/api/categories/logging.md
+    ansi:
+      markdown: doc/api/categories/ansi.md
+    cli:
+      markdown: doc/api/categories/cli.md

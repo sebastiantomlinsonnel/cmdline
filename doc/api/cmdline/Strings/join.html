@@ -79,7 +79,8 @@ Strings.join([1, 2], separator: ','); // '1,2'
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static String join(List&lt;Object?&gt;? list, {
+  <pre class="language-dart"><code class="language-dart">static String join(
+  List&lt;Object?&gt;? list, {
   String separator = &#39;&#39;,
   bool excludeEmpty = false,
 }) {
@@ -91,9 +92,9 @@ Strings.join([1, 2], separator: ','); // '1,2'
     return list
         .where(
           (element) =&gt;
-      element != null &amp;&amp;
-          (element is! String || Strings.isNotBlank(element)),
-    )
+              element != null &amp;&amp;
+              (element is! String || Strings.isNotBlank(element)),
+        )
         .join(separator);
   }
   return list.map((element) =&gt; element ?? &#39;&#39;).join(separator);
