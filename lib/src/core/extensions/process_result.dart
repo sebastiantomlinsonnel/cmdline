@@ -8,8 +8,6 @@ import 'package:cmdline/cmdline.dart';
 /// final result = await Process.run('git', ['status', '--short']);
 /// if (result.ok) print(result.lines); else fail(result.errors);
 /// ```
-///
-/// {@category extensions}
 extension ProcessResultExtensions on ProcessResult {
   /// Turns stdout or stderr into text.
   ///

@@ -10,8 +10,6 @@ import 'dart:io';
 /// final process = await Process.start('git', ['log', '--oneline']);
 /// process.stdout.lines.listen(print);
 /// ```
-///
-/// {@category extensions}
 extension StreamExtensions on Stream<List<int>> {
   /// The output one line at a time, as each line is finished.
   ///

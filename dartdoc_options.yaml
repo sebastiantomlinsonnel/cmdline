@@ -1,5 +1,5 @@
 dartdoc:
-  categoryOrder: [ "cli",  "logging" , "ansi", "extensions" ]
+  categoryOrder: [ "cli",  "logging" , "ansi", "core" ]
   showUndocumentedCategories: true
   categories:
     logging:
@@ -8,5 +8,5 @@ dartdoc:
       markdown: doc/ansi.md
     cli:
       markdown: doc/cli.md
-    extensions:
-      markdown: doc/extensions.md
+    core:
+      markdown: doc/core.md

@@ -1,9 +1,10 @@
+part of 'grapheme_constants.dart';
+
 // Generated from package:unicode 1.1.9. Do not edit.
 //
 // Inclusive [start, end] pairs of code points whose general category is
 // control, format, line/paragraph separator, unassigned, private use or
 // surrogate.
-
 const List<int> _nonPrintableRanges = <int>[
   0x0,
   0x1F,

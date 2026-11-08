@@ -60,6 +60,7 @@ int graphemeFlags(String grapheme) {
 /// Strings.substring(null, 2, 3);
 /// // -> ' '
 /// ```
+
 class Strings {
   Strings._();
 

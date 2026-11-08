@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the getBoolInt method from the Int extension, for the Dart programming language.">
-  <title>getBoolInt method - Int extension - cmdline library - Dart API</title>
+  <meta name="description" content="API docs for the isBetween method from the IntExtension extension, for the Dart programming language.">
+  <title>isBetween method - IntExtension extension - cmdline library - Dart API</title>
 
 
   
@@ -26,10 +26,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline.dart</a></li>
-    <li><a href="../../cmdline/Int.html">Int</a></li>
-    <li class="self-crumb">getBoolInt method</li>
+    <li><a href="../../cmdline/IntExtension.html">IntExtension</a></li>
+    <li class="self-crumb">isBetween method</li>
   </ol>
-  <div class="self-name">getBoolInt</div>
+  <div class="self-name">isBetween</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -46,34 +46,40 @@
 <div
     id="dartdoc-main-content"
     class="main-content"
-    data-above-sidebar="cmdline&#47;Int-extension-sidebar.html"
+    data-above-sidebar="cmdline&#47;IntExtension-extension-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">getBoolInt</span> method 
+<h1><span class="kind-method">isBetween</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-<span class="name ">getBoolInt</span>(<wbr>)
+<span class="name ">isBetween</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="isBetween-param-first"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">first</span>, </span></li>
+<li><span class="parameter" id="isBetween-param-second"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">second</span></span></li>
+</ol>)
 
       
 
     </section>
     
 <section class="desc markdown">
-  <p>Returns true if given value is 1, else returns false</p>
+  <p>Returns if a number is between <code>first</code> and <code>second</code></p>
+<pre class="language-dart"><code class="language-dart">100.isBetween(50, 150) // true;
+100.isBetween(100, 100) // true;
+</code></pre>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">bool getBoolInt() {
-  if (this == 1) {
-    return true;
+  <pre class="language-dart"><code class="language-dart">bool isBetween(num first, num second) {
+  if (first &lt;= second) {
+    return validate() &gt;= first &amp;&amp; validate() &lt;= second;
+  } else {
+    return validate() &gt;= second &amp;&amp; validate() &lt;= first;
   }
-  return false;
 }</code></pre>
 </section>
 
@@ -89,11 +95,11 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline</a></li>
-    <li><a href="../../cmdline/Int.html">Int</a></li>
-    <li class="self-crumb">getBoolInt method</li>
+    <li><a href="../../cmdline/IntExtension.html">IntExtension</a></li>
+    <li class="self-crumb">isBetween method</li>
 </ol>
 
-    <h5>Int extension on <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</h5>
+    <h5>IntExtension extension on <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">

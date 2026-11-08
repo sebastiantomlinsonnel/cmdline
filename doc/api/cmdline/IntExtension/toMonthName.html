@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the isBetween method from the Int extension, for the Dart programming language.">
-  <title>isBetween method - Int extension - cmdline library - Dart API</title>
+  <meta name="description" content="API docs for the toMonthName method from the IntExtension extension, for the Dart programming language.">
+  <title>toMonthName method - IntExtension extension - cmdline library - Dart API</title>
 
 
   
@@ -26,10 +26,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline.dart</a></li>
-    <li><a href="../../cmdline/Int.html">Int</a></li>
-    <li class="self-crumb">isBetween method</li>
+    <li><a href="../../cmdline/IntExtension.html">IntExtension</a></li>
+    <li class="self-crumb">toMonthName method</li>
   </ol>
-  <div class="self-name">isBetween</div>
+  <div class="self-name">toMonthName</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -46,27 +46,27 @@
 <div
     id="dartdoc-main-content"
     class="main-content"
-    data-above-sidebar="cmdline&#47;Int-extension-sidebar.html"
+    data-above-sidebar="cmdline&#47;IntExtension-extension-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">isBetween</span> method 
+<h1><span class="kind-method">toMonthName</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-<span class="name ">isBetween</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="isBetween-param-first"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">first</span>, </span></li>
-<li><span class="parameter" id="isBetween-param-second"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">second</span></span></li>
-</ol>)
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+<span class="name ">toMonthName</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="toMonthName-param-isHalfName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isHalfName</span> = <span class="default-value">false</span>, </span></li>
+</ol>})
 
       
 
     </section>
     
 <section class="desc markdown">
-  <p>Returns if a number is between <code>first</code> and <code>second</code></p>
-<pre class="language-dart"><code class="language-dart">100.isBetween(50, 150) // true;
-100.isBetween(100, 100) // true;
+  <p>Converts a month number (1-12) to its full or abbreviated name.</p>
+<p>Set <code>isHalfName</code> to <code>true</code> for the three-letter abbreviation.</p>
+<pre class="language-dart"><code class="language-dart">3.toMonthName()                    // 'March'
+3.toMonthName(isHalfName: true)    // 'Mar'
 </code></pre>
 </section>
 
@@ -74,12 +74,37 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">bool isBetween(num first, num second) {
-  if (first &lt;= second) {
-    return validate() &gt;= first &amp;&amp; validate() &lt;= second;
-  } else {
-    return validate() &gt;= second &amp;&amp; validate() &lt;= first;
+  <pre class="language-dart"><code class="language-dart">String toMonthName({bool isHalfName = false}) {
+  String status = &#39;&#39;;
+  if (!(this! &gt;= 1 &amp;&amp; this! &lt;= 12)) {
+    throw Exception(&#39;Invalid day of month&#39;);
   }
+  if (this == 1) {
+    return status = isHalfName ? &#39;Jan&#39; : &#39;January&#39;;
+  } else if (this == 2) {
+    return status = isHalfName ? &#39;Feb&#39; : &#39;February&#39;;
+  } else if (this == 3) {
+    return status = isHalfName ? &#39;Mar&#39; : &#39;March&#39;;
+  } else if (this == 4) {
+    return status = isHalfName ? &#39;Apr&#39; : &#39;April&#39;;
+  } else if (this == 5) {
+    return status = isHalfName ? &#39;May&#39; : &#39;May&#39;;
+  } else if (this == 6) {
+    return status = isHalfName ? &#39;Jun&#39; : &#39;June&#39;;
+  } else if (this == 7) {
+    return status = isHalfName ? &#39;Jul&#39; : &#39;July&#39;;
+  } else if (this == 8) {
+    return status = isHalfName ? &#39;Aug&#39; : &#39;August&#39;;
+  } else if (this == 9) {
+    return status = isHalfName ? &#39;Sept&#39; : &#39;September&#39;;
+  } else if (this == 10) {
+    return status = isHalfName ? &#39;Oct&#39; : &#39;October&#39;;
+  } else if (this == 11) {
+    return status = isHalfName ? &#39;Nov&#39; : &#39;November&#39;;
+  } else if (this == 12) {
+    return status = isHalfName ? &#39;Dec&#39; : &#39;December&#39;;
+  }
+  return status;
 }</code></pre>
 </section>
 
@@ -95,11 +120,11 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline</a></li>
-    <li><a href="../../cmdline/Int.html">Int</a></li>
-    <li class="self-crumb">isBetween method</li>
+    <li><a href="../../cmdline/IntExtension.html">IntExtension</a></li>
+    <li class="self-crumb">toMonthName method</li>
 </ol>
 
-    <h5>Int extension on <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</h5>
+    <h5>IntExtension extension on <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">

@@ -4,8 +4,6 @@ import 'dart:typed_data';
 import 'package:cmdline/cmdline.dart';
 
 /// Extensions for working with Strings
-///
-/// {@category extensions}
 extension StringsExtension on String {
   /// Puts [code] after this string's leading style codes and ends with [RESET].
   ///

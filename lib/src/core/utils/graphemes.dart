@@ -1,12 +1,5 @@
-// Copyright (c) 2018, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-//
-// Forward grapheme cluster breaking, ported from package:characters 1.4.1
-// (lib/src/grapheme_clusters/breaks.dart and constants.dart). It drives the
-// generated tables in `table.dart`, which come from the same version.
 
-import 'package:cmdline/cmdline.dart' show high, low, move;
+import 'package:cmdline/cmdline.dart';
 
 /// Grapheme break category of an unpaired surrogate.
 const int _categoryControl = 1;

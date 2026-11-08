@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the hours property from the Int extension, for the Dart programming language.">
-  <title>hours property - Int extension - cmdline library - Dart API</title>
+  <meta name="description" content="API docs for the isSuccessful method from the IntExtension extension, for the Dart programming language.">
+  <title>isSuccessful method - IntExtension extension - cmdline library - Dart API</title>
 
 
   
@@ -26,10 +26,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline.dart</a></li>
-    <li><a href="../../cmdline/Int.html">Int</a></li>
-    <li class="self-crumb">hours property</li>
+    <li><a href="../../cmdline/IntExtension.html">IntExtension</a></li>
+    <li class="self-crumb">isSuccessful method</li>
   </ol>
-  <div class="self-name">hours</div>
+  <div class="self-name">isSuccessful</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -46,44 +46,40 @@
 <div
     id="dartdoc-main-content"
     class="main-content"
-    data-above-sidebar="cmdline&#47;Int-extension-sidebar.html"
+    data-above-sidebar="cmdline&#47;IntExtension-extension-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-property">hours</span> property 
+<h1><span class="kind-method">isSuccessful</span> method 
 </h1></div>
 
-    
-
-    
-        
-  <section id="getter">
     <section class="multi-line-signature">
       
-      <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Duration-class.html">Duration</a></span>
-      get
-      <span class="name ">hours</span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+<span class="name ">isSuccessful</span>(<wbr>)
+
       
 
     </section>
     
 <section class="desc markdown">
-  <p>Returns hours duration</p>
-<pre class="language-dart"><code class="language-dart">5.hours
+  <p>Returns <code>true</code> if this integer is a successful HTTP status code
+(200-206 inclusive).</p>
+<pre class="language-dart"><code class="language-dart">200.isSuccessful() // true
+404.isSuccessful() // false
 </code></pre>
 </section>
+
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Duration get hours =&gt; Duration(hours: validate());</code></pre>
+  <pre class="language-dart"><code class="language-dart">bool isSuccessful() =&gt; this! &gt;= 200 &amp;&amp; this! &lt;= 206;</code></pre>
 </section>
 
-  </section>
 
-
-</div> <!-- /.main-content -->
-<div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-  <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
 <header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
@@ -92,14 +88,14 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline</a></li>
-    <li><a href="../../cmdline/Int.html">Int</a></li>
-    <li class="self-crumb">hours property</li>
+    <li><a href="../../cmdline/IntExtension.html">IntExtension</a></li>
+    <li class="self-crumb">isSuccessful method</li>
 </ol>
 
-  <h5>Int extension on <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</h5>
-  <div id="dartdoc-sidebar-left-content"></div>
-</div><!--/.sidebar-offcanvas-->
-<div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <h5>IntExtension extension on <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
 </div><!--/.sidebar-offcanvas-->
 </main>
 <footer>

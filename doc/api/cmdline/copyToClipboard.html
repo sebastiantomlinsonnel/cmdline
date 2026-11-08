@@ -73,8 +73,9 @@ by default for safety.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String copyToClipboard(String text) =&gt;
-    &#39;${OSC}52;c;${base64Encode(utf8.encode(text))}$ST&#39;;</code></pre>
+  <pre class="language-dart"><code class="language-dart">String copyToClipboard(String text) {
+  return &#39;${OSC}52;c;${base64Encode(utf8.encode(text))}$ST&#39;;
+}</code></pre>
 </section>
 
 
