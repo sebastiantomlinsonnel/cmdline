@@ -1,4 +1,4 @@
-/// {@category ansi}
+/// Ansi styling
 library ansi;
 
 export 'src/ansi/ansi.dart';

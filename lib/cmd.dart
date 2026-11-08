@@ -1,4 +1,4 @@
-/// {@category cmd}
+/// Shell helpers
 library cmd;
 
 export 'src/cmd/cmd.dart';

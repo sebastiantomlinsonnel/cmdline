@@ -1,4 +1,4 @@
-/// {@category core}
+/// Extensions and utils
 library core;
 
 export '../src/core/classes/moment.dart';

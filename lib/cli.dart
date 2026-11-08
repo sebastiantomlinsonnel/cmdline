@@ -1,6 +1,4 @@
-/// Complete versatile CLI builder
-///
-/// {@category cli}
+/// Versatile and performant CLI builder
 library cli;
 
 export 'src/cli/cli.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import '../../cmdline.dart';
+import 'package:cmdline/cmdline.dart';
 
 part 'constants.dart';
 

@@ -1,6 +1,4 @@
 /// A ultrafast, versatile, easy to use logging system.
-///
-/// {@category logging}
 library logging;
 
 export 'src/logging/frames.dart';
