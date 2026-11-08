@@ -1,5 +1,7 @@
 part 'format_templates.dart';
+
 part 'period.dart';
+
 part 'time_format.dart';
 
 /// A rich, human-friendly wrapper around date and time values.
@@ -36,7 +38,7 @@ part 'time_format.dart';
 /// // → "Wednesday, February 19, 2026"
 /// ```
 ///
-/// See the token constants ([D], [Do], [DD], [M], [MM], [MMM], [mmmm],
+/// See the token constants ([D], [Do], [DD], [M], [MM], [MMM], [MMMM],
 /// [yy], [yyyy], [h], [hh], [H], [HH], [m], [mm], [s], [ss], [SSS],
 /// [SSSSSS], [A], [a])
 /// for a full list of available format tokens.

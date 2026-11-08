@@ -84,7 +84,7 @@ const Map<int, String> _MONTH_NAMES = {
 
 // --------------------------------------SECONDS------------------------------------ \\
 
-/// # [Second]
+/// #  Second
 /// ---
 /// **Format:** `0 1 ... 58 59`
 ///
@@ -94,7 +94,7 @@ const Map<int, String> _MONTH_NAMES = {
 /// leading zeros are not required for the specific string output.
 const String s = 's';
 
-/// # [Second (Long)]
+/// # Second (Long)
 /// ---
 /// **Format:** `00 01 ... 58 59`
 ///
@@ -107,7 +107,7 @@ const String ss = 'ss';
 
 // -----------------------------------FRACTIONS OF A SECOND----------------------------------- \\
 
-/// # [Millisecond]
+/// # Millisecond
 /// ---
 /// **Format:** `000 001 ... 998 999`
 ///
@@ -117,7 +117,7 @@ const String ss = 'ss';
 /// logs and timings that need more precision than whole seconds.
 const String SSS = 'SSS';
 
-/// # [Microsecond]
+/// # Microsecond
 /// ---
 /// **Format:** `000000 000001 ... 999998 999999`
 ///
@@ -128,7 +128,7 @@ const String SSS = 'SSS';
 const String SSSSSS = 'SSSSSS';
 
 // --------------------------------------MINUTES------------------------------------ \\
-/// # [Minute]
+/// # Minute
 /// ---
 /// **Format:** `0 1 ... 58 59`
 ///
@@ -139,7 +139,7 @@ const String SSSSSS = 'SSSSSS';
 /// like "Arrived 5 minutes ago."
 const String m = 'm';
 
-/// # [Minute (Long)]
+/// # Minute (Long)
 /// ---
 /// **Format:** `00 01 ... 58 59`
 ///
@@ -152,7 +152,7 @@ const String mm = 'mm';
 
 // --------------------------------------HOURS------------------------------------ \\
 
-/// # [Hour (12-Hour Clock)]
+/// # Hour (12-Hour Clock)
 /// ---
 /// **Format:** `1 2 ... 11 12`
 ///
@@ -163,7 +163,7 @@ const String mm = 'mm';
 /// AM/PM token for clarity.
 const String h = 'h';
 
-/// # [Hour (12-Hour Clock, Full)]
+/// # Hour (12-Hour Clock, Full)
 /// ---
 /// **Format:** `01 02 ... 11 12`
 ///
@@ -174,7 +174,7 @@ const String h = 'h';
 /// alignment of the time from shifting when the hour changes from 9 to 10.
 const String hh = 'hh';
 
-/// # [Hour (24-Hour Clock)]
+/// # Hour (24-Hour Clock)
 /// ---
 /// **Format:** `0 1 ... 22 23`
 ///
@@ -185,7 +185,7 @@ const String hh = 'hh';
 /// systems where AM/PM ambiguity must be avoided.
 const String H = 'H';
 
-/// # [Hour (24-Hour Clock, Padded)]
+/// # Hour (24-Hour Clock, Padded)
 /// ---
 /// **Format:** `00 01 ... 22 23`
 ///
@@ -196,7 +196,7 @@ const String H = 'H';
 /// making it ideal for table columns and file timestamps.
 const String HH = 'HH';
 
-/// # [AM/PM]
+/// # AM/PM
 /// ---
 /// **Format:** `AM PM`
 ///
@@ -207,7 +207,7 @@ const String HH = 'HH';
 /// alarm-based features.
 const String A = 'A';
 
-/// # [AM/PM (Lowercase)]
+/// # AM/PM (Lowercase)
 /// ---
 /// **Format:** `am pm`
 ///
@@ -219,7 +219,7 @@ const String A = 'A';
 const String a = 'a';
 
 // --------------------------------------DAYS------------------------------------ \\
-/// # [Day of Month]
+/// # Day of Month
 /// ---
 /// **Format:** `1 2 ... 30 31`
 ///
@@ -230,7 +230,7 @@ const String a = 'a';
 /// or in layouts where a clean, minimal look is desired.
 const String D = 'D';
 
-/// # [Day of Month (Ordinal)]
+/// # Day of Month (Ordinal)
 /// ---
 /// **Format:** `1st 2nd ... 30th 31st`
 ///
@@ -241,7 +241,7 @@ const String D = 'D';
 /// letters, and any interface attempting to sound conversational.
 const String Do = 'Do';
 
-/// # [Day of Week (Short)]
+/// # Day of Week (Short)
 /// ---
 /// **Format:** `Mon Tue ... Sat Sun`
 ///
@@ -252,7 +252,7 @@ const String Do = 'Do';
 /// and general scheduling software to identify the day of the week.
 const String ddd = 'ddd';
 
-/// # [Day of Week (Full)]
+/// # Day of Week (Full)
 /// ---
 /// **Format:** `Monday Tuesday ... Sunday`
 ///
@@ -263,7 +263,7 @@ const String ddd = 'ddd';
 /// desktop layouts and formal documents where space is not a constraint.
 const String dddd = 'dddd';
 
-/// # [Day of Month (Padded)]
+/// # Day of Month (Padded)
 /// ---
 /// **Format:** `01 02 ... 30 31`
 ///
@@ -276,7 +276,7 @@ const String DD = 'DD';
 
 // --------------------------------------MONTHS------------------------------------ \\
 
-/// # [Month (Number)]
+/// # Month (Number)
 /// ---
 /// **Format:** `1 2 ... 11 12`
 ///
@@ -287,7 +287,7 @@ const String DD = 'DD';
 /// date-picker logic or simple slash-separated date formats.
 const String M = 'M';
 
-/// # [Month (Ordinal)]
+/// # Month (Ordinal)
 /// ---
 /// **Format:** `1st 2nd ... 11th 12th`
 ///
@@ -298,7 +298,7 @@ const String M = 'M';
 /// date-picker logic or simple slash-separated date formats.
 const String Mo = 'Mo';
 
-/// # [Month (Padded)]
+/// # Month (Padded)
 /// ---
 /// **Format:** `01 02 ... 11 12`
 ///
@@ -308,7 +308,7 @@ const String Mo = 'Mo';
 /// This is the standard for numerical date formats like MM/DD/YYYY.
 const String MM = 'MM';
 
-/// # [Month (Short)]
+/// # Month (Short)
 /// ---
 /// **Format:** `Jan Feb ... Nov Dec`
 ///
@@ -319,7 +319,7 @@ const String MM = 'MM';
 /// and timeline markers.
 const String MMM = 'MMM';
 
-/// # [Month (Full)]
+/// # Month (Full)
 /// ---
 /// **Format:** `January February ... December`
 ///
@@ -331,7 +331,7 @@ const String MMM = 'MMM';
 const String MMMM = 'MMMM';
 // --------------------------------------YEARS------------------------------------ \\
 
-/// # [Year (Short)]
+/// # Year (Short)
 /// ---
 /// **Format:** `70 71 ... 24 25`
 ///
@@ -342,7 +342,7 @@ const String MMMM = 'MMMM';
 /// to avoid ambiguity between centuries.
 const String yy = 'yy';
 
-/// # [Year (Full)]
+/// # Year (Full)
 /// ---
 /// **Format:** `1970 1971 ... 2024 2025`
 ///
@@ -352,7 +352,7 @@ const String yy = 'yy';
 const String yyyy = 'yyyy';
 // --------------------------------------TEMPLATES------------------------------------ \\
 
-/// # [Time (24-Hour)]
+/// # Time (24-Hour)
 /// ---
 /// **Format:** `14:35:22`
 ///
@@ -363,7 +363,7 @@ const String yyyy = 'yyyy';
 /// timestamps in logs, data exports, or anywhere military time is preferred.
 const String t = 't';
 
-/// # [Time (12-Hour)]
+/// # Time (12-Hour)
 /// ---
 /// **Format:** `2:35:22 PM`
 ///
@@ -374,7 +374,7 @@ const String t = 't';
 /// becomes 1) and appends the meridiem indicator for civilian time display.
 const String T = 'T';
 
-/// # [Date (Numeric)]
+/// # Date (Numeric)
 /// ---
 /// **Format:** `05/03/2025`
 ///

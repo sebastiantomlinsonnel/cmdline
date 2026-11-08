@@ -84,7 +84,12 @@ mainly for debugging or logging.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-String toString() =&gt; &#39;$year&#47;$month&#47;$date-$hour:$minute:$second&#39;;</code></pre>
+String toString() {
+  final String whole = &#39;$year&#47;$month&#47;$date $hour:$minute:$second&#39;;
+  final int fraction = _subSecondMicroseconds;
+  if (fraction == 0) return whole;
+  return &#39;$whole.${&#39;$fraction&#39;.padLeft(6, &#39;0&#39;)}&#39;;
+}</code></pre>
 </section>
 
 
@@ -112,7 +117,7 @@ String toString() =&gt; &#39;$year&#47;$month&#47;$date-$hour:$minute:$second&#3
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

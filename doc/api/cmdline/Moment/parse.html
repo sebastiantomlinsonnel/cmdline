@@ -63,10 +63,12 @@
     </section>
     
 <section class="desc markdown">
-  <p>Parses a <a href="../../cmdline/Moment-class.html">Moment</a> from a string in the format <code>"yyyy/MM/dd-HH:mm:ss"</code>.</p>
-<p>Throws if the string doesn't match the expected pattern. For a
-non-throwing alternative, see <a href="../../cmdline/Moment/tryParse.html">tryParse</a>.</p>
-<pre class="language-dart"><code class="language-dart">final m = Moment.parse(string: '2025/06/15-14:30:00');
+  <p>Parses a <a href="../../cmdline/Moment-class.html">Moment</a> from a string in the format <code>"yyyy/MM/dd HH:mm:ss"</code>.</p>
+<p>The seconds can have a fraction of up to 6 digits, like <code>14:30:00.250</code>
+or <code>14:30:00.250125</code>. Extra digits are ignored. Throws if the string
+doesn't match the expected pattern. For a non-throwing alternative,
+see <a href="../../cmdline/Moment/tryParse.html">tryParse</a>.</p>
+<pre class="language-dart"><code class="language-dart">final m = Moment.parse(string: '2025/06/15 14:30:00.250');
 </code></pre>
 </section>
 
@@ -75,16 +77,22 @@ non-throwing alternative, see <a href="../../cmdline/Moment/tryParse.html">tryPa
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static Moment parse({required String string}) {
-  final split1 = string.split(&#39;-&#39;);
+  final split1 = string.split(&#39; &#39;);
   final dates = split1[0].split(&#39;&#47;&#39;);
   final times = split1[1].split(&#39;:&#39;);
+  final seconds = times[2].split(&#39;.&#39;);
+  final int fraction = seconds.length &gt; 1
+      ? int.parse(seconds[1].padRight(6, &#39;0&#39;).substring(0, 6))
+      : 0;
   return Moment(
     year: int.parse(dates[0]),
     month: int.parse(dates[1]),
     date: int.parse(dates[2]),
     hour: int.parse(times[0]),
     minute: int.parse(times[1]),
-    second: int.parse(times[2]),
+    second: int.parse(seconds[0]),
+    millisecond: fraction ~&#47; Period.microsecondsPerMillisecond,
+    microsecond: fraction % Period.microsecondsPerMillisecond,
   );
 }</code></pre>
 </section>
@@ -114,7 +122,7 @@ non-throwing alternative, see <a href="../../cmdline/Moment/tryParse.html">tryPa
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

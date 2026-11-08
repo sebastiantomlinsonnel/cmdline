@@ -70,17 +70,19 @@ final birthday = Moment(year: 1999, month: 12, date: 25, hour: 8);
 // From an existing DateTime
 final converted = Moment.fromDateTime(DateTime.utc(2025, 1, 1));
 
-// By parsing a string (format: "yyyy/MM/dd-HH:mm:ss")
-final parsed = Moment.parse(string: '2025/06/15-14:30:00');
+// By parsing a string (format: "yyyy/MM/dd HH:mm:ss", with optional
+// fractional seconds like "14:30:00.250")
+final parsed = Moment.parse(string: '2025/06/15 14:30:00');
 </code></pre>
 <h2 id="formatting">Formatting</h2>
-<p>Build any date/time string you need using format tokens:</p>
+<p>Build any date/time string you need with a <a href="../cmdline/TimeFormat-class.html">TimeFormat</a> pattern:</p>
 <pre class="language-dart"><code class="language-dart">final m = Moment.now();
-m.format(formatStyle: [dddd, comma, space, mmmm, space, D, comma, space, yyyy]);
+TimeFormat('$dddd, $mmmm $D, $yyyy').format(m);
 // → "Wednesday, February 19, 2026"
 </code></pre>
-<p>See the token constants (<a href="../cmdline/D-constant.html">D</a>, <a href="../cmdline/Do-constant.html">Do</a>, <a href="../cmdline/DD-constant.html">DD</a>, <a href="../cmdline/M-constant.html">M</a>, <a href="../cmdline/MM-constant.html">MM</a>, <a href="../cmdline/MMM-constant.html">MMM</a>, <a href="../cmdline/mmmm-constant.html">mmmm</a>,
-<a href="../cmdline/yy-constant.html">yy</a>, <a href="../cmdline/yyyy-constant.html">yyyy</a>, <a href="../cmdline/h-constant.html">h</a>, <a href="../cmdline/hh-constant.html">hh</a>, <a href="../cmdline/H-constant.html">H</a>, <a href="../cmdline/HH-constant.html">HH</a>, <a href="../cmdline/m-constant.html">m</a>, <a href="../cmdline/mm-constant.html">mm</a>, <a href="../cmdline/s-constant.html">s</a>, <a href="../cmdline/ss-constant.html">ss</a>, <a href="../cmdline/A-constant.html">A</a>, <a href="../cmdline/a-constant.html">a</a>)
+<p>See the token constants (<a href="../cmdline/D-constant.html">D</a>, <a href="../cmdline/Do-constant.html">Do</a>, <a href="../cmdline/DD-constant.html">DD</a>, <a href="../cmdline/M-constant.html">M</a>, <a href="../cmdline/MM-constant.html">MM</a>, <a href="../cmdline/MMM-constant.html">MMM</a>, <a href="../cmdline/MMMM-constant.html">MMMM</a>,
+<a href="../cmdline/yy-constant.html">yy</a>, <a href="../cmdline/yyyy-constant.html">yyyy</a>, <a href="../cmdline/h-constant.html">h</a>, <a href="../cmdline/hh-constant.html">hh</a>, <a href="../cmdline/H-constant.html">H</a>, <a href="../cmdline/HH-constant.html">HH</a>, <a href="../cmdline/m-constant.html">m</a>, <a href="../cmdline/mm-constant.html">mm</a>, <a href="../cmdline/s-constant.html">s</a>, <a href="../cmdline/ss-constant.html">ss</a>, <a href="../cmdline/SSS-constant.html">SSS</a>,
+<a href="../cmdline/SSSSSS-constant.html">SSSSSS</a>, <a href="../cmdline/A-constant.html">A</a>, <a href="../cmdline/a-constant.html">a</a>)
 for a full list of available format tokens.</p>
 <h2 id="relative-time">Relative Time</h2>
 <pre class="language-dart"><code class="language-dart">final posted = Moment(year: 2026, month: 2, date: 19, hour: 10);
@@ -125,7 +127,7 @@ final lastMonth = Moment.now() - Period(months: 1);
     <h2>Constructors</h2>
     <dl class="constructor-summary-list">
         <dt id="Moment.new" class="callable">
-          <span class="name"><a href="../cmdline/Moment/Moment.html">Moment</a></span><span class="signature">({<span class="parameter" id="param-second"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">second</span>, </span><span class="parameter" id="param-minute"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">minute</span>, </span><span class="parameter" id="param-hour"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">hour</span>, </span><span class="parameter" id="param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">date</span>, </span><span class="parameter" id="param-month"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">month</span>, </span><span class="parameter" id="param-year"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span><span class="parameter" id="param-formatStyle"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">formatStyle</span> = <span class="default-value">defaultFormatStyle</span></span>})</span>
+          <span class="name"><a href="../cmdline/Moment/Moment.html">Moment</a></span><span class="signature">({<span class="parameter" id="param-microsecond"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">microsecond</span>, </span><span class="parameter" id="param-millisecond"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">millisecond</span>, </span><span class="parameter" id="param-second"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">second</span>, </span><span class="parameter" id="param-minute"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">minute</span>, </span><span class="parameter" id="param-hour"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">hour</span>, </span><span class="parameter" id="param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">date</span>, </span><span class="parameter" id="param-month"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">month</span>, </span><span class="parameter" id="param-year"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span><span class="parameter" id="param-formatStyle"><span class="type-annotation"><a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span> <span class="parameter-name">formatStyle</span> = <span class="default-value">TimeFormat.worded</span></span>})</span>
         </dt>
         <dd>
           Creates a <a href="../cmdline/Moment-class.html">Moment</a> from individual date/time components.
@@ -151,7 +153,7 @@ final lastMonth = Moment.now() - Period(months: 1);
 
 </dt>
 <dd>
-  Serializes this <a href="../cmdline/Moment-class.html">Moment</a> to a <code>Map&lt;String, dynamic&gt;</code>.
+  Serializes this <a href="../cmdline/Moment-class.html">Moment</a> to a map keyed by component name.
   <div class="features"><span class="feature">no setter</span></div>
 
 </dd>
@@ -219,12 +221,12 @@ or <code>null</code> for year 0.
 
         <dt id="formatStyle" class="property">
   <span class="name"><a href="../cmdline/Moment/formatStyle.html">formatStyle</a></span>
-  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  <span class="signature">&#8596; <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
   
 
 </dt>
 <dd>
-  The token sequence used by <a href="../cmdline/Moment/format.html">format</a> to produce a formatted string.
+  The <a href="../cmdline/TimeFormat-class.html">TimeFormat</a> this moment is meant to be displayed with.
   <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
@@ -249,6 +251,42 @@ or <code>null</code> for year 0.
 </dt>
 <dd>
   The hour component (0-23), or <code>null</code> if not specified.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="microsecond" class="property">
+  <span class="name"><a href="../cmdline/Moment/microsecond.html">microsecond</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd>
+  The microsecond component (0-999), or <code>null</code> if not specified.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="microsecondsSinceEpoch" class="property">
+  <span class="name"><a href="../cmdline/Moment/microsecondsSinceEpoch.html">microsecondsSinceEpoch</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  Microseconds since the Unix epoch (1970-01-01 00:00:00).
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="millisecond" class="property">
+  <span class="name"><a href="../cmdline/Moment/millisecond.html">millisecond</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd>
+  The millisecond component (0-999), or <code>null</code> if not specified.
   <div class="features"><span class="feature">getter/setter pair</span></div>
 
 </dd>
@@ -448,34 +486,6 @@ date components are incomplete.
 
 </dd>
 
-        <dt id="format" class="callable">
-  <span class="name"><a href="../cmdline/Moment/format.html">format</a></span><span class="signature">(<wbr>{<span class="parameter" id="format-param-formatStyle"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">formatStyle</span> = <span class="default-value">defaultFormatStyle</span></span>})
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Builds a formatted date/time string by evaluating each token in
-<code>formatStyle</code> against this <a href="../cmdline/Moment-class.html">Moment</a>'s values.
-  
-
-</dd>
-
-        <dt id="formatToken" class="callable">
-  <span class="name"><a href="../cmdline/Moment/formatToken.html">formatToken</a></span><span class="signature">(<wbr><span class="parameter" id="formatToken-param-moment"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">moment</span>, </span><span class="parameter" id="formatToken-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Resolves a single format <code>token</code> into its string value for the
-given <code>moment</code>.
-  
-
-</dd>
-
         <dt id="fromMap" class="callable">
   <span class="name"><a href="../cmdline/Moment/fromMap.html">fromMap</a></span><span class="signature">(<wbr><span class="parameter" id="fromMap-param-map"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>&gt;</span></span> <span class="parameter-name">map</span></span>)
     <span class="returntype parameter">&#8594; <a href="../cmdline/Moment-class.html">Moment</a></span>
@@ -484,7 +494,7 @@ given <code>moment</code>.
 
 </dt>
 <dd>
-  Constructs a <a href="../cmdline/Moment-class.html">Moment</a> from a map with string keys.
+  Constructs a <a href="../cmdline/Moment-class.html">Moment</a> from a map like the one <a href="../cmdline/Moment/asMap.html">asMap</a> returns.
   
 
 </dd>
@@ -524,7 +534,7 @@ this <a href="../cmdline/Moment-class.html">Moment</a> is relative to <code>from
 
 </dt>
 <dd>
-  Returns the components as a list: <code>[second, minute, hour, date, month, year]</code>.
+  Returns the components as a list, smallest unit first.
   
 
 </dd>
@@ -669,7 +679,7 @@ this <a href="../cmdline/Moment-class.html">Moment</a> is relative to <code>from
 
 </dt>
 <dd>
-  Parses a <a href="../cmdline/Moment-class.html">Moment</a> from a string in the format <code>"yyyy/MM/dd-HH:mm:ss"</code>.
+  Parses a <a href="../cmdline/Moment-class.html">Moment</a> from a string in the format <code>"yyyy/MM/dd HH:mm:ss"</code>.
   
 
 </dd>
@@ -740,7 +750,7 @@ this <a href="../cmdline/Moment-class.html">Moment</a> is relative to <code>from
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

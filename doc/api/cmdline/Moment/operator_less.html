@@ -70,7 +70,8 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">bool operator &lt;(Moment other) =&gt; totalSeconds &lt; other.totalSeconds;</code></pre>
+  <pre class="language-dart"><code class="language-dart">bool operator &lt;(Moment other) =&gt;
+    microsecondsSinceEpoch &lt; other.microsecondsSinceEpoch;</code></pre>
 </section>
 
 
@@ -98,7 +99,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

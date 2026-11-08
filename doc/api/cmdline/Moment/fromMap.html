@@ -63,7 +63,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>Constructs a <a href="../../cmdline/Moment-class.html">Moment</a> from a map with string keys.</p>
+  <p>Constructs a <a href="../../cmdline/Moment-class.html">Moment</a> from a map like the one <a href="../../cmdline/Moment/asMap.html">asMap</a> returns.</p>
 </section>
 
 
@@ -72,31 +72,15 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Moment fromMap(Map&lt;String, int?&gt; map) {
   return Moment(
-    second: map[second],
-    minute: map[minute],
-    hour: map[hour],
-    date: map[date],
-    month: map[month],
-    year: map[year],
-    formatStyle: const [
-      the,
-      space,
-      Do,
-      space,
-      of,
-      space,
-      mmmm,
-      space,
-      yyyy,
-      space,
-      at,
-      space,
-      hh,
-      colon,
-      mm,
-      colon,
-      ss,
-    ],
+    microsecond: map[&#39;microsecond&#39;],
+    millisecond: map[&#39;millisecond&#39;],
+    second: map[&#39;second&#39;],
+    minute: map[&#39;minute&#39;],
+    hour: map[&#39;hour&#39;],
+    date: map[&#39;date&#39;],
+    month: map[&#39;month&#39;],
+    year: map[&#39;year&#39;],
+    formatStyle: TimeFormat.worded,
   );
 }</code></pre>
 </section>
@@ -126,7 +110,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

@@ -68,12 +68,14 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Moment.fromDateTime(DateTime dateTime)
   : year = dateTime.year,
+    microsecond = dateTime.microsecond,
+    millisecond = dateTime.millisecond,
     second = dateTime.second,
     minute = dateTime.minute,
     hour = dateTime.hour,
     date = dateTime.day,
     month = dateTime.month,
-    formatStyle = defaultFormatStyle;</code></pre>
+    formatStyle = TimeFormat.worded;</code></pre>
 </section>
 
 
@@ -101,7 +103,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

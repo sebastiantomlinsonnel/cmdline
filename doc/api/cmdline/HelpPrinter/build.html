@@ -84,15 +84,13 @@
   lines.add(title);
   if (command.help.isNotEmpty) lines.add(command.help.italic.dim);
 
-  final StringBuffer buf = StringBuffer(path);
-
-  &#47;&#47; Usage line.
-  var usage = path;
-  if (_visibleCommands(command).isNotEmpty) buf.write(&#39; &lt;command&gt;&#39;);
+  &#47;&#47; Usage line, e.g. &quot;todo add &lt;key&gt; [options]&quot;.
+  final usage = StringBuffer(path);
+  if (_visibleCommands(command).isNotEmpty) usage.write(&#39; &lt;command&gt;&#39;);
   for (final argument in command.arguments) {
-    buf.write(&#39; ${_argumentLabel(argument)}&#39;);
+    usage.write(&#39; ${_argumentLabel(argument)}&#39;);
   }
-  usage += &#39; [options]&#39;;
+  usage.write(&#39; [options]&#39;);
   lines.add(&#39;&#39;);
   lines.add(_heading(&#39;Usage&#39;));
   lines.add(&#39;  $usage&#39;);
@@ -112,28 +110,26 @@
       [_argumentLabel(argument), _argumentHelp(argument)],
   ]);
 
-  &#47;&#47; This command&#39;s own flags and options, plus the built-in ones.
-  _addSection(lines, &#39;Options&#39;, [
-    ..._optionRows(command),
+  &#47;&#47; Flags and options from parent commands work here too, so they are
+  &#47;&#47; listed after this command&#39;s own, nearest parent first.
+  _addSection(lines, &#39;Flags&#39;, [
+    for (final c in commands.reversed) ..._flagRows(c),
     if (!_declaresVerbose()) _verboseRow(),
     [&#39;-h, --help&#39;, &#39;Show this help&#39;],
     if (root is CLI &amp;&amp; root.version != null &amp;&amp; commands.length == 1)
       [&#39;    --version&#39;, &#39;Show the version&#39;],
   ]);
 
-  &#47;&#47; Flags and options from parent commands still work here.
-  final globalRows = &lt;List&lt;String&gt;&gt;[];
-  for (var i = 0; i &lt; commands.length - 1; i++) {
-    globalRows.addAll(_optionRows(commands[i]));
-  }
-  _addSection(lines, &#39;Global options&#39;, globalRows);
+  _addSection(lines, &#39;Options&#39;, [
+    for (final c in commands.reversed) ..._optionRows(c),
+  ]);
 
   if (_visibleCommands(command).isNotEmpty) {
     lines.add(&#39;&#39;);
     lines.add(&#39;Run &quot;$path &lt;command&gt; --help&quot; for more about a command.&#39;.dim);
   }
 
-  lines.add(&#39;\n&#39;);
+  lines.add(&#39;&#39;);
 
   return lines.join(&#39;\n&#39;);
 }</code></pre>
@@ -164,7 +160,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

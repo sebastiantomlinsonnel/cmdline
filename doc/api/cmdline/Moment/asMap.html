@@ -67,19 +67,21 @@
     </section>
     
 <section class="desc markdown">
-  <p>Serializes this <a href="../../cmdline/Moment-class.html">Moment</a> to a <code>Map&lt;String, dynamic&gt;</code>.</p>
+  <p>Serializes this <a href="../../cmdline/Moment-class.html">Moment</a> to a map keyed by component name.</p>
 </section>
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Map&lt;String, dynamic&gt; get asMap =&gt; {
-  second.toString(): second ?? 0.0,
-  minute.toString(): minute ?? 0.0,
-  hour.toString(): hour ?? 0.0,
-  date.toString(): date ?? 0.0,
-  month.toString(): month ?? 0.0,
-  year.toString(): year ?? 0.0,
+  &#39;microsecond&#39;: microsecond ?? 0,
+  &#39;millisecond&#39;: millisecond ?? 0,
+  &#39;second&#39;: second ?? 0,
+  &#39;minute&#39;: minute ?? 0,
+  &#39;hour&#39;: hour ?? 0,
+  &#39;date&#39;: date ?? 0,
+  &#39;month&#39;: month ?? 0,
+  &#39;year&#39;: year ?? 0,
 };</code></pre>
 </section>
 
@@ -110,7 +112,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

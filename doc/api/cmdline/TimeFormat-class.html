@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the TimeFormat class from the cmdline library, for the Dart programming language.">
+  <title>TimeFormat class - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline.dart</a></li>
+    <li class="self-crumb">TimeFormat class</li>
+  </ol>
+  <div class="self-name">TimeFormat</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="cmdline&#47;cmdline-library-sidebar.html"
+    data-below-sidebar="cmdline&#47;TimeFormat-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">TimeFormat</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>A reusable pattern that turns a <a href="../cmdline/Moment-class.html">Moment</a> into text.</p>
+<p>Letter runs that match a token (like <code>Do</code>, <code>MMMM</code>, <code>HH</code>) are replaced with
+the moment's value. Everything else is kept exactly as written. Wrap text
+in <code>[brackets]</code> to stop it being read as a token, e.g. <code>'[a] h:mm'</code>.</p>
+<pre class="language-dart"><code class="language-dart">final f = TimeFormat('The $Do of $mmmm $yyyy at $HH:$mm:$ss');
+f.format(Moment.now()); // → "The 8th of November 2026 at 14:35:09"
+</code></pre>
+</section>
+
+
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="TimeFormat.new" class="callable">
+          <span class="name"><a href="../cmdline/TimeFormat/TimeFormat.html">TimeFormat</a></span><span class="signature">(<span class="parameter" id="param-pattern"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">pattern</span></span>)</span>
+        </dt>
+        <dd>
+          Creates a format from a <code>pattern</code> string.
+            <div class="constructor-modifier features">const</div>
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="pattern" class="property">
+  <span class="name"><a href="../cmdline/TimeFormat/pattern.html">pattern</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The pattern string this format was created from.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="tokens" class="property">
+  <span class="name"><a href="../cmdline/TimeFormat/tokens.html">tokens</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  The tokens and literal pieces that make up <a href="../cmdline/TimeFormat/pattern.html">pattern</a>.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="format" class="callable">
+  <span class="name"><a href="../cmdline/TimeFormat/format.html">format</a></span><span class="signature">(<wbr><span class="parameter" id="format-param-moment"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">moment</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Builds the formatted string for <code>moment</code>.
+  
+
+</dd>
+
+        <dt id="formatToken" class="callable">
+  <span class="name"><a href="../cmdline/TimeFormat/formatToken.html">formatToken</a></span><span class="signature">(<wbr><span class="parameter" id="formatToken-param-moment"><span class="type-annotation"><a href="../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">moment</span>, </span><span class="parameter" id="formatToken-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Turns one <code>token</code> into its value for <code>moment</code>, or returns it as literal text.
+  
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  <section class="summary offset-anchor" id="constants">
+    <h2>Constants</h2>
+    <dl class="properties">
+        <dt id="date" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/date-constant.html">date</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The day-first numeric date, like <code>08/11/2026</code>.
+  
+
+</dd>
+
+        <dt id="dateTime" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/dateTime-constant.html">dateTime</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The numeric date and short time, like <code>08/11/2026 14:05</code>.
+  
+
+</dd>
+
+        <dt id="dayMonth" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/dayMonth-constant.html">dayMonth</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  A compact day and month, like <code>Sun 8 Nov</code>.
+  
+
+</dd>
+
+        <dt id="fileSafe" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/fileSafe-constant.html">fileSafe</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  A timestamp that's safe in file names, like <code>2026-11-08_14-05-09</code>.
+  
+
+</dd>
+
+        <dt id="friendly" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/friendly-constant.html">friendly</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  A friendly date and 12-hour time, like <code>Sun 8 Nov, 2:05 PM</code>.
+  
+
+</dd>
+
+        <dt id="fullDate" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/fullDate-constant.html">fullDate</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The full date with the weekday, like <code>Sunday, 8 November 2026</code>.
+  
+
+</dd>
+
+        <dt id="isoDate" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/isoDate-constant.html">isoDate</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The ISO 8601 date, like <code>2026-11-08</code>.
+  
+
+</dd>
+
+        <dt id="isoDateTime" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/isoDateTime-constant.html">isoDateTime</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The ISO 8601 date and time, like <code>2026-11-08T14:05:09</code>.
+  
+
+</dd>
+
+        <dt id="log" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/log-constant.html">log</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  A sortable timestamp for logs, like <code>2026-11-08 14:05:09</code>.
+  
+
+</dd>
+
+        <dt id="longDate" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/longDate-constant.html">longDate</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  A long date with the full month name, like <code>8 November 2026</code>.
+  
+
+</dd>
+
+        <dt id="monthYear" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/monthYear-constant.html">monthYear</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The month and year, like <code>November 2026</code>.
+  
+
+</dd>
+
+        <dt id="shortDate" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/shortDate-constant.html">shortDate</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  A short date with the month abbreviated, like <code>8 Nov 2026</code>.
+  
+
+</dd>
+
+        <dt id="shortTime12" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/shortTime12-constant.html">shortTime12</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The 12-hour time without seconds, like <code>2:05 PM</code>.
+  
+
+</dd>
+
+        <dt id="shortTime24" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/shortTime24-constant.html">shortTime24</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The 24-hour time without seconds, like <code>14:05</code>.
+  
+
+</dd>
+
+        <dt id="spokenDate" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/spokenDate-constant.html">spokenDate</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  A spoken-style date, like <code>Sunday the 8th of November 2026</code>.
+  
+
+</dd>
+
+        <dt id="time12" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/time12-constant.html">time12</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The 12-hour time with AM/PM, like <code>2:05:09 PM</code>.
+  
+
+</dd>
+
+        <dt id="time24" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/time24-constant.html">time24</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The 24-hour time, like <code>14:05:09</code>.
+  
+
+</dd>
+
+        <dt id="worded" class="constant">
+    <span class="name "><a href="../cmdline/TimeFormat/worded-constant.html">worded</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/TimeFormat-class.html">TimeFormat</a></span>
+  
+
+</dt>
+<dd>
+  The default format, like <code>The 8th of November 2026 at 14:35:09</code>.
+  
+
+</dd>
+
+    </dl>
+  </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline</a></li>
+    <li class="self-crumb">TimeFormat class</li>
+</ol>
+
+    <h5>cmdline library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.5
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

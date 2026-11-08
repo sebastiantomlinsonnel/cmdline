@@ -102,6 +102,8 @@ it into year/month/day/hour/minute/second components.</p>
     hour: hr,
     minute: min,
     second: sec,
+    millisecond: totalMilliseconds % millisecondsPerSecond,
+    microsecond: totalMicroseconds % microsecondsPerMillisecond,
   );
 }</code></pre>
 </section>
@@ -133,7 +135,7 @@ it into year/month/day/hour/minute/second components.</p>
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

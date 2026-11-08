@@ -54,13 +54,15 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">Moment</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="param-second"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">second</span>, </span></li>
+      <span class="name ">Moment</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="param-microsecond"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">microsecond</span>, </span></li>
+<li><span class="parameter" id="param-millisecond"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">millisecond</span>, </span></li>
+<li><span class="parameter" id="param-second"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">second</span>, </span></li>
 <li><span class="parameter" id="param-minute"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">minute</span>, </span></li>
 <li><span class="parameter" id="param-hour"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">hour</span>, </span></li>
 <li><span class="parameter" id="param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">date</span>, </span></li>
 <li><span class="parameter" id="param-month"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">month</span>, </span></li>
 <li><span class="parameter" id="param-year"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span></li>
-<li><span class="parameter" id="param-formatStyle"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">formatStyle</span> = <span class="default-value">defaultFormatStyle</span>, </span></li>
+<li><span class="parameter" id="param-formatStyle"><span class="type-annotation"><a href="../../cmdline/TimeFormat-class.html">TimeFormat</a></span> <span class="parameter-name">formatStyle</span> = <span class="default-value">TimeFormat.worded</span>, </span></li>
 </ol>})
     </section>
     
@@ -75,13 +77,15 @@ zero/default value when used in calculations.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Moment({
+  this.microsecond,
+  this.millisecond,
   this.second,
   this.minute,
   this.hour,
   this.date,
   this.month,
   this.year,
-  this.formatStyle = defaultFormatStyle,
+  this.formatStyle = TimeFormat.worded,
 });</code></pre>
 </section>
 
@@ -110,7 +114,7 @@ zero/default value when used in calculations.</p>
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

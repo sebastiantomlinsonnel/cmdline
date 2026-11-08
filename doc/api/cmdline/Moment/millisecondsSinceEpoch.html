@@ -75,34 +75,10 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">int get millisecondsSinceEpoch {
-  final int y = year ?? 1970;
-  final int m = month ?? 1;
-  final int d = date ?? 1;
-
-  int totalDays = 0;
-
-  if (y &gt;= 1970) {
-    for (int i = 1970; i &lt; y; i++) {
-      totalDays += _isLeapYear(i) ? 366 : 365;
-    }
-  } else {
-    for (int i = 1969; i &gt;= y; i--) {
-      totalDays -= _isLeapYear(i) ? 366 : 365;
-    }
-  }
-
-  for (int i = 1; i &lt; m; i++) {
-    totalDays += _daysInMonth(i, y);
-  }
-
-  totalDays += d - 1;
-
-  int totalSeconds = totalDays * 86400;
-  totalSeconds += (hour ?? 0) * 3600;
-  totalSeconds += (minute ?? 0) * 60;
-  totalSeconds += (second ?? 0);
-
-  return totalSeconds * 1000;
+  final int micros = microsecondsSinceEpoch;
+  &#47;&#47; Round down, so times before the epoch don&#39;t round toward zero.
+  return (micros - micros % Period.microsecondsPerMillisecond) ~&#47;
+      Period.microsecondsPerMillisecond;
 }</code></pre>
 </section>
 
@@ -133,7 +109,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

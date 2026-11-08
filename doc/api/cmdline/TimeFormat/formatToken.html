@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the formatToken method from the Moment class, for the Dart programming language.">
-  <title>formatToken method - Moment class - cmdline library - Dart API</title>
+  <meta name="description" content="API docs for the formatToken method from the TimeFormat class, for the Dart programming language.">
+  <title>formatToken method - TimeFormat class - cmdline library - Dart API</title>
 
 
   
@@ -26,7 +26,7 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline.dart</a></li>
-    <li><a href="../../cmdline/Moment-class.html">Moment</a></li>
+    <li><a href="../../cmdline/TimeFormat-class.html">TimeFormat</a></li>
     <li class="self-crumb">formatToken method</li>
   </ol>
   <div class="self-name">formatToken</div>
@@ -46,7 +46,7 @@
 <div
     id="dartdoc-main-content"
     class="main-content"
-    data-above-sidebar="cmdline&#47;Moment-class-sidebar.html"
+    data-above-sidebar="cmdline&#47;TimeFormat-class-sidebar.html"
     data-below-sidebar="">
     <div>
 <h1><span class="kind-method">formatToken</span> method 
@@ -54,7 +54,7 @@
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
 <span class="name ">formatToken</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="formatToken-param-moment"><span class="type-annotation"><a href="../../cmdline/Moment-class.html">Moment</a></span> <span class="parameter-name">moment</span>, </span></li>
 <li><span class="parameter" id="formatToken-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span></span></li>
 </ol>)
@@ -64,69 +64,84 @@
     </section>
     
 <section class="desc markdown">
-  <p>Resolves a single format <code>token</code> into its string value for the
-given <code>moment</code>.</p>
-<p>This powers the <a href="../../cmdline/Moment/format.html">format</a> method. You generally won't call it directly,
-but it's public so you can extend or override token behaviour.</p>
+  <p>Turns one <code>token</code> into its value for <code>moment</code>, or returns it as literal text.</p>
+<p>This powers <a href="../../cmdline/TimeFormat/format.html">format</a>. You generally won't call it directly, but it's
+public so you can extend or override token behaviour. Missing values
+on <code>moment</code> are treated as 0 (or 1 for the date and month).</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String? formatToken(Moment moment, String token) {
+  <pre class="language-dart"><code class="language-dart">String formatToken(Moment moment, String token) {
+  final int second = moment.second ?? 0;
+  final int minute = moment.minute ?? 0;
+  final int hour = moment.hour ?? 0;
+  final int date = moment.date ?? 1;
+  final int month = moment.month ?? 1;
+  final int year = moment.year ?? 0;
+  final int hour12 = hour % 12 == 0 ? 12 : hour % 12;
+
   switch (token) {
     case ddd:
-      return weekDayNames[moment.weekday]!.substring(0, 3);
+      return (_WEEK_DAY_NAMES[moment.weekday] ?? &#39;   &#39;).substring(0, 3);
     case dddd:
-      return weekDayNames[moment.weekday];
+      return _WEEK_DAY_NAMES[moment.weekday] ?? &#39;&#39;;
     case D:
-      return moment.date.toString();
+      return &#39;$date&#39;;
     case Do:
-      return &#39;${moment.date}${_getOrdinal(moment.date!)}&#39;;
+      return &#39;$date${_getOrdinal(date)}&#39;;
     case DD:
-      return moment.date.toString().padLeft(2, &#39;0&#39;);
+      return _pad(date);
     case M:
-      return moment.month.toString();
+      return &#39;$month&#39;;
     case Mo:
-      return &#39;${moment.month}${_getOrdinal(moment.month)}&#39;;
+      return &#39;$month${_getOrdinal(month)}&#39;;
     case MM:
-      return moment.month.toString().padLeft(2, &#39;0&#39;);
+      return _pad(month);
     case MMM:
-      return monthNames[moment.month]!.substring(0, 3);
-    case mmmm:
-      return monthNames[moment.month];
+      return _MONTH_NAMES[month]!.substring(0, 3);
+    case MMMM:
+      return _MONTH_NAMES[month]!;
     case yy:
-      return moment.year.toString().substring(2);
+      return _pad(year % 100);
     case yyyy:
-      return moment.year.toString();
+      return &#39;$year&#39;;
     case h:
-      final int hour12 = moment.hour! % 12;
-      return hour12 == 0 ? &#39;12&#39; : hour12.toString();
+      return &#39;$hour12&#39;;
     case hh:
-      final int hour12 = moment.hour! % 12;
-      return (hour12 == 0 ? 12 : hour12).toString().padLeft(2, &#39;0&#39;);
+      return _pad(hour12);
     case H:
-      return moment.hour.toString();
+      return &#39;$hour&#39;;
     case HH:
-      return moment.hour.toString().padLeft(2, &#39;0&#39;);
+      return _pad(hour);
     case m:
-      return moment.minute.toString();
+      return &#39;$minute&#39;;
     case mm:
-      return moment.minute.toString().padLeft(2, &#39;0&#39;);
+      return _pad(minute);
     case s:
-      return moment.second.toString();
+      return &#39;$second&#39;;
     case ss:
-      return moment.second.toString().padLeft(2, &#39;0&#39;);
+      return _pad(second);
+    case SSS:
+      return &#39;${moment.millisecond ?? 0}&#39;.padLeft(3, &#39;0&#39;);
+    case SSSSSS:
+      return &#39;${moment._subSecondMicroseconds}&#39;.padLeft(6, &#39;0&#39;);
     case A:
       return moment.clockPhase;
     case a:
       return moment.clockPhase.toLowerCase();
     case t:
-      return &#39;${moment.hour}:${moment.minute}:${moment.second}&#39;;
+      return moment.time;
+    case T:
+      return moment.clock;
     case dateNumeric:
-      return &#39;${moment.date.toString().padLeft(2, &#39;0&#39;)}&#47;${moment.month.toString().padLeft(2, &#39;0&#39;)}&#47;$year&#39;;
+      return &#39;${_pad(date)}&#47;${_pad(month)}&#47;$year&#39;;
     default:
+      if (token.length &gt;= 2 &amp;&amp; token.startsWith(&#39;[&#39;) &amp;&amp; token.endsWith(&#39;]&#39;)) {
+        return token.substring(1, token.length - 1);
+      }
       return token;
   }
 }</code></pre>
@@ -144,11 +159,11 @@ but it's public so you can extend or override token behaviour.</p>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">cmdline</a></li>
     <li><a href="../../cmdline/">cmdline</a></li>
-    <li><a href="../../cmdline/Moment-class.html">Moment</a></li>
+    <li><a href="../../cmdline/TimeFormat-class.html">TimeFormat</a></li>
     <li class="self-crumb">formatToken method</li>
 </ol>
 
-    <h5>Moment class</h5>
+    <h5>TimeFormat class</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -157,7 +172,7 @@ but it's public so you can extend or override token behaviour.</p>
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

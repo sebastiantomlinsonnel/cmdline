@@ -81,11 +81,8 @@ and zero if <code>this</code> and <code>other</code> are ordered together.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-int compareTo(Moment other) {
-  if (totalSeconds &lt; other.totalSeconds) return -1;
-  if (totalSeconds &gt; other.totalSeconds) return 1;
-  return 0;
-}</code></pre>
+int compareTo(Moment other) =&gt;
+    microsecondsSinceEpoch.compareTo(other.microsecondsSinceEpoch);</code></pre>
 </section>
 
 
@@ -113,7 +110,7 @@ int compareTo(Moment other) {
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

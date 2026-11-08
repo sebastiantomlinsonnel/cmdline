@@ -68,15 +68,17 @@
     
 <section class="desc markdown">
   <p>Converts the time portion of this <a href="../../cmdline/Moment-class.html">Moment</a> into a <a href="../../cmdline/Period-class.html">Period</a>.</p>
-<p>Only the hour, minute, and second values are included — date components
-are zeroed out. Useful when you just care about "how much time" this
-represents, not "which date."</p>
+<p>Only the time values (hour down to microsecond) are included — date
+components are zeroed out. Useful when you just care about "how much
+time" this represents, not "which date."</p>
 </section>
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Period get period =&gt; Period(
+  microseconds: microsecond ?? 0,
+  milliseconds: millisecond ?? 0,
   seconds: second ?? 0,
   minutes: minute ?? 0,
   hours: hour ?? 0,
@@ -113,7 +115,7 @@ represents, not "which date."</p>
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>

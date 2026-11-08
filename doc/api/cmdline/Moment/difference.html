@@ -75,31 +75,9 @@ print(gap); // e.g. "26 years, 2 months, ..."
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Period difference(Moment other) {
-  int totalSecs = totalSeconds - other.totalSeconds;
-  totalSecs = totalSecs.abs();
-
-  final int secs = totalSecs % 60;
-  final int totalMins = totalSecs ~&#47; 60;
-  final int mins = totalMins % 60;
-  final int totalHrs = totalMins ~&#47; 60;
-  final int hrs = totalHrs % 24;
-  final int days = totalHrs ~&#47; 24;
-
-  final int yrs = days ~&#47; 365;
-  int remainingDays = days % 365;
-  final int months = remainingDays ~&#47; 30;
-  remainingDays = remainingDays % 30;
-
-  return Period(
-    years: yrs,
-    months: months,
-    days: remainingDays,
-    hours: hrs,
-    minutes: mins,
-    seconds: secs,
-  );
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">Period difference(Moment other) =&gt; Period._microseconds(
+  (microsecondsSinceEpoch - other.microsecondsSinceEpoch).abs(),
+);</code></pre>
 </section>
 
 
@@ -127,7 +105,7 @@ print(gap); // e.g. "26 years, 2 months, ..."
 <footer>
   <span class="no-break">
     cmdline
-      2.0.2
+      2.0.5
   </span>
   
 </footer>
