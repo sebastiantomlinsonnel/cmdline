@@ -3,16 +3,16 @@ part of 'moment.dart';
 /// Turns a Moment in a new format
 class TimeFormat {
   static const TimeFormat worded = const TimeFormat([
-    The,
+    'The',
     Do,
-    of,
+    'of',
     mmmm,
     yyyy,
-    at,
+    'at',
     hh,
-    colon,
+    ':',
     mm,
-    colon,
+    ":",
     ss,
   ]);
 
@@ -53,9 +53,9 @@ class TimeFormat {
   String? formatToken(Moment moment, String token) {
     switch (token) {
       case ddd:
-        return '${weekDayNames[moment.weekday]!.substring(0, 3)} ';
+        return '${_WEEK_DAY_NAMES[moment.weekday]!.substring(0, 3)} ';
       case dddd:
-        return '${weekDayNames[moment.weekday]} ';
+        return '${_WEEK_DAY_NAMES[moment.weekday]} ';
       case D:
         return moment.date.toString();
       case Do:
@@ -69,9 +69,9 @@ class TimeFormat {
       case MM:
         return moment.month.toString().padLeft(2, '0');
       case MMM:
-        return '${monthNames[moment.month]!.substring(0, 3)} ';
+        return '${_MONTH_NAMES[moment.month]!.substring(0, 3)} ';
       case mmmm:
-        return '${monthNames[moment.month]} ';
+        return '${_MONTH_NAMES[moment.month]} ';
       case yy:
         return moment.year.toString().substring(2);
       case yyyy:

@@ -1,18 +1,6 @@
-const String slash = '/';
-const String dash = '-';
-const String dot = '.';
-const String comma = ',';
-const String space = ' ';
-const String backSlash = '\\';
-const String colon = ':';
-const String semicolon = ';';
-const String at = 'at';
-const String of = 'of';
-const String the = 'the';
-const String At = 'At';
-const String Of = 'Of';
-const String The = 'The';
-const Map<int, String> weekDayNames = {
+part of 'moment.dart';
+
+const Map<int, String> _WEEK_DAY_NAMES = {
   1: 'Monday',
   2: 'Tuesday',
   3: 'Wednesday',
@@ -22,7 +10,7 @@ const Map<int, String> weekDayNames = {
   7: 'Sunday',
 };
 
-const Map<int, String> monthNames = {
+const Map<int, String> _MONTH_NAMES = {
   1: 'January',
   2: 'February',
   3: 'March',

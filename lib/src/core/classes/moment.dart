@@ -1,5 +1,4 @@
-import 'package:cmdline/cmdline.dart';
-
+part 'format_templates.dart';
 part 'period.dart';
 part 'time_format.dart';
 
@@ -226,7 +225,7 @@ final class Moment implements Comparable<Moment> {
       date: map[date],
       month: map[month],
       year: map[year],
-      formatStyle: TimeFormat.worded
+      formatStyle: TimeFormat.worded,
     );
   }
 

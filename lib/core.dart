@@ -6,7 +6,6 @@ export '../src/core/classes/radix.dart';
 export '../src/core/classes/shell_command.dart';
 export '../src/core/constants/ansi/ansi_constants.dart';
 export '../src/core/constants/graphemes/grapheme_constants.dart';
-export '../src/core/constants/time_format/time_format.dart';
 export '../src/core/extensions/double.dart';
 export '../src/core/extensions/int.dart';
 export '../src/core/extensions/list.dart';
