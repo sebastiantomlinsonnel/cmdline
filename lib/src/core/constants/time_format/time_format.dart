@@ -1,23 +1,3 @@
-const List<String> defaultFormatStyle = [
-  The,
-  space,
-  Do,
-  space,
-  of,
-  space,
-  mmmm,
-  space,
-  yyyy,
-  space,
-  at,
-  space,
-  hh,
-  colon,
-  mm,
-  colon,
-  ss,
-];
-
 const String slash = '/';
 const String dash = '-';
 const String dot = '.';

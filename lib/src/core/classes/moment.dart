@@ -1,6 +1,7 @@
-import '../../../cmdline.dart';
+import 'package:cmdline/cmdline.dart';
 
 part 'period.dart';
+part 'time_format.dart';
 
 /// A rich, human-friendly wrapper around date and time values.
 ///
@@ -88,7 +89,7 @@ final class Moment implements Comparable<Moment> {
   ///
   /// Defaults to [defaultFormatStyle], which produces output like:
   /// `"The 19th of February 2026 at 14:35:00"`
-  List<String> formatStyle;
+  TimeFormat formatStyle;
 
   /// Creates a [Moment] from individual date/time components.
   ///
@@ -101,7 +102,7 @@ final class Moment implements Comparable<Moment> {
     this.date,
     this.month,
     this.year,
-    this.formatStyle = defaultFormatStyle,
+    this.formatStyle = TimeFormat.worded,
   });
 
   /// Creates a [Moment] from an existing [DateTime] instance.
@@ -112,7 +113,7 @@ final class Moment implements Comparable<Moment> {
       hour = dateTime.hour,
       date = dateTime.day,
       month = dateTime.month,
-      formatStyle = defaultFormatStyle;
+      formatStyle = TimeFormat.worded;
 
   /// Parses a [Moment] from a string in the format `"yyyy/MM/dd-HH:mm:ss"`.
   ///
@@ -225,25 +226,7 @@ final class Moment implements Comparable<Moment> {
       date: map[date],
       month: map[month],
       year: map[year],
-      formatStyle: const [
-        the,
-        space,
-        Do,
-        space,
-        of,
-        space,
-        mmmm,
-        space,
-        yyyy,
-        space,
-        at,
-        space,
-        hh,
-        colon,
-        mm,
-        colon,
-        ss,
-      ],
+      formatStyle: TimeFormat.worded
     );
   }
 
@@ -482,7 +465,7 @@ final class Moment implements Comparable<Moment> {
   }
 
   /// `"AM"` or `"PM"` based on the [hour] value.
-  String get clockPhase => (hour ?? 0) < 12 ? 'AM' : 'PM';
+  String get clockPhase => (hour ?? 0) < 12 ? 'AM ' : 'PM ';
 
   /// The historical era — `"AD"` for years >= 1, `"BC"` for years <= -1,
   /// or `null` for year 0.
@@ -497,112 +480,6 @@ final class Moment implements Comparable<Moment> {
 
   /// Returns a [Moment] representing yesterday at the current time.
   static Moment yesterday() => ((Moment.now()) - const Period(days: 1));
-
-  String _getOrdinal(int? value) {
-    final String valString = value.toString();
-    if (valString.length >= 2) {
-      final int trailingTwo = int.parse(
-        value.toString().substring(valString.length - 2, valString.length),
-      );
-      if (trailingTwo == 11 || trailingTwo == 12 || trailingTwo == 13) {
-        return 'th';
-      }
-    }
-    final int trailing = int.parse(
-      value.toString()[value.toString().length - 1],
-    );
-    switch (trailing) {
-      case 1:
-        return 'st';
-      case 2:
-        return 'nd';
-      case 3:
-        return 'rd';
-      default:
-        return 'th';
-    }
-  }
-
-  /// Builds a formatted date/time string by evaluating each token in
-  /// [formatStyle] against this [Moment]'s values.
-  ///
-  /// Tokens that don't match a known format specifier are passed through
-  /// as literal strings, so you can mix separators and text freely.
-  ///
-  /// ```dart
-  /// final m = Moment.now();
-  /// m.format(formatStyle: [dddd, comma, space, mmmm, space, D, comma, space, yyyy]);
-  /// // → "Wednesday, February 19, 2026"
-  /// ```
-  String format({List<String>? formatStyle = defaultFormatStyle}) {
-    String val = '';
-    for (int i = 0; i < formatStyle!.length; i++) {
-      val += formatToken(this, formatStyle[i]).toString();
-    }
-    return val;
-  }
-
-  /// Resolves a single format [token] into its string value for the
-  /// given [moment].
-  ///
-  /// This powers the [format] method. You generally won't call it directly,
-  /// but it's public so you can extend or override token behaviour.
-  String? formatToken(Moment moment, String token) {
-    switch (token) {
-      case ddd:
-        return weekDayNames[moment.weekday]!.substring(0, 3);
-      case dddd:
-        return weekDayNames[moment.weekday];
-      case D:
-        return moment.date.toString();
-      case Do:
-        return '${moment.date}${_getOrdinal(moment.date!)}';
-      case DD:
-        return moment.date.toString().padLeft(2, '0');
-      case M:
-        return moment.month.toString();
-      case Mo:
-        return '${moment.month}${_getOrdinal(moment.month)}';
-      case MM:
-        return moment.month.toString().padLeft(2, '0');
-      case MMM:
-        return monthNames[moment.month]!.substring(0, 3);
-      case mmmm:
-        return monthNames[moment.month];
-      case yy:
-        return moment.year.toString().substring(2);
-      case yyyy:
-        return moment.year.toString();
-      case h:
-        final int hour12 = moment.hour! % 12;
-        return hour12 == 0 ? '12' : hour12.toString();
-      case hh:
-        final int hour12 = moment.hour! % 12;
-        return (hour12 == 0 ? 12 : hour12).toString().padLeft(2, '0');
-      case H:
-        return moment.hour.toString();
-      case HH:
-        return moment.hour.toString().padLeft(2, '0');
-      case m:
-        return moment.minute.toString();
-      case mm:
-        return moment.minute.toString().padLeft(2, '0');
-      case s:
-        return moment.second.toString();
-      case ss:
-        return moment.second.toString().padLeft(2, '0');
-      case A:
-        return moment.clockPhase;
-      case a:
-        return moment.clockPhase.toLowerCase();
-      case t:
-        return '${moment.hour}:${moment.minute}:${moment.second}';
-      case dateNumeric:
-        return '${moment.date.toString().padLeft(2, '0')}/${moment.month.toString().padLeft(2, '0')}/$year';
-      default:
-        return token;
-    }
-  }
 
   /// Milliseconds since the Unix epoch (1970-01-01 00:00:00 UTC).
   ///
