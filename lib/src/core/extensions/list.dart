@@ -10,6 +10,8 @@
 /// [1, 3, 7].sumBy((n) => n);         // 11
 /// [10, 20, 30].averageBy((n) => n);  // 20.0
 /// ```
+///
+/// {@category extensions}
 extension ListExtensions<T> on Iterable<T>? {
   /// Returns this iterable as a [List], or an empty list if `null`.
   ///

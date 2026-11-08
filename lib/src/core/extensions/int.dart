@@ -11,6 +11,7 @@ import 'package:cmdline/cmdline.dart';
 /// 255.oct  // '377'
 /// 255.b256 // base-256 encoded string
 /// ```
+/// {@category extensions}
 extension Int on int? {
   /// Returns this value if non-null, otherwise returns [value] (defaults to `0`).
   int validate({int value = 0}) {
@@ -196,7 +197,9 @@ extension Int on int? {
 /// 255.oct  // '377'
 /// 255.b256 // base-256 encoded string
 /// ```
-extension Ba on int {
+///
+/// {@category extensions}
+extension IntExtensions on int {
   /// Converts this integer to its **octal** (base-8) string representation.
   String get oct {
     return Radix.getBase(this, 8);

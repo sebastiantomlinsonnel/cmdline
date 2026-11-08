@@ -50,7 +50,7 @@ const String SGR = 'm';
 /// Turns off every style and colour.
 ///
 /// `${CSI}0m`. Puts the terminal back to its default text. Printing helpers
-/// such as [Ansi.toString], [AnsiPrinter] and [AnsiStyledString] add it at
+/// such as [Ansi.toString], [AnsiPrinter] and [StringExtensions] add it at
 /// the end so a style never leaks into the next line.
 const String RESET = '${CSI}0$SGR';
 

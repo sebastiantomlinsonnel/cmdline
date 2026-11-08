@@ -13,7 +13,9 @@ import 'dart:math' as math;
 /// 3.14.roundToPrecision(1);    // 3.1
 /// 75.percentageOf(200);        // 37.5
 /// ```
-extension Num on num? {
+///
+/// {@category extensions}
+extension NumExtensions on num? {
   /// Validate given double is not null and returns given value if null.
   num validate({num value = 0}) => this ?? value;
 

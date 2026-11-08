@@ -9,7 +9,9 @@ import 'dart:io';
 /// process.writeLine('hello');
 /// final code = await process.waitFor(const Duration(seconds: 30));
 /// ```
-extension ProcessHelpers on Process {
+///
+/// {@category extensions}
+extension ProcessExtensions on Process {
   // Note: "this." is needed below. Without it, `stdin`, `pid` and `exitCode`
   // would mean dart:io's ones for YOUR app, not the started program's.
 

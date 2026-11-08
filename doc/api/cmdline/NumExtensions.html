@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the NumExtensions extension from the cmdline library, for the Dart programming language.">
+  <title>NumExtensions extension - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline.dart</a></li>
+    <li class="self-crumb">NumExtensions extension</li>
+  </ol>
+  <div class="self-name">NumExtensions</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content extension-page"
+    data-above-sidebar="cmdline&#47;cmdline-library-sidebar.html"
+    data-below-sidebar="cmdline&#47;NumExtensions-extension-sidebar.html">
+    <div>
+<h1><span class="kind-class">NumExtensions</span> extension 
+ 
+    <span class="category extensions cp-3 linked" title="This is part of the extensions topic."><a href="../topics/extensions-topic.html">extensions</a></span>
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Extensions on nullable <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a> for validation, range checks, formatting,
+and mathematical helpers.</p>
+<p>These work on both <code>int</code> and <code>double</code> since they extend <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>. Every
+method is null-safe — if the value is <code>null</code>, <a href="../cmdline/NumExtensions/validate.html">validate</a> kicks in and
+treats it as <code>0</code>.</p>
+<pre class="language-dart"><code class="language-dart">num? value;
+value.isPositive;            // false (null → 0 → not positive)
+3.14.roundToPrecision(1);    // 3.1
+75.percentageOf(200);        // 37.5
+</code></pre>
+</section>
+
+    <section>
+      <dl class="dl-horizontal">
+        <dt>on</dt>
+        <dd>
+          <ul class="comma-separated clazz-relationships">
+            <li><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?</li>
+          </ul>
+        </dd>
+      </dl>
+      
+
+
+    </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="isInteger" class="property">
+  <span class="name"><a href="../cmdline/NumExtensions/isInteger.html">isInteger</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Returns true if the validated number has no fractional part.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="isNegative" class="property">
+  <span class="name"><a href="../cmdline/NumExtensions/isNegative.html">isNegative</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Returns true if the validated number is less than 0.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="isPositive" class="property">
+  <span class="name"><a href="../cmdline/NumExtensions/isPositive.html">isPositive</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Returns true if the validated number is greater than 0.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="isZero" class="property">
+  <span class="name"><a href="../cmdline/NumExtensions/isZero.html">isZero</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Returns true if the validated number is equal to 0.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="abs" class="callable">
+  <span class="name"><a href="../cmdline/NumExtensions/abs.html">abs</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Returns the absolute value of the validated number.
+  
+
+</dd>
+
+        <dt id="clamp" class="callable">
+  <span class="name"><a href="../cmdline/NumExtensions/clamp.html">clamp</a></span><span class="signature">(<wbr><span class="parameter" id="clamp-param-lowerLimit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">lowerLimit</span>, </span><span class="parameter" id="clamp-param-upperLimit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">upperLimit</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Clamps the validated number to between <code>lowerLimit</code> and <code>upperLimit</code>.
+  
+
+</dd>
+
+        <dt id="isBetween" class="callable">
+  <span class="name"><a href="../cmdline/NumExtensions/isBetween.html">isBetween</a></span><span class="signature">(<wbr><span class="parameter" id="isBetween-param-min"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">min</span>, </span><span class="parameter" id="isBetween-param-max"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">max</span>, {</span><span class="parameter" id="isBetween-param-inclusive"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">inclusive</span> = <span class="default-value">true</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Checks if the validated number falls within a specified range [<code>min</code>, <code>max</code>].
+By default, the check is inclusive. Set <code>inclusive</code> to false for an exclusive check.
+  
+
+</dd>
+
+        <dt id="percentageOf" class="callable">
+  <span class="name"><a href="../cmdline/NumExtensions/percentageOf.html">percentageOf</a></span><span class="signature">(<wbr><span class="parameter" id="percentageOf-param-total"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">total</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Calculates what percentage the validated number is of a given <code>total</code>.
+Returns 0.0 if <code>total</code> is 0 or null.
+  
+
+</dd>
+
+        <dt id="roundToPrecision" class="callable">
+  <span class="name"><a href="../cmdline/NumExtensions/roundToPrecision.html">roundToPrecision</a></span><span class="signature">(<wbr><span class="parameter" id="roundToPrecision-param-precision"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">precision</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Rounds the validated number to a specified number of decimal <code>precision</code>.
+For example, (10.12345).roundToPrecision(2) will return 10.12
+  
+
+</dd>
+
+        <dt id="toDoubleDigits" class="callable">
+  <span class="name"><a href="../cmdline/NumExtensions/toDoubleDigits.html">toDoubleDigits</a></span><span class="signature">(<wbr><span class="parameter" id="toDoubleDigits-param-fractionDigits"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">fractionDigits</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Formats the validated number to a string with a fixed number of <code>fractionDigits</code>.
+Returns "0.00" (or based on <code>fractionDigits</code>) if the number is null.
+  
+
+</dd>
+
+        <dt id="validate" class="callable">
+  <span class="name"><a href="../cmdline/NumExtensions/validate.html">validate</a></span><span class="signature">(<wbr>{<span class="parameter" id="validate-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">value</span> = <span class="default-value">0</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?,
+        provided by the <a href="../cmdline/NumExtensions.html">NumExtensions</a> extension</span>
+      </p>
+  Validate given double is not null and returns given value if null.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+    
+
+</div> <!-- /.main-content -->
+<div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+  <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline</a></li>
+    <li class="self-crumb">NumExtensions extension</li>
+</ol>
+
+  <h5>cmdline library</h5>
+  <div id="dartdoc-sidebar-left-content"></div>
+</div>
+<div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.2
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
+
+

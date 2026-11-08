@@ -8,7 +8,9 @@ import 'package:cmdline/cmdline.dart';
 /// final result = await Process.run('git', ['status', '--short']);
 /// if (result.ok) print(result.lines); else fail(result.errors);
 /// ```
-extension ProcessResultHelpers on ProcessResult {
+///
+/// {@category extensions}
+extension ProcessResultExtensions on ProcessResult {
   /// Turns stdout or stderr into text.
   ///
   /// They are usually text already, but are bytes if `Process.run` was given

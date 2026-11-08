@@ -12,7 +12,9 @@ import 'package:cmdline/cmdline.dart';
 /// double? maybeValue;
 /// print(maybeValue.validate()); // 0.0 (safe default)
 /// ```
-extension Double on double? {
+///
+/// {@category extensions}
+extension DoubleExtensions on double? {
   /// Returns this value if non-null, otherwise returns [value] (defaults to `0.0`).
   ///
   /// Handy as a null-safe fallback so you don't have to write `?? 0.0`

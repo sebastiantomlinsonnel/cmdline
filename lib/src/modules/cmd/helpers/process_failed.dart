@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';
 
-/// Thrown by [ProcessResultHelpers.throwIfFailed] when a program didn't work.
+/// Thrown by [ProcessResultExtensions.throwIfFailed] when a program didn't work.
 ///
 /// Its message shows the exit code and what the program printed as errors.
 ///

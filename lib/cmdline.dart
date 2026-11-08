@@ -1,6 +1,6 @@
+/// The ultimate zero dependency pure dart package
 library cmdline;
 
-export 'src/core/extensions/ansi.dart';
 export 'src/core/extensions/double.dart';
 export 'src/core/extensions/int.dart';
 export 'src/core/extensions/list.dart';
@@ -13,7 +13,6 @@ export 'src/core/utils/graphemes.dart';
 export 'src/core/utils/printable_table.dart';
 export 'src/core/utils/radix.dart';
 export 'src/core/utils/strings.dart';
-export 'src/modules/logging/logging.dart';
 export 'src/modules/ansi/ansi.dart';
 export 'src/modules/ansi/constants/characters.dart';
 export 'src/modules/ansi/constants/colours.dart';
@@ -43,4 +42,4 @@ export 'src/modules/cmd/cmd.dart';
 export 'src/modules/cmd/helpers/process_failed.dart';
 export 'src/modules/cmd/shell_command.dart';
 export 'src/modules/cmd/types/file_error.dart';
-
+export 'src/modules/logging/logging.dart';
