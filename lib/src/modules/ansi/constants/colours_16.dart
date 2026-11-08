@@ -1,13 +1,18 @@
-// The classic 16 colours, using the shortest and oldest colour codes.
-//
-// They look the same as the first 16 palette colours in colours.dart (both
-// follow the terminal theme), but these codes work in even the oldest
-// terminals. Text colours are 30-37 and 90-97; backgrounds are 40-47 and
-// 100-107. Reset with RESET_FG or RESET_BG.
+/// The classic 16 colours, using the shortest and oldest colour codes.
+///
+/// They look the same as the first 16 palette colours in colours.dart (both
+/// follow the terminal theme), but these codes work in even the oldest
+/// terminals. Text colours are 30-37 and 90-97; backgrounds are 40-47 and
+/// 100-107. Reset with RESET_FG or RESET_BG.
+///
+/// {@category ansi}
+library;
 
 import 'package:cmdline/cmdline.dart';
 
 /// Black text, using the classic code 30.
+///
+/// {@category ansi constants}
 const String ANSI_BLACK_FG = '${CSI}30$SGR';
 
 /// Red text, using the classic code 31.

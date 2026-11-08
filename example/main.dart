@@ -1,14 +1,14 @@
-// A tour of everything in package:cmdline.
-//
-// Run it with no arguments for the short showcase (the README GIFs), or pick a
-// part:
-//
-//   dart run example/main.dart --help
-//   dart run example/main.dart logging messages
-//   dart run example/main.dart cmd files
-//   dart run example/main.dart --all          (every demo, including prompts)
-//
-// The demos live in example/src, one file per area.
+/// A tour of everything in package:cmdline.
+///
+/// Run it with no arguments for the short showcase (the README GIFs), or pick a
+/// part:
+///
+///   dart run example/main.dart --help
+///   dart run example/main.dart logging messages
+///   dart run example/main.dart cmd files
+///   dart run example/main.dart --all          (every demo, including prompts)
+///
+/// The demos live in example/src, one file per area.
 import 'dart:io';
 
 import 'package:cmdline/cmdline.dart';

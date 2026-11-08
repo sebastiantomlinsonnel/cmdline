@@ -3,8 +3,8 @@ dartdoc:
   showUndocumentedCategories: true
   categories:
     logging:
-      markdown: doc/api/categories/logging.md
+      markdown: doc/logging.md
     ansi:
-      markdown: doc/api/categories/ansi.md
+      markdown: doc/ansi.md
     cli:
-      markdown: doc/api/categories/cli.md
+      markdown: doc/cli.md

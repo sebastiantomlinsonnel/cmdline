@@ -5,7 +5,7 @@ import 'package:cmdline/cmdline.dart';
 
 part 'constants.dart';
 
-/// A complex yet intuitive logger
+/// Ultrafast, easy to use, ansi styled logger with complex features
 ///
 ///  {@category logging}
 class Logger {
