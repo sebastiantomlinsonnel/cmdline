@@ -1,7 +1,7 @@
 part of '../cmd.dart';
 
-class _Prompt {
-  const _Prompt._();
+class _Prompts {
+  const _Prompts._();
 
   /// Asks the user a question and gives back what they type.
   ///

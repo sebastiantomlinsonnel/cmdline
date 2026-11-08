@@ -1,11 +1,12 @@
 /// The ultimate zero dependency pure dart package
 library cmdline;
 
-export 'src/classes/moment.dart';
-export 'src/classes/radix.dart';
 export 'src/constants/ansi/ansi_constants.dart';
 export 'src/constants/graphemes/grapheme_constants.dart';
 export 'src/constants/time_format/time_format.dart';
+export 'src/core/classes/moment.dart';
+export 'src/core/classes/radix.dart';
+export 'src/core/classes/shell_command.dart';
 export 'src/core/extensions/double.dart';
 export 'src/core/extensions/int.dart';
 export 'src/core/extensions/list.dart';
@@ -14,8 +15,8 @@ export 'src/core/extensions/process.dart';
 export 'src/core/extensions/process_result.dart';
 export 'src/core/extensions/stream.dart';
 export 'src/core/extensions/string.dart';
-export 'src/core/utils/graphemes.dart';
-export 'src/core/utils/strings.dart';
+export 'src/core/helpers/graphemes.dart';
+export 'src/core/helpers/strings.dart';
 export 'src/modules/ansi/ansi.dart';
 export 'src/modules/ansi/helpers/controls_helpers.dart';
 export 'src/modules/ansi/palettes/ansi_colour.dart';
@@ -33,7 +34,6 @@ export 'src/modules/cli/parser/parser.dart';
 export 'src/modules/cli/parser/parser_result.dart';
 export 'src/modules/cli/theme/help.dart';
 export 'src/modules/cmd/cmd.dart';
-export 'src/modules/cmd/helpers/process_failed.dart';
-export 'src/modules/cmd/shell_command.dart';
 export 'src/modules/cmd/types/file_error.dart';
+export 'src/modules/cmd/types/process_failed.dart';
 export 'src/modules/logging/logging.dart';

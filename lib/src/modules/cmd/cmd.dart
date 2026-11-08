@@ -8,23 +8,26 @@ import 'dart:math' as math;
 import 'package:cmdline/cmdline.dart';
 
 part 'parts/draw.dart';
+
 part 'parts/fs.dart';
+
 part 'parts/net.dart';
+
 part 'parts/prompt.dart';
 
 /// CMDLine helpers
 class CMD {
   /// Filesystem helpers
-  static _FS get fs => const _FS._();
+  static _FileSystem get fs => const _FileSystem._();
 
   /// Ansi drawing helpers
-  static _Draw get draw => const _Draw._();
+  static _Drawing get draw => const _Drawing._();
 
   /// Network helpers
-  static _Net get net => const _Net._();
+  static _Networking get net => const _Networking._();
 
   /// Terminal prompts
-  static _Prompt get prompt => const _Prompt._();
+  static _Prompts get prompt => const _Prompts._();
 
   const CMD._();
 

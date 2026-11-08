@@ -1,7 +1,7 @@
 part of '../cmd.dart';
 
-class _FS {
-  const _FS._();
+class _FileSystem {
+  const _FileSystem._();
 
   /// Whether anything (a file, folder or link) is at [path].
   bool exists(String path) =>

@@ -160,7 +160,7 @@ final CLI cli = CLI(
       ],
     ),
     Command(
-      name: 'utils',
+      name: 'helpers',
       help: 'String, number, list and base helpers',
       commands: [
         Command(
