@@ -1,3 +1,7 @@
+## 2.0.5
+
+- Bug fixes
+
 ## 2.0.4
 
 - Improved [TimeFormat]

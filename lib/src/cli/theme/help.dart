@@ -4,7 +4,7 @@ import 'package:cmdline/cmdline.dart';
 ///
 /// Give it the picked commands from the top down (like `[todo, add]`) and
 /// call [build]. It returns the text instead of printing it, so it is easy to
-/// test.bat. [CLI.start] prints it for you on `--help`.
+/// test. [CLI.start] prints it for you on `--help`.
 ///
 /// {@category cli}
 class HelpPrinter {
@@ -42,15 +42,13 @@ class HelpPrinter {
     lines.add(title);
     if (command.help.isNotEmpty) lines.add(command.help.italic.dim);
 
-    final StringBuffer buf = StringBuffer(path);
-
-    // Usage line.
-    var usage = path;
-    if (_visibleCommands(command).isNotEmpty) buf.write(' <command>');
+    // Usage line, e.g. "todo add <key> [options]".
+    final usage = StringBuffer(path);
+    if (_visibleCommands(command).isNotEmpty) usage.write(' <command>');
     for (final argument in command.arguments) {
-      buf.write(' ${_argumentLabel(argument)}');
+      usage.write(' ${_argumentLabel(argument)}');
     }
-    usage += ' [options]';
+    usage.write(' [options]');
     lines.add('');
     lines.add(_heading('Usage'));
     lines.add('  $usage');
@@ -70,29 +68,26 @@ class HelpPrinter {
         [_argumentLabel(argument), _argumentHelp(argument)],
     ]);
 
-    // This command's own flags and options, plus the built-in ones.
-    _addSection(lines, 'Options', [
-      ..._optionRows(command),
+    // Flags and options from parent commands work here too, so they are
+    // listed after this command's own, nearest parent first.
+    _addSection(lines, 'Flags', [
+      for (final c in commands.reversed) ..._flagRows(c),
       if (!_declaresVerbose()) _verboseRow(),
       ['-h, --help', 'Show this help'],
       if (root is CLI && root.version != null && commands.length == 1)
         ['    --version', 'Show the version'],
     ]);
 
-    // Flags and options from parent commands still work here.
-    final globalRows = <List<String>>[];
-
-    for (var i = 0; i < commands.length - 1; i++) {
-      globalRows.addAll(_optionRows(commands[i]));
-    }
-    _addSection(lines, 'Global options', globalRows);
+    _addSection(lines, 'Options', [
+      for (final c in commands.reversed) ..._optionRows(c),
+    ]);
 
     if (_visibleCommands(command).isNotEmpty) {
       lines.add('');
       lines.add('Run "$path <command> --help" for more about a command.'.dim);
     }
 
-    lines.add('\n');
+    lines.add('');
 
     return lines.join('\n');
   }
@@ -105,17 +100,23 @@ class HelpPrinter {
         '${'Run "$path --help" to see what is available.'.dim}';
   }
 
-  /// One row per visible flag and option of [command]: `[label, help]`.
-  List<List<String>> _optionRows(Command command) {
+  /// One row per visible flag of [command], like `-u, --urgent`.
+  List<List<String>> _flagRows(Command command) {
     final rows = <List<String>>[];
 
-    // Flags: "-u, --urgent". Options: "-T, -text <text>".
     for (final flag in command.flags) {
       if (flag.hidden) continue;
       final long = flag.negatable ? '--[no-]${flag.name}' : '--${flag.name}';
       final extra = flag.defaultValue ? ' ${'[on by default]'.dim}' : '';
       rows.add([_withShort(flag.short, long), '${flag.help}$extra']);
     }
+
+    return rows;
+  }
+
+  /// One row per visible option of [command], like `-T, -text <text>`.
+  List<List<String>> _optionRows(Command command) {
+    final rows = <List<String>>[];
 
     for (final option in command.options) {
       if (option.hidden) continue;
