@@ -8,18 +8,24 @@ import 'package:cmdline/cmdline.dart';
 /// changes the look of the whole toolkit at once:
 ///
 /// ```dart
-/// CliTheme.current = const CliTheme(
-///   question: AsciiColour(13),
+/// AnsiTheme.current = const AnsiTheme(
+///   question: AnsiColour(13),
 ///   box: BoxChars.doubleLine,
 /// );
+///
+/// // Or change just a few things:
+/// AnsiTheme.current = AnsiTheme.current.copyWith(glyphs: PromptGlyphs.ascii);
 /// ```
+///
+/// Prompts and widgets also use [glyphs] for their symbols, and show a dim
+/// line of key hints when [showKeys] is on.
 ///
 /// Use [paint] or [say] to print styled text, so colour is dropped when the
 /// terminal can't show it or the user set `NO_COLOR`.
 ///
 /// {@category ansi}
 class AnsiTheme {
-  /// The colour of questions in `ask`, `confirm` and `menu` from [CMD.prompt].
+  /// The colour of questions in prompts like `Prompts.ask`.
   final AnsiInk question;
 
   /// The colour of the user's answer after it is picked.
@@ -34,8 +40,24 @@ class AnsiTheme {
   /// The colour of success lines.
   final AnsiInk success;
 
-  /// The colour of the picked row in a `menu` from [CMD.prompt].
+  /// The colour of the highlighted row in lists and menus.
   final AnsiInk highlight;
+
+  /// The colour of ticked items, like checked boxes and switches that are on.
+  final AnsiInk checked;
+
+  /// The colour of keys in the key hints, like `enter` and `esc`.
+  final AnsiInk key;
+
+  /// The colour of information, like notes and info messages.
+  final AnsiInk info;
+
+  /// The colour of warnings.
+  final AnsiInk warn;
+
+  /// The colour of things that are there but not important, like empty
+  /// checkboxes, scroll arrows and disabled options.
+  final AnsiInk muted;
 
   /// The colour of box and table lines.
   final AnsiInk border;
@@ -43,7 +65,7 @@ class AnsiTheme {
   /// The line characters for boxes, tables and trees.
   final BoxChars box;
 
-  /// The symbol in front of the picked row in a `menu` from [CMD.prompt].
+  /// The symbol in front of the highlighted row in lists and menus.
   final String pointer;
 
   /// The symbol in front of success lines.
@@ -51,6 +73,12 @@ class AnsiTheme {
 
   /// The symbol in front of error lines.
   final String cross;
+
+  /// The other symbols used by prompts and widgets.
+  final PromptGlyphs glyphs;
+
+  /// Whether prompts show a dim line of key hints, like `↑↓ move`.
+  final bool showKeys;
 
   /// The theme used by every helper. Swap it to restyle everything.
   static AnsiTheme current = const AnsiTheme();
@@ -65,12 +93,60 @@ class AnsiTheme {
     this.error = const AnsiColour(9),
     this.success = const AnsiColour(10),
     this.highlight = const AnsiColour(14),
+    this.checked = const AnsiColour(10),
+    this.key = const AnsiColour(14),
+    this.info = const AnsiColour(12),
+    this.warn = const AnsiColour(11),
+    this.muted = const AnsiColour.grey(8),
     this.border = const AnsiColour.grey(10),
     this.box = BoxChars.rounded,
     this.pointer = ARROW,
     this.tick = TICK,
     this.cross = CROSS,
+    this.glyphs = PromptGlyphs.unicode,
+    this.showKeys = true,
   });
+
+  /// A copy of this theme with some parts swapped.
+  AnsiTheme copyWith({
+    AnsiInk? question,
+    AnsiInk? answer,
+    AnsiInk? hint,
+    AnsiInk? error,
+    AnsiInk? success,
+    AnsiInk? highlight,
+    AnsiInk? checked,
+    AnsiInk? key,
+    AnsiInk? info,
+    AnsiInk? warn,
+    AnsiInk? muted,
+    AnsiInk? border,
+    BoxChars? box,
+    String? pointer,
+    String? tick,
+    String? cross,
+    PromptGlyphs? glyphs,
+    bool? showKeys,
+  }) => AnsiTheme(
+    question: question ?? this.question,
+    answer: answer ?? this.answer,
+    hint: hint ?? this.hint,
+    error: error ?? this.error,
+    success: success ?? this.success,
+    highlight: highlight ?? this.highlight,
+    checked: checked ?? this.checked,
+    key: key ?? this.key,
+    info: info ?? this.info,
+    warn: warn ?? this.warn,
+    muted: muted ?? this.muted,
+    border: border ?? this.border,
+    box: box ?? this.box,
+    pointer: pointer ?? this.pointer,
+    tick: tick ?? this.tick,
+    cross: cross ?? this.cross,
+    glyphs: glyphs ?? this.glyphs,
+    showKeys: showKeys ?? this.showKeys,
+  );
 
   /// Whether helpers print colours and styles.
   ///
