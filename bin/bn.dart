@@ -1,11 +1,6 @@
 import 'package:cmdline/cmdline.dart';
 
 Future<void> main() async {
-  await Prompts.ask('hi...');
-  TextPrompt(
-    'question',
-    parser: (text) {
-      return (problem: text, value: text);
-    },
-  );
+  final List<String> changes = await Prompts.tags('agewf');
+  dev(changes);
 }

@@ -260,6 +260,134 @@ abstract final class Prompts {
     ),
   );
 
+  /// Lets the user pick one of [options] by typing to filter them, like a
+  /// command palette.
+  ///
+  /// Matching is fuzzy (see [Fuzzy]): `gco` finds `git checkout`. The best
+  /// matches come first, with the matched letters underlined. [note] text is
+  /// searched too, so it suits descriptions.
+  ///
+  /// ```dart
+  /// final command = Prompts.search(
+  ///   'Run',
+  ///   commands,
+  ///   format: (c) => c.name,
+  ///   note: (c) => c.description,
+  /// );
+  /// ```
+  static T search<T>(
+    String prompt,
+    List<T> options, {
+    String Function(T option)? format,
+    String Function(T option)? note,
+    T? defaultOption,
+    int? pageSize,
+  }) {
+    final start = defaultOption == null ? -1 : options.indexOf(defaultOption);
+
+    return PromptRunner.run(
+      SearchPrompt<T>(
+        prompt,
+        options,
+        format: format,
+        note: note,
+        defaultIndex: start < 0 ? null : start,
+        pageSize: pageSize,
+      ),
+    );
+  }
+
+  /// Asks for a list of short words, like labels, shown as tags while typed.
+  ///
+  /// Enter or a comma adds a tag, Backspace removes the last one and Tab
+  /// completes from [suggestions]. Enter on an empty box finishes.
+  ///
+  /// * [allowNew]: when false, only [suggestions] can be picked.
+  /// * [initial]: the tags at the start.
+  /// * [min]: the fewest tags needed.
+  ///
+  /// ```dart
+  /// final labels = Prompts.tags('Labels', suggestions: ['bug', 'feature', 'docs']);
+  /// ```
+  static List<String> tags(
+    String prompt, {
+    List<String> suggestions = const [],
+    bool allowNew = true,
+    List<String> initial = const [],
+    int min = 0,
+  }) => PromptRunner.run(
+    TagsPrompt(
+      prompt,
+      suggestions: suggestions,
+      allowNew: allowNew,
+      initial: initial,
+      min: min,
+    ),
+  );
+
+  /// Lets the user pick one of [options] laid out in a grid, moving in all
+  /// four directions. Suits short options like sizes or regions.
+  ///
+  /// [columns] fits the screen when left out.
+  ///
+  /// ```dart
+  /// final size = Prompts.grid('Size', ['XS', 'S', 'M', 'L', 'XL', 'XXL'], columns: 3);
+  /// ```
+  static T grid<T>(
+    String prompt,
+    List<T> options, {
+    String Function(T option)? format,
+    T? defaultOption,
+    int? columns,
+  }) {
+    final start = defaultOption == null ? -1 : options.indexOf(defaultOption);
+
+    return PromptRunner.run(
+      GridPrompt<T>(
+        prompt,
+        options,
+        format: format,
+        columns: columns,
+        start: start < 0 ? 0 : start,
+        hasDefault: start >= 0,
+      ),
+    );
+  }
+
+  /// Shows a list of on/off switches and gives back each name with its
+  /// state.
+  ///
+  /// [switches] maps each name to whether it starts on. Space flips the
+  /// highlighted one, right turns it on and left off.
+  ///
+  /// ```dart
+  /// final settings = Prompts.toggles('Settings', {
+  ///   'Dark mode': true,
+  ///   'Telemetry': false,
+  /// });
+  /// if (settings['Dark mode']!) enableDarkMode();
+  /// ```
+  static Map<String, bool> toggles(
+    String prompt,
+    Map<String, bool> switches, {
+    String Function(String name)? note,
+  }) {
+    final names = switches.keys.toList();
+    final on = PromptRunner.run(
+      TogglePrompt(
+        prompt,
+        names,
+        note: note,
+        on: {
+          for (var i = 0; i < names.length; i++)
+            if (switches[names[i]] ?? false) i,
+        },
+      ),
+    ).toSet();
+
+    return {for (final name in names) name: on.contains(name)};
+  }
+
   static T _clamp<T extends num>(T value, T? min, T? max) {
     if (min != null && value < min) return min;
     if (max != null && value > max) return max;
