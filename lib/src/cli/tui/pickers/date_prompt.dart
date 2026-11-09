@@ -29,7 +29,8 @@ class DatePrompt extends PromptView<DateTime> {
     _day = _limit(_day);
   }
 
-  static DateTime _dateOnly(DateTime time) => DateTime(time.year, time.month, time.day);
+  static DateTime _dateOnly(DateTime time) =>
+      DateTime(time.year, time.month, time.day);
 
   static int _daysIn(int year, int month) => DateTime(year, month + 1, 0).day;
 
@@ -124,7 +125,11 @@ class DatePrompt extends PromptView<DateTime> {
       Key.pageUp => _addMonths(-1),
       Key.pageDown => _addMonths(1),
       Key.home => DateTime(_day.year, _day.month),
-      Key.end => DateTime(_day.year, _day.month, _daysIn(_day.year, _day.month)),
+      Key.end => DateTime(
+        _day.year,
+        _day.month,
+        _daysIn(_day.year, _day.month),
+      ),
       Key.char when press.char == 't' => _dateOnly(DateTime.now()),
       _ => null,
     };
@@ -152,8 +157,10 @@ class DatePrompt extends PromptView<DateTime> {
   @override
   ({DateTime? value, String? problem}) parse(String typed) {
     if (typed.isEmpty) return (value: start, problem: null);
-    final match = RegExp(r'^(\d{4})-(\d{1,2})-(\d{1,2})$').firstMatch(typed.trim());
-    if (match == null) return (value: null, problem: 'Type a date like ${iso(start)}');
+    final match = RegExp(r'^(\d{4})-(\d{1,2})-(\d{1,2})$')
+        .firstMatch(typed.trim());
+    if (match == null)
+      return (value: null, problem: 'Type a date like ${iso(start)}');
     final year = int.parse(match.group(1)!);
     final month = int.parse(match.group(2)!);
     final date = int.parse(match.group(3)!);
@@ -161,7 +168,8 @@ class DatePrompt extends PromptView<DateTime> {
       return (value: null, problem: 'That day doesn\'t exist');
     }
     final day = DateTime(year, month, date);
-    if (!_allowed(day)) return (value: null, problem: 'Pick a day in the allowed range');
+    if (!_allowed(day))
+      return (value: null, problem: 'Pick a day in the allowed range');
 
     return (value: day, problem: null);
   }

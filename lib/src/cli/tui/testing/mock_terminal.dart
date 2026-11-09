@@ -49,13 +49,10 @@ class MockTerminal extends Terminal {
   ///
   /// Set [interactive] to false to act like piped input, so prompts ask in
   /// [PromptMode.line] and read the queued [line]s.
-  MockTerminal({
-    this.columns = 80,
-    this.rows = 24,
-    bool interactive = true,
-  }) : hasInput = interactive,
-       hasOutput = interactive,
-       supportsAnsi = interactive;
+  MockTerminal({this.columns = 80, this.rows = 24, bool interactive = true})
+    : hasInput = interactive,
+      hasOutput = interactive,
+      supportsAnsi = interactive;
 
   /// Everything written so far, escape codes and all.
   String get output => _output.toString();
@@ -163,7 +160,9 @@ class ScreenReplay {
 
   /// Replays [output] and gives back the rows, without trailing spaces.
   List<String> play(String output) {
-    final codes = RegExp(r'\x1B\[([0-9;?]*)([A-Za-z])|\x1B\][^\x07\x1B]*(?:\x07|\x1B\\)|\x1B.');
+    final codes = RegExp(
+      r'\x1B\[([0-9;?]*)([A-Za-z])|\x1B\][^\x07\x1B]*(?:\x07|\x1B\\)|\x1B.',
+    );
     var at = 0;
     for (final match in codes.allMatches(output)) {
       _text(output.substring(at, match.start));

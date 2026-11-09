@@ -43,7 +43,12 @@ class SliderPrompt extends PromptView<int> {
   }
 
   /// A track [width] wide with a knob at [fraction] (0 to 1).
-  static String track(double fraction, int width, AnsiTheme theme, {int? from}) {
+  static String track(
+    double fraction,
+    int width,
+    AnsiTheme theme, {
+    int? from,
+  }) {
     final glyphs = theme.glyphs;
     final knob = (fraction.clamp(0.0, 1.0) * (width - 1)).round();
     final start = from ?? 0;
@@ -64,8 +69,7 @@ class SliderPrompt extends PromptView<int> {
   double get _fraction => (_value - min) / (max - min);
 
   @override
-  String inline() =>
-      '${track(_fraction, width, theme)} ${'$_value$unit'.bold}';
+  String inline() => '${track(_fraction, width, theme)} ${'$_value$unit'.bold}';
 
   @override
   List<KeyHint> get keys => const [

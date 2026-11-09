@@ -20,9 +20,12 @@ class MultilinePrompt extends PromptView<String> {
   int _row;
 
   /// Creates a multi-line box asking [question].
-  MultilinePrompt(super.question, {this.defaultValue = '', this.required = false})
-    : _lines = [for (final line in defaultValue.split('\n')) TextBuffer(line)],
-      _row = defaultValue.split('\n').length - 1;
+  MultilinePrompt(
+    super.question, {
+    this.defaultValue = '',
+    this.required = false,
+  }) : _lines = [for (final line in defaultValue.split('\n')) TextBuffer(line)],
+       _row = defaultValue.split('\n').length - 1;
 
   String get _gutter => muted('${theme.box.vertical} ');
 
@@ -33,10 +36,8 @@ class MultilinePrompt extends PromptView<String> {
   List<String> body() => [for (final line in _lines) '$_gutter${line.text}'];
 
   @override
-  CursorSpot? get bodyCursor => (
-    line: _row,
-    column: _gutter.width + _lines[_row].beforeCursor.width,
-  );
+  CursorSpot? get bodyCursor =>
+      (line: _row, column: _gutter.width + _lines[_row].beforeCursor.width);
 
   @override
   List<KeyHint> get keys => const [
@@ -60,7 +61,10 @@ class MultilinePrompt extends PromptView<String> {
       case Key.enter:
         final rest = line.afterCursor;
         line.text = line.beforeCursor;
-        _lines.insert(++_row, TextBuffer(rest)..handle(const KeyPress(Key.home)));
+        _lines.insert(
+          ++_row,
+          TextBuffer(rest)..handle(const KeyPress(Key.home)),
+        );
       case Key.backspace when line.cursor == 0 && _row > 0:
         final above = _lines[--_row];
         final join = graphemes(above.text).length;
@@ -73,10 +77,16 @@ class MultilinePrompt extends PromptView<String> {
         _moveTo(line, cursor);
       case Key.up when _row > 0:
         _row--;
-        _moveTo(_lines[_row], math.min(line.cursor, graphemes(_lines[_row].text).length));
+        _moveTo(
+          _lines[_row],
+          math.min(line.cursor, graphemes(_lines[_row].text).length),
+        );
       case Key.down when _row < _lines.length - 1:
         _row++;
-        _moveTo(_lines[_row], math.min(line.cursor, graphemes(_lines[_row].text).length));
+        _moveTo(
+          _lines[_row],
+          math.min(line.cursor, graphemes(_lines[_row].text).length),
+        );
       default:
         return line.handle(press) ? KeyResult.handled : KeyResult.ignored;
     }
@@ -118,7 +128,10 @@ class MultilinePrompt extends PromptView<String> {
         if (line == null) ended = true;
         if (line == null || line.isEmpty) break;
         // Piped input isn't echoed, so show what was read.
-        if (!terminal.hasInput) terminal.write('${AnsiTheme.paint(muted('${theme.box.vertical} '))}$line\n');
+        if (!terminal.hasInput)
+          terminal.write(
+            '${AnsiTheme.paint(muted('${theme.box.vertical} '))}$line\n',
+          );
         lines.add(line);
       }
       final text = lines.isEmpty ? defaultValue : lines.join('\n');
@@ -129,5 +142,6 @@ class MultilinePrompt extends PromptView<String> {
   }
 
   @override
-  String? get unattended => required && defaultValue.trim().isEmpty ? null : defaultValue;
+  String? get unattended =>
+      required && defaultValue.trim().isEmpty ? null : defaultValue;
 }

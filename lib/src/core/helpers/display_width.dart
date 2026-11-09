@@ -195,7 +195,10 @@ List<String> _wrapParagraph(String text, int columns) {
         // Move the word after the last space onto the next line.
         final carried = line.sublist(lastSpace + 1);
         flush(line.sublist(0, lastSpace));
-        line = [if (opening.isNotEmpty) (text: opening, code: true), ...carried];
+        line = [
+          if (opening.isNotEmpty) (text: opening, code: true),
+          ...carried,
+        ];
         used = carried.fold(
           0,
           (sum, piece) => sum + (piece.code ? 0 : graphemeWidth(piece.text)),

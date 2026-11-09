@@ -21,7 +21,9 @@ class TogglePrompt extends MultiSelectPrompt<String> {
         ? glyphs.toggleOn.foreground(theme.checked)
         : muted(glyphs.toggleOff);
     final note = notes[index];
-    final label = note.isEmpty ? labels[index] : '${labels[index]}  ${muted(note)}';
+    final label = note.isEmpty
+        ? labels[index]
+        : '${labels[index]}  ${muted(note)}';
 
     return '$state  $label';
   }

@@ -63,7 +63,8 @@ abstract final class PromptRunner {
 
     return keys
         .map(
-          (hint) => '${hint.$1.foreground(theme.key)} '
+          (hint) =>
+              '${hint.$1.foreground(theme.key)} '
               '${hint.$2.foreground(theme.muted)}',
         )
         .join('  ');

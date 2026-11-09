@@ -186,14 +186,16 @@ class KeyReader {
       _Byte.escape => _escape(),
       0 => _windowsKey(_next()),
       _Byte.windowsPrefix => _windowsOrUtf8(),
-      final b when b >= 1 && b <= _Byte.ctrlZ =>
-        KeyPress.control(String.fromCharCode(b + _Byte.ctrlLetterOffset)),
+      final b when b >= 1 && b <= _Byte.ctrlZ => KeyPress.control(
+        String.fromCharCode(b + _Byte.ctrlLetterOffset),
+      ),
       _ => _character(byte),
     };
   }
 
   /// The next byte, from the replay list first.
-  int _next() => _pending.isNotEmpty ? _pending.removeAt(0) : _terminal.readByte();
+  int _next() =>
+      _pending.isNotEmpty ? _pending.removeAt(0) : _terminal.readByte();
 
   /// Works out what follows an Esc byte.
   KeyPress _escape() {

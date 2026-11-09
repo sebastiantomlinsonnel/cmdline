@@ -106,10 +106,12 @@ class Spinner {
   }
 
   /// Ends with a tick and [message] (or the label).
-  void pass([String? message]) => _end(AnsiTheme.current.successLine(message ?? label));
+  void pass([String? message]) =>
+      _end(AnsiTheme.current.successLine(message ?? label));
 
   /// Ends with a cross and [message] (or the label).
-  void fail([String? message]) => _end(AnsiTheme.current.errorLine(message ?? label));
+  void fail([String? message]) =>
+      _end(AnsiTheme.current.errorLine(message ?? label));
 
   /// Ends with a warning sign and [message] (or the label).
   void warn([String? message]) {
@@ -128,7 +130,10 @@ class Spinner {
   void _end(String line) {
     final took = _took(elapsed);
     stop();
-    PromptRunner.say('$line ${took.foreground(AnsiTheme.current.muted)}', _terminal);
+    PromptRunner.say(
+      '$line ${took.foreground(AnsiTheme.current.muted)}',
+      _terminal,
+    );
   }
 
   void _draw() {
@@ -144,7 +149,8 @@ class Spinner {
   /// [time] as a short label, like `(1.2s)` or `(2m 5s)`.
   static String _took(Duration time) {
     final seconds = time.inMilliseconds / Duration.millisecondsPerSecond;
-    if (seconds < Duration.secondsPerMinute) return '(${seconds.toStringAsFixed(1)}s)';
+    if (seconds < Duration.secondsPerMinute)
+      return '(${seconds.toStringAsFixed(1)}s)';
 
     return '(${time.inMinutes}m ${time.inSeconds % Duration.secondsPerMinute}s)';
   }

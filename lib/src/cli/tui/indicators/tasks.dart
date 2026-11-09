@@ -118,8 +118,13 @@ abstract final class Tasks {
       if (!live) return;
       region.draw([
         for (var i = 0; i < tasks.length; i++)
-          _line(tasks[i].label, states[i], contexts[i], clocks[i].elapsed, frames[frame % frames.length])
-              .fitWidth(terminal.columns - 1),
+          _line(
+            tasks[i].label,
+            states[i],
+            contexts[i],
+            clocks[i].elapsed,
+            frames[frame % frames.length],
+          ).fitWidth(terminal.columns - 1),
       ]);
     }
 
@@ -156,31 +161,58 @@ abstract final class Tasks {
         if (live) {
           draw();
         } else {
-          PromptRunner.say(_line(tasks[i].label, states[i], contexts[i], clocks[i].elapsed, ''), terminal);
+          PromptRunner.say(
+            _line(
+              tasks[i].label,
+              states[i],
+              contexts[i],
+              clocks[i].elapsed,
+              '',
+            ),
+            terminal,
+          );
         }
       }
     }
 
     try {
       await Future.wait([
-        for (var w = 0; w < math.max(1, math.min(concurrency, tasks.length)); w++) worker(),
+        for (
+          var w = 0;
+          w < math.max(1, math.min(concurrency, tasks.length));
+          w++
+        )
+          worker(),
       ]);
     } finally {
       timer?.cancel();
       if (live) {
         region.finish([
           for (var i = 0; i < tasks.length; i++)
-            _line(tasks[i].label, states[i], contexts[i], clocks[i].elapsed, ''),
+            _line(
+              tasks[i].label,
+              states[i],
+              contexts[i],
+              clocks[i].elapsed,
+              '',
+            ),
         ]);
       }
     }
 
     return [
-      for (var i = 0; i < tasks.length; i++) TaskReport(tasks[i].label, errors[i], clocks[i].elapsed),
+      for (var i = 0; i < tasks.length; i++)
+        TaskReport(tasks[i].label, errors[i], clocks[i].elapsed),
     ];
   }
 
-  static String _line(String label, _State state, TaskContext context, Duration elapsed, String frame) {
+  static String _line(
+    String label,
+    _State state,
+    TaskContext context,
+    Duration elapsed,
+    String frame,
+  ) {
     final theme = AnsiTheme.current;
     final icon = switch (state) {
       _State.waiting => theme.glyphs.unchecked.foreground(theme.muted),
@@ -198,7 +230,9 @@ abstract final class Tasks {
     final time = state == _State.waiting
         ? ''
         : ' ${'${(elapsed.inMilliseconds / 1000).toStringAsFixed(1)}s'.foreground(theme.muted)}';
-    final name = state == _State.waiting ? label.foreground(theme.muted) : label;
+    final name = state == _State.waiting
+        ? label.foreground(theme.muted)
+        : label;
 
     return '$icon $name$bar$status$time';
   }

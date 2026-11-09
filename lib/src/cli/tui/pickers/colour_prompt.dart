@@ -41,7 +41,11 @@ class ColourPrompt extends PromptView<AnsiColourRgb> {
   }
 
   /// Converts hue (0-360), saturation and lightness (0-1) to RGB.
-  static AnsiColourRgb _fromHsl(double hue, double saturation, double lightness) {
+  static AnsiColourRgb _fromHsl(
+    double hue,
+    double saturation,
+    double lightness,
+  ) {
     final chroma = (1 - (2 * lightness - 1).abs()) * saturation;
     final section = hue / 60;
     final x = chroma * (1 - (section % 2 - 1).abs());
@@ -86,12 +90,7 @@ class ColourPrompt extends PromptView<AnsiColourRgb> {
   @override
   List<String> body() => [
     for (var shade = 0; shade < _rows; shade++)
-      '  ${[
-        for (var hue = 0; hue < _hues; hue++)
-          hue == _hue && shade == _shade && _hex == null
-              ? '◆ '.bold.foreground(shade < 2 ? const AnsiColour(0) : const AnsiColour(15)).background(_at(hue, shade))
-              : '  '.background(_at(hue, shade)),
-      ].join()}',
+      '  ${[for (var hue = 0; hue < _hues; hue++) hue == _hue && shade == _shade && _hex == null ? '◆ '.bold.foreground(shade < 2 ? const AnsiColour(0) : const AnsiColour(15)).background(_at(hue, shade)) : '  '.background(_at(hue, shade))].join()}',
   ];
 
   @override
@@ -118,7 +117,8 @@ class ColourPrompt extends PromptView<AnsiColourRgb> {
 
         return KeyResult.handled;
       }
-      if (press.key == Key.char && RegExp('^[0-9a-fA-F]\$').hasMatch(press.char)) {
+      if (press.key == Key.char &&
+          RegExp('^[0-9a-fA-F]\$').hasMatch(press.char)) {
         if (hex.length < _hexLength) _hex = '$hex${press.char.toLowerCase()}';
 
         return KeyResult.handled;
@@ -160,13 +160,16 @@ class ColourPrompt extends PromptView<AnsiColourRgb> {
       '${'  '.background(value)} ${_toHex(value)}';
 
   @override
-  String get fallbackHint => start == null ? '(hex, like #ff8800)' : '(${_toHex(start!)})';
+  String get fallbackHint =>
+      start == null ? '(hex, like #ff8800)' : '(${_toHex(start!)})';
 
   @override
   ({AnsiColourRgb? value, String? problem}) parse(String typed) {
     final text = typed.isEmpty && start != null ? _toHex(start!) : typed;
     final hex = text.trim().replaceFirst('#', '');
-    final value = hex.length == _hexLength ? int.tryParse(hex, radix: 16) : null;
+    final value = hex.length == _hexLength
+        ? int.tryParse(hex, radix: 16)
+        : null;
 
     return value == null
         ? (value: null, problem: 'Type a hex colour, like #ff8800')

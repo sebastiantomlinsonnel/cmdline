@@ -63,9 +63,7 @@ class ListCursor {
   void move(int step) {
     if (_count == 0) return;
     final target = _index + step;
-    _index = wrap
-        ? target % _count
-        : target.clamp(0, _count - 1);
+    _index = wrap ? target % _count : target.clamp(0, _count - 1);
     _scroll();
   }
 

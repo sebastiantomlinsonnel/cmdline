@@ -72,7 +72,8 @@ class TextPrompt<T> extends PromptView<T> {
   List<KeyHint> get keys => [
     ('enter', 'submit'),
     if (stepper != null) ('↑↓', 'change'),
-    if (defaultValue != null && mask == null && _buffer.isEmpty) ('tab', 'edit default'),
+    if (defaultValue != null && mask == null && _buffer.isEmpty)
+      ('tab', 'edit default'),
     ('esc', 'cancel'),
   ];
 

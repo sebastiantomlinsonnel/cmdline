@@ -32,7 +32,8 @@ abstract final class PromptLine {
     final fancy = terminal.supportsAnsi && terminal.hasInput;
     final text = question.bold.foreground(theme.question);
     final hintText = hint.isEmpty ? '' : ' ${hint.foreground(theme.hint)}';
-    final asked = '${theme.glyphs.question.foreground(theme.hint)} $text$hintText ';
+    final asked =
+        '${theme.glyphs.question.foreground(theme.hint)} $text$hintText ';
 
     var showingProblem = false;
     while (true) {
@@ -69,9 +70,7 @@ abstract final class PromptLine {
       final problem = theme.errorLine(result.problem ?? 'Try again');
       if (fancy) {
         // Show the error under the question, then go back up to ask again.
-        terminal.write(
-          '${AnsiTheme.paint(problem)}${cursorUp()}\r$CLEAR_LINE',
-        );
+        terminal.write('${AnsiTheme.paint(problem)}${cursorUp()}\r$CLEAR_LINE');
         showingProblem = true;
       } else {
         PromptRunner.say(problem);

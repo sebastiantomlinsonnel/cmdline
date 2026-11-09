@@ -38,7 +38,9 @@ class SelectPrompt<T> extends ListPrompt<T, T> {
 
   @override
   String describe(T value) {
-    final index = options[cursor.index] == value ? cursor.index : options.indexOf(value);
+    final index = options[cursor.index] == value
+        ? cursor.index
+        : options.indexOf(value);
 
     return labels[index].plain;
   }

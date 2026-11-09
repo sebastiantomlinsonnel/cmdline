@@ -152,7 +152,8 @@ abstract final class Widgets {
     if (allRows.isEmpty) return '';
 
     final columns = allRows.map((row) => row.length).fold(0, math.max);
-    String cell(List<Object?> row, int i) => i < row.length ? '${row[i] ?? ''}' : '';
+    String cell(List<Object?> row, int i) =>
+        i < row.length ? '${row[i] ?? ''}' : '';
 
     final widths = List.filled(columns, 0);
     for (final row in allRows) {
@@ -173,7 +174,9 @@ abstract final class Widgets {
         for (var i = 0; i < columns; i++)
           [
             for (final text in cell(row, i).split('\n'))
-              ...(wrap ? text.wrapWidth(widths[i]) : [text.fitWidth(widths[i])]),
+              ...(wrap
+                  ? text.wrapWidth(widths[i])
+                  : [text.fitWidth(widths[i])]),
           ],
       ];
       final height = parts.map((p) => p.length).fold(1, math.max);
@@ -181,11 +184,7 @@ abstract final class Widgets {
       return [
         for (var y = 0; y < height; y++)
           '${edge(chars.vertical)} '
-              '${[
-                for (var i = 0; i < columns; i++)
-                  (y < parts[i].length ? (bold ? parts[i][y].bold : parts[i][y]) : '')
-                      .padWidth(widths[i], right: rightAligned.contains(i)),
-              ].join('$RESET ${edge(chars.vertical)} ')}$RESET '
+              '${[for (var i = 0; i < columns; i++) (y < parts[i].length ? (bold ? parts[i][y].bold : parts[i][y]) : '').padWidth(widths[i], right: rightAligned.contains(i))].join('$RESET ${edge(chars.vertical)} ')}$RESET '
               '${edge(chars.vertical)}',
       ];
     }
@@ -228,7 +227,10 @@ abstract final class Widgets {
   ///   'Path': Directory.current.path,
   /// }));
   /// ```
-  static String keyValue(Map<String, Object?> entries, {String separator = '  '}) {
+  static String keyValue(
+    Map<String, Object?> entries, {
+    String separator = '  ',
+  }) {
     final theme = AnsiTheme.current;
     final width = entries.keys.map((key) => key.width).fold(0, math.max);
     final indent = ' ' * (width + separator.width);
@@ -262,10 +264,13 @@ abstract final class Widgets {
     void walk(List<TreeNode> nodes, String prefix) {
       for (var i = 0; i < nodes.length; i++) {
         final last = i == nodes.length - 1;
-        final branch = '${last ? chars.bottomLeft : chars.teeLeft}${chars.horizontal} ';
+        final branch =
+            '${last ? chars.bottomLeft : chars.teeLeft}${chars.horizontal} ';
         final carry = last ? '   ' : '${chars.vertical}  ';
         final labelLines = nodes[i].label.split('\n');
-        lines.add('${(prefix + branch).foreground(theme.border)}${labelLines.first}');
+        lines.add(
+          '${(prefix + branch).foreground(theme.border)}${labelLines.first}',
+        );
         for (final more in labelLines.skip(1)) {
           lines.add('${(prefix + carry).foreground(theme.border)}$more');
         }

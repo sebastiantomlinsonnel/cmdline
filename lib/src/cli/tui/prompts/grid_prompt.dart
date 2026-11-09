@@ -31,11 +31,16 @@ class GridPrompt<T> extends PromptView<T> {
     int? columns,
     int start = 0,
     this.hasDefault = false,
-  }) : labels = [for (final option in options) format?.call(option) ?? '$option'],
+  }) : labels = [
+         for (final option in options) format?.call(option) ?? '$option',
+       ],
        _index = start {
     if (options.isEmpty) throw ArgumentError.value(options, 'options', 'Empty');
     _cell = labels.map((label) => label.width).fold(0, math.max) + 2;
-    final fit = math.max((Terminal.current.columns - 2) ~/ (_cell + theme.pointer.width), 1);
+    final fit = math.max(
+      (Terminal.current.columns - 2) ~/ (_cell + theme.pointer.width),
+      1,
+    );
     _columns = math.max(math.min(columns ?? fit, options.length), 1);
   }
 

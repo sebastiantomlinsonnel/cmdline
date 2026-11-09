@@ -55,35 +55,46 @@ class FilePrompt extends PromptView<String> {
     this.showHidden = false,
   }) : startFolder = Directory(folder ?? Directory.current.path).absolute.path,
        _folder = Directory(folder ?? Directory.current.path).absolute {
-    _cursor = ListCursor(0, pageSize: pageSizeFor(1000, reserved: 5), wrap: false);
+    _cursor = ListCursor(
+      0,
+      pageSize: pageSizeFor(1000, reserved: 5),
+      wrap: false,
+    );
     _load();
   }
 
   static String _name(FileSystemEntity entity) {
-    final parts = entity.path.split(RegExp(r'[\\/]')).where((p) => p.isNotEmpty);
+    final parts = entity.path
+        .split(RegExp(r'[\\/]'))
+        .where((p) => p.isNotEmpty);
 
     return parts.isEmpty ? entity.path : parts.last;
   }
 
   void _load() {
     try {
-      _entries = _folder.listSync(followLinks: false).where((entity) {
-        final name = _name(entity);
-        if (!showHidden && name.startsWith('.')) return false;
-        if (entity is Directory) return true;
-        if (kind == PathKind.folder) return false;
+      _entries =
+          _folder.listSync(followLinks: false).where((entity) {
+            final name = _name(entity);
+            if (!showHidden && name.startsWith('.')) return false;
+            if (entity is Directory) return true;
+            if (kind == PathKind.folder) return false;
 
-        return extensions.isEmpty ||
-            extensions.any((ext) => name.toLowerCase().endsWith(ext.toLowerCase()));
-      }).toList()
-        ..sort((a, b) {
-          final folders = (b is Directory ? 1 : 0) - (a is Directory ? 1 : 0);
+            return extensions.isEmpty ||
+                extensions.any(
+                  (ext) => name.toLowerCase().endsWith(ext.toLowerCase()),
+                );
+          }).toList()..sort((a, b) {
+            final folders = (b is Directory ? 1 : 0) - (a is Directory ? 1 : 0);
 
-          return folders != 0 ? folders : _name(a).toLowerCase().compareTo(_name(b).toLowerCase());
-        });
+            return folders != 0
+                ? folders
+                : _name(a).toLowerCase().compareTo(_name(b).toLowerCase());
+          });
     } on FileSystemException catch (problem) {
       _entries = [];
-      error = 'Can\'t open ${_folder.path}: ${problem.osError?.message ?? problem.message}';
+      error =
+          'Can\'t open ${_folder.path}: ${problem.osError?.message ?? problem.message}';
     }
     _filter.clear();
     _refilter();
@@ -104,12 +115,15 @@ class FilePrompt extends PromptView<String> {
   String _label(_Row row) {
     final glyphs = theme.glyphs;
     final entity = row.entity;
-    if (row.isUseFolder) return '${theme.tick} Use this folder'.foreground(theme.success);
+    if (row.isUseFolder)
+      return '${theme.tick} Use this folder'.foreground(theme.success);
     if (entity == null) return '${glyphs.folder} ..'.foreground(theme.info);
     final name = _name(entity);
 
     return entity is Directory
-        ? '${glyphs.folder} $name${Platform.pathSeparator}'.foreground(theme.info)
+        ? '${glyphs.folder} $name${Platform.pathSeparator}'.foreground(
+            theme.info,
+          )
         : '${glyphs.file} $name';
   }
 
@@ -127,7 +141,9 @@ class FilePrompt extends PromptView<String> {
     return [
       ?moreLine(_cursor.top, above: true),
       for (var i = _cursor.top; i < _cursor.bottom; i++)
-        (i == _cursor.index ? pointed(_label(_rows[i])) : unpointed(_label(_rows[i])))
+        (i == _cursor.index
+                ? pointed(_label(_rows[i]))
+                : unpointed(_label(_rows[i])))
             .fitWidth(columns),
       ?moreLine(_rows.length - _cursor.bottom, above: false),
     ];
@@ -207,7 +223,9 @@ class _Row {
   final bool isUseFolder;
 
   const _Row(FileSystemEntity this.entity) : isUseFolder = false;
+
   const _Row.up() : entity = null, isUseFolder = false;
+
   const _Row.useFolder() : entity = null, isUseFolder = true;
 }
 
@@ -247,7 +265,8 @@ class PathPrompt extends PromptView<String> {
   }) {
     if (path.trim().isEmpty) return (value: null, problem: 'Type a path');
     var full = path.trim();
-    if (base != null && !File(full).isAbsolute) full = '$base${Platform.pathSeparator}$full';
+    if (base != null && !File(full).isAbsolute)
+      full = '$base${Platform.pathSeparator}$full';
     final type = FileSystemEntity.typeSync(full);
     if (type == FileSystemEntityType.notFound) {
       return mustExist
@@ -255,8 +274,10 @@ class PathPrompt extends PromptView<String> {
           : (value: File(full).absolute.path, problem: null);
     }
     final isFolder = type == FileSystemEntityType.directory;
-    if (kind == PathKind.file && isFolder) return (value: null, problem: 'That is a folder');
-    if (kind == PathKind.folder && !isFolder) return (value: null, problem: 'That is not a folder');
+    if (kind == PathKind.file && isFolder)
+      return (value: null, problem: 'That is a folder');
+    if (kind == PathKind.folder && !isFolder)
+      return (value: null, problem: 'That is not a folder');
 
     return (value: File(full).absolute.path, problem: null);
   }
@@ -264,7 +285,9 @@ class PathPrompt extends PromptView<String> {
   /// The names in the typed folder that start with the typed name.
   List<String> _complete(String typed) {
     final cut = typed.lastIndexOf(RegExp(r'[\\/]'));
-    final folder = cut < 0 ? '.' : (cut == 0 ? typed.substring(0, 1) : typed.substring(0, cut));
+    final folder = cut < 0
+        ? '.'
+        : (cut == 0 ? typed.substring(0, 1) : typed.substring(0, cut));
     final start = typed.substring(cut + 1).toLowerCase();
     try {
       return [
@@ -280,7 +303,8 @@ class PathPrompt extends PromptView<String> {
   }
 
   @override
-  String inline() => _input.isEmpty ? muted('type a path, tab completes') : _input.text;
+  String inline() =>
+      _input.isEmpty ? muted('type a path, tab completes') : _input.text;
 
   @override
   int? get inlineCursor => _input.beforeCursor.width;
@@ -309,7 +333,8 @@ class PathPrompt extends PromptView<String> {
         var shared = matches.first;
         for (final match in matches.skip(1)) {
           var i = 0;
-          while (i < shared.length && i < match.length &&
+          while (i < shared.length &&
+              i < match.length &&
               shared[i].toLowerCase() == match[i].toLowerCase()) {
             i++;
           }
@@ -336,19 +361,25 @@ class PathPrompt extends PromptView<String> {
   }
 
   @override
-  String get result => check(_input.text, kind: kind, mustExist: mustExist).value ?? _input.text;
+  String get result =>
+      check(_input.text, kind: kind, mustExist: mustExist).value ?? _input.text;
 
   @override
   String get fallbackHint => defaultValue == null ? '' : '($defaultValue)';
 
   @override
-  ({String? value, String? problem}) parse(String typed) =>
-      check(typed.isEmpty ? defaultValue ?? '' : typed, kind: kind, mustExist: mustExist);
+  ({String? value, String? problem}) parse(String typed) => check(
+    typed.isEmpty ? defaultValue ?? '' : typed,
+    kind: kind,
+    mustExist: mustExist,
+  );
 
   @override
   String? get unattended {
     final value = defaultValue;
 
-    return value == null ? null : check(value, kind: kind, mustExist: mustExist).value;
+    return value == null
+        ? null
+        : check(value, kind: kind, mustExist: mustExist).value;
   }
 }

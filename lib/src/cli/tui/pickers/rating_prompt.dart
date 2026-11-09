@@ -19,9 +19,13 @@ class RatingPrompt extends PromptView<int> {
   int _value;
 
   /// Creates a rating asking [question].
-  RatingPrompt(super.question, {this.max = 5, int? start, this.labels = const []})
-    : start = (start ?? (max + 1) ~/ 2).clamp(1, max),
-      _value = (start ?? (max + 1) ~/ 2).clamp(1, max);
+  RatingPrompt(
+    super.question, {
+    this.max = 5,
+    int? start,
+    this.labels = const [],
+  }) : start = (start ?? (max + 1) ~/ 2).clamp(1, max),
+       _value = (start ?? (max + 1) ~/ 2).clamp(1, max);
 
   String _stars(int value) {
     final glyphs = theme.glyphs;
@@ -32,7 +36,9 @@ class RatingPrompt extends PromptView<int> {
 
   @override
   String inline() {
-    final label = _value <= labels.length ? '  ${muted(labels[_value - 1])}' : '';
+    final label = _value <= labels.length
+        ? '  ${muted(labels[_value - 1])}'
+        : '';
 
     return '${_stars(_value)} ${'$_value/$max'.bold}$label';
   }

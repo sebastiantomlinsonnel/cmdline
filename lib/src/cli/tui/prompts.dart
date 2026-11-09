@@ -95,7 +95,8 @@ abstract final class Prompts {
       prompt,
       defaultValue: defaultValue?.toString(),
       stepper: (text, direction) {
-        final value = (int.tryParse(text) ?? defaultValue ?? min ?? 0) + step * direction;
+        final value =
+            (int.tryParse(text) ?? defaultValue ?? min ?? 0) + step * direction;
 
         return '${_clamp(value, min, max)}';
       },
@@ -127,7 +128,9 @@ abstract final class Prompts {
       prompt,
       defaultValue: defaultValue?.toString(),
       stepper: (text, direction) {
-        final value = (double.tryParse(text) ?? defaultValue ?? min ?? 0) + step * direction;
+        final value =
+            (double.tryParse(text) ?? defaultValue ?? min ?? 0) +
+            step * direction;
         final clamped = _clamp(value, min, max);
         // Round away float noise like 0.30000000000000004.
         final rounded = double.parse(clamped.toStringAsFixed(10));

@@ -1,4 +1,3 @@
-
 import '../../cmdline.dart';
 
 /// A progress bar that fills up on one line of the terminal.
@@ -131,7 +130,9 @@ class ProgressBar {
     final time = left >= Duration.secondsPerMinute
         ? '${left ~/ Duration.secondsPerMinute}m ${left % Duration.secondsPerMinute}s'
         : '${left}s';
-    final speed = rate >= 10 ? rate.round().toString() : rate.toStringAsFixed(1);
+    final speed = rate >= 10
+        ? rate.round().toString()
+        : rate.toStringAsFixed(1);
 
     return '  ${'$speed/s'.dim}${_current < total ? '  ${'$time left'.dim}' : ''}';
   }

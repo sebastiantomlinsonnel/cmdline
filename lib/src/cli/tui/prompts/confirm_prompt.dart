@@ -85,7 +85,10 @@ class ConfirmPrompt extends PromptView<bool> {
       _ => null,
     };
 
-    return (value: answer, problem: answer == null ? 'Please type y or n' : null);
+    return (
+      value: answer,
+      problem: answer == null ? 'Please type y or n' : null,
+    );
   }
 
   @override

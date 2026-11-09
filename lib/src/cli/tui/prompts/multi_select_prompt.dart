@@ -107,7 +107,8 @@ class MultiSelectPrompt<T> extends ListPrompt<T, List<T>> {
   @override
   String describe(List<T> value) => value.isEmpty
       ? 'none'
-      : [for (final option in value) labels[options.indexOf(option)].plain].join(', ');
+      : [for (final option in value) labels[options.indexOf(option)].plain]
+            .join(', ');
 
   @override
   List<T> fallback() {
@@ -125,7 +126,10 @@ class MultiSelectPrompt<T> extends ListPrompt<T, List<T>> {
       check: (typed) {
         final picked = _parseNumbers(typed.isEmpty ? start : typed);
         if (picked == null) {
-          return (value: null, problem: 'Type numbers from 1 to ${options.length}, like 1,3-5');
+          return (
+            value: null,
+            problem: 'Type numbers from 1 to ${options.length}, like 1,3-5',
+          );
         }
         final problem = _problem(picked.length);
 
@@ -140,7 +144,8 @@ class MultiSelectPrompt<T> extends ListPrompt<T, List<T>> {
   /// Reads `1,3-5` style input into sorted indexes, or null if it's wrong.
   List<int>? _parseNumbers(String typed) {
     final picked = <int>{};
-    for (final part in typed.split(RegExp(r'[,\s]+')).where((p) => p.isNotEmpty)) {
+    for (final part
+        in typed.split(RegExp(r'[,\s]+')).where((p) => p.isNotEmpty)) {
       final ends = part.split('-');
       final from = int.tryParse(ends.first);
       final to = int.tryParse(ends.last);

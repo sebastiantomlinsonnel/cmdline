@@ -58,9 +58,11 @@ class RangePrompt extends PromptView<IntRange> {
     for (var i = 0; i < width; i++) {
       final active = (i == to && _movingEnd) || (i == from && !_movingEnd);
       if (i == from || i == to) {
-        out.write(active
-            ? glyphs.knob.bold.foreground(theme.highlight)
-            : glyphs.knob.foreground(theme.highlight));
+        out.write(
+          active
+              ? glyphs.knob.bold.foreground(theme.highlight)
+              : glyphs.knob.foreground(theme.highlight),
+        );
       } else if (i > from && i < to) {
         out.write(glyphs.trackFill.foreground(theme.highlight));
       } else {
@@ -101,7 +103,8 @@ class RangePrompt extends PromptView<IntRange> {
     }
 
     return switch (press.key) {
-      Key.tab || Key.backTab => (_movingEnd = !_movingEnd, KeyResult.handled).$2,
+      Key.tab ||
+      Key.backTab => (_movingEnd = !_movingEnd, KeyResult.handled).$2,
       Key.enter => KeyResult.done,
       _ => KeyResult.ignored,
     };
@@ -114,16 +117,21 @@ class RangePrompt extends PromptView<IntRange> {
   String describe(IntRange value) => '${value.start}$unit – ${value.end}$unit';
 
   @override
-  String get fallbackHint => '($min-$max, like ${initial.start}-${initial.end})';
+  String get fallbackHint =>
+      '($min-$max, like ${initial.start}-${initial.end})';
 
   @override
   ({IntRange? value, String? problem}) parse(String typed) {
     if (typed.isEmpty) return (value: initial, problem: null);
-    final match = RegExp(r'^\s*(-?\d+)\s*(?:-|–|to|\.\.)\s*(-?\d+)\s*$').firstMatch(typed);
+    final match = RegExp(r'^\s*(-?\d+)\s*(?:-|–|to|\.\.)\s*(-?\d+)\s*$')
+        .firstMatch(typed);
     final from = int.tryParse(match?.group(1) ?? '');
     final to = int.tryParse(match?.group(2) ?? '');
     if (from == null || to == null || from > to || from < min || to > max) {
-      return (value: null, problem: 'Type two numbers from $min to $max, like $min-$max');
+      return (
+        value: null,
+        problem: 'Type two numbers from $min to $max, like $min-$max',
+      );
     }
 
     return (value: (start: from, end: to), problem: null);

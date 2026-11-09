@@ -35,7 +35,9 @@ abstract class ListPrompt<T, R> extends PromptView<R> {
     String Function(T option)? note,
     int start = 0,
     int? pageSize,
-  }) : labels = [for (final option in options) format?.call(option) ?? '$option'],
+  }) : labels = [
+         for (final option in options) format?.call(option) ?? '$option',
+       ],
        notes = [for (final option in options) note?.call(option) ?? ''] {
     if (options.isEmpty) throw ArgumentError.value(options, 'options', 'Empty');
     cursor = ListCursor(
@@ -61,7 +63,9 @@ abstract class ListPrompt<T, R> extends PromptView<R> {
     return [
       ?above,
       for (var i = cursor.top; i < cursor.bottom; i++)
-        (i == cursor.index ? pointed(row(i)) : unpointed(row(i))).fitWidth(columns),
+        (i == cursor.index ? pointed(row(i)) : unpointed(row(i))).fitWidth(
+          columns,
+        ),
       ?below,
     ];
   }

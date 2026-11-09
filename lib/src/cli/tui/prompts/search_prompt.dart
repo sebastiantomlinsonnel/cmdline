@@ -22,7 +22,9 @@ abstract final class Fuzzy {
   static FuzzyMatch? match(String query, String text) {
     if (query.isEmpty) return (score: 0, positions: const []);
     final chars = graphemes(text.plain.toLowerCase()).toList();
-    final wanted = graphemes(query.toLowerCase()).where((c) => c != ' ').toList();
+    final wanted = graphemes(query.toLowerCase())
+        .where((c) => c != ' ')
+        .toList();
     final positions = <int>[];
     var score = 0;
     var at = 0;
@@ -32,7 +34,8 @@ abstract final class Fuzzy {
       }
       if (at == chars.length) return null;
       score += _hit;
-      if (positions.isNotEmpty && positions.last == at - 1) score += _nextToLast;
+      if (positions.isNotEmpty && positions.last == at - 1)
+        score += _nextToLast;
       if (at == 0) {
         score += _textStart;
       } else if (const [' ', '-', '_', '/', '.', ':'].contains(chars[at - 1])) {
@@ -46,7 +49,11 @@ abstract final class Fuzzy {
   }
 
   /// [text] with the characters at [positions] drawn with [style].
-  static String highlight(String text, List<int> positions, String Function(String) style) {
+  static String highlight(
+    String text,
+    List<int> positions,
+    String Function(String) style,
+  ) {
     if (positions.isEmpty) return text;
     final wanted = positions.toSet();
     final out = StringBuffer();
@@ -90,10 +97,15 @@ class SearchPrompt<T> extends PromptView<T> {
     String Function(T option)? note,
     this.defaultIndex,
     int? pageSize,
-  }) : labels = [for (final option in options) format?.call(option) ?? '$option'],
+  }) : labels = [
+         for (final option in options) format?.call(option) ?? '$option',
+       ],
        notes = [for (final option in options) note?.call(option) ?? ''] {
     if (options.isEmpty) throw ArgumentError.value(options, 'options', 'Empty');
-    _cursor = ListCursor(0, pageSize: pageSize ?? pageSizeFor(options.length, reserved: 5));
+    _cursor = ListCursor(
+      0,
+      pageSize: pageSize ?? pageSizeFor(options.length, reserved: 5),
+    );
     _filter();
   }
 
@@ -112,7 +124,9 @@ class SearchPrompt<T> extends PromptView<T> {
 
   String _row(({int index, FuzzyMatch match}) found) {
     final label = labels[found.index].plain;
-    final inLabel = found.match.positions.where((p) => p < label.length).toList();
+    final inLabel = found.match.positions
+        .where((p) => p < label.length)
+        .toList();
     final shown = Fuzzy.highlight(label, inLabel, (c) => c.bold.underline);
     final note = notes[found.index];
 
@@ -120,8 +134,7 @@ class SearchPrompt<T> extends PromptView<T> {
   }
 
   @override
-  String inline() =>
-      _query.isEmpty ? muted('type to search') : _query.text;
+  String inline() => _query.isEmpty ? muted('type to search') : _query.text;
 
   @override
   int? get inlineCursor => _query.beforeCursor.width;
@@ -136,7 +149,9 @@ class SearchPrompt<T> extends PromptView<T> {
     return [
       ?above,
       for (var i = _cursor.top; i < _cursor.bottom; i++)
-        (i == _cursor.index ? pointed(_row(_found[i])) : unpointed(_row(_found[i])))
+        (i == _cursor.index
+                ? pointed(_row(_found[i]))
+                : unpointed(_row(_found[i])))
             .fitWidth(columns),
       ?below,
     ];
@@ -198,11 +213,9 @@ class SearchPrompt<T> extends PromptView<T> {
       }
       if (matches.length == 1) return options[matches.single.index];
 
-      return SelectPrompt<T>(
-        'Which one?',
-        [for (final m in matches) options[m.index]],
-        format: (option) => labels[options.indexOf(option)],
-      ).fallback();
+      return SelectPrompt<T>('Which one?', [
+        for (final m in matches) options[m.index],
+      ], format: (option) => labels[options.indexOf(option)]).fallback();
     }
   }
 

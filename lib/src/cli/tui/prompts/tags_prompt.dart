@@ -39,7 +39,9 @@ class TagsPrompt extends PromptView<List<String>> {
 
     return [
       for (final word in suggestions)
-        if (!_tags.contains(word) && (typed.isEmpty || word.toLowerCase().startsWith(typed))) word,
+        if (!_tags.contains(word) &&
+            (typed.isEmpty || word.toLowerCase().startsWith(typed)))
+          word,
     ];
   }
 
@@ -62,15 +64,13 @@ class TagsPrompt extends PromptView<List<String>> {
   @override
   List<String> body() {
     final matches = _matches;
-    if (matches.isEmpty || (_input.isEmpty && suggestions.length > 8)) return const [];
+    if (matches.isEmpty || (_input.isEmpty && suggestions.length > 8))
+      return const [];
     final shown = matches.take(6).toList();
     final pick = _pick.clamp(0, shown.length - 1);
 
     return [
-      '  ${[
-        for (var i = 0; i < shown.length; i++)
-          i == pick ? shown[i].bold.foreground(theme.highlight) : muted(shown[i]),
-      ].join('  ')}',
+      '  ${[for (var i = 0; i < shown.length; i++) i == pick ? shown[i].bold.foreground(theme.highlight) : muted(shown[i])].join('  ')}',
     ];
   }
 
@@ -132,7 +132,8 @@ class TagsPrompt extends PromptView<List<String>> {
   List<String> get result => List.unmodifiable(_tags);
 
   @override
-  String describe(List<String> value) => value.isEmpty ? 'none' : value.join(', ');
+  String describe(List<String> value) =>
+      value.isEmpty ? 'none' : value.join(', ');
 
   @override
   String get fallbackHint =>
@@ -142,7 +143,10 @@ class TagsPrompt extends PromptView<List<String>> {
   ({List<String>? value, String? problem}) parse(String typed) {
     final tags = typed.isEmpty
         ? initial
-        : [for (final word in typed.split(',')) if (word.trim().isNotEmpty) word.trim()];
+        : [
+            for (final word in typed.split(','))
+              if (word.trim().isNotEmpty) word.trim(),
+          ];
     if (!allowNew) {
       final unknown = tags.where((tag) => !suggestions.contains(tag));
       if (unknown.isNotEmpty) {

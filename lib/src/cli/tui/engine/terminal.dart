@@ -93,15 +93,18 @@ class StdTerminal extends Terminal {
   bool get hasOutput => _safe(() => stdout.hasTerminal, false);
 
   @override
-  bool get supportsAnsi => hasOutput && _safe(() => stdout.supportsAnsiEscapes, false);
+  bool get supportsAnsi =>
+      hasOutput && _safe(() => stdout.supportsAnsiEscapes, false);
 
   @override
-  int get columns =>
-      hasOutput ? _safe(() => stdout.terminalColumns, fallbackColumns) : fallbackColumns;
+  int get columns => hasOutput
+      ? _safe(() => stdout.terminalColumns, fallbackColumns)
+      : fallbackColumns;
 
   @override
-  int get rows =>
-      hasOutput ? _safe(() => stdout.terminalLines, fallbackRows) : fallbackRows;
+  int get rows => hasOutput
+      ? _safe(() => stdout.terminalLines, fallbackRows)
+      : fallbackRows;
 
   @override
   bool get echoMode => _safe(() => stdin.echoMode, true);

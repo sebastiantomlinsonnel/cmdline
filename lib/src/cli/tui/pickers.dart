@@ -28,7 +28,15 @@ abstract final class Pickers {
     String unit = '',
     int width = 30,
   }) => PromptRunner.run(
-    SliderPrompt(prompt, min: min, max: max, step: step, start: start, unit: unit, width: width),
+    SliderPrompt(
+      prompt,
+      min: min,
+      max: max,
+      step: step,
+      start: start,
+      unit: unit,
+      width: width,
+    ),
   );
 
   /// Picks a range from [min] to [max] with two handles. Tab swaps handles.
@@ -69,7 +77,9 @@ abstract final class Pickers {
     int max = 5,
     int? start,
     List<String> labels = const [],
-  }) => PromptRunner.run(RatingPrompt(prompt, max: max, start: start, labels: labels));
+  }) => PromptRunner.run(
+    RatingPrompt(prompt, max: max, start: start, labels: labels),
+  );
 
   /// Picks a day on a calendar. Gives back midnight on that day.
   ///
@@ -84,7 +94,9 @@ abstract final class Pickers {
     DateTime? start,
     DateTime? first,
     DateTime? last,
-  }) => PromptRunner.run(DatePrompt(prompt, start: start, first: first, last: last));
+  }) => PromptRunner.run(
+    DatePrompt(prompt, start: start, first: first, last: last),
+  );
 
   /// Browses folders to pick a file, and gives back its full path.
   ///
@@ -127,7 +139,12 @@ abstract final class Pickers {
     PathKind kind = PathKind.any,
     bool mustExist = true,
   }) => PromptRunner.run(
-    PathPrompt(prompt, defaultValue: defaultValue, kind: kind, mustExist: mustExist),
+    PathPrompt(
+      prompt,
+      defaultValue: defaultValue,
+      kind: kind,
+      mustExist: mustExist,
+    ),
   );
 
   /// Picks a colour from a grid of hues and shades, or as a typed hex code.
