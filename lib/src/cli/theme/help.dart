@@ -8,17 +8,17 @@ import 'package:cmdline/cmdline.dart';
 ///
 /// {@category cli}
 class HelpPrinter {
-  /// Colour of the program name in the title.
-  static const AnsiColour _titleColour = AnsiColour(14);
+  /// Colour of the program name in the title: the theme's question colour.
+  static AnsiInk get _titleColour => AnsiTheme.current.question;
 
-  /// Colour of command, flag and option names.
-  static const AnsiColour _nameColour = AnsiColour(10);
+  /// Colour of command, flag and option names: the theme's answer colour.
+  static AnsiInk get _nameColour => AnsiTheme.current.answer;
 
-  /// Colour of section headings like "Usage".
-  static const AnsiColour _headingColour = AnsiColour(11);
+  /// Colour of section headings like "Usage": the theme's warn colour.
+  static AnsiInk get _headingColour => AnsiTheme.current.warn;
 
-  /// Colour of error messages.
-  static const AnsiColour _errorColour = AnsiColour(9);
+  /// Colour of error messages: the theme's error colour.
+  static AnsiInk get _errorColour => AnsiTheme.current.error;
 
   /// The picked commands from the top down. The last one gets the help.
   final List<Command> commands;
