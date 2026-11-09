@@ -55,6 +55,7 @@ class CLI extends Command {
   /// * `--version` prints [name] and [version].
   /// * A mistake prints a red error and sets the exit code to 64.
   /// * A command without a `run` function prints its help screen.
+  /// * A cancelled prompt ([PromptCancelled]) sets the exit code to 130.
   Future<void> start(List<String> args) async {
     final ParseResult result;
     try {
@@ -79,6 +80,11 @@ class CLI extends Command {
       return;
     }
 
-    await run(result.input);
+    try {
+      await run(result.input);
+    } on PromptCancelled {
+      // The prompt already left a "cancelled" line; 130 is the Ctrl+C code.
+      exitCode = 130;
+    }
   }
 }

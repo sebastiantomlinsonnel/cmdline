@@ -1,28 +1,31 @@
-import 'dart:io';
-import 'dart:math' as math;
+import '../../../cmdline.dart';
 
-import 'package:cmdline/cmdline.dart';
-
-/// Prompts for crafting CLIs
-class Prompts {
-  const Prompts._();
-
-  /// Asks the user a question and gives back what they type.
+/// Questions for the user: text, passwords, numbers, yes/no and lists.
+///
+/// In a terminal each prompt is live: it redraws as keys are pressed, shows
+/// problems under the question, and ends as one `✔ question answer` line.
+/// Without a terminal (piped input) the same calls ask one typed line at a
+/// time, and in CI ([PromptMode.unattended]) they take their defaults. See
+/// [PromptMode] for how that is picked.
+///
+/// Esc or Ctrl+C throws [PromptCancelled]. Everything is drawn with
+/// [AnsiTheme.current].
+///
+/// {@category cli}
+abstract final class Prompts {
+  /// Asks a question and gives back what the user types.
   ///
-  /// The question is drawn with [AnsiTheme.current]. A wrong answer shows an
-  /// error line and asks again.
-  ///
-  /// * [defaultValue]: used when the user just presses Enter. Shown dim after
-  ///   the question.
-  /// * [hidden]: don't show what is typed, for passwords.
+  /// * [defaultValue]: used when the user just presses Enter. Shown dim in the
+  ///   box; Tab puts it in the box to edit.
+  /// * [hidden]: don't show what is typed (see also [password]).
   /// * [required]: an empty answer isn't allowed (unless there's a default).
   /// * [validator]: gives back a problem to show, or null if the answer is ok.
+  /// * [placeholder]: dim text in the empty box, when there's no default.
   ///
   /// ```dart
-  /// final name = ask('Project name', defaultValue: 'my_app');
-  /// final port = ask('Port', validator: (a) =>
+  /// final name = Prompts.ask('Project name', defaultValue: 'my_app');
+  /// final port = Prompts.ask('Port', validator: (a) =>
   ///     int.tryParse(a) == null ? 'Type a number' : null);
-  /// final secret = ask('Password', hidden: true);
   /// ```
   static String ask(
     String prompt, {
@@ -30,287 +33,247 @@ class Prompts {
     bool hidden = false,
     bool required = true,
     String? Function(String answer)? validator,
-  }) {
-    return PromptLine.run<String>(
+    String placeholder = '',
+  }) => PromptRunner.run(
+    TextPrompt<String>(
       prompt,
-      hint: defaultValue == null || hidden ? '' : '($defaultValue)',
-      hidden: hidden,
-      shown: (answer) => hidden ? BULLET * answer.length : answer,
-      check: (typed) {
-        final answer = typed.isEmpty ? defaultValue ?? '' : typed;
-        final problem = answer.isEmpty && required
+      defaultValue: defaultValue,
+      placeholder: placeholder,
+      mask: hidden ? AnsiTheme.current.glyphs.mask : null,
+      parser: (text) => (
+        value: text,
+        problem: text.isEmpty && required
             ? 'An answer is needed'
-            : validator?.call(answer);
+            : validator?.call(text),
+      ),
+    ),
+  );
 
-        return (value: answer, problem: problem);
+  /// Asks for a password, showing a mask for each typed character.
+  ///
+  /// * [mask]: shown for each character. Defaults to the theme's
+  ///   [PromptGlyphs.mask]; pass an empty string to show nothing.
+  /// * [required] and [validator] work as in [ask].
+  ///
+  /// ```dart
+  /// final secret = Prompts.password('Password', validator: (p) =>
+  ///     p.length < 8 ? 'Use at least 8 characters' : null);
+  /// ```
+  static String password(
+    String prompt, {
+    String? mask,
+    bool required = true,
+    String? Function(String answer)? validator,
+  }) => PromptRunner.run(
+    TextPrompt<String>(
+      prompt,
+      mask: mask ?? AnsiTheme.current.glyphs.mask,
+      parser: (text) => (
+        value: text,
+        problem: text.isEmpty && required
+            ? 'An answer is needed'
+            : validator?.call(text),
+      ),
+    ),
+  );
+
+  /// Asks for a whole number. Up and down change it by [step].
+  ///
+  /// [min] and [max] limit the answer; both are inclusive.
+  ///
+  /// ```dart
+  /// final port = Prompts.integer('Port', defaultValue: 8080, min: 1, max: 65535);
+  /// ```
+  static int integer(
+    String prompt, {
+    int? defaultValue,
+    int? min,
+    int? max,
+    int step = 1,
+  }) => PromptRunner.run(
+    TextPrompt<int>(
+      prompt,
+      defaultValue: defaultValue?.toString(),
+      stepper: (text, direction) {
+        final value = (int.tryParse(text) ?? defaultValue ?? min ?? 0) + step * direction;
+
+        return '${_clamp(value, min, max)}';
       },
-    );
-  }
+      parser: (text) {
+        final value = int.tryParse(text.trim());
+        if (value == null) return (value: null, problem: 'Type a whole number');
+
+        return (value: value, problem: _rangeProblem(value, min, max));
+      },
+    ),
+  );
+
+  /// Asks for a number that can have decimals. Up and down change it by
+  /// [step].
+  ///
+  /// [min] and [max] limit the answer; both are inclusive.
+  ///
+  /// ```dart
+  /// final ratio = Prompts.decimal('Ratio', defaultValue: 0.5, min: 0, max: 1, step: 0.1);
+  /// ```
+  static double decimal(
+    String prompt, {
+    double? defaultValue,
+    double? min,
+    double? max,
+    double step = 1,
+  }) => PromptRunner.run(
+    TextPrompt<double>(
+      prompt,
+      defaultValue: defaultValue?.toString(),
+      stepper: (text, direction) {
+        final value = (double.tryParse(text) ?? defaultValue ?? min ?? 0) + step * direction;
+        final clamped = _clamp(value, min, max);
+        // Round away float noise like 0.30000000000000004.
+        final rounded = double.parse(clamped.toStringAsFixed(10));
+
+        return '$rounded';
+      },
+      parser: (text) {
+        final value = double.tryParse(text.trim());
+        if (value == null) return (value: null, problem: 'Type a number');
+
+        return (value: value, problem: _rangeProblem(value, min, max));
+      },
+    ),
+  );
 
   /// Asks a yes or no question and gives back true for yes.
   ///
-  /// A dim `[Y/n]` hint shows which answer Enter picks when there is a
-  /// [defaultValue]; without one, the user must type y or n.
+  /// The arrows or the y and n keys choose; Enter takes the highlighted
+  /// answer. Without a [defaultValue] nothing is highlighted at the start.
   ///
   /// ```dart
-  /// if (confirm('Delete the build folder?', defaultValue: false)) {
-  ///   deleteDir('build');
+  /// if (Prompts.confirm('Delete the build folder?', defaultValue: false)) {
+  ///   CMD.fs.deleteFolder('build');
   /// }
   /// ```
-  static bool confirm(String prompt, {bool? defaultValue}) {
-    final hint = switch (defaultValue) {
-      true => '[Y/n]',
-      false => '[y/N]',
-      null => '[y/n]',
-    };
+  static bool confirm(String prompt, {bool? defaultValue}) =>
+      PromptRunner.run(ConfirmPrompt(prompt, defaultValue: defaultValue));
 
-    return PromptLine.run<bool>(
-      prompt,
-      hint: hint,
-      shown: (yes) => yes ? 'Yes' : 'No',
-      check: (typed) {
-        final answer = switch (typed.toLowerCase()) {
-          'y' || 'yes' => true,
-          'n' || 'no' => false,
-          '' => defaultValue,
-          _ => null,
-        };
-
-        return (
-          value: answer,
-          problem: answer == null ? 'Please type y or n' : null,
-        );
-      },
-    );
-  }
+  /// Asks for text over several lines. Ctrl+D finishes.
+  ///
+  /// ```dart
+  /// final message = Prompts.multiline('Commit message', required: true);
+  /// ```
+  static String multiline(
+    String prompt, {
+    String defaultValue = '',
+    bool required = false,
+  }) => PromptRunner.run(
+    MultilinePrompt(prompt, defaultValue: defaultValue, required: required),
+  );
 
   /// Lets the user pick one of [options] and gives back the one they picked.
   ///
-  /// In a terminal, the options are a list you move through with the arrow
-  /// keys (or `j`/`k`), and pick with Enter. Number keys jump straight to an
-  /// option. The current row shows the theme's pointer in its highlight
-  /// colour. When there's no terminal (or colour is off) it falls back to a
-  /// numbered list and asks for a number.
+  /// The options are a list moved through with the arrow keys (or `j`/`k`),
+  /// Home/End and Page Up/Down, and picked with Enter. Typing a number jumps
+  /// to that option. Long lists scroll.
   ///
   /// * [format]: how each option is shown. Defaults to `toString()`.
-  /// * [defaultOption]: the option picked at the start.
+  /// * [note]: dim text after each option, like a description.
+  /// * [defaultOption]: the option highlighted at the start, and the answer
+  ///   in [PromptMode.unattended].
+  /// * [pageSize]: how many options show at once. Fits the screen when left
+  ///   out.
   ///
   /// ```dart
-  /// final colour = menu('Pick a colour', ['Red', 'Green', 'Blue']);
-  /// final file = menu('Open which file?', files, format: basename);
+  /// final colour = Prompts.select('Pick a colour', ['Red', 'Green', 'Blue']);
+  /// final file = Prompts.select('Open which file?', files, format: basename);
   /// ```
+  static T select<T>(
+    String prompt,
+    List<T> options, {
+    String Function(T option)? format,
+    String Function(T option)? note,
+    T? defaultOption,
+    int? pageSize,
+  }) {
+    final start = defaultOption == null ? -1 : options.indexOf(defaultOption);
+
+    return PromptRunner.run(
+      SelectPrompt<T>(
+        prompt,
+        options,
+        format: format,
+        note: note,
+        start: start < 0 ? 0 : start,
+        pageSize: pageSize,
+        hasDefault: start >= 0,
+      ),
+    );
+  }
+
+  /// The same as [select], kept for code written before it.
   static T menu<T>(
     String prompt,
     List<T> options, {
     String Function(T option)? format,
     T? defaultOption,
-  }) {
-    if (options.isEmpty) throw ArgumentError.value(options, 'options', 'Empty');
+  }) => select(prompt, options, format: format, defaultOption: defaultOption);
 
-    final labels = [
-      for (final option in options) format?.call(option) ?? '$option',
-    ];
-    final start = math.max(
-      defaultOption == null ? 0 : options.indexOf(defaultOption),
-      0,
-    );
-
-    final interactive =
-        AnsiTheme.useColour && stdin.hasTerminal && stdout.hasTerminal;
-    final picked = interactive
-        ? _MenuScreen(prompt, labels, start).run()
-        : _numberedMenu(prompt, labels, start);
-
-    return options[picked];
-  }
-
-  /// Prints the options as a numbered list and asks for a number.
-  static int _numberedMenu(String prompt, List<String> labels, int start) {
-    final theme = AnsiTheme.current;
-    AnsiTheme.say(
-      '${'?'.foreground(theme.hint)} '
-      '${prompt.bold.foreground(theme.question)}',
-    );
-    for (var i = 0; i < labels.length; i++) {
-      AnsiTheme.say('  ${'${i + 1})'.foreground(theme.hint)} ${labels[i]}');
-    }
-
-    final number = PromptLine.run<int>(
-      'Number',
-      hint: '(${start + 1})',
-      shown: (index) => labels[index],
-      check: (typed) {
-        if (typed.isEmpty) return (value: start, problem: null);
-        final index = (int.tryParse(typed) ?? 0) - 1;
-        final ok = index >= 0 && index < labels.length;
-
-        return (
-          value: ok ? index : null,
-          problem: ok ? null : 'Type a number from 1 to ${labels.length}',
-        );
-      },
-    );
-
-    return number;
-  }
-}
-
-/// The arrow-key menu, drawn and redrawn in place.
-class _MenuScreen {
-  final String prompt;
-  final List<String> labels;
-  int selected;
-
-  /// The first option shown, when there are more options than fit.
-  int _top = 0;
-
-  /// How many option rows were drawn last time, to move back over them.
-  int _drawnRows = 0;
-
-  /// The option a number key picked, counting from 0.
-  int _number = 0;
-
-  _MenuScreen(this.prompt, this.labels, this.selected);
-
-  /// How many options fit on screen at once.
-  int get _pageSize {
-    final rows = stdout.hasTerminal ? stdout.terminalLines : 24;
-
-    return math.min(labels.length, math.max(rows - 2, 3));
-  }
-
-  /// Shows the menu, reads keys until Enter, and gives back the picked index.
-  int run() {
-    final theme = AnsiTheme.current;
-    final question = prompt.bold.foreground(theme.question);
-    stdout.write(
-      '${'?'.foreground(theme.hint)} $question '
-      '${'(↑/↓ and Enter)'.dim.foreground(theme.hint)}\n$HIDE_CURSOR',
-    );
-
-    final echo = stdin.echoMode;
-    final line = stdin.lineMode;
-    // Windows needs echo off before line mode can be turned off.
-    stdin
-      ..echoMode = false
-      ..lineMode = false;
-    try {
-      _draw();
-      while (true) {
-        final key = _readKey();
-        if (key == _Key.enter) break;
-        if (key == _Key.cancel) {
-          _restore(echo, line);
-          exit(130);
-        }
-        if (key == _Key.up) selected = (selected - 1) % labels.length;
-        if (key == _Key.down) selected = (selected + 1) % labels.length;
-        if (key == _Key.number && _number < labels.length) selected = _number;
-        _draw();
-      }
-    } finally {
-      _restore(echo, line);
-    }
-
-    // Swap the whole menu for one line with the answer.
-    final done =
-        '${theme.tick.foreground(theme.success)} $question '
-        '${labels[selected].plain.foreground(theme.answer)}';
-    stdout.write('${cursorUp(_drawnRows + 1)}\r$CLEAR_TO_SCREEN_END$done\n');
-
-    return selected;
-  }
-
-  /// Draws the visible options, replacing the ones drawn before.
-  void _draw() {
-    final theme = AnsiTheme.current;
-    final page = _pageSize;
-    if (selected < _top) _top = selected;
-    if (selected >= _top + page) _top = selected - page + 1;
-
-    final width = stdout.hasTerminal ? stdout.terminalColumns - 4 : 76;
-    final out = StringBuffer(SYNC_START);
-    if (_drawnRows > 0) out.write('${cursorUp(_drawnRows)}\r');
-    out.write(CLEAR_TO_SCREEN_END);
-
-    for (var i = _top; i < _top + page; i++) {
-      final label = _fit(labels[i], width);
-      if (i == selected) {
-        out.write(
-          '${'${theme.pointer} $label'.bold.foreground(theme.highlight)}\n',
-        );
-      } else {
-        out.write('  $label$RESET\n');
-      }
-    }
-    out.write(SYNC_END);
-    _drawnRows = page;
-    stdout.write(out);
-  }
-
-  /// [label] cut down to [width] visible characters, ending in an ellipsis.
+  /// Lets the user tick any number of [options], and gives back the ticked
+  /// ones in list order.
   ///
-  /// The length is measured without escape codes, so styled labels aren't
-  /// cut short. A label that needs cutting loses its styles.
-  String _fit(String label, int width) {
-    final plain = label.plain;
-    if (plain.length <= width || width < 2) return label;
+  /// Space ticks the highlighted option, `a` ticks them all, and Enter
+  /// finishes.
+  ///
+  /// * [selected]: the options ticked at the start.
+  /// * [min] and [max]: how many must be ticked.
+  /// * [format], [note] and [pageSize] work as in [select].
+  ///
+  /// ```dart
+  /// final features = Prompts.multiSelect(
+  ///   'Features',
+  ///   ['Logging', 'Tests', 'Docs'],
+  ///   selected: ['Tests'],
+  ///   min: 1,
+  /// );
+  /// ```
+  static List<T> multiSelect<T>(
+    String prompt,
+    List<T> options, {
+    String Function(T option)? format,
+    String Function(T option)? note,
+    Iterable<T> selected = const [],
+    int min = 0,
+    int? max,
+    int? pageSize,
+  }) => PromptRunner.run(
+    MultiSelectPrompt<T>(
+      prompt,
+      options,
+      format: format,
+      note: note,
+      pageSize: pageSize,
+      ticked: {
+        for (final option in selected)
+          if (options.contains(option)) options.indexOf(option),
+      },
+      min: min,
+      max: max,
+    ),
+  );
 
-    return '${plain.substring(0, width - 1)}$ELLIPSIS';
+  static T _clamp<T extends num>(T value, T? min, T? max) {
+    if (min != null && value < min) return min;
+    if (max != null && value > max) return max;
+
+    return value;
   }
 
-  /// Puts the terminal back the way it was and shows the cursor.
-  void _restore(bool echo, bool line) {
-    // Line mode must come back before echo on Windows.
-    stdin
-      ..lineMode = line
-      ..echoMode = echo;
-    stdout.write(SHOW_CURSOR);
-  }
-
-  /// Reads one key press and works out what it means.
-  _Key _readKey() {
-    final byte = stdin.readByteSync();
-    switch (byte) {
-      case -1 || 3:
-        // Input closed, or Ctrl+C.
-        return _Key.cancel;
-      case 10 || 13:
-        return _Key.enter;
-      case 27:
-        // ESC [ A is up and ESC [ B is down (ESC O A/B on some terminals).
-        final second = stdin.readByteSync();
-        if (second != 0x5B && second != 0x4F) return _Key.other;
-
-        return _arrow(stdin.readByteSync(), up: 0x41, down: 0x42);
-      case 0 || 0xE0:
-        // Older Windows consoles send 0xE0 then H for up or P for down.
-        return _arrow(stdin.readByteSync(), up: 0x48, down: 0x50);
-      case 0x6B || 0x77:
-        // k or w
-        return _Key.up;
-      case 0x6A || 0x73:
-        // j or s
-        return _Key.down;
-      case final digit when digit >= 0x31 && digit <= 0x39:
-        _number = digit - 0x31;
-
-        return _Key.number;
-      default:
-        return _Key.other;
+  static String? _rangeProblem(num value, num? min, num? max) {
+    if (min != null && max != null && (value < min || value > max)) {
+      return 'Type a number from $min to $max';
     }
-  }
+    if (min != null && value < min) return 'Type $min or more';
+    if (max != null && value > max) return 'Type $max or less';
 
-  /// Up, down or nothing, depending on whether [byte] is [up] or [down].
-  _Key _arrow(int byte, {required int up, required int down}) {
-    if (byte == up) return _Key.up;
-    if (byte == down) return _Key.down;
-
-    return _Key.other;
+    return null;
   }
 }
-
-/// A key press the menu cares about.
-
-enum _Key { up, down, enter, cancel, number, other }
-
