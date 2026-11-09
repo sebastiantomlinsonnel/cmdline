@@ -38,6 +38,11 @@ abstract final class PromptLine {
     while (true) {
       terminal.write(AnsiTheme.paint(asked));
       final typed = _readLine(terminal, hidden: hidden);
+      if (typed != null && !terminal.hasInput) {
+        // Piped input isn't echoed, so show what was read, like a transcript.
+        final echoed = hidden ? theme.glyphs.mask * typed.length : typed;
+        terminal.write('${AnsiTheme.paint(echoed)}\n');
+      }
       final result = check(typed?.trim() ?? '');
 
       // Wipe the old error line under the question.

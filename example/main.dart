@@ -19,6 +19,7 @@ import 'src/cmd.dart';
 import 'src/logging.dart';
 import 'src/section.dart';
 import 'src/utils.dart';
+import 'src/widgets.dart';
 
 /// The demo program, built with the package's own CLI builder.
 ///
@@ -156,6 +157,37 @@ final CLI cli = CLI(
           name: 'open',
           help: 'Open dart.dev in your browser',
           run: (_) => CmdDemo.open(),
+        ),
+      ],
+    ),
+    Command(
+      name: 'widgets',
+      help: 'Interactive prompts, pickers, progress and layout widgets',
+      commands: [
+        Command(
+          name: 'prompts',
+          help: 'Text, password, numbers, multi-line and confirm',
+          run: (_) => WidgetsDemo.prompts(),
+        ),
+        Command(
+          name: 'choose',
+          help: 'Select, multi-select, search, tags, grid and toggles',
+          run: (_) => WidgetsDemo.choose(),
+        ),
+        Command(
+          name: 'pickers',
+          help: 'Slider, range, rating, date, file and colour',
+          run: (_) => WidgetsDemo.pickers(),
+        ),
+        Command(
+          name: 'progress',
+          help: 'Spinners, progress bars and parallel tasks',
+          run: (_) => WidgetsDemo.progress(),
+        ),
+        Command(
+          name: 'layout',
+          help: 'Boxes, callouts, tables, trees and lists',
+          run: (_) => WidgetsDemo.layout(),
         ),
       ],
     ),

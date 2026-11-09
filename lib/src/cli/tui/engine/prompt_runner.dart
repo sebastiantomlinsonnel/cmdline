@@ -19,6 +19,7 @@ abstract final class PromptRunner {
       case PromptMode.unattended:
         final value = view.unattended;
         if (value == null) {
+          say(cancelledLine(view.question, 'no default to use unattended'));
           throw PromptCancelled(view.question, 'no default when unattended');
         }
         say(answeredLine(view.question, view.describe(value)));
@@ -47,13 +48,13 @@ abstract final class PromptRunner {
         '${answer.foreground(theme.answer)}';
   }
 
-  /// The line left behind by a cancelled prompt.
-  static String cancelledLine(String question) {
+  /// The line left behind by a cancelled prompt, with an optional [reason].
+  static String cancelledLine(String question, [String reason = 'cancelled']) {
     final theme = AnsiTheme.current;
 
     return '${theme.cross.foreground(theme.error)} '
         '${question.bold.foreground(theme.question)} '
-        '${'cancelled'.foreground(theme.muted)}';
+        '${reason.foreground(theme.muted)}';
   }
 
   /// The dim key hints line, like `↑↓ move  enter pick  esc cancel`.

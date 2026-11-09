@@ -117,6 +117,8 @@ class MultilinePrompt extends PromptView<String> {
         final line = terminal.readLine();
         if (line == null) ended = true;
         if (line == null || line.isEmpty) break;
+        // Piped input isn't echoed, so show what was read.
+        if (!terminal.hasInput) terminal.write('${AnsiTheme.paint(muted('${theme.box.vertical} '))}$line\n');
         lines.add(line);
       }
       final text = lines.isEmpty ? defaultValue : lines.join('\n');
