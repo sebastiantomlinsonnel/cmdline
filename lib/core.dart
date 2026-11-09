@@ -14,5 +14,6 @@ export 'src/core/extensions/process.dart';
 export 'src/core/extensions/process_result.dart';
 export 'src/core/extensions/stream.dart';
 export 'src/core/extensions/string.dart';
+export 'src/core/helpers/display_width.dart';
 export 'src/core/helpers/graphemes.dart';
 export 'src/core/helpers/strings.dart';

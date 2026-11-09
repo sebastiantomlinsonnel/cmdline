@@ -136,7 +136,7 @@ class UtilsDemo {
 
     heading('Lists');
     const prices = [4.5, 12.0, 7.25];
-    final List<int>? none = null;
+    const List<int>? none = null;
     showCalls([
       ['prices', prices],
       ['prices.sumByDouble((p) => p)', prices.sumByDouble((price) => price)],
