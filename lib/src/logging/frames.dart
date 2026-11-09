@@ -25,3 +25,8 @@ const List<String> kSPINNER_CIRCLE = <String>['◐', '◓', '◑', '◒'];
 
 /// A dot bouncing up and down: `⠁⠂⠄⠂`.
 const List<String> kSPINNER_BOUNCE = <String>['⠁', '⠂', '⠄', '⠂'];
+
+/// Dots counting up and starting again: `.`, `..`, `...`.
+///
+/// Padded to the same width, so text after it doesn't jump.
+const List<String> kSPINNER_DOTS = <String>['.  ', '.. ', '...', '   '];

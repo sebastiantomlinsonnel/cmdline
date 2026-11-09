@@ -31,10 +31,11 @@ abstract final class PromptRunner {
     }
   }
 
-  /// Prints [line] on [Terminal.current], without styles if colour is off.
-  static void say(String line) {
+  /// Prints [line] on [terminal] (or [Terminal.current]), without styles if
+  /// colour is off.
+  static void say(String line, [Terminal? terminal]) {
     final text = AnsiTheme.useColour ? '$line$RESET' : line.plain;
-    Terminal.current.write('$text\n');
+    (terminal ?? Terminal.current).write('$text\n');
   }
 
   /// The line left behind by an answered prompt: tick, question, answer.

@@ -16,6 +16,8 @@ export 'src/cli/tui/engine/prompt_runner.dart';
 export 'src/cli/tui/engine/prompt_view.dart';
 export 'src/cli/tui/engine/terminal.dart';
 export 'src/cli/tui/engine/text_buffer.dart';
+export 'src/cli/tui/indicators/spinner.dart';
+export 'src/cli/tui/indicators/tasks.dart';
 export 'src/cli/tui/pickers.dart';
 export 'src/cli/tui/pickers/colour_prompt.dart';
 export 'src/cli/tui/pickers/date_prompt.dart';

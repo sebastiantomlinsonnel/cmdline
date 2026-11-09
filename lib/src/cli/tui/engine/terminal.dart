@@ -17,13 +17,24 @@ abstract class Terminal {
   static Terminal current = const StdTerminal();
 
   /// Runs [body] with [terminal] as [current], then puts the old one back.
+  ///
+  /// When [body] gives back a [Future], the old terminal comes back once it
+  /// completes, so async work (spinners, tasks) uses [terminal] throughout.
   static T use<T>(Terminal terminal, T Function() body) {
     final previous = current;
     current = terminal;
+    var waiting = false;
     try {
-      return body();
+      final result = body();
+      if (result is Future<Object?>) {
+        waiting = true;
+
+        return result.whenComplete(() => current = previous) as T;
+      }
+
+      return result;
     } finally {
-      current = previous;
+      if (!waiting) current = previous;
     }
   }
 

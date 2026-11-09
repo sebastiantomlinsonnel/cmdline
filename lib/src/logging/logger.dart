@@ -31,6 +31,7 @@ class Logger {
 
   Timer? _spinnerTimer;
   String? _spinnerLabel;
+  bool _spinnerLive = false;
   final Stopwatch _clock = Stopwatch()..start();
   int _lastLog = 0;
 
@@ -152,21 +153,29 @@ class Logger {
   }
 
   /// Shows an animated spinner on the current line until [stopSpinner]
+  ///
+  /// [frames] picks the animation, like [kSPINNER_LINE] or [kSPINNER_ARC].
+  /// When output is piped there's nothing to animate, so only the line from
+  /// [stopSpinner] is printed. For a spinner with elapsed time and logging
+  /// above it, see `Spinner`.
   void startSpinner(
     String label, {
     Level level = Level.log,
     Duration interval = const Duration(milliseconds: 300),
+    List<String> frames = kSPINNER_FRAMES,
   }) {
     _spinnerTimer?.cancel();
     _spinnerTimer = null;
     _spinnerLabel = label;
+    _spinnerLive = Terminal.current.supportsAnsi;
+    if (!_spinnerLive) return;
     stdout.write(HIDE_CURSOR);
 
     int frame = 0;
     void draw() {
-      final String text = '${kSPINNER_FRAMES[frame]} $label';
+      final String text = '${frames[frame]} $label';
       stdout.write('${CLEAR_LINE}${getString(text, level)}');
-      frame = (frame + 1) % kSPINNER_FRAMES.length;
+      frame = (frame + 1) % frames.length;
     }
 
     draw();
@@ -180,7 +189,7 @@ class Logger {
     _spinnerTimer?.cancel();
     _spinnerTimer = null;
     _spinnerLabel = null;
-    stdout.write('$CLEAR_LINE$SHOW_CURSOR');
+    if (_spinnerLive) stdout.write('$CLEAR_LINE$SHOW_CURSOR');
     print(getString(message ?? label, level));
   }
 

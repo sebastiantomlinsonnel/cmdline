@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import '../../cmdline.dart';
 
@@ -16,10 +15,12 @@ import '../../cmdline.dart';
 /// bar.done('Copied ${files.length} files');
 /// ```
 ///
-/// Shows as: `LOG   | Copying files ██████████▍         52%  13/25`
+/// Shows as: `LOG   | Copying files ██████████▍         52%  13/25  4.1/s  3s left`
 ///
-/// Don't print anything else while the bar is showing, or it will be split
-/// over two lines.
+/// The speed and time left show once the bar has run for a second. Don't
+/// print anything else while the bar is showing, or it will be split over
+/// two lines. When output is piped (no live screen), the bar isn't drawn
+/// and only the PASS or FAIL line is printed.
 ///
 /// {@category logging}
 class ProgressBar {
@@ -35,8 +36,13 @@ class ProgressBar {
   /// The colour of the filled part of the bar.
   final AnsiInk colour;
 
+  /// Whether to show the speed and time left.
+  final bool showEta;
+
   int _current = 0;
   String _lastDrawn = '';
+  final Stopwatch _clock = Stopwatch()..start();
+  final bool _live = Terminal.current.supportsAnsi;
 
   /// Creates the bar and shows it straight away, empty.
   ProgressBar(
@@ -44,9 +50,10 @@ class ProgressBar {
     required this.total,
     this.width = 30,
     this.colour = const AnsiColour(10),
+    this.showEta = true,
   }) {
     // Hide the cursor so it doesn't flicker over the bar.
-    stdout.write(HIDE_CURSOR);
+    if (_live) Terminal.current.write(HIDE_CURSOR);
     _draw();
   }
 
@@ -104,16 +111,33 @@ class ProgressBar {
 
   /// Draws the bar on the current line, if it has changed.
   void _draw() {
+    if (!_live) return;
     final percent = '${(fraction * 100).round()}%'.padLeft(4);
     final text =
         '$label ${bar(fraction, width: width, colour: colour)} '
-        '$percent  ${'$_current/$total'.dim}';
+        '$percent  ${'$_current/$total'.dim}${showEta ? _eta() : ''}';
     if (text == _lastDrawn) return;
     _lastDrawn = text;
 
-    stdout.write('$CLEAR_LINE${Logger.getString(text, Level.log)}');
+    Terminal.current.write('$CLEAR_LINE${Logger.getString(text, Level.log)}');
+  }
+
+  /// The speed and time left, like `  4.1/s  3s left`, once known.
+  String _eta() {
+    final seconds = _clock.elapsedMilliseconds / Duration.millisecondsPerSecond;
+    if (seconds < 1 || _current <= 0) return '';
+    final rate = _current / seconds;
+    final left = ((total - _current) / rate).ceil();
+    final time = left >= Duration.secondsPerMinute
+        ? '${left ~/ Duration.secondsPerMinute}m ${left % Duration.secondsPerMinute}s'
+        : '${left}s';
+    final speed = rate >= 10 ? rate.round().toString() : rate.toStringAsFixed(1);
+
+    return '  ${'$speed/s'.dim}${_current < total ? '  ${'$time left'.dim}' : ''}';
   }
 
   /// Wipes the bar off the line and shows the cursor again.
-  void _clear() => stdout.write('$CLEAR_LINE$SHOW_CURSOR');
+  void _clear() {
+    if (_live) Terminal.current.write('$CLEAR_LINE$SHOW_CURSOR');
+  }
 }
