@@ -59,7 +59,7 @@ class TimeFormat {
   static const TimeFormat dateTime = TimeFormat('DD/MM/yyyy HH:mm');
 
   /// A sortable timestamp for logs, like `2026-11-08 14:05:09`.
-  static const TimeFormat log = TimeFormat('yyyy-MM-DD HH:mm:ss');
+  static const TimeFormat log = TimeFormat('DD-MM-yyyy HH.mm.ss');
 
   /// A timestamp that's safe in file names, like `2026-11-08_14-05-09`.
   static const TimeFormat fileSafe = TimeFormat('yyyy-MM-DD_HH-mm-ss');
