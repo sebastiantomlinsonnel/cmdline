@@ -1,7 +1,5 @@
 part 'format_templates.dart';
-
 part 'period.dart';
-
 part 'time_format.dart';
 
 /// A rich, human-friendly wrapper around date and time values.

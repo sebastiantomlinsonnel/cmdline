@@ -9,7 +9,9 @@ import 'package:cmdline/cmdline.dart';
 /// broken part (no network, no git, ...) never stops the rest.
 Future<void> section(String title, FutureOr<void> Function() body) async {
   AnsiTheme.say('');
-  AnsiTheme.say(' $title '.bold.inverse.foreground(AnsiTheme.current.highlight));
+  AnsiTheme.say(
+    ' $title '.bold.inverse.foreground(AnsiTheme.current.highlight),
+  );
   try {
     await body();
   } catch (error) {
@@ -27,7 +29,7 @@ void heading(String text) {
 ///
 /// Used by the demos that are mostly about what a function gives back.
 void showCalls(List<List<Object?>> rows) {
-  AnsiTheme.say(CMD.draw.table(rows, header: ['Call', 'Result']));
+  AnsiTheme.say(Widgets.table(rows, header: ['Call', 'Result']));
 }
 
 /// Writes [text] to [path], making any missing folders first.
@@ -43,6 +45,4 @@ void writeFile(String path, String text) {
 ///
 /// Every demo that touches files works in one of these and deletes it after.
 String tempFolder(String prefix) =>
-    Directory.systemTemp
-        .createTempSync(prefix)
-        .path;
+    Directory.systemTemp.createTempSync(prefix).path;

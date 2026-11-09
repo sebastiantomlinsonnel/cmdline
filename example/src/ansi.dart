@@ -42,7 +42,7 @@ class AnsiDemo {
       'subscript': 'sub'.subscript,
     };
     AnsiTheme.say(
-      CMD.draw.table(
+      Widgets.table(
         [
           for (final entry in getters.entries) ['.${entry.key}', entry.value],
         ],
@@ -134,10 +134,8 @@ class AnsiDemo {
 
     heading('True colour: AnsiColourRgb and AnsiColourRgb.hex');
     AnsiTheme.say(
-      '${'AnsiColourRgb(255, 128, 0)'.foreground(
-          const AnsiColourRgb(255, 128, 0))}  '
-          '${'AnsiColourRgb.hex(0x4FC3F7)'.foreground(
-          const AnsiColourRgb.hex(0x4FC3F7))}',
+      '${'AnsiColourRgb(255, 128, 0)'.foreground(const AnsiColourRgb(255, 128, 0))}  '
+      '${'AnsiColourRgb.hex(0x4FC3F7)'.foreground(const AnsiColourRgb.hex(0x4FC3F7))}',
     );
 
     heading('Blending: sky.opacity(amount, over: rose)');
@@ -200,7 +198,7 @@ class AnsiDemo {
     try {
       for (final entry in presets.entries) {
         AnsiTheme.current = AnsiTheme(box: entry.value);
-        AnsiTheme.say(CMD.draw.box('BoxChars.${entry.key}'));
+        AnsiTheme.say(Widgets.box('BoxChars.${entry.key}'));
       }
     } finally {
       AnsiTheme.current = start;

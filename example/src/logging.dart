@@ -59,7 +59,7 @@ class LoggingDemo {
 
       log('onLog saw $seen lines');
       AnsiTheme.say(
-        CMD.draw.box(File(path).readAsStringSync().trim(), title: 'demo.log'),
+        Widgets.box(File(path).readAsStringSync().trim(), title: 'demo.log'),
       );
     } finally {
       Logger.instance.close();
@@ -91,7 +91,7 @@ class LoggingDemo {
       'kSPINNER_BOUNCE': kSPINNER_BOUNCE,
     };
     AnsiTheme.say(
-      CMD.draw.table(
+      Widgets.table(
         [
           for (final entry in sets.entries) [entry.key, entry.value.join(' ')],
         ],
@@ -136,7 +136,7 @@ class LoggingDemo {
     for (final fraction in [0.0, 0.33, 0.5, 0.875, 1.0]) {
       AnsiTheme.say(
         '${ProgressBar.bar(fraction, width: 20, colour: AnsiPalette.lavender)} '
-            '$fraction',
+        '$fraction',
       );
     }
   }

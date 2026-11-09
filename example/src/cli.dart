@@ -29,7 +29,7 @@ class CliDemo {
     heading('Colour can be turned off');
     log(
       'AnsiTheme.useColour is ${AnsiTheme.useColour} here. '
-          'Set NO_COLOR or pipe the output to turn it off.',
+      'Set NO_COLOR or pipe the output to turn it off.',
     );
   }
 
@@ -59,7 +59,7 @@ class CliDemo {
     AnsiTheme.say(theme.successLine('A success line'));
     AnsiTheme.say(theme.errorLine('An error line'));
     AnsiTheme.say(
-      CMD.draw.box('Boxes and tables follow the theme', title: title),
+      Widgets.box('Boxes and tables follow the theme', title: title),
     );
   }
 }

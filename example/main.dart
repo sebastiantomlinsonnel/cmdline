@@ -330,9 +330,11 @@ Future<void> _showcase({int? only}) async {
 Future<void> _beat() => delay(0.25);
 
 /// Clears the screen, prints the scene's title, then plays it.
-Future<void> _scene(int number,
-    String title,
-    Future<void> Function() body,) async {
+Future<void> _scene(
+  int number,
+  String title,
+  Future<void> Function() body,
+) async {
   final theme = AnsiTheme.current;
   _clear();
   AnsiTheme.say('');
@@ -351,7 +353,7 @@ Future<void> _intro() async {
   _clear();
   AnsiTheme.say('');
   AnsiTheme.say(
-    CMD.draw.box(
+    Widgets.box(
       [
         'cmdline'.bold.foreground(AnsiPalette.sky),
         'Friendly command line tools in Dart'.dim,
@@ -366,7 +368,7 @@ Future<void> _outro() async {
   _clear();
   AnsiTheme.say('');
   AnsiTheme.say(
-    CMD.draw.box(
+    Widgets.box(
       [
         'dart pub add cmdline'.bold.foreground(AnsiPalette.mint),
         'Logging, prompts, styling, files and shell'.dim,
@@ -492,7 +494,7 @@ Future<void> _tables() async {
   final ok = 'up to date'.foreground(AnsiPalette.mint);
   final old = 'update'.foreground(AnsiPalette.butter);
   AnsiTheme.say(
-    CMD.draw.table(
+    Widgets.table(
       [
         ['args', '2.7.0', ok],
         ['http', '1.2.2', old],
@@ -505,9 +507,9 @@ Future<void> _tables() async {
   );
   await delay(0.6);
   AnsiTheme.say(
-    CMD.draw.box(
+    Widgets.box(
       '${'2'.bold} packages can be updated.\n'
-          'Run ${'dart pub upgrade'.foreground(AnsiPalette.sky)} to get them.',
+      'Run ${'dart pub upgrade'.foreground(AnsiPalette.sky)} to get them.',
       title: 'Summary',
     ),
   );

@@ -35,11 +35,11 @@ class CmdDemo {
   static void draw() {
     final theme = AnsiTheme.current;
     AnsiTheme.say(
-      CMD.draw.box('Boxes fit their text,\neven ${'styled'.bold.italic} text.'),
+      Widgets.box('Boxes fit their text,\neven ${'styled'.bold.italic} text.'),
     );
-    AnsiTheme.say(CMD.draw.box('With a title', title: 'Title'));
+    AnsiTheme.say(Widgets.box('With a title', title: 'Title'));
     AnsiTheme.say(
-      CMD.draw.table(
+      Widgets.table(
         [
           ['fs.dart', 'Files and paths', 489],
           ['prompt.dart', 'Prompts', 230],
@@ -57,8 +57,7 @@ class CmdDemo {
       'sky'.foreground(AnsiPalette.sky),
     ]) {
       AnsiTheme.say(
-        '[${CMD.draw.padPlain(word, 8)}] [${CMD.draw.padPlain(
-            word, 8, right: true)}]',
+        '[${Widgets.padPlain(word, 8)}] [${Widgets.padPlain(word, 8, right: true)}]',
       );
     }
   }
@@ -87,10 +86,7 @@ class CmdDemo {
       ['absolute', CMD.fs.absolute('lib')],
       ['homeDirectory', CMD.fs.homeDirectory],
       ['pwd', CMD.fs.pwd],
-      ['globToRegExp', CMD.fs
-          .globToRegExp('**/*.dart')
-          .pattern
-      ],
+      ['globToRegExp', CMD.fs.globToRegExp('**/*.dart').pattern],
     ]);
   }
 
@@ -180,7 +176,7 @@ class CmdDemo {
     final failing = await ShellCommand.run('exit 3', show: false);
     log(
       'The failing command gave exit code ${failing.exitCode} '
-          '(ok: ${failing.ok}, failed: ${failing.failed})',
+      '(ok: ${failing.ok}, failed: ${failing.failed})',
     );
 
     try {
@@ -215,8 +211,8 @@ class CmdDemo {
     final dart = await Process.start('dart', ['--version'], runInShell: true);
     await dart.closeInput();
     final (lines, errors) = await (
-    dart.stdout.lines.toList(),
-    dart.stderr.text,
+      dart.stdout.lines.toList(),
+      dart.stderr.text,
     ).wait;
     final said = [...lines, errors.trim()].where((line) => line.isNotEmpty);
     log('dart said: ${said.join(' ')}');
@@ -243,7 +239,7 @@ class CmdDemo {
         saveTo,
       );
       AnsiTheme.say(
-        CMD.draw.box(
+        Widgets.box(
           File(saveTo).readAsStringSync().trim(),
           title: 'Latest Dart',
         ),
@@ -257,29 +253,29 @@ class CmdDemo {
   ///
   /// Needs a real terminal for the arrow-key menu and hidden typing.
   static void prompts() {
-    final name = CMD.prompt.ask('Project name', defaultValue: 'my_app');
-    final port = CMD.prompt.ask(
+    final name = Prompts.ask('Project name', defaultValue: 'my_app');
+    final port = Prompts.ask(
       'Port',
       defaultValue: '8080',
       validator: (answer) =>
-      int.tryParse(answer) == null ? 'Type a number' : null,
+          int.tryParse(answer) == null ? 'Type a number' : null,
     );
-    final secret = CMD.prompt.ask('Password', hidden: true, required: false);
-    final colour = CMD.prompt.menu('Favourite colour', [
+    final secret = Prompts.ask('Password', hidden: true, required: false);
+    final colour = Prompts.menu('Favourite colour', [
       'Red',
       'Green',
       'Blue',
       'Purple',
     ], defaultOption: 'Green');
-    final file = CMD.prompt.menu('Pick a file', [
+    final file = Prompts.menu('Pick a file', [
       'lib/main.dart',
       'lib/src/app.dart',
       'test/app_test.dart',
     ], format: CMD.fs.basename);
-    final save = CMD.prompt.confirm('Save these settings?', defaultValue: true);
+    final save = Prompts.confirm('Save these settings?', defaultValue: true);
 
     AnsiTheme.say(
-      CMD.draw.box(
+      Widgets.box(
         [
           'Name:     ${name.bold}',
           'Port:     $port',
@@ -303,7 +299,7 @@ class CmdDemo {
 
   /// Opens a web page in the browser, if you say yes.
   static Future<void> open() async {
-    if (CMD.prompt.confirm(
+    if (Prompts.confirm(
       'Open dart.dev in your browser?',
       defaultValue: false,
     )) {
@@ -315,8 +311,7 @@ class CmdDemo {
   }
 
   /// Quotes [path] for the default shell.
-  static String _quoted(String path) =>
-      Platform.isWindows
-          ? CMD.quoteWrap(path)
-          : "'${path.replaceAll("'", r"'\''")}'";
+  static String _quoted(String path) => Platform.isWindows
+      ? CMD.quoteWrap(path)
+      : "'${path.replaceAll("'", r"'\''")}'";
 }

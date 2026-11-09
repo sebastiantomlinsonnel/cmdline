@@ -1,7 +1,11 @@
-part of '../cmd.dart';
+import 'dart:io';
+import 'dart:math' as math;
 
-class _Prompts {
-  const _Prompts._();
+import 'package:cmdline/cmdline.dart';
+
+/// Prompts for crafting CLIs
+class Prompts {
+  const Prompts._();
 
   /// Asks the user a question and gives back what they type.
   ///
@@ -20,7 +24,7 @@ class _Prompts {
   ///     int.tryParse(a) == null ? 'Type a number' : null);
   /// final secret = ask('Password', hidden: true);
   /// ```
-  String ask(
+  static String ask(
     String prompt, {
     String? defaultValue,
     bool hidden = false,
@@ -53,7 +57,7 @@ class _Prompts {
   ///   deleteDir('build');
   /// }
   /// ```
-  bool confirm(String prompt, {bool? defaultValue}) {
+  static bool confirm(String prompt, {bool? defaultValue}) {
     final hint = switch (defaultValue) {
       true => '[Y/n]',
       false => '[y/N]',
@@ -95,7 +99,7 @@ class _Prompts {
   /// final colour = menu('Pick a colour', ['Red', 'Green', 'Blue']);
   /// final file = menu('Open which file?', files, format: basename);
   /// ```
-  T menu<T>(
+  static T menu<T>(
     String prompt,
     List<T> options, {
     String Function(T option)? format,
@@ -121,7 +125,7 @@ class _Prompts {
   }
 
   /// Prints the options as a numbered list and asks for a number.
-  int _numberedMenu(String prompt, List<String> labels, int start) {
+  static int _numberedMenu(String prompt, List<String> labels, int start) {
     final theme = AnsiTheme.current;
     AnsiTheme.say(
       '${'?'.foreground(theme.hint)} '
@@ -307,6 +311,7 @@ class _MenuScreen {
 }
 
 /// A key press the menu cares about.
+
 enum _Key { up, down, enter, cancel, number, other }
 
 /// What a prompt's check makes of the typed text.

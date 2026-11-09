@@ -10,7 +10,6 @@ import 'package:cmdline/cmdline.dart';
 part 'parts/draw.dart';
 part 'parts/fs.dart';
 part 'parts/net.dart';
-part 'parts/prompt.dart';
 
 /// CMDLine helpers
 /// {@category cmd}
@@ -18,14 +17,8 @@ class CMD {
   /// Filesystem helpers
   static _FileSystem get fs => const _FileSystem._();
 
-  /// Ansi drawing helpers
-  static _Drawing get draw => const _Drawing._();
-
   /// Network helpers
   static _Networking get net => const _Networking._();
-
-  /// Terminal prompts
-  static _Prompts get prompt => const _Prompts._();
 
   const CMD._();
 
