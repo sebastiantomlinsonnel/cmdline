@@ -67,13 +67,18 @@ class ListCursor {
     _scroll();
   }
 
-  /// Moves for up, down, Home, End, Page Up and Page Down. Gives back true
+  /// Moves for up, down, Home, End, Page Up and Page Down, plus Ctrl+P and
+  /// Ctrl+N for up and down (handy in search boxes). Gives back true
   /// if [press] was one of those.
   bool handle(KeyPress press) {
     switch (press.key) {
       case Key.up:
         move(-1);
+      case Key.ctrl when press.char == 'p':
+        move(-1);
       case Key.down:
+        move(1);
+      case Key.ctrl when press.char == 'n':
         move(1);
       case Key.home:
         index = 0;

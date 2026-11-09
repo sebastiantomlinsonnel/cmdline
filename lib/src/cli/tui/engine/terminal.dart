@@ -1,6 +1,8 @@
 // Adapted from terminice (MIT), https://github.com/jozzdart/terminice
 import 'dart:io';
 
+import 'windows_console.dart';
+
 /// The keyboard and screen that prompts and widgets talk to.
 ///
 /// Everything interactive reads keys and writes output through
@@ -115,8 +117,14 @@ class StdTerminal extends Terminal {
   @override
   bool get lineMode => _safe(() => stdin.lineMode, true);
 
+  /// Also switches Windows consoles to sending arrow keys while line mode is
+  /// off (see [WindowsConsole]), and back afterwards.
   @override
-  set lineMode(bool value) => _safe(() => stdin.lineMode = value, null);
+  set lineMode(bool value) {
+    if (value) WindowsConsole.restore();
+    _safe(() => stdin.lineMode = value, null);
+    if (!value && hasInput) WindowsConsole.enableKeys();
+  }
 
   @override
   int readByte() => stdin.readByteSync();

@@ -28,6 +28,23 @@ void main() {
     expect(picked, 'go build');
   });
 
+  test('search results move with arrows and Ctrl+N/Ctrl+P', () {
+    final arrows = MockTerminal()
+      ..type('g')
+      ..press(Key.down)
+      ..press(Key.enter);
+    // Best match first: go, git, grep.
+    expect(arrows.run(() => Prompts.search('Run', ['git', 'go', 'grep'])), 'git');
+
+    final ctrl = MockTerminal()
+      ..type('g')
+      ..ctrl('n')
+      ..ctrl('n')
+      ..ctrl('p')
+      ..press(Key.enter);
+    expect(ctrl.run(() => Prompts.search('Run', ['git', 'go', 'grep'])), 'git');
+  });
+
   test('search Esc clears the query first', () {
     final terminal = MockTerminal()
       ..type('zzz')
