@@ -1,4 +1,3 @@
-// Adapted from terminice (MIT), https://github.com/jozzdart/terminice
 import '../../../../cmdline.dart';
 
 /// Pick one option from a list.

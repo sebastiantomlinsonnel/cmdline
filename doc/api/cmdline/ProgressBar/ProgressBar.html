@@ -58,6 +58,7 @@
 <li><span class="parameter" id="param-total"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">total</span>, </span></li>
 <li><span class="parameter" id="param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">width</span> = <span class="default-value">30</span>, </span></li>
 <li><span class="parameter" id="param-colour"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">colour</span> = <span class="default-value">const AnsiColour(10)</span>, </span></li>
+<li><span class="parameter" id="param-showEta"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">showEta</span> = <span class="default-value">true</span>, </span></li>
 </ol>})
     </section>
     
@@ -74,9 +75,10 @@
   required this.total,
   this.width = 30,
   this.colour = const AnsiColour(10),
+  this.showEta = true,
 }) {
   &#47;&#47; Hide the cursor so it doesn&#39;t flicker over the bar.
-  stdout.write(HIDE_CURSOR);
+  if (_live) Terminal.current.write(HIDE_CURSOR);
   _draw();
 }</code></pre>
 </section>
@@ -106,7 +108,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.5
+      2.0.6
   </span>
   
 </footer>

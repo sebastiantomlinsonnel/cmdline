@@ -1,4 +1,3 @@
-// Adapted from terminice (MIT), https://github.com/jozzdart/terminice
 import '../../../../cmdline.dart';
 
 /// A picked range of whole numbers, both ends included.

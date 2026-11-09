@@ -70,9 +70,9 @@
 <section class="desc markdown">
   <p>Shows <code>question</code> (with an optional dim <code>hint</code>) until <code>check</code> accepts.</p>
 <p><code>shown</code> turns the accepted value into the text echoed after the
-question. With <code>hidden</code>, typing isn't shown on screen. If input ends
-(stdin is closed), <code>check</code> gets an empty string, and if that isn't
-accepted a <a href="https://api.flutter.dev/flutter/dart-io/StdinException-class.html">StdinException</a> is thrown.</p>
+question. With <code>hidden</code>, typing isn't shown on screen. If input ends,
+<code>check</code> gets an empty string, and if that isn't accepted a
+<a href="../../cmdline/PromptCancelled-class.html">PromptCancelled</a> is thrown.</p>
 </section>
 
 
@@ -86,43 +86,53 @@ accepted a <a href="https://api.flutter.dev/flutter/dart-io/StdinException-class
   String hint = &#39;&#39;,
   bool hidden = false,
 }) {
+  final terminal = Terminal.current;
   final theme = AnsiTheme.current;
-  final fancy = AnsiTheme.useColour &amp;&amp; stdout.hasTerminal;
+  final fancy = terminal.supportsAnsi &amp;&amp; terminal.hasInput;
   final text = question.bold.foreground(theme.question);
-  final hintText = hint.isEmpty ? &#39;&#39; : &#39; ${hint.dim.foreground(theme.hint)}&#39;;
-  final asked = &#39;${&#39;?&#39;.foreground(theme.hint)} $text$hintText &#39;;
+  final hintText = hint.isEmpty ? &#39;&#39; : &#39; ${hint.foreground(theme.hint)}&#39;;
+  final asked =
+      &#39;${theme.glyphs.question.foreground(theme.hint)} $text$hintText &#39;;
 
   var showingProblem = false;
   while (true) {
-    AnsiTheme.write(asked);
-    final typed = _readLine(hidden: hidden);
+    terminal.write(AnsiTheme.paint(asked));
+    final typed = _readLine(terminal, hidden: hidden);
+    if (typed != null &amp;&amp; !terminal.hasInput) {
+      &#47;&#47; Piped input isn&#39;t echoed, so show what was read, like a transcript.
+      final echoed = hidden ? theme.glyphs.mask * typed.length : typed;
+      terminal.write(&#39;${AnsiTheme.paint(echoed)}\n&#39;);
+    }
     final result = check(typed?.trim() ?? &#39;&#39;);
 
     &#47;&#47; Wipe the old error line under the question.
-    if (fancy &amp;&amp; showingProblem) stdout.write(&#39;\r$CLEAR_TO_SCREEN_END&#39;);
+    if (fancy &amp;&amp; showingProblem) terminal.write(&#39;\r$CLEAR_TO_SCREEN_END&#39;);
 
     final value = result.value;
     if (result.problem == null &amp;&amp; value is T) {
+      final done = PromptRunner.answeredLine(question, shown(value));
       if (fancy) {
-        final done =
-            &#39;${theme.tick.foreground(theme.success)} $text &#39;
-            &#39;${shown(value).foreground(theme.answer)}&#39;;
-        stdout.write(&#39;${cursorUp()}\r$CLEAR_LINE$done$RESET\n&#39;);
+        terminal.write(&#39;${cursorUp()}\r$CLEAR_LINE&#39;);
+        PromptRunner.say(done);
+      } else if (typed == null) {
+        &#47;&#47; Input ended, so the answer didn&#39;t end the line.
+        terminal.write(&#39;\n&#39;);
       }
 
       return value;
     }
     if (typed == null) {
-      throw const StdinException(&#39;Input ended before an answer was given&#39;);
+      if (!fancy) terminal.write(&#39;\n&#39;);
+      throw PromptCancelled(question, &#39;input ended&#39;);
     }
 
     final problem = theme.errorLine(result.problem ?? &#39;Try again&#39;);
     if (fancy) {
       &#47;&#47; Show the error under the question, then go back up to ask again.
-      stdout.write(&#39;$problem${cursorUp()}\r$CLEAR_LINE&#39;);
+      terminal.write(&#39;${AnsiTheme.paint(problem)}${cursorUp()}\r$CLEAR_LINE&#39;);
       showingProblem = true;
     } else {
-      AnsiTheme.say(problem);
+      PromptRunner.say(problem);
     }
   }
 }</code></pre>
@@ -153,7 +163,7 @@ accepted a <a href="https://api.flutter.dev/flutter/dart-io/StdinException-class
 <footer>
   <span class="no-break">
     cmdline
-      2.0.5
+      2.0.6
   </span>
   
 </footer>

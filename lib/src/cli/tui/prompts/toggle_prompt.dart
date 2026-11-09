@@ -1,4 +1,3 @@
-// Adapted from terminice (MIT), https://github.com/jozzdart/terminice
 import '../../../../cmdline.dart';
 
 /// A list of on/off switches, like settings.
@@ -9,7 +8,7 @@ import '../../../../cmdline.dart';
 ///
 /// {@category cli}
 class TogglePrompt extends MultiSelectPrompt<String> {
-  /// Creates switches for [names], with the names in [on] switched on.
+  /// Creates switches for names, with the names in [on] switched on.
   TogglePrompt(super.question, super.options, {super.note, Set<int>? on})
     : super(ticked: on);
 

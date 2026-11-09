@@ -1,4 +1,3 @@
-// Adapted from terminice (MIT), https://github.com/jozzdart/terminice
 import '../../../../cmdline.dart';
 
 /// Runs a [PromptView]: shows it, feeds it keys and gives back its answer.

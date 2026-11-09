@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the onKey method from the MultilinePrompt class, for the Dart programming language.">
+  <title>onKey method - MultilinePrompt class - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">cmdline</a></li>
+    <li><a href="../../cmdline/">cmdline.dart</a></li>
+    <li><a href="../../cmdline/MultilinePrompt-class.html">MultilinePrompt</a></li>
+    <li class="self-crumb">onKey method</li>
+  </ol>
+  <div class="self-name">onKey</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="cmdline&#47;MultilinePrompt-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">onKey</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+  <div>
+    <ol class="annotation-list">
+        <li>@<a href="https://api.flutter.dev/flutter/dart-core/override-constant.html">override</a></li>
+    </ol>
+  </div>
+<span class="returntype"><a href="../../cmdline/KeyResult.html">KeyResult</a></span>
+<span class="name ">onKey</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="onKey-param-press"><span class="type-annotation"><a href="../../cmdline/KeyPress-class.html">KeyPress</a></span> <span class="parameter-name">press</span></span></li>
+</ol>)
+
+      <div class="features"><span class="feature">override</span></div>
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Reacts to <code>press</code> and says what should happen next.</p>
+<p>Esc, Ctrl+C and the end of input cancel the prompt, unless this
+handles them first.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">@override
+KeyResult onKey(KeyPress press) {
+  final line = _lines[_row];
+  switch (press.key) {
+    case Key.ctrl when press.char == &#39;d&#39;:
+      if (required &amp;&amp; result.trim().isEmpty) {
+        error = &#39;An answer is needed&#39;;
+
+        return KeyResult.handled;
+      }
+
+      return KeyResult.done;
+    case Key.enter:
+      final rest = line.afterCursor;
+      line.text = line.beforeCursor;
+      _lines.insert(
+        ++_row,
+        TextBuffer(rest)..handle(const KeyPress(Key.home)),
+      );
+    case Key.backspace when line.cursor == 0 &amp;&amp; _row &gt; 0:
+      final above = _lines[--_row];
+      final join = graphemes(above.text).length;
+      above.text = &#39;${above.text}${line.text}&#39;;
+      _lines.removeAt(_row + 1);
+      _moveTo(above, join);
+    case Key.delete when line.afterCursor.isEmpty &amp;&amp; _row &lt; _lines.length - 1:
+      final cursor = line.cursor;
+      line.text = &#39;${line.text}${_lines.removeAt(_row + 1).text}&#39;;
+      _moveTo(line, cursor);
+    case Key.up when _row &gt; 0:
+      _row--;
+      _moveTo(
+        _lines[_row],
+        math.min(line.cursor, graphemes(_lines[_row].text).length),
+      );
+    case Key.down when _row &lt; _lines.length - 1:
+      _row++;
+      _moveTo(
+        _lines[_row],
+        math.min(line.cursor, graphemes(_lines[_row].text).length),
+      );
+    default:
+      return line.handle(press) ? KeyResult.handled : KeyResult.ignored;
+  }
+
+  return KeyResult.handled;
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">cmdline</a></li>
+    <li><a href="../../cmdline/">cmdline</a></li>
+    <li><a href="../../cmdline/MultilinePrompt-class.html">MultilinePrompt</a></li>
+    <li class="self-crumb">onKey method</li>
+</ol>
+
+    <h5>MultilinePrompt class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.6
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

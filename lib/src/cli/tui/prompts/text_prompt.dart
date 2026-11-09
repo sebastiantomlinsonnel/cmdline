@@ -1,4 +1,3 @@
-// Adapted from terminice (MIT), https://github.com/jozzdart/terminice
 import '../../../../cmdline.dart';
 
 /// Turns typed text into an answer, or a problem to show.

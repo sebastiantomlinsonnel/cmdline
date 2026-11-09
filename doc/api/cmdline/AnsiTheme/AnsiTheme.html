@@ -60,11 +60,18 @@
 <li><span class="parameter" id="param-error"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">error</span> = <span class="default-value">const AnsiColour(9)</span>, </span></li>
 <li><span class="parameter" id="param-success"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">success</span> = <span class="default-value">const AnsiColour(10)</span>, </span></li>
 <li><span class="parameter" id="param-highlight"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">highlight</span> = <span class="default-value">const AnsiColour(14)</span>, </span></li>
+<li><span class="parameter" id="param-checked"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">checked</span> = <span class="default-value">const AnsiColour(10)</span>, </span></li>
+<li><span class="parameter" id="param-key"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">key</span> = <span class="default-value">const AnsiColour(14)</span>, </span></li>
+<li><span class="parameter" id="param-info"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">info</span> = <span class="default-value">const AnsiColour(12)</span>, </span></li>
+<li><span class="parameter" id="param-warn"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">warn</span> = <span class="default-value">const AnsiColour(11)</span>, </span></li>
+<li><span class="parameter" id="param-muted"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">muted</span> = <span class="default-value">const AnsiColour.grey(8)</span>, </span></li>
 <li><span class="parameter" id="param-border"><span class="type-annotation"><a href="../../cmdline/AnsiInk-class.html">AnsiInk</a></span> <span class="parameter-name">border</span> = <span class="default-value">const AnsiColour.grey(10)</span>, </span></li>
 <li><span class="parameter" id="param-box"><span class="type-annotation"><a href="../../cmdline/BoxChars-class.html">BoxChars</a></span> <span class="parameter-name">box</span> = <span class="default-value">BoxChars.rounded</span>, </span></li>
 <li><span class="parameter" id="param-pointer"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">pointer</span> = <span class="default-value">ARROW</span>, </span></li>
 <li><span class="parameter" id="param-tick"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">tick</span> = <span class="default-value">TICK</span>, </span></li>
 <li><span class="parameter" id="param-cross"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cross</span> = <span class="default-value">CROSS</span>, </span></li>
+<li><span class="parameter" id="param-glyphs"><span class="type-annotation"><a href="../../cmdline/PromptGlyphs-class.html">PromptGlyphs</a></span> <span class="parameter-name">glyphs</span> = <span class="default-value">PromptGlyphs.unicode</span>, </span></li>
+<li><span class="parameter" id="param-showKeys"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">showKeys</span> = <span class="default-value">true</span>, </span></li>
 </ol>})
     </section>
     
@@ -83,11 +90,18 @@
   this.error = const AnsiColour(9),
   this.success = const AnsiColour(10),
   this.highlight = const AnsiColour(14),
+  this.checked = const AnsiColour(10),
+  this.key = const AnsiColour(14),
+  this.info = const AnsiColour(12),
+  this.warn = const AnsiColour(11),
+  this.muted = const AnsiColour.grey(8),
   this.border = const AnsiColour.grey(10),
   this.box = BoxChars.rounded,
   this.pointer = ARROW,
   this.tick = TICK,
   this.cross = CROSS,
+  this.glyphs = PromptGlyphs.unicode,
+  this.showKeys = true,
 });</code></pre>
 </section>
 
@@ -116,7 +130,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.5
+      2.0.6
   </span>
   
 </footer>

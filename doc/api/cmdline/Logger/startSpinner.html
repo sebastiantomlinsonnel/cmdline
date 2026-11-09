@@ -58,6 +58,7 @@
 <span class="name ">startSpinner</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="startSpinner-param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span>, {</span></li>
 <li><span class="parameter" id="startSpinner-param-level"><span class="type-annotation"><a href="../../cmdline/Level.html">Level</a></span> <span class="parameter-name">level</span> = <span class="default-value">Level.log</span>, </span></li>
 <li><span class="parameter" id="startSpinner-param-interval"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Duration-class.html">Duration</a></span> <span class="parameter-name">interval</span> = <span class="default-value">const Duration(milliseconds: 300)</span>, </span></li>
+<li><span class="parameter" id="startSpinner-param-frames"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">frames</span> = <span class="default-value">kSPINNER_FRAMES</span>, </span></li>
 </ol>})
 
       
@@ -66,6 +67,10 @@
     
 <section class="desc markdown">
   <p>Shows an animated spinner on the current line until <a href="../../cmdline/Logger/stopSpinner.html">stopSpinner</a></p>
+<p><code>frames</code> picks the animation, like <a href="../../cmdline/kSPINNER_LINE-constant.html">kSPINNER_LINE</a> or <a href="../../cmdline/kSPINNER_ARC-constant.html">kSPINNER_ARC</a>.
+When output is piped there's nothing to animate, so only the line from
+<a href="../../cmdline/Logger/stopSpinner.html">stopSpinner</a> is printed. For a spinner with elapsed time and logging
+above it, see <code>Spinner</code>.</p>
 </section>
 
 
@@ -76,17 +81,20 @@
   String label, {
   Level level = Level.log,
   Duration interval = const Duration(milliseconds: 300),
+  List&lt;String&gt; frames = kSPINNER_FRAMES,
 }) {
   _spinnerTimer?.cancel();
   _spinnerTimer = null;
   _spinnerLabel = label;
+  _spinnerLive = Terminal.current.supportsAnsi;
+  if (!_spinnerLive) return;
   stdout.write(HIDE_CURSOR);
 
   int frame = 0;
   void draw() {
-    final String text = &#39;${kSPINNER_FRAMES[frame]} $label&#39;;
+    final String text = &#39;${frames[frame]} $label&#39;;
     stdout.write(&#39;${CLEAR_LINE}${getString(text, level)}&#39;);
-    frame = (frame + 1) % kSPINNER_FRAMES.length;
+    frame = (frame + 1) % frames.length;
   }
 
   draw();
@@ -119,7 +127,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.5
+      2.0.6
   </span>
   
 </footer>

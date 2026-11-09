@@ -77,7 +77,7 @@
   _spinnerTimer?.cancel();
   _spinnerTimer = null;
   _spinnerLabel = null;
-  stdout.write(&#39;$CLEAR_LINE$SHOW_CURSOR&#39;);
+  if (_spinnerLive) stdout.write(&#39;$CLEAR_LINE$SHOW_CURSOR&#39;);
   print(getString(message ?? label, level));
 }</code></pre>
 </section>
@@ -107,7 +107,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.5
+      2.0.6
   </span>
   
 </footer>

@@ -50,9 +50,15 @@ abstract final class WindowsConsole {
 
   /// Reads the input console's mode, or null if there isn't one.
   static int? _mode(DynamicLibrary kernel, int handle) {
-    final alloc = kernel.lookupFunction<_LocalAllocC, _LocalAllocDart>('LocalAlloc');
-    final free = kernel.lookupFunction<_LocalFreeC, _LocalFreeDart>('LocalFree');
-    final get = kernel.lookupFunction<_GetConsoleModeC, _GetConsoleModeDart>('GetConsoleMode');
+    final alloc = kernel.lookupFunction<_LocalAllocC, _LocalAllocDart>(
+      'LocalAlloc',
+    );
+    final free = kernel.lookupFunction<_LocalFreeC, _LocalFreeDart>(
+      'LocalFree',
+    );
+    final get = kernel.lookupFunction<_GetConsoleModeC, _GetConsoleModeDart>(
+      'GetConsoleMode',
+    );
     final memory = alloc(_zeroMemory, _modeBytes);
     if (memory.address == 0) return null;
     try {
@@ -63,10 +69,15 @@ abstract final class WindowsConsole {
   }
 
   static int _inputHandle(DynamicLibrary kernel) =>
-      kernel.lookupFunction<_GetStdHandleC, _GetStdHandleDart>('GetStdHandle')(_stdInput);
+      kernel.lookupFunction<_GetStdHandleC, _GetStdHandleDart>('GetStdHandle')(
+        _stdInput,
+      );
 
   static bool _setMode(DynamicLibrary kernel, int handle, int mode) =>
-      kernel.lookupFunction<_SetConsoleModeC, _SetConsoleModeDart>('SetConsoleMode')(handle, mode) != 0;
+      kernel.lookupFunction<_SetConsoleModeC, _SetConsoleModeDart>(
+        'SetConsoleMode',
+      )(handle, mode) !=
+      0;
 
   /// Turns on arrow-key input. Call after turning line mode off.
   static void enableKeys() {

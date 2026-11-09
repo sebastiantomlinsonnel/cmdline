@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the PromptGlyphs class from the cmdline library, for the Dart programming language.">
+  <title>PromptGlyphs class - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline.dart</a></li>
+    <li class="self-crumb">PromptGlyphs class</li>
+  </ol>
+  <div class="self-name">PromptGlyphs</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="cmdline&#47;cmdline-library-sidebar.html"
+    data-below-sidebar="cmdline&#47;PromptGlyphs-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">PromptGlyphs</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>The symbols prompts and widgets draw with, beyond the theme's basics.</p>
+<p>Pick <a href="../cmdline/PromptGlyphs/unicode-constant.html">PromptGlyphs.unicode</a> (the default) or <a href="../cmdline/PromptGlyphs/ascii-constant.html">PromptGlyphs.ascii</a> for
+terminals without good Unicode fonts, or make your own:</p>
+<pre class="language-dart"><code class="language-dart">AnsiTheme.current = AnsiTheme.current.copyWith(
+  glyphs: PromptGlyphs.unicode.copyWith(checked: '■', unchecked: '□'),
+);
+</code></pre>
+</section>
+
+
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="PromptGlyphs.new" class="callable">
+          <span class="name"><a href="../cmdline/PromptGlyphs/PromptGlyphs.html">PromptGlyphs</a></span><span class="signature">({<span class="parameter" id="param-checked"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">checked</span> = <span class="default-value">&#39;◉&#39;</span>, </span><span class="parameter" id="param-unchecked"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">unchecked</span> = <span class="default-value">&#39;◯&#39;</span>, </span><span class="parameter" id="param-star"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">star</span> = <span class="default-value">&#39;★&#39;</span>, </span><span class="parameter" id="param-starEmpty"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">starEmpty</span> = <span class="default-value">&#39;☆&#39;</span>, </span><span class="parameter" id="param-trackFill"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">trackFill</span> = <span class="default-value">&#39;━&#39;</span>, </span><span class="parameter" id="param-trackEmpty"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">trackEmpty</span> = <span class="default-value">&#39;─&#39;</span>, </span><span class="parameter" id="param-knob"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">knob</span> = <span class="default-value">&#39;●&#39;</span>, </span><span class="parameter" id="param-moreAbove"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">moreAbove</span> = <span class="default-value">&#39;↑&#39;</span>, </span><span class="parameter" id="param-moreBelow"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">moreBelow</span> = <span class="default-value">&#39;↓&#39;</span>, </span><span class="parameter" id="param-toggleOn"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">toggleOn</span> = <span class="default-value">&#39;◉ on &#39;</span>, </span><span class="parameter" id="param-toggleOff"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">toggleOff</span> = <span class="default-value">&#39;◯ off&#39;</span>, </span><span class="parameter" id="param-folder"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">folder</span> = <span class="default-value">&#39;▸&#39;</span>, </span><span class="parameter" id="param-file"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">file</span> = <span class="default-value">&#39; &#39;</span>, </span><span class="parameter" id="param-question"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">question</span> = <span class="default-value">&#39;?&#39;</span>, </span><span class="parameter" id="param-mask"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mask</span> = <span class="default-value">&#39;•&#39;</span></span>})</span>
+        </dt>
+        <dd>
+          Creates a glyph set. Anything left out keeps its Unicode default.
+            <div class="constructor-modifier features">const</div>
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="checked" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/checked.html">checked</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  A ticked checkbox in a multi-select.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="file" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/file.html">file</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  A file in a file picker.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="folder" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/folder.html">folder</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  A folder in a file picker.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="knob" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/knob.html">knob</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The handle on a slider.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="mask" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/mask.html">mask</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The mask for typed password characters.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="moreAbove" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/moreAbove.html">moreAbove</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  Shown when there are more rows above.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="moreBelow" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/moreBelow.html">moreBelow</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  Shown when there are more rows below.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="question" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/question.html">question</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The symbol in front of the question while a prompt is open.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="star" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/star.html">star</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  A filled star in a rating.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="starEmpty" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/starEmpty.html">starEmpty</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  An empty star in a rating.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="toggleOff" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/toggleOff.html">toggleOff</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  A switch that is off, in a toggle list.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="toggleOn" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/toggleOn.html">toggleOn</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  A switch that is on, in a toggle list.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="trackEmpty" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/trackEmpty.html">trackEmpty</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The empty part of a slider track.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="trackFill" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/trackFill.html">trackFill</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The filled part of a slider track.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="unchecked" class="property">
+  <span class="name"><a href="../cmdline/PromptGlyphs/unchecked.html">unchecked</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  An empty checkbox in a multi-select.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="copyWith" class="callable">
+  <span class="name"><a href="../cmdline/PromptGlyphs/copyWith.html">copyWith</a></span><span class="signature">(<wbr>{<span class="parameter" id="copyWith-param-checked"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">checked</span>, </span><span class="parameter" id="copyWith-param-unchecked"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">unchecked</span>, </span><span class="parameter" id="copyWith-param-star"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">star</span>, </span><span class="parameter" id="copyWith-param-starEmpty"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">starEmpty</span>, </span><span class="parameter" id="copyWith-param-trackFill"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">trackFill</span>, </span><span class="parameter" id="copyWith-param-trackEmpty"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">trackEmpty</span>, </span><span class="parameter" id="copyWith-param-knob"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">knob</span>, </span><span class="parameter" id="copyWith-param-moreAbove"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">moreAbove</span>, </span><span class="parameter" id="copyWith-param-moreBelow"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">moreBelow</span>, </span><span class="parameter" id="copyWith-param-toggleOn"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">toggleOn</span>, </span><span class="parameter" id="copyWith-param-toggleOff"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">toggleOff</span>, </span><span class="parameter" id="copyWith-param-folder"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">folder</span>, </span><span class="parameter" id="copyWith-param-file"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">file</span>, </span><span class="parameter" id="copyWith-param-question"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">question</span>, </span><span class="parameter" id="copyWith-param-mask"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">mask</span></span>})
+    <span class="returntype parameter">&#8594; <a href="../cmdline/PromptGlyphs-class.html">PromptGlyphs</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A copy with some symbols swapped.
+  
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  <section class="summary offset-anchor" id="constants">
+    <h2>Constants</h2>
+    <dl class="properties">
+        <dt id="ascii" class="constant">
+    <span class="name "><a href="../cmdline/PromptGlyphs/ascii-constant.html">ascii</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/PromptGlyphs-class.html">PromptGlyphs</a></span>
+  
+
+</dt>
+<dd>
+  Plain keyboard characters, for any terminal.
+  
+
+</dd>
+
+        <dt id="unicode" class="constant">
+    <span class="name "><a href="../cmdline/PromptGlyphs/unicode-constant.html">unicode</a></span>
+  <span class="signature">&#8594; const <a href="../cmdline/PromptGlyphs-class.html">PromptGlyphs</a></span>
+  
+
+</dt>
+<dd>
+  Unicode symbols, for modern terminals. The default.
+  
+
+</dd>
+
+    </dl>
+  </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline</a></li>
+    <li class="self-crumb">PromptGlyphs class</li>
+</ol>
+
+    <h5>cmdline library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.6
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

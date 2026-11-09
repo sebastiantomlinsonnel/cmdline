@@ -7,7 +7,7 @@ analyzer:
     strict-raw-types: true   # no raw generics like List instead of List<int>
   exclude:
 #    - example/**
-    - build/**
+    - build/**w
     - "**/*.g.dart"
   errors:
     unawaited_futures: warning

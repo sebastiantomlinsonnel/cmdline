@@ -1,4 +1,3 @@
-// Adapted from terminice (MIT), https://github.com/jozzdart/terminice
 import 'dart:async';
 import 'dart:math' as math;
 

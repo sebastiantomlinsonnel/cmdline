@@ -49,16 +49,18 @@
     data-below-sidebar="cmdline&#47;PromptLine-class-sidebar.html">
     <div>
 <h1><span class="kind-class">PromptLine</span> class 
+    <a href="https://dart.dev/language/class-modifiers#abstract" class="feature feature-abstract" title="This type can not be directly constructed.">abstract</a>
+    <a href="https://dart.dev/language/class-modifiers#final" class="feature feature-final" title="This class can neither be extended, implemented, nor mixed in.">final</a>
  
 </h1></div>
 
     
 <section class="desc markdown">
   <p>Asks one question on one line until the answer passes a check.</p>
-<p>Used by <code>ask</code>, <code>confirm</code> and the plain <code>menu</code> from <a href="../cmdline/CMD/prompt.html">CMD.prompt</a>. With
-colour on, a wrong answer shows a themed error line under the question,
-and the question is redrawn in place. Once answered, the line is redrawn
-with a tick and the answer in the theme's answer colour.</p>
+<p>This is how prompts ask in <a href="../cmdline/PromptMode.html">PromptMode.line</a>, when there is no live
+screen. When the screen can move the cursor, a wrong answer shows a themed
+error line under the question and the question is redrawn in place. Once
+answered, the line is redrawn with a tick and the answer.</p>
 </section>
 
 
@@ -197,7 +199,7 @@ with a tick and the answer in the theme's answer colour.</p>
 <footer>
   <span class="no-break">
     cmdline
-      2.0.5
+      2.0.6
   </span>
   
 </footer>

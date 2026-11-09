@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the RangePrompt class from the cmdline library, for the Dart programming language.">
+  <title>RangePrompt class - cmdline library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline.dart</a></li>
+    <li class="self-crumb">RangePrompt class</li>
+  </ol>
+  <div class="self-name">RangePrompt</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="cmdline&#47;cmdline-library-sidebar.html"
+    data-below-sidebar="cmdline&#47;RangePrompt-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">RangePrompt</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Pick a range on a track with two handles, like a price filter.</p>
+<p>Left and right move the active handle and Tab swaps handles.</p>
+</section>
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+  <dt>Inheritance</dt>
+  <dd>
+    <ul class="gt-separated dark clazz-relationships">
+      <li><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></li>
+        <li><a href="../cmdline/PromptView-class.html">PromptView</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/IntRange.html">IntRange</a></span>&gt;</span></li>
+      <li>RangePrompt</li>
+    </ul>
+  </dd>
+
+        
+        
+
+
+        
+        
+
+
+      </dl>
+    </section>
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="RangePrompt.new" class="callable">
+          <span class="name"><a href="../cmdline/RangePrompt/RangePrompt.html">RangePrompt</a></span><span class="signature">(<span class="parameter" id="param-question"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">question</span>, {</span><span class="parameter" id="param-min"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">min</span> = <span class="default-value">0</span>, </span><span class="parameter" id="param-max"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">max</span> = <span class="default-value">100</span>, </span><span class="parameter" id="param-step"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">step</span> = <span class="default-value">1</span>, </span><span class="parameter" id="param-width"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">width</span> = <span class="default-value">30</span>, </span><span class="parameter" id="param-unit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">unit</span> = <span class="default-value">&#39;&#39;</span>, </span><span class="parameter" id="param-initial"><span class="type-annotation"><a href="../cmdline/IntRange.html">IntRange</a>?</span> <span class="parameter-name">initial</span></span>})</span>
+        </dt>
+        <dd>
+          Creates a range slider asking <code>question</code>.
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="bodyCursor" class="property inherited">
+  <span class="name"><a href="../cmdline/PromptView/bodyCursor.html">bodyCursor</a></span>
+  <span class="signature">&#8594; <a href="../cmdline/CursorSpot.html">CursorSpot</a>?</span>
+  
+
+</dt>
+<dd class="inherited">
+  Where the blinking cursor goes in <a href="../cmdline/PromptView/body.html">body</a>, if anywhere. Used when
+<a href="../cmdline/PromptView/inlineCursor.html">inlineCursor</a> is null.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="error" class="property inherited">
+  <span class="name"><a href="../cmdline/PromptView/error.html">error</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd class="inherited">
+  A problem to show under the prompt, like a failed check. Cleared on
+every key press.
+  <div class="features"><span class="feature">getter/setter pair</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="fallbackHint" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/fallbackHint.html">fallbackHint</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  The dim hint shown in line mode, like <code>(1-5)</code> or <code>[y/N]</code>.
+  <div class="features"><span class="feature">no setter</span><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="initial" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/initial.html">initial</a></span>
+  <span class="signature">&#8594; <a href="../cmdline/IntRange.html">IntRange</a></span>
+  
+
+</dt>
+<dd>
+  The range at the start.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="inlineCursor" class="property inherited">
+  <span class="name"><a href="../cmdline/PromptView/inlineCursor.html">inlineCursor</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>
+  
+
+</dt>
+<dd class="inherited">
+  Where the blinking cursor goes in <a href="../cmdline/PromptView/inline.html">inline</a>, in screen columns; null
+hides it. Text inputs use this.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="keys" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/keys.html">keys</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cmdline/KeyHint.html">KeyHint</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  The keys shown in the hints line.
+  <div class="features"><span class="feature">no setter</span><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="max" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/max.html">max</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The largest value.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="min" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/min.html">min</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The smallest value.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="question" class="property inherited">
+  <span class="name"><a href="../cmdline/PromptView/question.html">question</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The question at the top of the prompt.
+  <div class="features"><span class="feature">final</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="result" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/result.html">result</a></span>
+  <span class="signature">&#8594; <a href="../cmdline/IntRange.html">IntRange</a></span>
+  
+
+</dt>
+<dd>
+  The answer, read once <a href="../cmdline/RangePrompt/onKey.html">onKey</a> gives back <a href="../cmdline/KeyResult.html">KeyResult.done</a>.
+  <div class="features"><span class="feature">no setter</span><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="step" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/step.html">step</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  How far one arrow press moves.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="theme" class="property inherited">
+  <span class="name"><a href="../cmdline/PromptView/theme.html">theme</a></span>
+  <span class="signature">&#8594; <a href="../cmdline/AnsiTheme-class.html">AnsiTheme</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The theme in use.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="unattended" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/unattended.html">unattended</a></span>
+  <span class="signature">&#8594; <a href="../cmdline/IntRange.html">IntRange</a>?</span>
+  
+
+</dt>
+<dd>
+  The answer used in <a href="../cmdline/PromptMode.html">PromptMode.unattended</a>, or null if there isn't one.
+  <div class="features"><span class="feature">no setter</span><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="unit" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/unit.html">unit</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  Text after each value, like <code>%</code>.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="width" class="property">
+  <span class="name"><a href="../cmdline/RangePrompt/width.html">width</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  How many columns wide the track is.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="body" class="callable inherited">
+  <span class="name"><a href="../cmdline/PromptView/body.html">body</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The lines under the question line. Defaults to none.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="describe" class="callable">
+  <span class="name"><a href="../cmdline/RangePrompt/describe.html">describe</a></span><span class="signature">(<wbr><span class="parameter" id="describe-param-value"><span class="type-annotation"><a href="../cmdline/IntRange.html">IntRange</a></span> <span class="parameter-name">value</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  How <code>value</code> is shown after the question once answered.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="fallback" class="callable inherited">
+  <span class="name"><a href="../cmdline/PromptView/fallback.html">fallback</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/IntRange.html">IntRange</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Asks the question without a live screen, one typed line at a time.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="inline" class="callable">
+  <span class="name"><a href="../cmdline/RangePrompt/inline.html">inline</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  The text after the question, on the same line. Defaults to nothing.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="moreLine" class="callable inherited">
+  <span class="name"><a href="../cmdline/PromptView/moreLine.html">moreLine</a></span><span class="signature">(<wbr><span class="parameter" id="moreLine-param-hidden"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">hidden</span>, {</span><span class="parameter" id="moreLine-param-above"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">above</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A scroll hint line, like <code>↑ 3 more</code>, or null when nothing is hidden.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="muted" class="callable inherited">
+  <span class="name"><a href="../cmdline/PromptView/muted.html">muted</a></span><span class="signature">(<wbr><span class="parameter" id="muted-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  <code>text</code> in the theme's <a href="../cmdline/AnsiTheme/muted.html">AnsiTheme.muted</a> colour.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="onKey" class="callable">
+  <span class="name"><a href="../cmdline/RangePrompt/onKey.html">onKey</a></span><span class="signature">(<wbr><span class="parameter" id="onKey-param-press"><span class="type-annotation"><a href="../cmdline/KeyPress-class.html">KeyPress</a></span> <span class="parameter-name">press</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../cmdline/KeyResult.html">KeyResult</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Reacts to <code>press</code> and says what should happen next.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="pageSizeFor" class="callable inherited">
+  <span class="name"><a href="../cmdline/PromptView/pageSizeFor.html">pageSizeFor</a></span><span class="signature">(<wbr><span class="parameter" id="pageSizeFor-param-count"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">count</span>, {</span><span class="parameter" id="pageSizeFor-param-reserved"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">reserved</span> = <span class="default-value">4</span>, </span><span class="parameter" id="pageSizeFor-param-max"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">max</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  How many list rows fit under the prompt, leaving room for <code>reserved</code>
+other lines.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="parse" class="callable">
+  <span class="name"><a href="../cmdline/RangePrompt/parse.html">parse</a></span><span class="signature">(<wbr><span class="parameter" id="parse-param-typed"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">typed</span></span>)
+    <span class="returntype parameter">&#8594; (<span class="field">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="field-name">problem</span>, </span><span class="field"><span class="type-annotation"><a href="../cmdline/IntRange.html">IntRange</a>?</span> <span class="field-name">value</span>}</span>)</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Turns a typed line into an answer, for line mode.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="pointed" class="callable inherited">
+  <span class="name"><a href="../cmdline/PromptView/pointed.html">pointed</a></span><span class="signature">(<wbr><span class="parameter" id="pointed-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  <code>text</code> as the highlighted row: the pointer, bold, in the highlight.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="unpointed" class="callable inherited">
+  <span class="name"><a href="../cmdline/PromptView/unpointed.html">unpointed</a></span><span class="signature">(<wbr><span class="parameter" id="unpointed-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  <code>text</code> as a normal row, lined up with <a href="../cmdline/PromptView/pointed.html">pointed</a> rows.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">cmdline</a></li>
+    <li><a href="../cmdline/">cmdline</a></li>
+    <li class="self-crumb">RangePrompt class</li>
+</ol>
+
+    <h5>cmdline library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    cmdline
+      2.0.6
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

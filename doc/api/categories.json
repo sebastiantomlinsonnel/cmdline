@@ -1,1 +1,879 @@
-[{"name":"ANSI_BLACK_FG","qualifiedName":"cmdline.ANSI_BLACK_FG","href":"cmdline/ANSI_BLACK_FG-constant.html","type":"top-level constant","categories":["ansi constants"]},{"name":"ARROW","qualifiedName":"cmdline.ARROW","href":"cmdline/ARROW-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"Ansi","qualifiedName":"cmdline.Ansi","href":"cmdline/Ansi-class.html","type":"class","categories":["ansi"]},{"name":"AnsiColour","qualifiedName":"cmdline.AnsiColour","href":"cmdline/AnsiColour-class.html","type":"class","categories":["ansi"]},{"name":"AnsiColourRgb","qualifiedName":"cmdline.AnsiColourRgb","href":"cmdline/AnsiColourRgb-class.html","type":"class","categories":["ansi"]},{"name":"AnsiInk","qualifiedName":"cmdline.AnsiInk","href":"cmdline/AnsiInk-class.html","type":"class","categories":["ansi"]},{"name":"AnsiPalette","qualifiedName":"cmdline.AnsiPalette","href":"cmdline/AnsiPalette-class.html","type":"class","categories":["ansi"]},{"name":"AnsiPrinter","qualifiedName":"cmdline.AnsiPrinter","href":"cmdline/AnsiPrinter-class.html","type":"class","categories":["ansi","styling"],"subcategories":["helper"]},{"name":"AnsiTheme","qualifiedName":"cmdline.AnsiTheme","href":"cmdline/AnsiTheme-class.html","type":"class","categories":["ansi"]},{"name":"Argument","qualifiedName":"cmdline.Argument","href":"cmdline/Argument-class.html","type":"class","categories":["cli"]},{"name":"BULLET","qualifiedName":"cmdline.BULLET","href":"cmdline/BULLET-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"BoxChars","qualifiedName":"cmdline.BoxChars","href":"cmdline/BoxChars-class.html","type":"class","categories":["ansi"]},{"name":"CLI","qualifiedName":"cmdline.CLI","href":"cmdline/CLI-class.html","type":"class","categories":["cli"]},{"name":"CLIError","qualifiedName":"cmdline.CLIError","href":"cmdline/CLIError-class.html","type":"class","categories":["cli"]},{"name":"CMD","qualifiedName":"cmdline.CMD","href":"cmdline/CMD-class.html","type":"class","categories":["cmd"]},{"name":"CROSS","qualifiedName":"cmdline.CROSS","href":"cmdline/CROSS-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"Command","qualifiedName":"cmdline.Command","href":"cmdline/Command-class.html","type":"class","categories":["cli"]},{"name":"DARK_SHADE","qualifiedName":"cmdline.DARK_SHADE","href":"cmdline/DARK_SHADE-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"ELLIPSIS","qualifiedName":"cmdline.ELLIPSIS","href":"cmdline/ELLIPSIS-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"FULL_BLOCK","qualifiedName":"cmdline.FULL_BLOCK","href":"cmdline/FULL_BLOCK-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"Flag","qualifiedName":"cmdline.Flag","href":"cmdline/Flag-class.html","type":"class","categories":["cli"]},{"name":"HelpPrinter","qualifiedName":"cmdline.HelpPrinter","href":"cmdline/HelpPrinter-class.html","type":"class","categories":["cli"]},{"name":"INFO","qualifiedName":"cmdline.INFO","href":"cmdline/INFO-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"Input","qualifiedName":"cmdline.Input","href":"cmdline/Input-class.html","type":"class","categories":["cli"]},{"name":"LIGHT_SHADE","qualifiedName":"cmdline.LIGHT_SHADE","href":"cmdline/LIGHT_SHADE-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"Level","qualifiedName":"cmdline.Level","href":"cmdline/Level.html","type":"enum","categories":["logging"]},{"name":"Logger","qualifiedName":"cmdline.Logger","href":"cmdline/Logger-class.html","type":"class","categories":["logging"]},{"name":"MEDIUM_SHADE","qualifiedName":"cmdline.MEDIUM_SHADE","href":"cmdline/MEDIUM_SHADE-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"Moment","qualifiedName":"cmdline.Moment","href":"cmdline/Moment-class.html","type":"class","categories":["core"]},{"name":"Option","qualifiedName":"cmdline.Option","href":"cmdline/Option-class.html","type":"class","categories":["cli"]},{"name":"ParseResult","qualifiedName":"cmdline.ParseResult","href":"cmdline/ParseResult-class.html","type":"class","categories":["cli"]},{"name":"Parser","qualifiedName":"cmdline.Parser","href":"cmdline/Parser-class.html","type":"class","categories":["cli"]},{"name":"Period","qualifiedName":"cmdline.Period","href":"cmdline/Period-class.html","type":"class","categories":["core"]},{"name":"ProgressBar","qualifiedName":"cmdline.ProgressBar","href":"cmdline/ProgressBar-class.html","type":"class","categories":["logging"]},{"name":"Radix","qualifiedName":"cmdline.Radix","href":"cmdline/Radix-class.html","type":"class","categories":["core"]},{"name":"RunCommand","qualifiedName":"cmdline.RunCommand","href":"cmdline/RunCommand.html","type":"typedef","categories":["cli"]},{"name":"ShellCommand","qualifiedName":"cmdline.ShellCommand","href":"cmdline/ShellCommand-class.html","type":"class","categories":["core"]},{"name":"TICK","qualifiedName":"cmdline.TICK","href":"cmdline/TICK-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"WARNING","qualifiedName":"cmdline.WARNING","href":"cmdline/WARNING-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"debug","qualifiedName":"cmdline.debug","href":"cmdline/debug.html","type":"function","categories":["logging"]},{"name":"dev","qualifiedName":"cmdline.dev","href":"cmdline/dev.html","type":"function","categories":["logging"]},{"name":"fail","qualifiedName":"cmdline.fail","href":"cmdline/fail.html","type":"function","categories":["logging"]},{"name":"kBAR_EIGHTHS","qualifiedName":"cmdline.kBAR_EIGHTHS","href":"cmdline/kBAR_EIGHTHS-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"kBAR_LEVELS","qualifiedName":"cmdline.kBAR_LEVELS","href":"cmdline/kBAR_LEVELS-constant.html","type":"top-level constant","categories":["ansi"]},{"name":"log","qualifiedName":"cmdline.log","href":"cmdline/log.html","type":"function","categories":["logging"]},{"name":"pass","qualifiedName":"cmdline.pass","href":"cmdline/pass.html","type":"function","categories":["logging"]},{"name":"trace","qualifiedName":"cmdline.trace","href":"cmdline/trace.html","type":"function","categories":["logging"]},{"name":"warn","qualifiedName":"cmdline.warn","href":"cmdline/warn.html","type":"function","categories":["logging"]},{"name":"write","qualifiedName":"cmdline.write","href":"cmdline/write.html","type":"function","categories":["logging"]},{"name":"writeln","qualifiedName":"cmdline.writeln","href":"cmdline/writeln.html","type":"function","categories":["logging"]}]
+[
+  {
+    "name": "ANSI_BLACK_FG",
+    "qualifiedName": "cmdline.ANSI_BLACK_FG",
+    "href": "cmdline/ANSI_BLACK_FG-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi constants"
+    ]
+  },
+  {
+    "name": "ARROW",
+    "qualifiedName": "cmdline.ARROW",
+    "href": "cmdline/ARROW-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "Ansi",
+    "qualifiedName": "cmdline.Ansi",
+    "href": "cmdline/Ansi-class.html",
+    "type": "class",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "AnsiColour",
+    "qualifiedName": "cmdline.AnsiColour",
+    "href": "cmdline/AnsiColour-class.html",
+    "type": "class",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "AnsiColourRgb",
+    "qualifiedName": "cmdline.AnsiColourRgb",
+    "href": "cmdline/AnsiColourRgb-class.html",
+    "type": "class",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "AnsiInk",
+    "qualifiedName": "cmdline.AnsiInk",
+    "href": "cmdline/AnsiInk-class.html",
+    "type": "class",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "AnsiPalette",
+    "qualifiedName": "cmdline.AnsiPalette",
+    "href": "cmdline/AnsiPalette-class.html",
+    "type": "class",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "AnsiPrinter",
+    "qualifiedName": "cmdline.AnsiPrinter",
+    "href": "cmdline/AnsiPrinter-class.html",
+    "type": "class",
+    "categories": [
+      "ansi",
+      "styling"
+    ],
+    "subcategories": [
+      "helper"
+    ]
+  },
+  {
+    "name": "AnsiTheme",
+    "qualifiedName": "cmdline.AnsiTheme",
+    "href": "cmdline/AnsiTheme-class.html",
+    "type": "class",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "Argument",
+    "qualifiedName": "cmdline.Argument",
+    "href": "cmdline/Argument-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "BULLET",
+    "qualifiedName": "cmdline.BULLET",
+    "href": "cmdline/BULLET-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "BoxChars",
+    "qualifiedName": "cmdline.BoxChars",
+    "href": "cmdline/BoxChars-class.html",
+    "type": "class",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "CLI",
+    "qualifiedName": "cmdline.CLI",
+    "href": "cmdline/CLI-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "CLIError",
+    "qualifiedName": "cmdline.CLIError",
+    "href": "cmdline/CLIError-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "CMD",
+    "qualifiedName": "cmdline.CMD",
+    "href": "cmdline/CMD-class.html",
+    "type": "class",
+    "categories": [
+      "cmd"
+    ]
+  },
+  {
+    "name": "CROSS",
+    "qualifiedName": "cmdline.CROSS",
+    "href": "cmdline/CROSS-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "ColourPrompt",
+    "qualifiedName": "cmdline.ColourPrompt",
+    "href": "cmdline/ColourPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Command",
+    "qualifiedName": "cmdline.Command",
+    "href": "cmdline/Command-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "ConfirmPrompt",
+    "qualifiedName": "cmdline.ConfirmPrompt",
+    "href": "cmdline/ConfirmPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "DARK_SHADE",
+    "qualifiedName": "cmdline.DARK_SHADE",
+    "href": "cmdline/DARK_SHADE-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "DatePrompt",
+    "qualifiedName": "cmdline.DatePrompt",
+    "href": "cmdline/DatePrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "DisplayWidth",
+    "qualifiedName": "cmdline.DisplayWidth",
+    "href": "cmdline/DisplayWidth.html",
+    "type": "extension",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "ELLIPSIS",
+    "qualifiedName": "cmdline.ELLIPSIS",
+    "href": "cmdline/ELLIPSIS-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "FULL_BLOCK",
+    "qualifiedName": "cmdline.FULL_BLOCK",
+    "href": "cmdline/FULL_BLOCK-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "FilePrompt",
+    "qualifiedName": "cmdline.FilePrompt",
+    "href": "cmdline/FilePrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Flag",
+    "qualifiedName": "cmdline.Flag",
+    "href": "cmdline/Flag-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Fuzzy",
+    "qualifiedName": "cmdline.Fuzzy",
+    "href": "cmdline/Fuzzy-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "GridPrompt",
+    "qualifiedName": "cmdline.GridPrompt",
+    "href": "cmdline/GridPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "HelpPrinter",
+    "qualifiedName": "cmdline.HelpPrinter",
+    "href": "cmdline/HelpPrinter-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "INFO",
+    "qualifiedName": "cmdline.INFO",
+    "href": "cmdline/INFO-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "Input",
+    "qualifiedName": "cmdline.Input",
+    "href": "cmdline/Input-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Key",
+    "qualifiedName": "cmdline.Key",
+    "href": "cmdline/Key.html",
+    "type": "enum",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "KeyPress",
+    "qualifiedName": "cmdline.KeyPress",
+    "href": "cmdline/KeyPress-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "KeyReader",
+    "qualifiedName": "cmdline.KeyReader",
+    "href": "cmdline/KeyReader-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "KeyResult",
+    "qualifiedName": "cmdline.KeyResult",
+    "href": "cmdline/KeyResult.html",
+    "type": "enum",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "LIGHT_SHADE",
+    "qualifiedName": "cmdline.LIGHT_SHADE",
+    "href": "cmdline/LIGHT_SHADE-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "Level",
+    "qualifiedName": "cmdline.Level",
+    "href": "cmdline/Level.html",
+    "type": "enum",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "ListCursor",
+    "qualifiedName": "cmdline.ListCursor",
+    "href": "cmdline/ListCursor-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "ListPrompt",
+    "qualifiedName": "cmdline.ListPrompt",
+    "href": "cmdline/ListPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "LiveRegion",
+    "qualifiedName": "cmdline.LiveRegion",
+    "href": "cmdline/LiveRegion-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Logger",
+    "qualifiedName": "cmdline.Logger",
+    "href": "cmdline/Logger-class.html",
+    "type": "class",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "MEDIUM_SHADE",
+    "qualifiedName": "cmdline.MEDIUM_SHADE",
+    "href": "cmdline/MEDIUM_SHADE-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "Moment",
+    "qualifiedName": "cmdline.Moment",
+    "href": "cmdline/Moment-class.html",
+    "type": "class",
+    "categories": [
+      "core"
+    ]
+  },
+  {
+    "name": "MultiSelectPrompt",
+    "qualifiedName": "cmdline.MultiSelectPrompt",
+    "href": "cmdline/MultiSelectPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "MultilinePrompt",
+    "qualifiedName": "cmdline.MultilinePrompt",
+    "href": "cmdline/MultilinePrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Option",
+    "qualifiedName": "cmdline.Option",
+    "href": "cmdline/Option-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "ParseResult",
+    "qualifiedName": "cmdline.ParseResult",
+    "href": "cmdline/ParseResult-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Parser",
+    "qualifiedName": "cmdline.Parser",
+    "href": "cmdline/Parser-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "PathKind",
+    "qualifiedName": "cmdline.PathKind",
+    "href": "cmdline/PathKind.html",
+    "type": "enum",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "PathPrompt",
+    "qualifiedName": "cmdline.PathPrompt",
+    "href": "cmdline/PathPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Period",
+    "qualifiedName": "cmdline.Period",
+    "href": "cmdline/Period-class.html",
+    "type": "class",
+    "categories": [
+      "core"
+    ]
+  },
+  {
+    "name": "Pickers",
+    "qualifiedName": "cmdline.Pickers",
+    "href": "cmdline/Pickers-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "ProgressBar",
+    "qualifiedName": "cmdline.ProgressBar",
+    "href": "cmdline/ProgressBar-class.html",
+    "type": "class",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "PromptCancelled",
+    "qualifiedName": "cmdline.PromptCancelled",
+    "href": "cmdline/PromptCancelled-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "PromptGlyphs",
+    "qualifiedName": "cmdline.PromptGlyphs",
+    "href": "cmdline/PromptGlyphs-class.html",
+    "type": "class",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "PromptLine",
+    "qualifiedName": "cmdline.PromptLine",
+    "href": "cmdline/PromptLine-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "PromptMode",
+    "qualifiedName": "cmdline.PromptMode",
+    "href": "cmdline/PromptMode.html",
+    "type": "enum",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "PromptRunner",
+    "qualifiedName": "cmdline.PromptRunner",
+    "href": "cmdline/PromptRunner-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "PromptView",
+    "qualifiedName": "cmdline.PromptView",
+    "href": "cmdline/PromptView-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Prompts",
+    "qualifiedName": "cmdline.Prompts",
+    "href": "cmdline/Prompts-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Radix",
+    "qualifiedName": "cmdline.Radix",
+    "href": "cmdline/Radix-class.html",
+    "type": "class",
+    "categories": [
+      "core"
+    ]
+  },
+  {
+    "name": "RangePrompt",
+    "qualifiedName": "cmdline.RangePrompt",
+    "href": "cmdline/RangePrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "RatingPrompt",
+    "qualifiedName": "cmdline.RatingPrompt",
+    "href": "cmdline/RatingPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "RunCommand",
+    "qualifiedName": "cmdline.RunCommand",
+    "href": "cmdline/RunCommand.html",
+    "type": "typedef",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "SearchPrompt",
+    "qualifiedName": "cmdline.SearchPrompt",
+    "href": "cmdline/SearchPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "SelectPrompt",
+    "qualifiedName": "cmdline.SelectPrompt",
+    "href": "cmdline/SelectPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "ShellCommand",
+    "qualifiedName": "cmdline.ShellCommand",
+    "href": "cmdline/ShellCommand-class.html",
+    "type": "class",
+    "categories": [
+      "core"
+    ]
+  },
+  {
+    "name": "SliderPrompt",
+    "qualifiedName": "cmdline.SliderPrompt",
+    "href": "cmdline/SliderPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Spinner",
+    "qualifiedName": "cmdline.Spinner",
+    "href": "cmdline/Spinner-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "StdTerminal",
+    "qualifiedName": "cmdline.StdTerminal",
+    "href": "cmdline/StdTerminal-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "TICK",
+    "qualifiedName": "cmdline.TICK",
+    "href": "cmdline/TICK-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "TagsPrompt",
+    "qualifiedName": "cmdline.TagsPrompt",
+    "href": "cmdline/TagsPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Task",
+    "qualifiedName": "cmdline.Task",
+    "href": "cmdline/Task-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "TaskContext",
+    "qualifiedName": "cmdline.TaskContext",
+    "href": "cmdline/TaskContext-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "TaskReport",
+    "qualifiedName": "cmdline.TaskReport",
+    "href": "cmdline/TaskReport-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Tasks",
+    "qualifiedName": "cmdline.Tasks",
+    "href": "cmdline/Tasks-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Terminal",
+    "qualifiedName": "cmdline.Terminal",
+    "href": "cmdline/Terminal-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "TextBuffer",
+    "qualifiedName": "cmdline.TextBuffer",
+    "href": "cmdline/TextBuffer-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "TextPrompt",
+    "qualifiedName": "cmdline.TextPrompt",
+    "href": "cmdline/TextPrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "TogglePrompt",
+    "qualifiedName": "cmdline.TogglePrompt",
+    "href": "cmdline/TogglePrompt-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "Tone",
+    "qualifiedName": "cmdline.Tone",
+    "href": "cmdline/Tone.html",
+    "type": "enum",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "TreeNode",
+    "qualifiedName": "cmdline.TreeNode",
+    "href": "cmdline/TreeNode-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "WARNING",
+    "qualifiedName": "cmdline.WARNING",
+    "href": "cmdline/WARNING-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "Widgets",
+    "qualifiedName": "cmdline.Widgets",
+    "href": "cmdline/Widgets-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "debug",
+    "qualifiedName": "cmdline.debug",
+    "href": "cmdline/debug.html",
+    "type": "function",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "dev",
+    "qualifiedName": "cmdline.dev",
+    "href": "cmdline/dev.html",
+    "type": "function",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "fail",
+    "qualifiedName": "cmdline.fail",
+    "href": "cmdline/fail.html",
+    "type": "function",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "kBAR_EIGHTHS",
+    "qualifiedName": "cmdline.kBAR_EIGHTHS",
+    "href": "cmdline/kBAR_EIGHTHS-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "kBAR_LEVELS",
+    "qualifiedName": "cmdline.kBAR_LEVELS",
+    "href": "cmdline/kBAR_LEVELS-constant.html",
+    "type": "top-level constant",
+    "categories": [
+      "ansi"
+    ]
+  },
+  {
+    "name": "log",
+    "qualifiedName": "cmdline.log",
+    "href": "cmdline/log.html",
+    "type": "function",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "pass",
+    "qualifiedName": "cmdline.pass",
+    "href": "cmdline/pass.html",
+    "type": "function",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "trace",
+    "qualifiedName": "cmdline.trace",
+    "href": "cmdline/trace.html",
+    "type": "function",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "warn",
+    "qualifiedName": "cmdline.warn",
+    "href": "cmdline/warn.html",
+    "type": "function",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "write",
+    "qualifiedName": "cmdline.write",
+    "href": "cmdline/write.html",
+    "type": "function",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "writeln",
+    "qualifiedName": "cmdline.writeln",
+    "href": "cmdline/writeln.html",
+    "type": "function",
+    "categories": [
+      "logging"
+    ]
+  },
+  {
+    "name": "MockTerminal",
+    "qualifiedName": "testing.MockTerminal",
+    "href": "testing/MockTerminal-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  },
+  {
+    "name": "ScreenReplay",
+    "qualifiedName": "testing.ScreenReplay",
+    "href": "testing/ScreenReplay-class.html",
+    "type": "class",
+    "categories": [
+      "cli"
+    ]
+  }
+]

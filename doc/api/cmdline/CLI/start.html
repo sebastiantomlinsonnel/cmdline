@@ -70,6 +70,7 @@
 <li><code>--version</code> prints <a href="../../cmdline/Command/name.html">name</a> and <a href="../../cmdline/CLI/version.html">version</a>.</li>
 <li>A mistake prints a red error and sets the exit code to 64.</li>
 <li>A command without a <code>run</code> function prints its help screen.</li>
+<li>A cancelled prompt (<a href="../../cmdline/PromptCancelled-class.html">PromptCancelled</a>) sets the exit code to 130.</li>
 </ul>
 </section>
 
@@ -101,7 +102,12 @@
     return;
   }
 
-  await run(result.input);
+  try {
+    await run(result.input);
+  } on PromptCancelled {
+    &#47;&#47; The prompt already left a &quot;cancelled&quot; line; 130 is the Ctrl+C code.
+    exitCode = 130;
+  }
 }</code></pre>
 </section>
 
@@ -130,7 +136,7 @@
 <footer>
   <span class="no-break">
     cmdline
-      2.0.5
+      2.0.6
   </span>
   
 </footer>

@@ -1,3 +1,9 @@
+## 2.1.0
+
+- Added TUI elements
+- New widgets
+- Bug fixes
+
 ## 2.0.6
 
 - Bug fixes

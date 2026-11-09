@@ -1,222 +1,694 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="cli library API docs, for the Dart programming language.">
-  <title>cli library - Dart API</title>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, height=device-height, initial-scale=1, user-scalable=no" name="viewport">
+    <meta content="cli library API docs, for the Dart programming language." name="description">
+    <title>cli library - Dart API</title>
 
 
-  
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-  
-  <link rel="stylesheet" href="../static-assets/github.css?v1">
-  <link rel="stylesheet" href="../static-assets/styles.css?v1">
-  <link rel="icon" href="../static-assets/favicon.png?v1">
-  
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
+    <link href="../static-assets/github.css?v1" rel="stylesheet">
+    <link href="../static-assets/styles.css?v1" rel="stylesheet">
+    <link href="../static-assets/favicon.png?v1" rel="icon">
+
 </head>
 
-<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<body class="light-theme" data-base-href="../" data-using-base-href="false">
 <div id="overlay-under-drawer"></div>
 <header id="title">
-  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
-  <ol class="breadcrumbs gt-separated dark hidden-xs">
-    <li><a href="../index.html">cmdline</a></li>
-    <li class="self-crumb">cli.dart</li>
-  </ol>
-  <div class="self-name">cli</div>
-  <form class="search navbar-right" role="search">
-    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-  </form>
-  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
-    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+    <span class="material-symbols-outlined" id="sidenav-left-toggle" role="button" tabindex="0">menu</span>
+    <ol class="breadcrumbs gt-separated dark hidden-xs">
+        <li><a href="../index.html">cmdline</a></li>
+        <li class="self-crumb">cli.dart</li>
+    </ol>
+    <div class="self-name">cli</div>
+    <form class="search navbar-right" role="search">
+        <input autocomplete="off" class="form-control typeahead" disabled id="search-box" placeholder="Loading search..." type="text">
+    </form>
+    <button aria-label="Light and dark mode toggle" class="toggle" id="theme-button" title="Toggle between light and dark mode">
+    <span aria-hidden="true" class="material-symbols-outlined" id="dark-theme-button">
       dark_mode
     </span>
-    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+        <span aria-hidden="true" class="material-symbols-outlined" id="light-theme-button">
       light_mode
     </span>
-  </button>
+    </button>
 </header>
 <main>
-<div
-    id="dartdoc-main-content"
-    class="main-content"
-    data-above-sidebar=""
-    data-below-sidebar="cli&#47;cli-library-sidebar.html">
-  
-    <div>
-      
+    <div
+            class="main-content"
+            data-above-sidebar=""
+            data-below-sidebar="cli&#47;cli-library-sidebar.html"
+            id="dartdoc-main-content">
 
-      <h1>
-        <span class="kind-library">cli</span>
-        library 
- 
-
-      </h1>
-    </div>
-
-    
-<section class="desc markdown">
-  <p>Versatile and performant CLI builder</p>
-</section>
+        <div>
 
 
-    <section class="summary offset-anchor" id="classes">
-      <h2>Classes</h2>
-      <dl>
-          <dt id="Argument">
-  <span class="name "><a href="../cmdline/Argument-class.html">Argument</a></span> 
-
-</dt>
-<dd>
-  A plain word the user types without a dash, like <code>c</code> in <code>run to c</code>.
-</dd>
-
-          <dt id="CLI">
-  <span class="name "><a href="../cmdline/CLI-class.html">CLI</a></span> 
-
-</dt>
-<dd>
-  The whole program: the top command plus a version and a <a href="../cmdline/CLI/start.html">start</a> method.
-</dd>
-
-          <dt id="Command">
-  <span class="name "><a href="../cmdline/Command-class.html">Command</a></span> 
-
-</dt>
-<dd>
-  One thing your program can do, like <code>add</code> in <code>todo add</code>.
-</dd>
-
-          <dt id="Flag">
-  <span class="name "><a href="../cmdline/Flag-class.html">Flag</a></span> 
-
-</dt>
-<dd>
-  An on/off switch, like <code>--verbose</code> or <code>-v</code>.
-</dd>
-
-          <dt id="HelpPrinter">
-  <span class="name "><a href="../cmdline/HelpPrinter-class.html">HelpPrinter</a></span> 
-
-</dt>
-<dd>
-  Builds the coloured help screen for a command.
-</dd>
-
-          <dt id="Input">
-  <span class="name "><a href="../cmdline/Input-class.html">Input</a></span> 
-
-</dt>
-<dd>
-  Everything the user typed, ready to read inside a command's <code>run</code>.
-</dd>
-
-          <dt id="Option">
-  <span class="name "><a href="../cmdline/Option-class.html">Option</a></span> 
-
-</dt>
-<dd>
-  A named setting that takes a value, like <code>--name Sam</code> or <code>-n Sam</code>.
-</dd>
-
-          <dt id="Parser">
-  <span class="name "><a href="../cmdline/Parser-class.html">Parser</a></span> 
-
-</dt>
-<dd>
-  Reads the user's arguments one word at a time.
-</dd>
-
-          <dt id="ParseResult">
-  <span class="name "><a href="../cmdline/ParseResult-class.html">ParseResult</a></span> 
-
-</dt>
-<dd>
-  What <a href="../cmdline/Parser-class.html">Parser</a> found in the user's arguments.
-</dd>
-
-      </dl>
-    </section>
+            <h1>
+                <span class="kind-library">cli</span>
+                library
 
 
+            </h1>
+        </div>
 
 
+        <section class="desc markdown">
+            <p>Versatile and performant CLI builder</p>
+        </section>
 
 
+        <section class="summary offset-anchor" id="classes">
+            <h2>Classes</h2>
+            <dl>
+                <dt id="Argument">
+                    <span class="name "><a href="../cmdline/Argument-class.html">Argument</a></span>
+
+                </dt>
+                <dd>
+                    A plain word the user types without a dash, like <code>c</code> in <code>run to c</code>.
+                </dd>
+
+                <dt id="CLI">
+                    <span class="name "><a href="../cmdline/CLI-class.html">CLI</a></span>
+
+                </dt>
+                <dd>
+                    The whole program: the top command plus a version and a <a href="../cmdline/CLI/start.html">start</a> method.
+                </dd>
+
+                <dt id="ColourPrompt">
+                    <span class="name "><a href="../cmdline/ColourPrompt-class.html">ColourPrompt</a></span>
+
+                </dt>
+                <dd>
+                    Pick a colour from a grid of hues and shades.
+                </dd>
+
+                <dt id="Command">
+                    <span class="name "><a href="../cmdline/Command-class.html">Command</a></span>
+
+                </dt>
+                <dd>
+                    One thing your program can do, like <code>add</code> in <code>todo add</code>.
+                </dd>
+
+                <dt id="ConfirmPrompt">
+                    <span class="name "><a href="../cmdline/ConfirmPrompt-class.html">ConfirmPrompt</a></span>
+
+                </dt>
+                <dd>
+                    A yes or no question, picked with the arrows or the y and n keys.
+                </dd>
+
+                <dt id="DatePrompt">
+                    <span class="name "><a href="../cmdline/DatePrompt-class.html">DatePrompt</a></span>
+
+                </dt>
+                <dd>
+                    Pick a day on a month calendar.
+                </dd>
+
+                <dt id="FilePrompt">
+                    <span class="name "><a href="../cmdline/FilePrompt-class.html">FilePrompt</a></span>
+
+                </dt>
+                <dd>
+                    Browse folders and pick a file (or folder).
+                </dd>
+
+                <dt id="Flag">
+                    <span class="name "><a href="../cmdline/Flag-class.html">Flag</a></span>
+
+                </dt>
+                <dd>
+                    An on/off switch, like <code>--verbose</code> or <code>-v</code>.
+                </dd>
+
+                <dt id="Fuzzy">
+                    <span class="name "><a href="../cmdline/Fuzzy-class.html">Fuzzy</a></span>
+
+                </dt>
+                <dd>
+                    Fuzzy matching, like a code editor's file finder.
+                </dd>
+
+                <dt id="GridPrompt">
+                    <span class="name "><a href="../cmdline/GridPrompt-class.html">GridPrompt</a><span class="signature">&lt;<wbr><span
+                            class="type-parameter">T</span>&gt;</span></span>
+
+                </dt>
+                <dd>
+                    Pick one option from a grid, moving in all four directions.
+                </dd>
+
+                <dt id="HelpPrinter">
+                    <span class="name "><a href="../cmdline/HelpPrinter-class.html">HelpPrinter</a></span>
+
+                </dt>
+                <dd>
+                    Builds the coloured help screen for a command.
+                </dd>
+
+                <dt id="Input">
+                    <span class="name "><a href="../cmdline/Input-class.html">Input</a></span>
+
+                </dt>
+                <dd>
+                    Everything the user typed, ready to read inside a command's <code>run</code>.
+                </dd>
+
+                <dt id="KeyPress">
+                    <span class="name "><a href="../cmdline/KeyPress-class.html">KeyPress</a></span>
+
+                </dt>
+                <dd>
+                    One key press: what it was, plus any Ctrl, Alt or Shift held with it.
+                </dd>
+
+                <dt id="KeyReader">
+                    <span class="name "><a href="../cmdline/KeyReader-class.html">KeyReader</a></span>
+
+                </dt>
+                <dd>
+                    Reads key presses one at a time from a <a href="../cmdline/Terminal-class.html">Terminal</a>.
+                </dd>
+
+                <dt id="ListCursor">
+                    <span class="name "><a href="../cmdline/ListCursor-class.html">ListCursor</a></span>
+
+                </dt>
+                <dd>
+                    The highlighted row of a list, plus the slice of rows that fits on screen.
+                </dd>
+
+                <dt id="ListPrompt">
+                    <span class="name "><a href="../cmdline/ListPrompt-class.html">ListPrompt</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>, <span
+                            class="type-parameter">R</span>&gt;</span></span>
+
+                </dt>
+                <dd>
+                    The shared part of list prompts: options, a cursor and a scrolling window.
+                </dd>
+
+                <dt id="LiveRegion">
+                    <span class="name "><a href="../cmdline/LiveRegion-class.html">LiveRegion</a></span>
+
+                </dt>
+                <dd>
+                    A block of lines at the bottom of the output that can be redrawn in place.
+                </dd>
+
+                <dt id="MultilinePrompt">
+                    <span class="name "><a href="../cmdline/MultilinePrompt-class.html">MultilinePrompt</a></span>
+
+                </dt>
+                <dd>
+                    A text box for several lines, like a commit message.
+                </dd>
+
+                <dt id="MultiSelectPrompt">
+                    <span class="name "><a href="../cmdline/MultiSelectPrompt-class.html">MultiSelectPrompt</a><span class="signature">&lt;<wbr><span
+                            class="type-parameter">T</span>&gt;</span></span>
+
+                </dt>
+                <dd>
+                    Tick any number of options from a list.
+                </dd>
+
+                <dt id="Option">
+                    <span class="name "><a href="../cmdline/Option-class.html">Option</a></span>
+
+                </dt>
+                <dd>
+                    A named setting that takes a value, like <code>--name Sam</code> or <code>-n Sam</code>.
+                </dd>
+
+                <dt id="Parser">
+                    <span class="name "><a href="../cmdline/Parser-class.html">Parser</a></span>
+
+                </dt>
+                <dd>
+                    Reads the user's arguments one word at a time.
+                </dd>
+
+                <dt id="ParseResult">
+                    <span class="name "><a href="../cmdline/ParseResult-class.html">ParseResult</a></span>
+
+                </dt>
+                <dd>
+                    What <a href="../cmdline/Parser-class.html">Parser</a> found in the user's arguments.
+                </dd>
+
+                <dt id="PathPrompt">
+                    <span class="name "><a href="../cmdline/PathPrompt-class.html">PathPrompt</a></span>
+
+                </dt>
+                <dd>
+                    Type a path, with Tab completing file and folder names.
+                </dd>
+
+                <dt id="Pickers">
+                    <span class="name "><a href="../cmdline/Pickers-class.html">Pickers</a></span>
+
+                </dt>
+                <dd>
+                    Visual pickers for values: sliders, ranges, ratings, dates, files and
+                    colours.
+                </dd>
+
+                <dt id="PromptLine">
+                    <span class="name "><a href="../cmdline/PromptLine-class.html">PromptLine</a></span>
+
+                </dt>
+                <dd>
+                    Asks one question on one line until the answer passes a check.
+                </dd>
+
+                <dt id="PromptRunner">
+                    <span class="name "><a href="../cmdline/PromptRunner-class.html">PromptRunner</a></span>
+
+                </dt>
+                <dd>
+                    Runs a <a href="../cmdline/PromptView-class.html">PromptView</a>: shows it, feeds it keys and gives back its answer.
+                </dd>
+
+                <dt id="Prompts">
+                    <span class="name "><a href="../cmdline/Prompts-class.html">Prompts</a></span>
+
+                </dt>
+                <dd>
+                    Questions for the user: text, passwords, numbers, yes/no and lists.
+                </dd>
+
+                <dt id="PromptView">
+                    <span class="name "><a href="../cmdline/PromptView-class.html">PromptView</a><span class="signature">&lt;<wbr><span
+                            class="type-parameter">T</span>&gt;</span></span>
+
+                </dt>
+                <dd>
+                    The base of every interactive prompt.
+                </dd>
+
+                <dt id="RangePrompt">
+                    <span class="name "><a href="../cmdline/RangePrompt-class.html">RangePrompt</a></span>
+
+                </dt>
+                <dd>
+                    Pick a range on a track with two handles, like a price filter.
+                </dd>
+
+                <dt id="RatingPrompt">
+                    <span class="name "><a href="../cmdline/RatingPrompt-class.html">RatingPrompt</a></span>
+
+                </dt>
+                <dd>
+                    Pick a score out of <a href="../cmdline/RatingPrompt/max.html">max</a> stars.
+                </dd>
+
+                <dt id="SearchPrompt">
+                    <span class="name "><a href="../cmdline/SearchPrompt-class.html">SearchPrompt</a><span class="signature">&lt;<wbr><span
+                            class="type-parameter">T</span>&gt;</span></span>
+
+                </dt>
+                <dd>
+                    Pick one option by typing to filter the list, like a command palette.
+                </dd>
+
+                <dt id="SelectPrompt">
+                    <span class="name "><a href="../cmdline/SelectPrompt-class.html">SelectPrompt</a><span class="signature">&lt;<wbr><span
+                            class="type-parameter">T</span>&gt;</span></span>
+
+                </dt>
+                <dd>
+                    Pick one option from a list.
+                </dd>
+
+                <dt id="SliderPrompt">
+                    <span class="name "><a href="../cmdline/SliderPrompt-class.html">SliderPrompt</a></span>
+
+                </dt>
+                <dd>
+                    Pick a whole number on a track, like a volume.
+                </dd>
+
+                <dt id="Spinner">
+                    <span class="name "><a href="../cmdline/Spinner-class.html">Spinner</a></span>
+
+                </dt>
+                <dd>
+                    An animated spinner with a label, for work of unknown length.
+                </dd>
+
+                <dt id="StdTerminal">
+                    <span class="name "><a href="../cmdline/StdTerminal-class.html">StdTerminal</a></span>
+
+                </dt>
+                <dd>
+                    The real console: <code>stdin</code> and <code>stdout</code>.
+                </dd>
+
+                <dt id="TagsPrompt">
+                    <span class="name "><a href="../cmdline/TagsPrompt-class.html">TagsPrompt</a></span>
+
+                </dt>
+                <dd>
+                    Type a list of short words, like labels or package names.
+                </dd>
+
+                <dt id="Task">
+                    <span class="name "><a href="../cmdline/Task-class.html">Task</a></span>
+
+                </dt>
+                <dd>
+                    One piece of work in a task list.
+                </dd>
+
+                <dt id="TaskContext">
+                    <span class="name "><a href="../cmdline/TaskContext-class.html">TaskContext</a></span>
+
+                </dt>
+                <dd>
+                    What a running task can tell the screen about itself.
+                </dd>
+
+                <dt id="TaskReport">
+                    <span class="name "><a href="../cmdline/TaskReport-class.html">TaskReport</a></span>
+
+                </dt>
+                <dd>
+                    How a task went.
+                </dd>
+
+                <dt id="Tasks">
+                    <span class="name "><a href="../cmdline/Tasks-class.html">Tasks</a></span>
+
+                </dt>
+                <dd>
+                    Several tasks running side by side, each with a live status line.
+                </dd>
+
+                <dt id="Terminal">
+                    <span class="name "><a href="../cmdline/Terminal-class.html">Terminal</a></span>
+
+                </dt>
+                <dd>
+                    The keyboard and screen that prompts and widgets talk to.
+                </dd>
+
+                <dt id="TextBuffer">
+                    <span class="name "><a href="../cmdline/TextBuffer-class.html">TextBuffer</a></span>
+
+                </dt>
+                <dd>
+                    Editable text with a cursor, for text boxes.
+                </dd>
+
+                <dt id="TextPrompt">
+                    <span class="name "><a href="../cmdline/TextPrompt-class.html">TextPrompt</a><span class="signature">&lt;<wbr><span
+                            class="type-parameter">T</span>&gt;</span></span>
+
+                </dt>
+                <dd>
+                    A one-line text box: free text, passwords and numbers.
+                </dd>
+
+                <dt id="TogglePrompt">
+                    <span class="name "><a href="../cmdline/TogglePrompt-class.html">TogglePrompt</a></span>
+
+                </dt>
+                <dd>
+                    A list of on/off switches, like settings.
+                </dd>
+
+                <dt id="TreeNode">
+                    <span class="name "><a href="../cmdline/TreeNode-class.html">TreeNode</a></span>
+
+                </dt>
+                <dd>
+                    One line of a <a href="../cmdline/Widgets/tree.html">Widgets.tree</a>: a label and the lines under it.
+                </dd>
+
+                <dt id="Widgets">
+                    <span class="name "><a href="../cmdline/Widgets-class.html">Widgets</a></span>
+
+                </dt>
+                <dd>
+                    Text widgets for the terminal: boxes, tables, trees and lists.
+                </dd>
+
+            </dl>
+        </section>
+
+        <section class="summary offset-anchor" id="enums">
+            <h2>Enums</h2>
+            <dl>
+                <dt id="Key">
+                    <span class="name "><a href="../cmdline/Key.html">Key</a></span>
+
+                </dt>
+                <dd>
+                    The kinds of key a prompt can react to.
+                </dd>
+
+                <dt id="KeyResult">
+                    <span class="name "><a href="../cmdline/KeyResult.html">KeyResult</a></span>
+
+                </dt>
+                <dd>
+                    What a prompt wants to happen after a key press.
+                </dd>
+
+                <dt id="PathKind">
+                    <span class="name "><a href="../cmdline/PathKind.html">PathKind</a></span>
+
+                </dt>
+                <dd>
+                    What a file picker gives back: files, folders, or either.
+                </dd>
+
+                <dt id="PromptMode">
+                    <span class="name "><a href="../cmdline/PromptMode.html">PromptMode</a></span>
+
+                </dt>
+                <dd>
+                    How prompts get their answers.
+                </dd>
+
+                <dt id="Tone">
+                    <span class="name "><a href="../cmdline/Tone.html">Tone</a></span>
+
+                </dt>
+                <dd>
+                    The kinds of message a <a href="../cmdline/Widgets/callout.html">Widgets.callout</a> can show.
+                </dd>
+
+            </dl>
+        </section>
 
 
-    <section class="summary offset-anchor" id="typedefs">
-      <h2>Typedefs</h2>
-      <dl>
-          
-  <dt id="RunCommand" class="callable">
-    <span class="name"><a href="../cmdline/RunCommand.html">RunCommand</a></span><span class="signature">
-      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-input"><span class="type-annotation"><a href="../cmdline/Input-class.html">Input</a></span> <span class="parameter-name">input</span></span>)</span></span>
+        <section class="summary offset-anchor" id="typedefs">
+            <h2>Typedefs</h2>
+            <dl>
+
+                <dt class="" id="CursorSpot">
+                    <span class="name"><a href="../cmdline/CursorSpot.html">CursorSpot</a></span>
+                    = (<span class="field">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span
+                        class="field-name">column</span>, </span><span class="field"><span class="type-annotation"><a
+                        href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="field-name">line</span>}</span>)
+                    </span>
+
+
+                </dt>
+                <dd>
+                    Where to put the blinking cursor in a frame: a line and a column.
+
+
+                </dd>
+
+
+                <dt class="" id="FuzzyMatch">
+                    <span class="name"><a href="../cmdline/FuzzyMatch.html">FuzzyMatch</a></span>
+                    = (<span class="field">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span
+                        class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="field-name">positions</span>, </span><span
+                        class="field"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span
+                        class="field-name">score</span>}</span>)
+                    </span>
+
+
+                </dt>
+                <dd>
+                    How well a search matched some text, and which characters matched.
+
+
+                </dd>
+
+
+                <dt class="" id="IntRange">
+                    <span class="name"><a href="../cmdline/IntRange.html">IntRange</a></span>
+                    = (<span class="field">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span
+                        class="field-name">end</span>, </span><span class="field"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span
+                        class="field-name">start</span>}</span>)
+                    </span>
+
+
+                </dt>
+                <dd>
+                    A picked range of whole numbers, both ends included.
+
+
+                </dd>
+
+
+                <dt class="" id="KeyHint">
+                    <span class="name"><a href="../cmdline/KeyHint.html">KeyHint</a></span>
+                    = (<span class="field"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, </span><span
+                        class="field"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span></span>)
+                    </span>
+
+
+                </dt>
+                <dd>
+                    A key and what it does, shown in the dim key hints under a prompt.
+
+
+                </dd>
+
+
+                <dt class="callable" id="PromptCheck">
+                    <span class="name"><a href="../cmdline/PromptCheck.html">PromptCheck</a></span>&lt;<wbr>
+                    <span class="type-parameter">T</span>&gt;<span class="signature">
+      <span class="returntype parameter">= (<span class="field">{<span class="type-annotation"><a
+              href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="field-name">problem</span>, </span><span class="field"><span
+              class="type-annotation">T?</span> <span class="field-name">value</span>}</span>) Function<span class="signature">(<span class="parameter" id="param-typed"><span
+              class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span
+              class="parameter-name">typed</span></span>)</span></span>
     </span>
-    
 
-  </dt>
-  <dd>
-    The function a command calls when the user picks it.
-    
 
-  </dd>
+                </dt>
+                <dd>
+                    What a prompt's check makes of the typed text.
 
-      </dl>
-    </section>
 
-    <section class="summary offset-anchor" id="exceptions">
-      <h2>Exceptions / Errors</h2>
-      <dl>
-          <dt id="CLIError">
-  <span class="name "><a href="../cmdline/CLIError-class.html">CLIError</a></span> 
+                </dd>
 
-</dt>
-<dd>
-  A mistake the user made when typing the command.
-</dd>
 
-      </dl>
-    </section>
-  </div> <!-- /.main-content -->
-  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
-<header id="header-search-sidebar" class="hidden-l">
-  <form class="search-sidebar" role="search">
-    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-  </form>
-</header>
-<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-    <li><a href="../index.html">cmdline</a></li>
-    <li class="self-crumb">cli.dart</li>
-</ol>
+                <dt class="callable" id="RunCommand">
+                    <span class="name"><a href="../cmdline/RunCommand.html">RunCommand</a></span><span class="signature">
+      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span
+              class="type-parameter">void</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-input"><span class="type-annotation"><a
+              href="../cmdline/Input-class.html">Input</a></span> <span class="parameter-name">input</span></span>)</span></span>
+    </span>
 
-    <h5><span class="package-name">cmdline</span> <span class="package-kind">package</span></h5>
-    <ol>
-      <li class="section-title">Libraries</li>
-      <li><a href="../ansi/">ansi</a></li>
-      <li><a href="../cli/">cli</a></li>
-      <li><a href="../cmd/">cmd</a></li>
-      <li><a href="../cmdline/">cmdline</a></li>
-      <li><a href="../core/">core</a></li>
-      <li><a href="../logging/">logging</a></li>
-</ol>
 
-  </div>
-  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
-    <h5>cli library</h5>
-  </div><!--/sidebar-offcanvas-right-->
+                </dt>
+                <dd>
+                    The function a command calls when the user picks it.
+
+
+                </dd>
+
+
+                <dt class="callable" id="TaskWork">
+                    <span class="name"><a href="../cmdline/TaskWork.html">TaskWork</a></span><span class="signature">
+      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span
+              class="type-parameter">void</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-task"><span class="type-annotation"><a
+              href="../cmdline/TaskContext-class.html">TaskContext</a></span> <span class="parameter-name">task</span></span>)</span></span>
+    </span>
+
+
+                </dt>
+                <dd>
+                    Work for <a href="../cmdline/Tasks/run.html">Tasks.run</a>: gets a <a href="../cmdline/TaskContext-class.html">TaskContext</a> to report on itself.
+
+
+                </dd>
+
+
+                <dt class="callable" id="TextParser">
+                    <span class="name"><a href="../cmdline/TextParser.html">TextParser</a></span>&lt;<wbr>
+                    <span class="type-parameter">T</span>&gt;<span class="signature">
+      <span class="returntype parameter">= (<span class="field">{<span class="type-annotation"><a
+              href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="field-name">problem</span>, </span><span class="field"><span
+              class="type-annotation">T?</span> <span class="field-name">value</span>}</span>) Function<span class="signature">(<span class="parameter" id="param-text"><span
+              class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span
+              class="parameter-name">text</span></span>)</span></span>
+    </span>
+
+
+                </dt>
+                <dd>
+                    Turns typed text into an answer, or a problem to show.
+
+
+                </dd>
+
+            </dl>
+        </section>
+
+        <section class="summary offset-anchor" id="exceptions">
+            <h2>Exceptions / Errors</h2>
+            <dl>
+                <dt id="CLIError">
+                    <span class="name "><a href="../cmdline/CLIError-class.html">CLIError</a></span>
+
+                </dt>
+                <dd>
+                    A mistake the user made when typing the command.
+                </dd>
+
+                <dt id="PromptCancelled">
+                    <span class="name "><a href="../cmdline/PromptCancelled-class.html">PromptCancelled</a></span>
+
+                </dt>
+                <dd>
+                    Thrown when a prompt ends without an answer.
+                </dd>
+
+            </dl>
+        </section>
+    </div> <!-- /.main-content -->
+    <div class="sidebar sidebar-offcanvas-left" id="dartdoc-sidebar-left">
+        <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+        <header class="hidden-l" id="header-search-sidebar">
+            <form class="search-sidebar" role="search">
+                <input autocomplete="off" class="form-control typeahead" disabled id="search-sidebar" placeholder="Loading search..." type="text">
+            </form>
+        </header>
+        <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+            <li><a href="../index.html">cmdline</a></li>
+            <li class="self-crumb">cli.dart</li>
+        </ol>
+
+        <h5><span class="package-name">cmdline</span> <span class="package-kind">package</span></h5>
+        <ol>
+            <li class="section-title">Libraries</li>
+            <li><a href="../ansi/">ansi</a></li>
+            <li><a href="../cli/">cli</a></li>
+            <li><a href="../cmd/">cmd</a></li>
+            <li><a href="../cmdline/">cmdline</a></li>
+            <li><a href="../core/">core</a></li>
+            <li><a href="../logging/">logging</a></li>
+            <li><a href="../testing/">testing</a></li>
+        </ol>
+
+    </div>
+    <div class="sidebar sidebar-offcanvas-right" id="dartdoc-sidebar-right">
+        <h5>cli library</h5>
+    </div><!--/sidebar-offcanvas-right-->
 </main>
 <footer>
   <span class="no-break">
     cmdline
-      2.0.5
+      2.0.6
   </span>
-  
+
 </footer>
 
 

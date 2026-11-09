@@ -1,4 +1,3 @@
-// Adapted from terminice (MIT), https://github.com/jozzdart/terminice
 import 'dart:io';
 
 import 'windows_console.dart';

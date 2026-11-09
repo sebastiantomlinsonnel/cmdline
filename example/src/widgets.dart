@@ -14,9 +14,23 @@ class WidgetsDemo {
       'Password',
       validator: (p) => p.length < 4 ? 'Use at least 4 characters' : null,
     );
-    final port = Prompts.integer('Port', defaultValue: 8080, min: 1, max: 65535);
-    final ratio = Prompts.decimal('Cache ratio', defaultValue: 0.5, min: 0, max: 1, step: 0.1);
-    final notes = Prompts.multiline('Release notes', defaultValue: 'First release');
+    final port = Prompts.integer(
+      'Port',
+      defaultValue: 8080,
+      min: 1,
+      max: 65535,
+    );
+    final ratio = Prompts.decimal(
+      'Cache ratio',
+      defaultValue: 0.5,
+      min: 0,
+      max: 1,
+      step: 0.1,
+    );
+    final notes = Prompts.multiline(
+      'Release notes',
+      defaultValue: 'First release',
+    );
     final save = Prompts.confirm('Save these settings?', defaultValue: true);
 
     AnsiTheme.say(
@@ -52,13 +66,27 @@ class WidgetsDemo {
       selected: ['Tests'],
       min: 1,
     );
-    final command = Prompts.search(
-      'Run a command',
-      ['git checkout', 'git commit', 'git cherry-pick', 'go build', 'grep', 'dart test', 'dart format'],
-      note: (c) => c.split(' ').first,
+    final command = Prompts.search('Run a command', [
+      'git checkout',
+      'git commit',
+      'git cherry-pick',
+      'go build',
+      'grep',
+      'dart test',
+      'dart format',
+    ], note: (c) => c.split(' ').first);
+    final labels = Prompts.tags(
+      'Labels',
+      suggestions: ['bug', 'feature', 'docs', 'help wanted'],
     );
-    final labels = Prompts.tags('Labels', suggestions: ['bug', 'feature', 'docs', 'help wanted']);
-    final size = Prompts.grid('T-shirt size', ['XS', 'S', 'M', 'L', 'XL', 'XXL'], columns: 3);
+    final size = Prompts.grid('T-shirt size', [
+      'XS',
+      'S',
+      'M',
+      'L',
+      'XL',
+      'XXL',
+    ], columns: 3);
     final settings = Prompts.toggles('Settings', {
       'Dark mode': true,
       'Telemetry': false,
@@ -72,7 +100,10 @@ class WidgetsDemo {
         'Command': command,
         'Labels': labels.join(', '),
         'Size': size,
-        'Settings': settings.entries.where((e) => e.value).map((e) => e.key).join(', '),
+        'Settings': settings.entries
+            .where((e) => e.value)
+            .map((e) => e.key)
+            .join(', '),
       }),
     );
   }
@@ -80,8 +111,16 @@ class WidgetsDemo {
   /// Pickers: slider, range, rating, date, file and colour.
   static void pickers() {
     final volume = Pickers.slider('Volume', start: 70, unit: '%');
-    final price = Pickers.range('Price', max: 500, step: 10, initial: (start: 50, end: 200));
-    final stars = Pickers.rating('How was it?', labels: ['Awful', 'Bad', 'Okay', 'Good', 'Great']);
+    final price = Pickers.range(
+      'Price',
+      max: 500,
+      step: 10,
+      initial: (start: 50, end: 200),
+    );
+    final stars = Pickers.rating(
+      'How was it?',
+      labels: ['Awful', 'Bad', 'Okay', 'Good', 'Great'],
+    );
     final due = Pickers.date('Due date', first: DateTime.now());
     final file = Pickers.file('Open a file');
     final accent = Pickers.colour('Accent colour');
@@ -142,19 +181,32 @@ class WidgetsDemo {
       }),
     ], concurrency: 3);
     final failed = reports.where((r) => !r.ok).length;
-    AnsiTheme.say(Widgets.rule(title: '$failed of ${reports.length} tasks failed'));
+    AnsiTheme.say(
+      Widgets.rule(title: '$failed of ${reports.length} tasks failed'),
+    );
   }
 
   /// Boxes, callouts, tables, trees and lists.
   static void layout() {
     final parts = [
       Widgets.rule(title: 'Layout widgets'),
-      Widgets.callout('The config file is missing, so the defaults are used.', tone: Tone.warn),
+      Widgets.callout(
+        'The config file is missing, so the defaults are used.',
+        tone: Tone.warn,
+      ),
       Widgets.callout('Deployed to production.', tone: Tone.success),
       Widgets.table(
         [
-          ['prompts.dart', 'Text, numbers, confirm, lists, search and tags', 420],
-          ['pickers.dart', 'Sliders, ranges, ratings, dates, files and colours', 190],
+          [
+            'prompts.dart',
+            'Text, numbers, confirm, lists, search and tags',
+            420,
+          ],
+          [
+            'pickers.dart',
+            'Sliders, ranges, ratings, dates, files and colours',
+            190,
+          ],
           ['widgets.dart', 'Boxes, tables, trees and lists', 300],
         ],
         header: ['File', 'What it holds', 'Lines'],
@@ -165,13 +217,20 @@ class WidgetsDemo {
         const TreeNode('lib', [
           TreeNode('src', [
             TreeNode('cli', [
-              TreeNode('tui', [TreeNode('prompts.dart'), TreeNode('widgets.dart')]),
+              TreeNode('tui', [
+                TreeNode('prompts.dart'),
+                TreeNode('widgets.dart'),
+              ]),
             ]),
           ]),
           TreeNode('cmdline.dart'),
         ]),
       ]),
-      Widgets.bullets(['Install Dart', 'Run dart pub get', 'Run dart test'], numbered: true),
+      Widgets.bullets([
+        'Install Dart',
+        'Run dart pub get',
+        'Run dart test',
+      ], numbered: true),
       Widgets.hotkeys([('↑↓', 'move'), ('enter', 'pick'), ('esc', 'cancel')]),
     ];
     parts.forEach(AnsiTheme.say);
