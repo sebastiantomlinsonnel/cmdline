@@ -18,7 +18,7 @@ const String STYLE_CODE_REGEX = r'\x1B\[([0-9;]*)m';
 /// `\x1B[` sequence ending in a letter other than `m`. Also covers short
 /// two-character codes like `\x1B7` (save cursor position). These change
 /// the terminal rather than the text, so they are removed and never styled.
-RegExp get controlCodeRegExp => RegExp(STYLE_CODE_REGEX);
+RegExp get controlCodeRegExp => RegExp(CONTROL_CODE_REGEX);
 
 /// The string used for [controlCodeRegExp]
 const String CONTROL_CODE_REGEX = r'\x1B\[[0-9;?]*[A-Za-ln-z]|\x1B[^\[]';
